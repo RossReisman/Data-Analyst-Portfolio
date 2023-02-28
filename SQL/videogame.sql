@@ -30,9 +30,11 @@ WHERE year NOT LIKE '2%'
 AND year NOT LIKE '1%'
 
 /*
+
 Both queries returned 271 rows so we can be sure these are
 the only rows affected. Since there are 16598 rows,
 these observations should not have an outsized influence
+
 */
 ------------------------------------------------------------------
 /* Let's see what the earliest and latest years are */
@@ -40,31 +42,47 @@ these observations should not have an outsized influence
 SELECT MIN(year) FROM vgsales
 SELECT MAX(year) FROM vgsales WHERE year NOT LIKE 'N/A'
 
-/*The earliest year is 1980. My initial query for the latest year
+/*
+
+The earliest year is 1980. My initial query for the latest year
 returned 'N/A' so I had to filter those rows using NOT LIKE
-Let's see how many genres there are and list them */ 
+Let's see how many genres there are and list them
+
+*/
 
 SELECT COUNT(DISTINCT(genre)) FROM vgsales
 
 SELECT DISTINCT(genre) FROM vgsales ORDER BY 1
 
 /*
+
 There are 12. In alphabetical order they are:
 Action, Adventure, Fighting, Misc, Platform, Puzzle,
 Racing, Role-Playing, Shooter, Simulation, Sports, and Strategy
+
 */
+
 ------------------------------------------------------------------
-/* Let's do the same for platform and publisher */
+
+/*
+
+Let's do the same for platform and publisher
+
+*/
 
 SELECT DISTINCT(platform) FROM vgsales ORDER BY 1
 
 SELECT DISTINCT(publisher) FROM vgsales ORDER BY 1
 
 /*
+
 There are 31 platforms going all the way back to Atari 2600!
 There are 579 different publishers.
+
 */
+
 ------------------------------------------------------------------
+
 -- Let's see which game sold the most in North America and how much it sold
 
 SELECT MAX(na_sales) FROM vgsales
@@ -88,13 +106,17 @@ SELECT name, jp_sales FROM vgsales ORDER BY jp_sales desc LIMIT 1
 SELECT name, other_sales FROM vgsales ORDER BY other_sales desc LIMIT 1
 
 /*
+
 Wii Sports was top in the EU with 29.02 million units sold
 Pokemon Red and Blue was top in Japan with 10.22 million units sold
 Grand Theft Auto: San Andreas was top in other regions (non-NA, EU, JP)
 with 10.57 million units sold
+
 */
+
 ------------------------------------------------------------------
-# How many games sold less than one million units in North America?
+
+-- How many games sold less than one million units in North America?
 
 SELECT COUNT(na_sales) FROM vgsales WHERE na_sales < 1
 
@@ -106,11 +128,15 @@ WHERE na_sales < 1
 ORDER BY na_sales desc
 
 /*
+
 There are 15,688 games that sold
 less than one million units in North America.
+
 */
+
 ------------------------------------------------------------------
-# Let's compare that to other geographic regions
+
+-- Let's compare that to other geographic regions
 
 SELECT name, platform, eu_sales
 FROM vgsales
@@ -131,14 +157,20 @@ ORDER BY other_sales desc
 16518
 
 /*
+
 EU: 16126
 JP: 16356
 Other: 16518
+
 */
+
 ------------------------------------------------------------------
+
 /*
+
 Let's see how many publishers have average sales of
 at least half a million dollars across their games
+
 */
 
 SELECT publisher, AVG(na_sales) AS avg_sales
