@@ -180,7 +180,10 @@ HAVING AVG(na_sales) > .5
 ORDER BY 2 desc
 
 /*
+
 The query returned 27 publishers. There are many notable publishers
 as well as some lesser known ones who may have only had a couple big games
+
 */
+
 ------------------------------------------------------------------
