@@ -3,14 +3,14 @@
 Video Game Sales Data Exploration in SQL
 Data from https://www.kaggle.com/datasets/gregorut/videogamesales
 Skills Used: Select, Where, And, Like/Not Like, Wildcard, Min/Max,
-Distinct, Count, Group By, Having, Order By, Count, Avg, Alias, Limit
+Distinct, Count, Group By, Having, Order By, Count, Avg, Alias, Limit.
 
 */
 ------------------------------------------------------------------
 /*
 
 First let's view a sample of our table.
-It's always good to test your query first using LIMIT
+It's always good to test your query first using LIMIT.
 
 */
 
@@ -19,7 +19,7 @@ SELECT * FROM vgsales LIMIT 5
 /*
 
 While importing the data, we received an error when trying to
-set 'year' as numeric. Let's see how many rows this affects
+set 'year' as numeric. Let's see how many rows this affects.
 
 */
 
@@ -33,11 +33,15 @@ AND year NOT LIKE '1%'
 
 Both queries returned 271 rows so we can be sure these are
 the only rows affected. Since there are 16598 rows,
-these observations should not have an outsized influence
+these observations should not have an outsized influence.
 
 */
 ------------------------------------------------------------------
-/* Let's see what the earliest and latest years are */
+/*
+
+Let's see what the earliest and latest years are
+
+*/
 
 SELECT MIN(year) FROM vgsales
 SELECT MAX(year) FROM vgsales WHERE year NOT LIKE 'N/A'
