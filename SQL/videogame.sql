@@ -15,8 +15,10 @@ see how many rows and columns are in this datasets
 
 */
 
+-- number of rows
 SELECT COUNT(*) FROM vgsales
 
+-- number of columns
 SELECT COUNT (column_name) AS Number
 FROM information_schema.columns
 WHERE table_name='vgsales'
@@ -108,6 +110,134 @@ SELECT 'max',
 	PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY other_sales) as OT_100
 FROM vgsales
 ORDER BY 2
+
+Examining qualitative data vvv
+
+-- Platform names
+select distinct(platform) from vgsales order by 1
+
+-- Number of unique Platforms
+select count(distinct(platform)) from vgsales
+
+-- Year numbers
+select distinct(year) from vgsales order by 1
+-- 'N/A' is a result here. Need to check other columns for 'N/A'
+
+SELECT count(year) from vgsales where year = 'N/A' order by 1
+-- 271 records.
+
+-- Checking Publisher for 'N/A'
+select distinct(year) from vgsales order by 1
+-- Found 'N/A'
+
+SELECT count(publisher) from vgsales where publisher = 'N/A' order by 1
+-- Found 58 rows
+
+-- Number of unique Years
+select count(distinct(platform)) from vgsales
+
+-- Genre names
+select distinct(genre) from vgsales order by 1
+
+-- Number of unique Genres
+select count(distinct(genre)) from vgsales
+
+EDA
+
+Publisher Performance
+
+Who were the Top 10 Publishers and how many games did they make?
+
+SELECT publisher, count(publisher) from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+group by publisher
+order by 2 desc
+limit 10
+
+/*
+"Electronic Arts"	1339
+"Activision"	966
+"Namco Bandai Games"	928
+"Ubisoft"	918
+"Konami Digital Entertainment"	823
+"THQ"	712
+"Nintendo"	696
+"Sony Computer Entertainment"	682
+"Sega"	632
+"Take-Two Interactive"	412
+*/
+
+What were the top 10 most prolific years for publishers
+and how many games did they make?
+
+SELECT year, publisher, count(publisher) from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+group by year, publisher
+order by 3 desc
+limit 10
+
+/*
+"2009"	"Activision"	121
+"2008"	"Electronic Arts"	120
+"2005"	"Electronic Arts"	117
+"2008"	"Ubisoft"	112
+"2009"	"Electronic Arts"	112
+"2007"	"Electronic Arts"	107
+"2006"	"Electronic Arts"	102
+"2009"	"Ubisoft"	102
+"2010"	"Activision"	89
+"2007"	"Ubisoft"	88
+*/
+
+Genre Performance
+
+What were the top Genres?
+
+SELECT genre, count(genre) from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+group by genre
+order by 2 desc
+
+/*
+"Action"	3251
+"Sports"	2304
+"Misc"	1686
+"Role-Playing"	1470
+"Shooter"	1282
+"Adventure"	1274
+"Racing"	1225
+"Platform"	875
+"Simulation"	848
+"Fighting"	836
+"Strategy"	670
+"Puzzle"	570
+*/
+
+Which genres saw the most releases in a given year?
+
+SELECT year, genre, count(genre) from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+group by year, genre
+order by 3 desc
+limit 10
+
+/*
+"2009"	"Action"	272
+"2012"	"Action"	265
+"2015"	"Action"	255
+"2011"	"Action"	239
+"2010"	"Action"	226
+"2008"	"Action"	221
+"2008"	"Misc"	212
+"2007"	"Action"	211
+"2009"	"Misc"	207
+"2010"	"Misc"	201
+*/
+
 
 
 /*
