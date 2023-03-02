@@ -238,6 +238,144 @@ limit 10
 "2010"	"Misc"	201
 */
 
+Year Performance
+
+Which years has the most releases?
+
+SELECT year, count(year) from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+group by year
+order by 2 desc
+limit 10
+
+/*
+"2009"	1431
+"2008"	1428
+"2010"	1257
+"2007"	1201
+"2011"	1136
+"2006"	1008
+"2005"	936
+"2002"	829
+"2003"	775
+"2004"	744
+*/
+
+Platform Performance
+
+Which Platforms Had the Most Games?
+
+SELECT platform, count(platform) from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+group by platform
+order by 2 desc
+limit 10
+
+/*
+"DS"	2131
+"PS2"	2127
+"PS3"	1304
+"Wii"	1290
+"X360"	1234
+"PSP"	1197
+"PS"	1189
+"PC"	938
+"XB"	803
+"GBA"	786
+*/
+
+Sales Performance
+
+5a) Publisher Sales Performance
+
+SELECT publisher, sum(global_sales) from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+group by publisher
+order by 2 desc
+limit 10
+
+/*
+"Nintendo"	1784.43
+"Electronic Arts"	1093.39
+"Activision"	721.41
+"Sony Computer Entertainment"	607.28
+"Ubisoft"	473.54
+"Take-Two Interactive"	399.30
+"THQ"	340.44
+"Konami Digital Entertainment"	278.56
+"Sega"	270.70
+"Namco Bandai Games"	253.65
+*/
+
+5b) Genre Sales Performance
+
+SELECT genre, sum(global_sales) from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+group by genre
+order by 2 desc
+limit 10
+
+/*
+"Action"	1722.84
+"Sports"	1309.24
+"Shooter"	1026.20
+"Role-Playing"	923.83
+"Platform"	829.13
+"Misc"	789.87
+"Racing"	726.76
+"Fighting"	444.05
+"Simulation"	389.98
+"Puzzle"	242.21
+*/
+
+SELECT year, genre, sum(global_sales) from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+group by year, genre
+order by 3 desc
+limit 10
+
+/*
+"2009"	"Action"	139.36
+"2009"	"Sports"	138.52
+"2008"	"Action"	136.39
+"2006"	"Sports"	136.16
+"2013"	"Action"	125.22
+"2012"	"Action"	122.01
+"2011"	"Action"	118.96
+"2010"	"Action"	117.64
+"2007"	"Action"	106.50
+"2011"	"Shooter"	99.36
+*/
+
+5c) Year Sales Performance
+
+Pre 2000
+sum global
+Post 2000
+sum global
+
+1980
+sum na/eu/jp/global
+90
+00
+10
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
