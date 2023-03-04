@@ -354,16 +354,306 @@ limit 10
 
 5c) Year Sales Performance
 
+5ca) Pre and Post 2000 Performance
 Pre 2000
 sum global
+
+SELECT sum(global_sales)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '1980' and '1999'
+order by 1 desc
+
+-- Total video game sales pre-2000 were $1,655,490,000.
+
 Post 2000
 sum global
 
-1980
+SELECT sum(global_sales)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '2000' and '2020'
+order by 1 desc
+
+-- Total video game sales post-2000 were $7,156,480,000.
+
+5cb) Decade-wise performance
+
+1980s
+
+SELECT name, global_sales
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '1980' and '1989'
+group by global_sales, name
+having global_sales > 5
+order by 2 desc
+
+--205 games total. Only 10 with sales over $5 million.
+
 sum na/eu/jp/global
-90
+
+1990s
+
+SELECT name, global_sales
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '1990' and '1999'
+group by global_sales, name
+having global_sales > 5
+order by 2 desc
+
+-- 1767 games total. Only 39 with sales over $5 million.
+
 00
+
+SELECT name, global_sales
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '2000' and '2009'
+group by global_sales, name
+--having global_sales > 5
+order by 2 desc
+
+-- 9090 games total. 88 with sales over $5 million.
+
 10
+
+SELECT name, global_sales
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '2010' and '2020'
+group by global_sales, name
+--having global_sales > 5
+order by 2 desc
+
+-- 5026 games total. 67 with sales over $5 million.
+
+5cc) North America Sales performance
+
+SELECT 'North America 1980-1989',
+sum(na_sales) as na_sales
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '1980' and '1989'
+union
+SELECT 'North America 1990-1999',
+sum(na_sales)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '1990' and '1999'
+union
+SELECT 'North America 2000-2009',
+sum(na_sales)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '2000' and '2009'
+union
+SELECT 'North America 2010-2020',
+sum(na_sales)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '2010' and '2020'
+order by 1
+
+/*
+"North America 1980-1989"	235.66
+"North America 1990-1999"	576.11
+"North America 2000-2009"	2403.22
+"North America 2010-2020"	1112.66
+*/
+
+Europe Sales Performance by Decade
+
+SELECT 'Europe 1980-1989',
+sum(eu_sales) as eu_sales
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '1980' and '1989'
+union
+SELECT 'Europe 1990-1999',
+sum(eu_sales)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '1990' and '1999'
+union
+SELECT 'Europe 2000-2009',
+sum(eu_sales)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '2000' and '2009'
+union
+SELECT 'Europe 2010-2020',
+sum(eu_sales)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '2010' and '2020'
+order by 1
+
+/*
+"Europe 1980-1989"	31.20
+"Europe 1990-1999"	282.87
+"Europe 2000-2009"	1254.08
+"Europe 2010-2020"	838.54
+*/
+
+SELECT 'Japan 1980-1989',
+sum(jp_sales) as na_sales
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '1980' and '1989'
+union
+SELECT 'Japan 1990-1999',
+sum(jp_sales)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '1990' and '1999'
+union
+SELECT 'Japan 2000-2009',
+sum(jp_sales)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '2000' and '2009'
+union
+SELECT 'Japan 2010-2020',
+sum(jp_sales)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '2010' and '2020'
+order by 1
+
+/*
+"Japan 1980-1989"	102.49
+"Japan 1990-1999"	372.33
+"Japan 2000-2009"	510.69
+"Japan 2010-2020"	298.76
+*/
+
+SELECT 'North America 1980-1989',
+round(avg(na_sales),2) as avg_na_sales
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '1980' and '1989'
+union
+SELECT 'North America 1990-1999',
+round(avg(na_sales), 2)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '1990' and '1999'
+union
+SELECT 'North America 2000-2009',
+round(avg(na_sales),2)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '2000' and '2009'
+union
+SELECT 'North America 2010-2020',
+round(avg(na_sales),2)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '2010' and '2020'
+order by 1
+
+/*
+"North America 1980-1989"	1.15
+"North America 1990-1999"	0.33
+"North America 2000-2009"	0.26
+"North America 2010-2020"	0.22
+*/
+
+SELECT 'Europe 1980-1989',
+round(avg(eu_sales),2) as avg_eu_sales
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '1980' and '1989'
+union
+SELECT 'Europe 1990-1999',
+round(avg(eu_sales), 2)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '1990' and '1999'
+union
+SELECT 'Europe 2000-2009',
+round(avg(eu_sales),2)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '2000' and '2009'
+union
+SELECT 'Europe 2010-2020',
+round(avg(eu_sales),2)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '2010' and '2020'
+order by 1
+
+/*
+"Europe 1980-1989"	0.15
+"Europe 1990-1999"	0.16
+"Europe 2000-2009"	0.14
+"Europe 2010-2020"	0.16
+*/
+
+SELECT 'Japan 1980-1989',
+round(avg(jp_sales),2) as avg_jp_sales
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '1980' and '1989'
+union
+SELECT 'Japan 1990-1999',
+round(avg(jp_sales), 2)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '1990' and '1999'
+union
+SELECT 'Japan 2000-2009',
+round(avg(jp_sales),2)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '2000' and '2009'
+union
+SELECT 'Japan 2010-2020',
+round(avg(jp_sales),2)
+from vgsales
+where year not like 'N/A'
+and publisher not like 'N/A'
+and year between '2010' and '2020'
+order by 1
+
+/*
+"Japan 1980-1989"	0.50
+"Japan 1990-1999"	0.21
+"Japan 2000-2009"	0.06
+"Japan 2010-2020"	0.06
+*/
 
 
 
