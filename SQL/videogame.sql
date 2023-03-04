@@ -656,6 +656,14 @@ order by 1
 */
 
 
+Game performance
+
+top selling games by platform
+
+top selling games by genre
+
+top selling games by platform by genre
+
 
 
 
