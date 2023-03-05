@@ -32,7 +32,7 @@ Step 2: Exploratory Data Analysis
 
 */
 
---Summary statistics
+--Summary statistics (Total, Mean, Min, Max)
 
 SELECT 'total',
 	sum(na_sales) as na_sales,
@@ -62,7 +62,7 @@ select 'max',
 	max(other_sales) as ot_sales
 from vgsales
 
---Quartiles
+--Quartiles and min/max
 
 SELECT 'min',
 	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY na_sales) as NA_sales,
@@ -117,7 +117,7 @@ FROM vgsales
 --Examining qualitative data
 
 -- Platform names
-select distinct(platform) from vgsales order by 1
+SELECT DISTINCT(platform) FROM vgsales ORDER BY 1
 
 -- Number of unique Platforms
 select count(distinct(platform)) from vgsales
@@ -145,11 +145,13 @@ select distinct(genre) from vgsales order by 1
 -- Number of unique Genres
 select count(distinct(genre)) from vgsales
 
-EDA
+/*
 
 Publisher Performance
 
-Who were the Top 10 Publishers and how many games did they make?
+*/
+
+--Who were the Top 10 Publishers and how many games did they make?
 
 SELECT publisher, count(publisher) from vgsales
 where year not like 'N/A'
@@ -171,8 +173,10 @@ limit 10
 "Take-Two Interactive"	412
 */
 
+/*
 What were the top 10 most prolific years for publishers
 and how many games did they make?
+*/
 
 SELECT year, publisher, count(publisher) from vgsales
 where year not like 'N/A'
