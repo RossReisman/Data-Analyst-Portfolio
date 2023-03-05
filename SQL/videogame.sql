@@ -9,28 +9,30 @@ Distinct, Count, Group By, Having, Order By, Count, Avg, Alias, Limit.
 ------------------------------------------------------------------
 /*
 
-First let's examine the dataset
-
-see how many rows and columns are in this datasets
+Step 1: Dataset Examination
 
 */
 
--- number of rows
+--Number of rows
 SELECT COUNT(*) FROM vgsales
 
--- number of columns
+--Number of columns
 SELECT COUNT (column_name) AS Number
 FROM information_schema.columns
 WHERE table_name='vgsales'
 
-Checking column data types vvv
-
+--Column data types
 SELECT column_name, DATA_TYPE
 FROM information_schema.columns
 WHERE table_name='vgsales'
 
+/*
 
-Generating summary statistics vvv
+Step 2: Exploratory Data Analysis
+
+*/
+
+--Summary statistics
 
 SELECT 'total',
 	sum(na_sales) as na_sales,
@@ -60,20 +62,7 @@ select 'max',
 	max(other_sales) as ot_sales
 from vgsales
 
-IQR
-
-SELECT
-	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY na_sales) -
-	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY na_sales) as NA_IQR,
-	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY eu_sales) -
-	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY eu_sales) as EU_IQR,
-	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY jp_sales) -
-	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY jp_sales) as JP_IQR,
-	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY other_sales) -
-	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY other_sales) as OT_IQR
-FROM vgsales
-
-Quartiles
+--Quartiles
 
 SELECT 'min',
 	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY na_sales) as NA_sales,
@@ -111,7 +100,21 @@ SELECT 'max',
 FROM vgsales
 ORDER BY 2
 
-Examining qualitative data vvv
+--Interquartile Range (IQR)
+
+SELECT
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY na_sales) -
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY na_sales) as NA_IQR,
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY eu_sales) -
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY eu_sales) as EU_IQR,
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY jp_sales) -
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY jp_sales) as JP_IQR,
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY other_sales) -
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY other_sales) as OT_IQR
+FROM vgsales
+
+
+--Examining qualitative data
 
 -- Platform names
 select distinct(platform) from vgsales order by 1
@@ -654,21 +657,6 @@ order by 1
 "Japan 2000-2009"	0.06
 "Japan 2010-2020"	0.06
 */
-
-
-Game performance
-
-top selling games by platform
-
-top selling games by genre
-
-top selling games by platform by genre
-
-
-
-
-
-
 
 
 
