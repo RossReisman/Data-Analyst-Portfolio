@@ -1,15 +1,15 @@
 /*
 
 Video Game Sales Data Exploration in SQL
-Data from https://www.kaggle.com/datasets/gregorut/videogamesales
-Skills Used: Select, Where, And, Like/Not Like, Wildcard, Min/Max,
-Distinct, Count, Group By, Having, Order By, Count, Avg, Alias, Limit.
+Data FROM https://www.kaggle.com/datasets/gregorut/videogamesales
+Skills Used: SELECT, WHERE, AND, Like/NOT LIKE, Wildcard, MIN/MAX,
+DISTINCT, COUNT, GROUP BY, HAVING, ORDER BY, COUNT, AVG, Alias, LIMIT.
 
 */
 ------------------------------------------------------------------
 /*
 
-Step 1: Dataset Examination
+Step 1: Dataset ExaMINation
 
 */
 
@@ -32,71 +32,71 @@ Step 2: Exploratory Data Analysis
 
 */
 
---Summary statistics (Total, Mean, Min, Max)
+--SUMmary statistics (Total, Mean, MIN, MAX)
 
 SELECT 'total',
-	sum(na_sales) as na_sales,
-	sum(eu_sales) as eu_sales,
-	sum(jp_sales) as jp_sales,
-	sum(other_sales) as ot_sales
-from vgsales
-union
-select 'average',
-	round(avg(na_sales),2) as na_sales,
-	round(avg(eu_sales),2) as eu_sales,
-	round(avg(jp_sales),2) as jp_sales,
-	round(avg(other_sales),2) as ot_sales
-from vgsales
-union
-select 'min',
-	min(na_sales) as na_sales,
-	min(eu_sales) as eu_sales,
-	min(jp_sales) as jp_sales,
-	min(other_sales) as ot_sales
-from vgsales
-union
-select 'max',
-	max(na_sales) as na_sales,
-	max(eu_sales) as eu_sales,
-	max(jp_sales) as jp_sales,
-	max(other_sales) as ot_sales
-from vgsales
+	SUM(na_sales) AS na_sales,
+	SUM(eu_sales) AS eu_sales,
+	SUM(jp_sales) AS jp_sales,
+	SUM(other_sales) AS ot_sales
+FROM vgsales
+UNION
+SELECT 'average',
+	ROUND(AVG(na_sales),2) AS na_sales,
+	ROUND(AVG(eu_sales),2) AS eu_sales,
+	ROUND(AVG(jp_sales),2) AS jp_sales,
+	ROUND(AVG(other_sales),2) AS ot_sales
+FROM vgsales
+UNION
+SELECT 'MIN',
+	MIN(na_sales) AS na_sales,
+	MIN(eu_sales) AS eu_sales,
+	MIN(jp_sales) AS jp_sales,
+	MIN(other_sales) AS ot_sales
+FROM vgsales
+UNION
+SELECT 'MAX',
+	MAX(na_sales) AS na_sales,
+	MAX(eu_sales) AS eu_sales,
+	MAX(jp_sales) AS jp_sales,
+	MAX(other_sales) AS ot_sales
+FROM vgsales
 
---Quartiles and min/max
+--Quartiles AND MIN/MAX
 
-SELECT 'min',
-	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY na_sales) as NA_sales,
-	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY eu_sales) as EU_sales,
-	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY jp_sales) as JP_sales,
-	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY other_sales) as OT_sales
+SELECT 'MIN',
+	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY na_sales) AS NA_sales,
+	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY eu_sales) AS EU_sales,
+	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY jp_sales) AS JP_sales,
+	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY other_sales) AS OT_sales
 FROM vgsales
 UNION
 SELECT '25%',
-	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY na_sales) as NA_25,
-	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY eu_sales) as EU_25,
-	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY jp_sales) as JP_25,
-	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY other_sales) as OT_25
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY na_sales) AS NA_25,
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY eu_sales) AS EU_25,
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY jp_sales) AS JP_25,
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY other_sales) AS OT_25
 FROM vgsales
 UNION
 SELECT '50%',
-	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY na_sales) as NA_50,
-	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY eu_sales) as EU_50,
-	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY jp_sales) as JP_50,
-	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY other_sales) as OT_50
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY na_sales) AS NA_50,
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY eu_sales) AS EU_50,
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY jp_sales) AS JP_50,
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY other_sales) AS OT_50
 FROM vgsales
 UNION
 SELECT '75%',
-	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY na_sales) as NA_75,
-	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY eu_sales) as EU_75,
-	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY jp_sales) as JP_75,
-	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY other_sales) as OT_75
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY na_sales) AS NA_75,
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY eu_sales) AS EU_75,
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY jp_sales) AS JP_75,
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY other_sales) AS OT_75
 FROM vgsales
 UNION
-SELECT 'max',
-	PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY na_sales) as NA_100,
-	PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY eu_sales) as EU_100,
-	PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY jp_sales) as JP_100,
-	PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY other_sales) as OT_100
+SELECT 'MAX',
+	PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY na_sales) AS NA_100,
+	PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY eu_sales) AS EU_100,
+	PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY jp_sales) AS JP_100,
+	PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY other_sales) AS OT_100
 FROM vgsales
 ORDER BY 2
 
@@ -104,46 +104,53 @@ ORDER BY 2
 
 SELECT
 	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY na_sales) -
-	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY na_sales) as NA_IQR,
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY na_sales) AS NA_IQR,
 	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY eu_sales) -
-	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY eu_sales) as EU_IQR,
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY eu_sales) AS EU_IQR,
 	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY jp_sales) -
-	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY jp_sales) as JP_IQR,
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY jp_sales) AS JP_IQR,
 	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY other_sales) -
-	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY other_sales) as OT_IQR
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY other_sales) AS OT_IQR
 FROM vgsales
 
 
---Examining qualitative data
+--ExaMINing qualitative data
 
 -- Platform names
 SELECT DISTINCT(platform) FROM vgsales ORDER BY 1
 
 -- Number of unique Platforms
-select count(distinct(platform)) from vgsales
+SELECT COUNT(DISTINCT(platform)) FROM vgsales
 
 -- Year numbers
-select distinct(year) from vgsales order by 1
+SELECT DISTINCT(year) FROM vgsales ORDER BY 1
 -- 'N/A' is a result here. Need to check other columns for 'N/A'
 
-SELECT count(year) from vgsales where year = 'N/A' order by 1
+SELECT COUNT(year) FROM vgsales WHERE year = 'N/A' ORDER BY 1
 -- 271 records.
 
 -- Checking Publisher for 'N/A'
-select distinct(year) from vgsales order by 1
+SELECT DISTINCT(year) FROM vgsales ORDER BY 1
 -- Found 'N/A'
 
-SELECT count(publisher) from vgsales where publisher = 'N/A' order by 1
+SELECT COUNT(publisher) FROM vgsales WHERE publisher = 'N/A' ORDER BY 1
 -- Found 58 rows
 
 -- Number of unique Years
-select count(distinct(platform)) from vgsales
+SELECT COUNT(DISTINCT(platform)) FROM vgsales
 
 -- Genre names
-select distinct(genre) from vgsales order by 1
+SELECT DISTINCT(genre) FROM vgsales ORDER BY 1
 
 -- Number of unique Genres
-select count(distinct(genre)) from vgsales
+SELECT COUNT(DISTINCT(genre)) FROM vgsales
+
+/*
+
+Step 3: Data Analysis
+
+*/
+
 
 /*
 
@@ -151,19 +158,19 @@ Publisher Performance
 
 */
 
---Who were the Top 10 Publishers and how many games did they make?
+--Who were the Top 10 Publishers AND how many games did they make?
 
-SELECT publisher, count(publisher) from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-group by publisher
-order by 2 desc
-limit 10
+SELECT publisher, COUNT(publisher) FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+GROUP BY publisher
+ORDER BY 2 DESC
+LIMIT 10
 
 /*
 "Electronic Arts"	1339
 "Activision"	966
-"Namco Bandai Games"	928
+"Namco BANDai Games"	928
 "Ubisoft"	918
 "Konami Digital Entertainment"	823
 "THQ"	712
@@ -175,15 +182,15 @@ limit 10
 
 /*
 What were the top 10 most prolific years for publishers
-and how many games did they make?
+AND how many games did they make?
 */
 
-SELECT year, publisher, count(publisher) from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-group by year, publisher
-order by 3 desc
-limit 10
+SELECT year, publisher, COUNT(publisher) FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+GROUP BY year, publisher
+ORDER BY 3 DESC
+LIMIT 10
 
 /*
 "2009"	"Activision"	121
@@ -198,15 +205,19 @@ limit 10
 "2007"	"Ubisoft"	88
 */
 
+/*
+
 Genre Performance
 
-What were the top Genres?
+*/
 
-SELECT genre, count(genre) from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-group by genre
-order by 2 desc
+-- What were the top Genres?
+
+SELECT genre, COUNT(genre) FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+GROUP BY genre
+ORDER BY 2 DESC
 
 /*
 "Action"	3251
@@ -223,14 +234,14 @@ order by 2 desc
 "Puzzle"	570
 */
 
-Which genres saw the most releases in a given year?
+-- Which genres saw the most releases in a given year?
 
-SELECT year, genre, count(genre) from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-group by year, genre
-order by 3 desc
-limit 10
+SELECT year, genre, COUNT(genre) FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+GROUP BY year, genre
+ORDER BY 3 DESC
+LIMIT 10
 
 /*
 "2009"	"Action"	272
@@ -245,16 +256,20 @@ limit 10
 "2010"	"Misc"	201
 */
 
+/*
+
 Year Performance
 
-Which years has the most releases?
+*/
 
-SELECT year, count(year) from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-group by year
-order by 2 desc
-limit 10
+-- Which years has the most releases?
+
+SELECT year, COUNT(year) FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+GROUP BY year
+ORDER BY 2 DESC
+LIMIT 10
 
 /*
 "2009"	1431
@@ -269,16 +284,20 @@ limit 10
 "2004"	744
 */
 
+/*
+
 Platform Performance
 
-Which Platforms Had the Most Games?
+*/
 
-SELECT platform, count(platform) from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-group by platform
-order by 2 desc
-limit 10
+-- Which Platforms Had the Most Games?
+
+SELECT platform, COUNT(platform) FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+GROUP BY platform
+ORDER BY 2 DESC
+LIMIT 10
 
 /*
 "DS"	2131
@@ -293,16 +312,20 @@ limit 10
 "GBA"	786
 */
 
+/*
+
 Sales Performance
 
-5a) Publisher Sales Performance
+*/
 
-SELECT publisher, sum(global_sales) from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-group by publisher
-order by 2 desc
-limit 10
+-- Publisher Sales Performance
+
+SELECT publisher, SUM(global_sales) FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+GROUP BY publisher
+ORDER BY 2 DESC
+LIMIT 10
 
 /*
 "Nintendo"	1784.43
@@ -314,17 +337,17 @@ limit 10
 "THQ"	340.44
 "Konami Digital Entertainment"	278.56
 "Sega"	270.70
-"Namco Bandai Games"	253.65
+"Namco BANDai Games"	253.65
 */
 
-5b) Genre Sales Performance
+-- Genre Sales Performance
 
-SELECT genre, sum(global_sales) from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-group by genre
-order by 2 desc
-limit 10
+SELECT genre, SUM(global_sales) FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+GROUP BY genre
+ORDER BY 2 DESC
+LIMIT 10
 
 /*
 "Action"	1722.84
@@ -339,12 +362,12 @@ limit 10
 "Puzzle"	242.21
 */
 
-SELECT year, genre, sum(global_sales) from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-group by year, genre
-order by 3 desc
-limit 10
+SELECT year, genre, SUM(global_sales) FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+GROUP BY year, genre
+ORDER BY 3 DESC
+LIMIT 10
 
 /*
 "2009"	"Action"	139.36
@@ -359,119 +382,116 @@ limit 10
 "2011"	"Shooter"	99.36
 */
 
-5c) Year Sales Performance
+-- Year Sales Performance
 
-5ca) Pre and Post 2000 Performance
-Pre 2000
-sum global
+-- Pre AND Post 2000 Performance
 
-SELECT sum(global_sales)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '1980' and '1999'
-order by 1 desc
+-- Pre 2000 Sales Performance
+
+SELECT SUM(global_sales)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '1980' AND '1999'
+ORDER BY 1 DESC
 
 -- Total video game sales pre-2000 were $1,655,490,000.
 
-Post 2000
-sum global
+-- Post 2000 Sales Performance
 
-SELECT sum(global_sales)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '2000' and '2020'
-order by 1 desc
+SELECT SUM(global_sales)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '2000' AND '2020'
+ORDER BY 1 DESC
 
 -- Total video game sales post-2000 were $7,156,480,000.
 
-5cb) Decade-wise performance
+-- Decade-wise performance
 
-1980s
+-- 1980s
 
 SELECT name, global_sales
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '1980' and '1989'
-group by global_sales, name
-having global_sales > 5
-order by 2 desc
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '1980' AND '1989'
+GROUP BY global_sales, name
+HAVING global_sales > 5
+ORDER BY 2 DESC
 
 --205 games total. Only 10 with sales over $5 million.
 
-sum na/eu/jp/global
-
-1990s
+-- 1990s
 
 SELECT name, global_sales
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '1990' and '1999'
-group by global_sales, name
-having global_sales > 5
-order by 2 desc
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '1990' AND '1999'
+GROUP BY global_sales, name
+HAVING global_sales > 5
+ORDER BY 2 DESC
 
 -- 1767 games total. Only 39 with sales over $5 million.
 
-00
+-- 2000s
 
 SELECT name, global_sales
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '2000' and '2009'
-group by global_sales, name
---having global_sales > 5
-order by 2 desc
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '2000' AND '2009'
+GROUP BY global_sales, name
+--HAVING global_sales > 5
+ORDER BY 2 DESC
 
 -- 9090 games total. 88 with sales over $5 million.
 
-10
+-- 2010s
 
 SELECT name, global_sales
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '2010' and '2020'
-group by global_sales, name
---having global_sales > 5
-order by 2 desc
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '2010' AND '2020'
+GROUP BY global_sales, name
+--HAVING global_sales > 5
+ORDER BY 2 DESC
 
 -- 5026 games total. 67 with sales over $5 million.
 
-5cc) North America Sales performance
+-- North America Sales Performance by Decade
 
 SELECT 'North America 1980-1989',
-sum(na_sales) as na_sales
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '1980' and '1989'
-union
+SUM(na_sales) AS na_sales
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '1980' AND '1989'
+UNION
 SELECT 'North America 1990-1999',
-sum(na_sales)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '1990' and '1999'
-union
+SUM(na_sales)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '1990' AND '1999'
+UNION
 SELECT 'North America 2000-2009',
-sum(na_sales)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '2000' and '2009'
-union
+SUM(na_sales)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '2000' AND '2009'
+UNION
 SELECT 'North America 2010-2020',
-sum(na_sales)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '2010' and '2020'
-order by 1
+SUM(na_sales)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '2010' AND '2020'
+ORDER BY 1
 
 /*
 "North America 1980-1989"	235.66
@@ -480,36 +500,36 @@ order by 1
 "North America 2010-2020"	1112.66
 */
 
-Europe Sales Performance by Decade
+-- Europe Sales Performance by Decade
 
 SELECT 'Europe 1980-1989',
-sum(eu_sales) as eu_sales
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '1980' and '1989'
-union
+SUM(eu_sales) AS eu_sales
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '1980' AND '1989'
+UNION
 SELECT 'Europe 1990-1999',
-sum(eu_sales)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '1990' and '1999'
-union
+SUM(eu_sales)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '1990' AND '1999'
+UNION
 SELECT 'Europe 2000-2009',
-sum(eu_sales)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '2000' and '2009'
-union
+SUM(eu_sales)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '2000' AND '2009'
+UNION
 SELECT 'Europe 2010-2020',
-sum(eu_sales)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '2010' and '2020'
-order by 1
+SUM(eu_sales)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '2010' AND '2020'
+ORDER BY 1
 
 /*
 "Europe 1980-1989"	31.20
@@ -518,34 +538,36 @@ order by 1
 "Europe 2010-2020"	838.54
 */
 
+-- Japan Sales Performance by Decade
+
 SELECT 'Japan 1980-1989',
-sum(jp_sales) as na_sales
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '1980' and '1989'
-union
+SUM(jp_sales) AS na_sales
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '1980' AND '1989'
+UNION
 SELECT 'Japan 1990-1999',
-sum(jp_sales)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '1990' and '1999'
-union
+SUM(jp_sales)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '1990' AND '1999'
+UNION
 SELECT 'Japan 2000-2009',
-sum(jp_sales)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '2000' and '2009'
-union
+SUM(jp_sales)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '2000' AND '2009'
+UNION
 SELECT 'Japan 2010-2020',
-sum(jp_sales)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '2010' and '2020'
-order by 1
+SUM(jp_sales)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '2010' AND '2020'
+ORDER BY 1
 
 /*
 "Japan 1980-1989"	102.49
@@ -554,34 +576,36 @@ order by 1
 "Japan 2010-2020"	298.76
 */
 
+-- Average North America Sales Performance by Decade
+
 SELECT 'North America 1980-1989',
-round(avg(na_sales),2) as avg_na_sales
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '1980' and '1989'
-union
+ROUND(AVG(na_sales),2) AS AVG_na_sales
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '1980' AND '1989'
+UNION
 SELECT 'North America 1990-1999',
-round(avg(na_sales), 2)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '1990' and '1999'
-union
+ROUND(AVG(na_sales), 2)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '1990' AND '1999'
+UNION
 SELECT 'North America 2000-2009',
-round(avg(na_sales),2)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '2000' and '2009'
-union
+ROUND(AVG(na_sales),2)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '2000' AND '2009'
+UNION
 SELECT 'North America 2010-2020',
-round(avg(na_sales),2)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '2010' and '2020'
-order by 1
+ROUND(AVG(na_sales),2)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '2010' AND '2020'
+ORDER BY 1
 
 /*
 "North America 1980-1989"	1.15
@@ -590,34 +614,36 @@ order by 1
 "North America 2010-2020"	0.22
 */
 
+-- Average Europe Sales Performance by Decade
+
 SELECT 'Europe 1980-1989',
-round(avg(eu_sales),2) as avg_eu_sales
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '1980' and '1989'
-union
+ROUND(AVG(eu_sales),2) AS AVG_eu_sales
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '1980' AND '1989'
+UNION
 SELECT 'Europe 1990-1999',
-round(avg(eu_sales), 2)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '1990' and '1999'
-union
+ROUND(AVG(eu_sales), 2)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '1990' AND '1999'
+UNION
 SELECT 'Europe 2000-2009',
-round(avg(eu_sales),2)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '2000' and '2009'
-union
+ROUND(AVG(eu_sales),2)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '2000' AND '2009'
+UNION
 SELECT 'Europe 2010-2020',
-round(avg(eu_sales),2)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '2010' and '2020'
-order by 1
+ROUND(AVG(eu_sales),2)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '2010' AND '2020'
+ORDER BY 1
 
 /*
 "Europe 1980-1989"	0.15
@@ -626,34 +652,36 @@ order by 1
 "Europe 2010-2020"	0.16
 */
 
+-- Average Japan Sales Performance by Decade
+
 SELECT 'Japan 1980-1989',
-round(avg(jp_sales),2) as avg_jp_sales
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '1980' and '1989'
-union
+ROUND(AVG(jp_sales),2) AS AVG_jp_sales
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '1980' AND '1989'
+UNION
 SELECT 'Japan 1990-1999',
-round(avg(jp_sales), 2)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '1990' and '1999'
-union
+ROUND(AVG(jp_sales), 2)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '1990' AND '1999'
+UNION
 SELECT 'Japan 2000-2009',
-round(avg(jp_sales),2)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '2000' and '2009'
-union
+ROUND(AVG(jp_sales),2)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '2000' AND '2009'
+UNION
 SELECT 'Japan 2010-2020',
-round(avg(jp_sales),2)
-from vgsales
-where year not like 'N/A'
-and publisher not like 'N/A'
-and year between '2010' and '2020'
-order by 1
+ROUND(AVG(jp_sales),2)
+FROM vgsales
+WHERE year NOT LIKE 'N/A'
+AND publisher NOT LIKE 'N/A'
+AND year BETWEEN '2010' AND '2020'
+ORDER BY 1
 
 /*
 "Japan 1980-1989"	0.50
@@ -661,203 +689,3 @@ order by 1
 "Japan 2000-2009"	0.06
 "Japan 2010-2020"	0.06
 */
-
-
-
-
-
-
-
-/*
-
-
-
-There are 16,598 rows and 11 columns.
-
-*/
-------------------------------------------------------------------
-
-/*
-
-First let's view a sample of our table.
-It's always good to test your query first using LIMIT.
-
-*/
-
-SELECT * FROM vgsales LIMIT 5
-------------------------------------------------------------------
-/*
-
-While importing the data, we received an error when trying to
-set 'year' as numeric. Let's see how many rows this affects.
-
-*/
-
-SELECT * FROM vgsales WHERE year = 'N/A'
-
-SELECT * FROM vgsales
-WHERE year NOT LIKE '2%'
-AND year NOT LIKE '1%'
-
-/*
-
-Both queries returned 271 rows so we can be sure these are
-the only rows affected. Since there are 16598 rows,
-these observations should not have an outsized influence.
-
-*/
-------------------------------------------------------------------
-/*
-
-Let's see what the earliest and latest years are
-
-*/
-
-SELECT MIN(year) FROM vgsales
-SELECT MAX(year) FROM vgsales WHERE year NOT LIKE 'N/A'
-
-/*
-
-The earliest year is 1980. My initial query for the latest year
-returned 'N/A' so I had to filter those rows using NOT LIKE
-Let's see how many genres there are and list them
-
-*/
-
-SELECT COUNT(DISTINCT(genre)) FROM vgsales
-
-SELECT DISTINCT(genre) FROM vgsales ORDER BY 1
-
-/*
-
-There are 12. In alphabetical order they are:
-Action, Adventure, Fighting, Misc, Platform, Puzzle,
-Racing, Role-Playing, Shooter, Simulation, Sports, and Strategy
-
-*/
-
-------------------------------------------------------------------
-
-/*
-
-Let's do the same for platform and publisher
-
-*/
-
-SELECT DISTINCT(platform) FROM vgsales ORDER BY 1
-
-SELECT DISTINCT(publisher) FROM vgsales ORDER BY 1
-
-/*
-
-There are 31 platforms going all the way back to Atari 2600!
-There are 579 different publishers.
-
-*/
-
-------------------------------------------------------------------
-
--- Let's see which game sold the most in North America and how much it sold
-
-SELECT MAX(na_sales) FROM vgsales
-
--- We can see that the game that sold the most sold 41.49 million units
-
-SELECT name FROM vgsales WHERE na_sales = 41.49
-
--- The title was Wii Sports. No surprise there!
-
--- Alternatively, we could do this in one step with the following query
-
-SELECT name, na_sales FROM vgsales ORDER BY na_sales desc LIMIT 1
-------------------------------------------------------------------
--- Let's compare that to other geographic regions
-
-SELECT name, eu_sales FROM vgsales ORDER BY eu_sales desc LIMIT 1
-
-SELECT name, jp_sales FROM vgsales ORDER BY jp_sales desc LIMIT 1
-
-SELECT name, other_sales FROM vgsales ORDER BY other_sales desc LIMIT 1
-
-/*
-
-Wii Sports was top in the EU with 29.02 million units sold
-Pokemon Red and Blue was top in Japan with 10.22 million units sold
-Grand Theft Auto: San Andreas was top in other regions (non-NA, EU, JP)
-with 10.57 million units sold
-
-*/
-
-------------------------------------------------------------------
-
--- How many games sold less than one million units in North America?
-
-SELECT COUNT(na_sales) FROM vgsales WHERE na_sales < 1
-
--- Alternatively, we could use this query to get more information
-
-SELECT name, platform, na_sales
-FROM vgsales
-WHERE na_sales < 1
-ORDER BY na_sales desc
-
-/*
-
-There are 15,688 games that sold
-less than one million units in North America.
-
-*/
-
-------------------------------------------------------------------
-
--- Let's compare that to other geographic regions
-
-SELECT name, platform, eu_sales
-FROM vgsales
-WHERE eu_sales < 1
-ORDER BY eu_sales desc
-16126
-
-SELECT name, platform, jp_sales
-FROM vgsales
-WHERE jp_sales < 1
-ORDER BY jp_sales desc
-16356
-
-SELECT name, platform, other_sales
-FROM vgsales
-WHERE other_sales < 1
-ORDER BY other_sales desc
-16518
-
-/*
-
-EU: 16126
-JP: 16356
-Other: 16518
-
-*/
-
-------------------------------------------------------------------
-
-/*
-
-Let's see how many publishers have average sales of
-at least half a million dollars across their games
-
-*/
-
-SELECT publisher, AVG(na_sales) AS avg_sales
-FROM vgsales
-GROUP BY 1
-HAVING AVG(na_sales) > .5
-ORDER BY 2 desc
-
-/*
-
-The query returned 27 publishers. There are many notable publishers
-as well as some lesser known ones who may have only had a couple big games
-
-*/
-
-------------------------------------------------------------------
