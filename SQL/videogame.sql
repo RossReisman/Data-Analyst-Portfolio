@@ -2,8 +2,8 @@
 
 Video Game Sales Data Exploration in SQL
 Data FROM https://www.kaggle.com/datasets/gregorut/videogamesales
-Skills Used: SELECT, WHERE, AND, Like/NOT LIKE, Wildcard, MIN/MAX,
-DISTINCT, COUNT, GROUP BY, HAVING, ORDER BY, COUNT, AVG, Alias, LIMIT.
+Skills Used: SELECT, WHERE, AND, LIKE/NOT LIKE, MIN/MAX, DISTINCT, BETWEEN,
+GROUP BY, HAVING, ORDER BY, COUNT, AVG, ALIAS, LIMIT, UNION.
 
 */
 ------------------------------------------------------------------
