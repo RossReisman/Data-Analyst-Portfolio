@@ -6,16 +6,16 @@ Step 1: Import Data
 Create tables
 */
 CREATE TABLE customers (
-	customer_id SERIAL,
-	customer_unique_id SERIAL,
+	customer_id TEXT,
+	customer_unique_id TEXT,
 	customer_zip_code_prefix INT,
 	customer_city TEXT,
 	customer_state TEXT
 )
 
 CREATE TABLE orders (
-	order_id SERIAL,
-	customer_id SERIAL,
+	order_id TEXT,
+	customer_id TEXT,
 	order_status TEXT,
 	order_purchase_timestamp TIMESTAMP,
 	order_approved_at TIMESTAMP,
@@ -25,7 +25,7 @@ CREATE TABLE orders (
 )
 
 CREATE TABLE sellers (
-	seller_id SERIAL,
+	seller_id TEXT,
 	seller_zip_code_prefix INT,
 	seller_city TEXT,
 	seller_state TEXT
@@ -71,3 +71,17 @@ CREATE TABLE reviews (
 	review_creation_date TIMESTAMP,
  	review_answer_timestamp TIMESTAMP
 )
+
+CREATE TABLE products (
+	product_id TEXT,
+	product_category_name TEXT,
+	product_name_length FLOAT,
+	product_description_length FLOAT,
+	product_photos_qty FLOAT,
+	product_weight_g FLOAT,
+ 	product_length_cm FLOAT,
+	product_height_cm FLOAT,
+	product_width_cm FLOAT
+)
+
+Step 2:
