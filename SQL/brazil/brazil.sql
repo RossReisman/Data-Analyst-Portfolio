@@ -84,4 +84,31 @@ CREATE TABLE products (
 	product_width_cm FLOAT
 )
 
-Step 2:
+Step 2: Add Primary and Foreign Keys
+
+ALTER TABLE customers
+ADD PRIMARY KEY (customer_id)
+
+ALTER TABLE orders
+ADD PRIMARY KEY (order_id)
+
+ALTER TABLE sellers
+ADD PRIMARY KEY (seller_id)
+
+ALTER TABLE categories
+ADD PRIMARY KEY (product_category_name_english)
+
+ALTER TABLE items
+ADD PRIMARY KEY (order_id)
+
+ALTER TABLE geolocation
+ADD PRIMARY KEY (geolocation_zip_code_prefix)
+
+ALTER TABLE customers
+ADD PRIMARY KEY (customer_id)
+
+ALTER TABLE customers
+ADD PRIMARY KEY (customer_id)
+
+ALTER TABLE customers
+ADD PRIMARY KEY (customer_id)
