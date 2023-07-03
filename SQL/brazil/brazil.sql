@@ -104,11 +104,14 @@ ADD PRIMARY KEY (order_id)
 ALTER TABLE geolocation
 ADD PRIMARY KEY (geolocation_zip_code_prefix)
 
-ALTER TABLE customers
-ADD PRIMARY KEY (customer_id)
+ALTER TABLE payments
+ADD PRIMARY KEY (order_id)
+
+ALTER TABLE reviews
+ADD PRIMARY KEY (order_id)
+
+ALTER TABLE products
+ADD PRIMARY KEY (product_id)
 
 ALTER TABLE customers
-ADD PRIMARY KEY (customer_id)
-
-ALTER TABLE customers
-ADD PRIMARY KEY (customer_id)
+ADD FOREIGN KEY (customer_id)
