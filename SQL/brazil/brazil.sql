@@ -145,4 +145,22 @@ REFERENCES sellers (seller_id);
 
 ADD GEOLOCATION FK
 
-Step 3: 
+Step 3: Import Data (Using PSQL)
+
+/*
+Queries are written on multiple lines for ease of reading here
+*/
+\COPY public.categories(product_category_name, product_category_name_english)
+FROM '/Users/raws/Documents/GitHub/portfolio/SQL/brazil/product_category_name_translation.csv'
+DELIMITER ','
+CSV HEADER;
+
+\COPY public.sellers(seller_id, seller_zip_code_prefix, seller_city, seller_state)
+FROM '/Users/raws/Documents/GitHub/portfolio/SQL/brazil/olist_sellers_dataset.csv'
+DELIMITER ','
+CSV HEADER;
+
+\COPY public.customers(customer_id, customer_unique_id, customer_zip_code_prefix, customer_city, customer_state)
+FROM '/Users/raws/Documents/GitHub/portfolio/SQL/brazil/olist_customers_dataset.csv'
+DELIMITER ','
+CSV HEADER;
