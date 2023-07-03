@@ -1,6 +1,6 @@
 Brazil E-Commerce Data Cleaning and Analysis
 
-Step 1: Import Data
+Step 1: Create Tables
 
 /*
 Create tables
@@ -132,3 +132,17 @@ ALTER TABLE items
 ADD CONSTRAINT fk_items_orders
 FOREIGN KEY (order_id)
 REFERENCES orders (order_id);
+
+ALTER TABLE items
+ADD CONSTRAINT fk_items_products
+FOREIGN KEY (product_id)
+REFERENCES products (product_id);
+
+ALTER TABLE items
+ADD CONSTRAINT fk_items_sellers
+FOREIGN KEY (seller_id)
+REFERENCES sellers (seller_id);
+
+ADD GEOLOCATION FK
+
+Step 3: 
