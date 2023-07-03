@@ -113,5 +113,22 @@ ADD PRIMARY KEY (order_id)
 ALTER TABLE products
 ADD PRIMARY KEY (product_id)
 
-ALTER TABLE customers
-ADD FOREIGN KEY (customer_id)
+ALTER TABLE orders
+ADD CONSTRAINT fk_orders_customers
+FOREIGN KEY (customer_id)
+REFERENCES customers (customer_id);
+
+ALTER TABLE reviews
+ADD CONSTRAINT fk_orders_reviews
+FOREIGN KEY (order_id)
+REFERENCES orders (order_id);
+
+ALTER TABLE payments
+ADD CONSTRAINT fk_payments_orders
+FOREIGN KEY (order_id)
+REFERENCES orders (order_id);
+
+ALTER TABLE items
+ADD CONSTRAINT fk_items_orders
+FOREIGN KEY (order_id)
+REFERENCES orders (order_id);
