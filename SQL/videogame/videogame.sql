@@ -9,7 +9,7 @@ GROUP BY, HAVING, ORDER BY, COUNT, AVG, ALIAS, LIMIT, UNION.
 ------------------------------------------------------------------
 /*
 
-Step 1: Dataset ExaMINation
+Step 1: Dataset Examination
 
 */
 

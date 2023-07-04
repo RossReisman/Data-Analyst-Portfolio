@@ -134,7 +134,6 @@ FROM '/Users/raws/Documents/GitHub/portfolio/SQL/brazil/olist_orders_dataset.csv
 DELIMITER ','
 CSV HEADER;
 
-
 Step 3: Add Primary and Foreign Keys
 
 ALTER TABLE customers
@@ -198,4 +197,4 @@ ADD CONSTRAINT fk_items_sellers
 FOREIGN KEY (seller_id)
 REFERENCES sellers (seller_id);
 
-ADD GEOLOCATION FK
+Step 4: Dataset Examination
