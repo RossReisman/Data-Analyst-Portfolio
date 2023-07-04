@@ -149,6 +149,11 @@ ADD PRIMARY KEY (seller_id)
 ALTER TABLE categories
 ADD PRIMARY KEY (product_category_name_english)
 
+ALTER TABLE products
+ADD PRIMARY KEY (product_id)
+
+
+/*
 ALTER TABLE items
 ADD PRIMARY KEY (order_id)
 
@@ -160,9 +165,8 @@ ADD PRIMARY KEY (order_id)
 
 ALTER TABLE reviews
 ADD PRIMARY KEY (order_id)
+*/
 
-ALTER TABLE products
-ADD PRIMARY KEY (product_id)
 
 ALTER TABLE orders
 ADD CONSTRAINT fk_orders_customers
