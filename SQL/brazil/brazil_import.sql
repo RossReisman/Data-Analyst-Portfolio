@@ -1,4 +1,6 @@
 Brazil E-Commerce Data Cleaning and Analysis
+Data from https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+Skills Used:
 
 Step 1: Create Tables
 
@@ -151,22 +153,6 @@ ADD PRIMARY KEY (product_category_name_english)
 ALTER TABLE products
 ADD PRIMARY KEY (product_id)
 
-
-/*
-ALTER TABLE items
-ADD PRIMARY KEY (order_id)
-
-ALTER TABLE geolocation
-ADD PRIMARY KEY (geolocation_zip_code_prefix)
-
-ALTER TABLE payments
-ADD PRIMARY KEY (order_id)
-
-ALTER TABLE reviews
-ADD PRIMARY KEY (order_id)
-*/
-
-
 ALTER TABLE orders
 ADD CONSTRAINT fk_orders_customers
 FOREIGN KEY (customer_id)
@@ -196,5 +182,3 @@ ALTER TABLE items
 ADD CONSTRAINT fk_items_sellers
 FOREIGN KEY (seller_id)
 REFERENCES sellers (seller_id);
-
-Step 4: Dataset Examination
