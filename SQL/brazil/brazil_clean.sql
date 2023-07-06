@@ -25,6 +25,12 @@ seller city is lower case
 */
 
 --Check for duplicates
+
+select *
+from sellers
+group by 1
+having count(*) > 1
+
 select seller_id
 from sellers
 group by 1
@@ -46,18 +52,15 @@ select COUNT(*)
 FROM (SELECT DISTINCT seller_state
 from sellers) as distinct_state;
 
-
---2246
-
---611
-
---23
 /*
+There are no duplicate rows
 There are no duplicate seller ids
 There are 2246 unique zip code prefixes
 There are 611 unique seller cities
 There are 23 unique seller states
 */
+
+
 
 --Check unique zip code prefixes
 select distinct(seller_zip_code_prefix)
