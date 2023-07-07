@@ -5,14 +5,10 @@ Step 4: Data Cleaning
 --Get number of rows
 select count(*) from sellers;
 
-3095
-
 --Get number of columns
 select count(column_name) AS number
 FROM information_schema.columns
 where table_name='sellers';
-
-4
 
 --Sellers table has 3095 rows and 4 columns
 
@@ -23,6 +19,11 @@ select * from sellers limit 5;
 Seller zip code prefix needs to be filled so all rows have 5 digits
 seller city is lower case
 */
+
+--Add leading zeroes to zip code
+select to_char(seller_zip_code_prefix, 'fm00000')
+as seller_zip_code_prefix
+from sellers;
 
 --Check for duplicates
 
@@ -59,7 +60,6 @@ There are 2246 unique zip code prefixes
 There are 611 unique seller cities
 There are 23 unique seller states
 */
-
 
 
 --Check unique zip code prefixes
