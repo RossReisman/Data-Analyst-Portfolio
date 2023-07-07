@@ -20,9 +20,13 @@ Seller zip code prefix needs to be filled so all rows have 5 digits
 seller city is lower case
 */
 
---Add leading zeroes to zip code
-select to_char(seller_zip_code_prefix, 'fm00000')
+--To add leading zeroes to zip code during analysis
+select TO_CHAR(seller_zip_code_prefix, 'fm00000')
 as seller_zip_code_prefix
+from sellers;
+
+--To capitalize city during analysis
+select INITCAP(seller_city)
 from sellers;
 
 --Check for duplicates
@@ -36,6 +40,8 @@ select seller_id
 from sellers
 group by 1
 having count(*) > 1
+
+--Check unique values
 
 select COUNT(*)
 FROM (SELECT DISTINCT seller_id
@@ -52,6 +58,12 @@ from sellers) as distinct_city;
 select COUNT(*)
 FROM (SELECT DISTINCT seller_state
 from sellers) as distinct_state;
+
+SELECT COUNT(*)
+FROM (SELECT DISTINCT(INITCAP(seller_city) || ', ' || seller_state)
+AS seller_city_state
+FROM sellers)
+AS location_count;
 
 /*
 There are no duplicate rows
