@@ -73,6 +73,17 @@ There are 611 unique seller cities
 There are 23 unique seller states
 */
 
+--Check for Null values
+
+SELECT *
+FROM sellers
+WHERE seller_id IS NULL
+OR seller_zip_code_prefix IS NULL
+OR seller_city IS NULL
+OR seller_state IS NULL;
+
+--There are no Null values
+
 
 --Check unique zip code prefixes
 select distinct(seller_zip_code_prefix)
