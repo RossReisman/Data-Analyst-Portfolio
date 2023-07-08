@@ -94,11 +94,26 @@ OR seller_state IS NULL;
 
 --There are no Null values
 
+4b: Product Categories
 
---Check unique zip code prefixes
-select distinct(seller_zip_code_prefix)
-from sellers
-group by 1
-order by 1;
+--Get number of rows
+select count(*) from categories;
 
---No non-integer zip code values
+--Get number of columns
+select count(column_name) AS number
+FROM information_schema.columns
+where table_name='categories';
+
+--Categories table has 71 rows and 2 columns
+
+--Check first 5 rows
+select * from categories limit 5;
+
+/*
+one of the columns is in Portuguese and is of no use
+categories are written in snake case
+*/
+
+--Drop Portuguese column
+ALTER TABLE categories
+DROP COLUMN product_category_name;
