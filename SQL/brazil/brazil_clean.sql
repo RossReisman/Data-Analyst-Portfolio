@@ -111,9 +111,25 @@ select * from categories limit 5;
 
 /*
 one of the columns is in Portuguese and is of no use
-categories are written in snake case
 */
 
 --Drop Portuguese column
 ALTER TABLE categories
 DROP COLUMN product_category_name;
+
+--Check for duplicates
+select *
+from categories
+group by 1
+having count(*) > 1
+
+--There are no duplicates
+
+--Check for Null values
+SELECT *
+FROM categories
+WHERE product_category_name_english IS NULL
+
+--There are no Null values
+
+4c: Orders
