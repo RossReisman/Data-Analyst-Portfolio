@@ -155,7 +155,53 @@ where table_name='orders';
 
 --Categories table has 99441 rows and 8 columns
 
+--Check for duplicates
+select *
+from orders
+group by 1
+having count(*) > 1
+
+select order_id
+from orders
+group by 1
+having count(*) > 1
+
+select customer_id
+from orders
+group by 1
+having count(*) > 1
+
+--There are no duplicates
+
+--Check for Null values
+SELECT *
+FROM orders
+WHERE order_id IS NULL
+OR customer_id IS NULL
+OR order_status IS NULL
+OR order_purchase_timestamp IS NULL
+OR order_approved_at IS NULL
+OR order_delivered_carrier_date IS NULL
+OR order_delivered_customer_date IS NULL
+OR order_estimated_delivery_date IS NULL
+OR order_month_year IS NULL;
+
+/*
+There are 2980 rows that contain Null values
+The breakdown of Null values by column is as follows:
+order_id: 2980
+customer_id: 2980
+order_status: 2980
+order_purchase_timestamp: 2980
+order_approved_at: 2820
+order_delivered_carrier_date: 1197
+order_delivered_customer_date: 15
+order_estimated_delivery_date: 2980
+order_month_year: 2980
+*/
+
+--Add column for the just the month and year of the orders
 ALTER TABLE orders
-ADD month_year timestamp;
+ADD order_month_year timestamp;
 UPDATE orders
-SET month_year = date_trunc('month', order_purchase_timestamp);
+SET order_month_year = date_trunc('month', order_purchase_timestamp);
