@@ -155,6 +155,12 @@ where table_name='orders';
 
 --Categories table has 99441 rows and 8 columns
 
+--Add column for the just the month and year of the orders
+ALTER TABLE orders
+ADD order_month_year timestamp;
+UPDATE orders
+SET order_month_year = date_trunc('month', order_purchase_timestamp);
+
 --Check for duplicates
 select *
 from orders
@@ -199,9 +205,3 @@ order_delivered_customer_date: 15
 order_estimated_delivery_date: 2980
 order_month_year: 2980
 */
-
---Add column for the just the month and year of the orders
-ALTER TABLE orders
-ADD order_month_year timestamp;
-UPDATE orders
-SET order_month_year = date_trunc('month', order_purchase_timestamp);
