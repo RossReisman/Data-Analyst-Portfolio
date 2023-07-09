@@ -1,6 +1,9 @@
 Step 4: Data Cleaning
 
+
 4a: Sellers
+
+
 
 --Get number of rows
 select count(*) from sellers;
@@ -94,7 +97,10 @@ OR seller_state IS NULL;
 
 --There are no Null values
 
+
 4b: Product Categories
+
+
 
 --Get number of rows
 select count(*) from categories;
@@ -117,6 +123,10 @@ one of the columns is in Portuguese and is of no use
 ALTER TABLE categories
 DROP COLUMN product_category_name;
 
+--Rename English column
+ALTER TABLE categories
+RENAME COLUMN product_category_name_english TO product_category_name;
+
 --Check for duplicates
 select *
 from categories
@@ -128,8 +138,24 @@ having count(*) > 1
 --Check for Null values
 SELECT *
 FROM categories
-WHERE product_category_name_english IS NULL
+WHERE product_category_name IS NULL
 
 --There are no Null values
 
 4c: Orders
+
+
+--Get number of rows
+select count(*) from orders;
+
+--Get number of columns
+select count(column_name) AS number
+FROM information_schema.columns
+where table_name='orders';
+
+--Categories table has 99441 rows and 8 columns
+
+ALTER TABLE orders
+ADD month_year timestamp;
+UPDATE orders
+SET month_year = date_trunc('month', order_purchase_timestamp);
