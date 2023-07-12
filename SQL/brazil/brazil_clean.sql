@@ -205,3 +205,86 @@ order_delivered_customer_date: 15
 order_estimated_delivery_date: 2980
 order_month_year: 2980
 */
+
+
+
+
+
+
+
+
+
+
+
+4d: Items
+
+--Get number of rows
+select count(*) from sellers;
+
+--Get number of columns
+select count(column_name) AS number
+FROM information_schema.columns
+where table_name='sellers';
+
+--Items table has 112650 rows 7 columns
+
+--Check for duplicates
+select count(*)
+from (select order_id
+from items
+group by 1
+having count(*) > 1) as count_order_id
+
+/*
+order_id has 9803 duplicate values
+there are 9803 orders that contain more than 1 item
+*/
+
+select count(*)
+from (select order_item_id
+from items
+group by 1
+having count(*) > 1) as count_order_item_id
+
+--There are 20 orders with the same number of items
+
+select count(*)
+from (select product_id
+from items
+group by 1
+having count(*) > 1) as count_product_id
+
+--There are 14834 items that have been ordered more than once
+
+select count(*)
+from (select seller_id
+from items
+group by 1
+having count(*) > 1) as count_seller_id
+/*
+There are 2586 duplicate sellers
+*/
+
+select count(*)
+from (select shipping_limit_date
+from items
+group by 1
+having count(*) > 1) as count_ship_date
+
+--There are 13482 orders that were shipped on the same date
+
+select count(*)
+from (select price
+from items
+group by 1
+having count(*) > 1) as count_price
+
+--There are 3626 items that have the same price
+
+select count(*)
+from (select freight_value
+from items
+group by 1
+having count(*) > 1) as count_freight_value
+
+--There are 4924 items with the same freight value
