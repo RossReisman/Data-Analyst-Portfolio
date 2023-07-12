@@ -228,6 +228,11 @@ where table_name='sellers';
 
 --Items table has 112650 rows 7 columns
 
+--Check first 5 rows
+select * from items limit 5;
+
+--Data appears correctly formatted
+
 --Check for duplicates
 select count(*)
 from (select order_id
@@ -288,3 +293,28 @@ group by 1
 having count(*) > 1) as count_freight_value
 
 --There are 4924 items with the same freight value
+
+--Check for Null values
+SELECT *
+FROM items
+WHERE order_id IS NULL
+OR order_item_id IS NULL
+OR product_id IS NULL
+OR seller_id IS NULL
+OR shipping_limit_date IS NULL
+OR price IS NULL
+OR freight_value IS NULL;
+
+--There are no Null values
+
+4e: Customers
+
+--Get number of rows
+select count(*) from customers;
+
+--Get number of columns
+select count(column_name) AS number
+FROM information_schema.columns
+where table_name='customers';
+
+--Customers table has 99441 rows 5 columns
