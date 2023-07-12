@@ -318,3 +318,100 @@ FROM information_schema.columns
 where table_name='customers';
 
 --Customers table has 99441 rows 5 columns
+
+--Check first 5 rows
+select * from customers limit 5;
+
+/*
+Same issue with Sellers table
+Customer zip code prefix needs to be filled so all rows have 5 digits
+Customer city is lower case
+*/
+
+--Change zip code data type to add leading zeros
+ALTER TABLE customers
+ALTER COLUMN customer_zip_code_prefix TYPE text;
+
+--Add leading zeros to zip code
+UPDATE customers
+SET customer_zip_code_prefix = LPAD(customer_zip_code_prefix, 5, '0');
+
+--Add a column combining city and state
+ALTER TABLE customers
+ADD customer_city_state text;
+UPDATE customers
+SET customer_city_state = INITCAP(customer_city) || ', ' || customer_state;
+
+--Check for duplicates
+
+select count(*)
+from (select *
+from customers
+group by 1
+having count(*) > 1) as count_all
+
+select count(*)
+from (select customer_id
+from customers
+group by 1
+having count(*) > 1) as count_customer_id
+
+select count(*)
+from (select customer_unique_id
+from customers
+group by 1
+having count(*) > 1) as count_customer_unique
+
+select count(*)
+from (select customer_zip_code_prefix
+from customers
+group by 1
+having count(*) > 1) as count_customer_zip
+
+select count(*)
+from (select customer_city
+from customers
+group by 1
+having count(*) > 1) as count_customer_city
+
+select count(*)
+from (select customer_state
+from customers
+group by 1
+having count(*) > 1) as count_customer_state
+
+select count(*)
+from (select customer_city_state
+from customers
+group by 1
+having count(*) > 1) as count_customer_city_state
+
+/*
+There are no duplicate rows
+There are no duplicate customer ids (unique order fks)
+There are 2997 duplicate customer_unique_id
+There are 11982 duplicate customer zip code prefixes
+There are 2975 duplicate customer cities
+There are 27 duplicate customer states
+There are 3050 duplicate customer city states
+
+Discrepancy between unique cities and city/states
+may be due to multiple cities sharing a name
+*/
+
+4f: Geolocation
+
+--Get rows and columns
+select 'Number of rows',
+count(*)
+from sellers
+UNION
+select 'Number of columns',
+count(column_name) AS number
+FROM information_schema.columns
+where table_name='sellers';
+
+
+
+
+Second pass when done
