@@ -411,6 +411,30 @@ count(column_name) AS number
 FROM information_schema.columns
 where table_name='sellers';
 
+--Geolocation table has 1,000,163 rows 5 columns
+
+--Check first 5 rows
+select * from geolocation limit 5;
+
+/*
+Same issue with Sellers and Customers tables
+Geolocation zip code prefix needs to be filled so all rows have 5 digits
+Geolocation city is lower case
+*/
+
+--Change zip code data type to add leading zeros
+ALTER TABLE geolocation
+ALTER COLUMN geolocation_zip_code_prefix TYPE text;
+
+--Add leading zeros to zip code
+UPDATE geolocation
+SET geolocation_zip_code_prefix = LPAD(geolocation_zip_code_prefix, 5, '0');
+
+--Add a column combining city and state
+ALTER TABLE geolocation
+ADD geolocation_city_state text;
+UPDATE geolocation
+SET geolocation_city_state = INITCAP(geolocation_city) || ', ' || geolocation_state;
 
 
 
