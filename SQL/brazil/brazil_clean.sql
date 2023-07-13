@@ -437,5 +437,125 @@ UPDATE geolocation
 SET geolocation_city_state = INITCAP(geolocation_city) || ', ' || geolocation_state;
 
 
+select count(*)
+from (select geolocation_zip_code_prefix
+from geolocation
+group by 1
+having count(*) > 1) as count_geolocation_zip
+
+select count(*)
+from (select geolocation_lat
+from geolocation
+group by 1
+having count(*) > 1) as count_geolocation_lat
+
+select count(*)
+from (select geolocation_lng
+from geolocation
+group by 1
+having count(*) > 1) as count_geolocation_lng
+
+select count(*)
+from (select geolocation_city
+from geolocation
+group by 1
+having count(*) > 1) as count_geolocation_city
+
+select count(*)
+from (select geolocation_state
+from geolocation
+group by 1
+having count(*) > 1) as count_geolocation_state
+
+select count(*)
+from (select geolocation_city_state
+from geolocation
+group by 1
+having count(*) > 1) as count_geolocation_city_state
+
+
+/*
+There are 17972 zip codes with more than one order
+There are 132,686 lattitudes with multiple orders
+There are 132,585 longitudes with multiple orders
+There are 7,188 cities with multiple orders
+There are 27 states with multiple orders
+There are 7,546 city/states with multiple orders
+
+Discrepancy between unique cities and city/states
+may be due to multiple cities sharing a name
+*/
+
+4g: Payments
+
+--Get rows and columns
+select 'Number of rows',
+count(*)
+from payments
+UNION
+select 'Number of columns',
+count(column_name)
+FROM information_schema.columns
+where table_name='payments';
+
+--Payments table has 103,886 rows and 5 columns
+
+--Check first 5 rows
+select *
+from payments
+limit 5
+
+--No issues with data
+
+--Check for duplicates
+
+select count(*)
+from (select *
+from payments
+group by 1
+having count(*) > 1) as count_all
+
+select count(*)
+from (select payment_id
+from payments
+group by 1
+having count(*) > 1) as count_payment_id
+
+select count(*)
+from (select payment_unique_id
+from payments
+group by 1
+having count(*) > 1) as count_payment_unique
+
+select count(*)
+from (select payment_zip_code_prefix
+from payments
+group by 1
+having count(*) > 1) as count_payment_zip
+
+select count(*)
+from (select payment_city
+from payments
+group by 1
+having count(*) > 1) as count_payment_city
+
+select count(*)
+from (select payment_state
+from payments
+group by 1
+having count(*) > 1) as count_payment_state
+
+select count(*)
+from (select payment_city_state
+from payments
+group by 1
+having count(*) > 1) as count_payment_city_state
+
+
+
+
+
+
+
 
 Second pass when done
