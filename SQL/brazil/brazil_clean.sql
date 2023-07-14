@@ -510,28 +510,28 @@ limit 5
 --Check for duplicates
 
 select count(*)
-from (select *
+from (select order_id
 from payments
 group by 1
-having count(*) > 1) as count_all
+having count(*) > 1) as count_order_id
+
+2961
 
 select count(*)
-from (select payment_id
+from (select payment_sequential
 from payments
 group by 1
-having count(*) > 1) as count_payment_id
+having count(*) > 1) as count_payment_seq
+
+26
 
 select count(*)
-from (select payment_unique_id
+from (select payment_type
 from payments
 group by 1
-having count(*) > 1) as count_payment_unique
+having count(*) > 1) as count_payment_type
 
-select count(*)
-from (select payment_zip_code_prefix
-from payments
-group by 1
-having count(*) > 1) as count_payment_zip
+5
 
 select count(*)
 from (select payment_city
@@ -558,4 +558,4 @@ having count(*) > 1) as count_payment_city_state
 
 
 
-Second pass when done
+Second pass when done data sanity check
