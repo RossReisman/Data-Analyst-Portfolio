@@ -399,6 +399,18 @@ Discrepancy between unique cities and city/states
 may be due to multiple cities sharing a name
 */
 
+--Check for Null values
+SELECT *
+FROM customers
+WHERE customer_id IS NULL
+OR customer_unique_id IS NULL
+OR customer_zip_code_prefix IS NULL
+OR customer_city IS NULL
+OR customer_state IS NULL
+OR customer_city_state IS NULL;
+
+--There are no Null values
+
 4f: Geolocation
 
 --Get rows and columns
@@ -486,6 +498,18 @@ Discrepancy between unique cities and city/states
 may be due to multiple cities sharing a name
 */
 
+--Check for Null values
+SELECT *
+FROM geolocation
+WHERE geolocation_zip_code_prefix IS NULL
+OR geolocation_lat IS NULL
+OR geolocation_lng IS NULL
+OR geolocation_city IS NULL
+OR geolocation_state IS NULL
+OR geolocation_city_state IS NULL;
+
+--There are no Null values
+
 4g: Payments
 
 --Get rows and columns
@@ -554,9 +578,19 @@ There are 2961 order ids with multiple payments associated
 Multiple customers have paid in 26 FOPs
 Multiple customers have paid using all FOPs
 Multiple customers have paid in as many as 22 payment payment installments
-
-
+15,978 payments have identical values
 */
+
+--Check for Null values
+SELECT *
+FROM payments
+WHERE order_id IS NULL
+OR payment_sequential IS NULL
+OR payment_type IS NULL
+OR payment_installments IS NULL
+OR payment_value IS NULL;
+
+--There are no Null values
 
 
 
