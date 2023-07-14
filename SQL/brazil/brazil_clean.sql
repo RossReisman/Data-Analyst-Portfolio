@@ -595,7 +595,7 @@ count(column_name)
 FROM information_schema.columns
 where table_name='reviews';
 
---Payments table has 99,224 rows and 7 columns
+--reviews table has 99,224 rows and 7 columns
 
 --Check first 5 rows
 select *
@@ -605,6 +605,79 @@ limit 5
 --Seems like there's going to be a lot of Null values
 
 
+select count(*)
+from (select review_id
+from reviews
+group by 1
+having count(*) > 1) as count_review_id
+
+789
+
+select count(*)
+from (select order_id
+from reviews
+group by 1
+having count(*) > 1) as count_order_id
+
+547
+
+select count(*)
+from (select review_score
+from reviews
+group by 1
+having count(*) > 1) as count_review_score
+
+5
+
+select count(*)
+from (select review_comment_title
+from reviews
+group by 1
+having count(*) > 1) as count_review_comment_title
+
+765
+
+select count(*)
+from (select review_comment_message
+from reviews
+group by 1
+having count(*) > 1) as count_review_comment_message
+
+1183
+
+select count(*)
+from (select review_creation_date
+from reviews
+group by 1
+having count(*) > 1) as count_review_creation_date
+
+603
+
+select count(*)
+from (select review_answer_timestamp
+from reviews
+group by 1
+having count(*) > 1) as count_review_answer_timestamp
+
+945
+
+--Check for Null values
+SELECT *
+FROM reviews
+WHERE order_id IS NULL
+OR review_score IS NULL
+OR review_comment_title IS NULL
+OR review_comment_message IS NULL
+OR review_creation_date IS NULL
+OR review_answer_timestamp IS NULL;
+
+--There are no 89,385 values
+
+FIX
+ALTER TABLE reviews
+ADD review_response_time timestamp;
+UPDATE reviews
+SET review_response_time = extract(epoch from (review_answer_timestamp - review_creation_date));
 
 
 
