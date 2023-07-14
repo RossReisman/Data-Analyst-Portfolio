@@ -207,15 +207,6 @@ order_month_year: 2980
 */
 
 
-
-
-
-
-
-
-
-
-
 4d: Items
 
 --Get number of rows
@@ -592,7 +583,26 @@ OR payment_value IS NULL;
 
 --There are no Null values
 
+4h: Reviews
 
+--Get rows and columns
+select 'Number of rows',
+count(*)
+from reviews
+UNION
+select 'Number of columns',
+count(column_name)
+FROM information_schema.columns
+where table_name='reviews';
+
+--Payments table has 99,224 rows and 7 columns
+
+--Check first 5 rows
+select *
+from reviews
+limit 5
+
+--Seems like there's going to be a lot of Null values
 
 
 
