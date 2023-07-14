@@ -534,23 +534,29 @@ having count(*) > 1) as count_payment_type
 5
 
 select count(*)
-from (select payment_city
+from (select payment_installments
 from payments
 group by 1
-having count(*) > 1) as count_payment_city
+having count(*) > 1) as count_payment_installments
+
+22
 
 select count(*)
-from (select payment_state
+from (select payment_value
 from payments
 group by 1
-having count(*) > 1) as count_payment_state
+having count(*) > 1) as count_payment_value
 
-select count(*)
-from (select payment_city_state
-from payments
-group by 1
-having count(*) > 1) as count_payment_city_state
+15,978
 
+/*
+There are 2961 order ids with multiple payments associated
+Multiple customers have paid in 26 FOPs
+Multiple customers have paid using all FOPs
+Multiple customers have paid in as many as 22 payment payment installments
+
+
+*/
 
 
 
