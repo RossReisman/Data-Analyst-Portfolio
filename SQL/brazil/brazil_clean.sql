@@ -671,13 +671,135 @@ OR review_comment_message IS NULL
 OR review_creation_date IS NULL
 OR review_answer_timestamp IS NULL;
 
---There are no 89,385 values
+--There are 89,385 Null values
 
-FIX
 ALTER TABLE reviews
-ADD review_response_time timestamp;
+ADD COLUMN review_response_time interval;
 UPDATE reviews
-SET review_response_time = extract(epoch from (review_answer_timestamp - review_creation_date));
+SET review_response_time = age(review_answer_timestamp, review_creation_date);
+
+4i: Products
+
+--Get rows and columns
+select 'Number of rows',
+count(*)
+from products
+UNION
+select 'Number of columns',
+count(column_name)
+FROM information_schema.columns
+where table_name='products';
+
+--reviews table has 32,951 rows and 9 columns
+
+select * from products limit 5;
+
+--product category name is lower case
+
+--Capitalize product category name
+UPDATE products
+SET product_category_name = INITCAP(product_category_name);
+
+--Check for duplicates
+
+select count(*)
+from (select *
+from products
+group by 1
+having count(*) > 1) as count_products
+
+0
+
+select count(*)
+from (select product_id
+from products
+group by 1
+having count(*) > 1) as count_product_id
+
+0
+
+select count(*)
+from (select product_category_name
+from products
+group by 1
+having count(*) > 1) as count_product_cat_name
+
+73
+
+select count(*)
+from (select product_name_length
+from products
+group by 1
+having count(*) > 1) as count_product_name_length
+
+60
+
+select count(*)
+from (select product_description_length
+from products
+group by 1
+having count(*) > 1) as count_product_desc_length
+
+2292
+
+select count(*)
+from (select product_photos_qty
+from products
+group by 1
+having count(*) > 1) as count_product_photos_qty
+
+18
+
+select count(*)
+from (select product_weight_g
+from products
+group by 1
+having count(*) > 1) as count_product_weight_g
+
+1170
+
+select count(*)
+from (select product_length_cm
+from products
+group by 1
+having count(*) > 1) as count_product_length_cm
+
+99
+
+select count(*)
+from (select product_height_cm
+from products
+group by 1
+having count(*) > 1) as count_product_height_cm
+
+100
+
+select count(*)
+from (select product_width_cm
+from products
+group by 1
+having count(*) > 1) as count_product_width_cm
+
+87
+
+--Check for Null values
+SELECT *
+FROM reviews
+WHERE order_id IS NULL
+OR review_score IS NULL
+OR review_comment_title IS NULL
+OR review_comment_message IS NULL
+OR review_creation_date IS NULL
+OR review_answer_timestamp IS NULL;
+
+
+
+
+
+
+
+
+
 
 
 
