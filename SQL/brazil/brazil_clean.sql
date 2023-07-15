@@ -167,15 +167,22 @@ from orders
 group by 1
 having count(*) > 1
 
-select order_id
-from orders
+select count(*)
+from (select order_id
+from items
 group by 1
-having count(*) > 1
+having count(*) > 1) as count_order_id
 
 select customer_id
 from orders
 group by 1
 having count(*) > 1
+
+select count(*)
+from (select product_id
+from items
+group by 1
+having count(*) > 1) as count_product_id
 
 --There are no duplicates
 
@@ -784,13 +791,19 @@ having count(*) > 1) as count_product_width_cm
 
 --Check for Null values
 SELECT *
-FROM reviews
-WHERE order_id IS NULL
-OR review_score IS NULL
-OR review_comment_title IS NULL
-OR review_comment_message IS NULL
-OR review_creation_date IS NULL
-OR review_answer_timestamp IS NULL;
+FROM products
+WHERE product_id IS NULL
+OR product_category_name IS NULL
+OR product_name_length IS NULL
+OR product_description_length IS NULL
+OR product_photos_qty IS NULL
+OR product_weight_g IS NULL
+OR product_length_cm IS NULL
+OR product_height_cm IS NULL
+OR product_width_cm IS NULL;
+
+--611 rows of null values
+
 
 
 
