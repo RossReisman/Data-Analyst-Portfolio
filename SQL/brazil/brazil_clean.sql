@@ -134,19 +134,20 @@ ADD order_month_year timestamp;
 UPDATE orders
 SET order_month_year = date_trunc('month', order_purchase_timestamp);
 
---Orders table has 99441 rows and 9 columns
+--Orders table now has 99441 rows and 9 columns
 
 --Check for duplicates
-SELECT *
+SELECT COUNT(*)
+FROM (SELECT *
 FROM orders
 GROUP BY 1
-HAVING COUNT(*) > 1
+HAVING COUNT(*) > 1) as orders_dupes
 
 SELECT COUNT(*)
 FROM (SELECT order_id
 FROM orders
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_order_id
+HAVING COUNT(*) > 1) as order_id_dupes
 
 --There are no duplicates
 
@@ -177,16 +178,17 @@ order_estimated_delivery_date: 2980
 order_month_year: 2980
 */
 
-
 4d: Items
 
---Get number of rows
-SELECT COUNT(*) FROM sellers;
-
---Get number of columns
-SELECT COUNT(column_name) AS number
+--Get rows and columns
+SELECT 'Number of rows',
+COUNT(*)
+FROM items
+UNION
+SELECT 'Number of columns',
+COUNT(column_name)
 FROM information_schema.columns
-WHERE table_name='sellers';
+WHERE table_name='items';
 
 --Items table has 112650 rows 7 columns
 
@@ -202,18 +204,11 @@ FROM items
 GROUP BY 1
 HAVING COUNT(*) > 1) as COUNT_order_id
 
-/*
-order_id has 9803 duplicate values
-there are 9803 orders that contain more than 1 item
-*/
-
 SELECT COUNT(*)
 FROM (SELECT order_item_id
 FROM items
 GROUP BY 1
 HAVING COUNT(*) > 1) as COUNT_order_item_id
-
---There are 20 orders with the same number of items
 
 SELECT COUNT(*)
 FROM (SELECT product_id
@@ -221,16 +216,11 @@ FROM items
 GROUP BY 1
 HAVING COUNT(*) > 1) as COUNT_product_id
 
---There are 14834 items that have been ordered more than once
-
 SELECT COUNT(*)
 FROM (SELECT seller_id
 FROM items
 GROUP BY 1
 HAVING COUNT(*) > 1) as COUNT_seller_id
-/*
-There are 2586 duplicate sellers
-*/
 
 SELECT COUNT(*)
 FROM (SELECT shipping_LIMIT_date
@@ -238,15 +228,11 @@ FROM items
 GROUP BY 1
 HAVING COUNT(*) > 1) as COUNT_ship_date
 
---There are 13482 orders that were shipped on the same date
-
 SELECT COUNT(*)
 FROM (SELECT price
 FROM items
 GROUP BY 1
 HAVING COUNT(*) > 1) as COUNT_price
-
---There are 3626 items that have the same price
 
 SELECT COUNT(*)
 FROM (SELECT freight_value
@@ -254,7 +240,16 @@ FROM items
 GROUP BY 1
 HAVING COUNT(*) > 1) as COUNT_freight_value
 
---There are 4924 items with the same freight value
+/*
+order_id has 9,803 duplicate values
+order_item_id has 20 duplicate values
+product_id has 14,834 duplicate values
+seller_id has 2,586 duplicate values
+shipping_limit_date has 13,482 duplicate values
+price has 3,626 duplicate values
+freight_value has 4,924 duplicate values
+*/
+
 
 --Check for Null values
 SELECT *
