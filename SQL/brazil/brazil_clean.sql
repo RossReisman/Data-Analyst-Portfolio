@@ -41,6 +41,8 @@ ADD seller_city_state text;
 UPDATE sellers
 SET seller_city_state = INITCAP(seller_city) || ', ' || seller_state;
 
+--Sellers table now has 3095 rows and 5 columns
+
 --Check for duplicates
 
 SELECT COUNT(*)
@@ -54,10 +56,8 @@ FROM (SELECT seller_id
 FROM sellers
 GROUP BY 1
 HAVING COUNT(*) > 1) as seller_id_dupes
-/*
-There are no duplicate rows
-There are no duplicate seller ids
-*/
+
+--There are no duplicate rows or seller ids
 
 --Check for Null values
 SELECT *
@@ -68,7 +68,6 @@ OR seller_city IS NULL
 OR seller_state IS NULL;
 
 --There are no Null values
-
 
 4b: Product Categories
 
@@ -97,11 +96,14 @@ DROP COLUMN product_category_name;
 ALTER TABLE categories
 RENAME COLUMN product_category_name_english TO product_category_name;
 
+--Categories table now has 71 rows and 1 column
+
 --Check for duplicates
-SELECT *
-FROM sellers
+SELECT COUNT(*)
+FROM (SELECT product_category_name
+FROM categories
 GROUP BY 1
-HAVING COUNT(*) > 1
+HAVING COUNT(*) > 1) as prod_cat_dupes
 
 --There are no duplicates
 
@@ -114,22 +116,25 @@ WHERE product_category_name IS NULL
 
 4c: Orders
 
-
---Get number of rows
-SELECT COUNT(*) FROM orders;
-
---Get number of columns
-SELECT COUNT(column_name) AS number
+--Get rows and columns
+SELECT 'Number of rows',
+COUNT(*)
+FROM orders
+UNION
+SELECT 'Number of columns',
+COUNT(column_name)
 FROM information_schema.columns
 WHERE table_name='orders';
 
---Categories table has 99441 rows and 8 columns
+--Orders table has 99441 rows and 8 columns
 
 --Add column for the just the month and year of the orders
 ALTER TABLE orders
 ADD order_month_year timestamp;
 UPDATE orders
 SET order_month_year = date_trunc('month', order_purchase_timestamp);
+
+--Orders table has 99441 rows and 9 columns
 
 --Check for duplicates
 SELECT *
