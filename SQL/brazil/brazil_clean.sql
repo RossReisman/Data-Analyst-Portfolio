@@ -307,19 +307,19 @@ SELECT COUNT(*)
 FROM (SELECT shipping_LIMIT_date
 FROM items
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_ship_date
+HAVING COUNT(*) > 1) as item_ship_limit_dupes
 
 SELECT COUNT(*)
 FROM (SELECT price
 FROM items
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_price
+HAVING COUNT(*) > 1) as item_price_dupes
 
 SELECT COUNT(*)
 FROM (SELECT freight_value
 FROM items
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_freight_value
+HAVING COUNT(*) > 1) as item_freight_dupes
 
 /*
 order_id has 9,803 duplicate values
@@ -380,49 +380,51 @@ ADD customer_city_state text;
 UPDATE customers
 SET customer_city_state = INITCAP(customer_city) || ', ' || customer_state;
 
+--Customers table now has 99441 rows and 6 columns
+
 --Check for duplicates
 
 SELECT COUNT(*)
 FROM (SELECT *
 FROM customers
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_all
+HAVING COUNT(*) > 1) as customer_dupes
 
 SELECT COUNT(*)
 FROM (SELECT customer_id
 FROM customers
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_customer_id
+HAVING COUNT(*) > 1) as cust_customer_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT customer_unique_id
 FROM customers
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_customer_unique
+HAVING COUNT(*) > 1) as cust_customer_unique_dupes
 
 SELECT COUNT(*)
 FROM (SELECT customer_zip_code_prefix
 FROM customers
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_customer_zip
+HAVING COUNT(*) > 1) as cust_customer_zip_dupes
 
 SELECT COUNT(*)
 FROM (SELECT customer_city
 FROM customers
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_customer_city
+HAVING COUNT(*) > 1) as cust_customer_city_dupes
 
 SELECT COUNT(*)
 FROM (SELECT customer_state
 FROM customers
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_customer_state
+HAVING COUNT(*) > 1) as cust_customer_state_dupes
 
 SELECT COUNT(*)
 FROM (SELECT customer_city_state
 FROM customers
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_customer_city_state
+HAVING COUNT(*) > 1) as cust_customer_city_state_dupes
 
 /*
 There are no duplicate rows
@@ -454,12 +456,12 @@ OR customer_city_state IS NULL;
 --Get rows and columns
 SELECT 'Number of rows',
 COUNT(*)
-FROM sellers
+FROM geolocation
 UNION
 SELECT 'Number of columns',
 COUNT(column_name) AS number
 FROM information_schema.columns
-WHERE table_name='sellers';
+WHERE table_name='geolocation';
 
 --Geolocation table has 1,000,163 rows 5 columns
 
@@ -486,42 +488,43 @@ ADD geolocation_city_state text;
 UPDATE geolocation
 SET geolocation_city_state = INITCAP(geolocation_city) || ', ' || geolocation_state;
 
+--Geolocation table now has 1000163 rows and 6 columns
 
 SELECT COUNT(*)
 FROM (SELECT geolocation_zip_code_prefix
 FROM geolocation
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_geolocation_zip
+HAVING COUNT(*) > 1) as geolocation_zip_dupes
 
 SELECT COUNT(*)
 FROM (SELECT geolocation_lat
 FROM geolocation
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_geolocation_lat
+HAVING COUNT(*) > 1) as geolocation_lat_dupes
 
 SELECT COUNT(*)
 FROM (SELECT geolocation_lng
 FROM geolocation
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_geolocation_lng
+HAVING COUNT(*) > 1) as geolocation_lng_dupes
 
 SELECT COUNT(*)
 FROM (SELECT geolocation_city
 FROM geolocation
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_geolocation_city
+HAVING COUNT(*) > 1) as geolocation_city_dupes
 
 SELECT COUNT(*)
 FROM (SELECT geolocation_state
 FROM geolocation
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_geolocation_state
+HAVING COUNT(*) > 1) as geolocation_state_dupes
 
 SELECT COUNT(*)
 FROM (SELECT geolocation_city_state
 FROM geolocation
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_geolocation_city_state
+HAVING COUNT(*) > 1) as geolocation_city_state_dupes
 
 
 /*
