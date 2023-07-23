@@ -202,19 +202,19 @@ SELECT COUNT(*)
 FROM (SELECT order_id
 FROM items
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_order_id
+HAVING COUNT(*) > 1) as item_order_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT order_item_id
 FROM items
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_order_item_id
+HAVING COUNT(*) > 1) as item_order_item_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_id
 FROM items
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_product_id
+HAVING COUNT(*) > 1) as item_product_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT seller_id
