@@ -179,7 +179,58 @@ FROM orders
 GROUP BY 1
 HAVING COUNT(*) > 1) as order_id_dupes
 
---There are no duplicates
+SELECT COUNT(*)
+FROM (SELECT customer_id
+FROM orders
+GROUP BY 1
+HAVING COUNT(*) > 1) as order_cust_id_dupes
+
+SELECT COUNT(*)
+FROM (SELECT order_purchase_timestamp
+FROM orders
+GROUP BY 1
+HAVING COUNT(*) > 1) as order_timestamp_dupes
+
+SELECT COUNT(*)
+FROM (SELECT order_approved_at
+FROM orders
+GROUP BY 1
+HAVING COUNT(*) > 1) as order_approved_dupes
+
+SELECT COUNT(*)
+FROM (SELECT order_delivered_carrier_date
+FROM orders
+GROUP BY 1
+HAVING COUNT(*) > 1) as order_del_carrier_dupes
+
+SELECT COUNT(*)
+FROM (SELECT order_delivered_customer_date
+FROM orders
+GROUP BY 1
+HAVING COUNT(*) > 1) as order_del_customer_dupes
+
+SELECT COUNT(*)
+FROM (SELECT order_estimated_delivery_date
+FROM orders
+GROUP BY 1
+HAVING COUNT(*) > 1) as order_estimated_del_dupes
+
+SELECT COUNT(*)
+FROM (SELECT order_month_year
+FROM orders
+GROUP BY 1
+HAVING COUNT(*) > 1) as order_month_year_dupes
+
+/*
+There are no duplicate rows, order_ids or customer_ids
+There are 556 duplicate order_purchase_timestamps
+There are 7046 duplicate order_approved_at times
+There are 10093 duplicate order_delivered_carrier_date times
+There are 805 duplicate order_delivered_customer_date times
+There are 438 duplicate order_estimated_delivery_date times
+There are 24 duplicate order_month_year times
+*/
+
 
 --Check for Null values
 SELECT *
