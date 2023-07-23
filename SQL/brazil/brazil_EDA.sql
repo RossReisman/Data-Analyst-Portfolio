@@ -35,7 +35,28 @@ FROM sellers
 Group by 1
 order by 1
 
-
+/*
+One city is a number
+There are many versions of:
+Angra Dos Reis
+Auriflama
+Balenario Camboriu
+Brasilia
+"Cariacica"
+"Jacarei"
+"Maua"
+"Mogi Das Cruses"
+"Novo Hamburgo"
+"Pinhais"
+Rio De Janeiro
+Ribeiro Preto
+"Santa Barbara D Oeste"
+"Santo Andre/Sao Paulo"
+"Sao Miguel D'Oeste"
+"Sao Paluo"
+"Sbc/Sp"
+"Sp / Sp"
+*/
 
 
 
