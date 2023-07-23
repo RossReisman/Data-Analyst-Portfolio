@@ -578,44 +578,34 @@ SELECT COUNT(*)
 FROM (SELECT order_id
 FROM payments
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_order_id
-
-2961
+HAVING COUNT(*) > 1) as payment_order_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT payment_sequential
 FROM payments
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_payment_seq
-
-26
+HAVING COUNT(*) > 1) as payment_sequential_dupes
 
 SELECT COUNT(*)
 FROM (SELECT payment_type
 FROM payments
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_payment_type
-
-5
+HAVING COUNT(*) > 1) as payment_type_dupes
 
 SELECT COUNT(*)
 FROM (SELECT payment_installments
 FROM payments
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_payment_installments
-
-22
+HAVING COUNT(*) > 1) as payment_installments_dupes
 
 SELECT COUNT(*)
 FROM (SELECT payment_value
 FROM payments
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_payment_value
-
-15,978
+HAVING COUNT(*) > 1) as payment_value_dupes
 
 /*
-There are 2961 order ids with multiple payments associated
+There are 2961 order_ids with multiple payments associated
 Multiple customers have paid in 26 FOPs
 Multiple customers have paid using all FOPs
 Multiple customers have paid in as many as 22 payment payment installments
@@ -654,62 +644,70 @@ LIMIT 5
 
 --Seems like there's going to be a lot of Null values
 
+--Add column for review response time
+ALTER TABLE reviews
+ADD COLUMN review_response_time interval;
+UPDATE reviews
+SET review_response_time = age(review_answer_timestamp, review_creation_date);
+
+--Reviews table now has 99,224 rows and 8 columns
 
 SELECT COUNT(*)
 FROM (SELECT review_id
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_review_id
-
-789
+HAVING COUNT(*) > 1) as review_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT order_id
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_order_id
-
-547
+HAVING COUNT(*) > 1) as review_order_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT review_score
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_review_score
-
-5
+HAVING COUNT(*) > 1) as review_score_dupes
 
 SELECT COUNT(*)
 FROM (SELECT review_comment_title
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_review_comment_title
-
-765
+HAVING COUNT(*) > 1) as review_title_dupes
 
 SELECT COUNT(*)
 FROM (SELECT review_comment_message
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_review_comment_message
-
-1183
+HAVING COUNT(*) > 1) as review_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT review_creation_date
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_review_creation_date
-
-603
+HAVING COUNT(*) > 1) as review_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT review_answer_timestamp
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_review_answer_timestamp
+HAVING COUNT(*) > 1) as review_id_dupes
 
 945
+
+/*
+There are 789 duplicate review_ids
+There are 547 duplicate order_ids
+There are 5 duplicate review_scores
+There are 765 duplicate review_comment_titles
+There are 1183 duplicate review_comment_messages
+There are 603 duplicate review_creation_dates
+There are 945 duplicate customer city states
+
+Discrepancy between unique cities and city/states
+may be due to multiple cities sharing a name
+*/
 
 --Check for Null values
 SELECT *
@@ -722,11 +720,6 @@ OR review_creation_date IS NULL
 OR review_answer_timestamp IS NULL;
 
 --There are 89,385 Null values
-
-ALTER TABLE reviews
-ADD COLUMN review_response_time interval;
-UPDATE reviews
-SET review_response_time = age(review_answer_timestamp, review_creation_date);
 
 4i: Products
 
