@@ -680,21 +680,25 @@ SELECT COUNT(*)
 FROM (SELECT review_comment_message
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as review_id_dupes
+HAVING COUNT(*) > 1) as review_message_dupes
 
 SELECT COUNT(*)
 FROM (SELECT review_creation_date
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as review_id_dupes
+HAVING COUNT(*) > 1) as review_creation_dupes
 
 SELECT COUNT(*)
 FROM (SELECT review_answer_timestamp
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as review_id_dupes
+HAVING COUNT(*) > 1) as review_answer_dupes
 
-945
+SELECT COUNT(*)
+FROM (SELECT review_response_time
+FROM reviews
+GROUP BY 1
+HAVING COUNT(*) > 1) as review_response_dupes
 
 /*
 There are 789 duplicate review_ids
@@ -703,10 +707,8 @@ There are 5 duplicate review_scores
 There are 765 duplicate review_comment_titles
 There are 1183 duplicate review_comment_messages
 There are 603 duplicate review_creation_dates
-There are 945 duplicate customer city states
-
-Discrepancy between unique cities and city/states
-may be due to multiple cities sharing a name
+There are 945 duplicate review_answer_timestamps
+There are 13,830 duplicate review_response_times
 */
 
 --Check for Null values
@@ -749,81 +751,73 @@ SELECT COUNT(*)
 FROM (SELECT *
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_products
-
-0
+HAVING COUNT(*) > 1) as products_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_id
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_product_id
-
-0
+HAVING COUNT(*) > 1) as product_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_category_name
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_product_cat_name
-
-73
+HAVING COUNT(*) > 1) as product_cat_name_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_name_length
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_product_name_length
-
-60
+HAVING COUNT(*) > 1) as product_name_length_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_description_length
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_product_desc_length
-
-2292
+HAVING COUNT(*) > 1) as product_desc_length_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_photos_qty
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_product_photos_qty
-
-18
+HAVING COUNT(*) > 1) as product_photos_qty_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_weight_g
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_product_weight_g
-
-1170
+HAVING COUNT(*) > 1) as product_weight_g_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_length_cm
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_product_length_cm
-
-99
+HAVING COUNT(*) > 1) as product_length_cm_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_height_cm
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_product_height_cm
-
-100
+HAVING COUNT(*) > 1) as product_height_cm_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_width_cm
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_product_width_cm
+HAVING COUNT(*) > 1) as product_width_cm_dupes
 
-87
+/*
+There are no duplicate rows or product_ids
+There are 73 duplicate product_category_names
+There are 60 duplicate product_name_lengths
+There are 2292 duplicate product_description_lengths
+There are 18 duplicate product_photos_qtys
+There are 1170 duplicate product_weight_gs
+There are 99 duplicate product_length_cms
+There are 100 duplicate product_height_cms
+There are 87 duplicate product_width_cms
+*/
 
 --Check for Null values
 SELECT *
@@ -839,17 +833,3 @@ OR product_height_cm IS NULL
 OR product_width_cm IS NULL;
 
 --611 rows of null values
-
-
-
-
-
-
-
-
-
-
-
-
-
-Second pass when done data sanity check
