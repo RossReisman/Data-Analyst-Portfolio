@@ -57,7 +57,37 @@ FROM sellers
 GROUP BY 1
 HAVING COUNT(*) > 1) as seller_id_dupes
 
---There are no duplicate rows or seller ids
+SELECT COUNT(*)
+FROM (SELECT seller_zip_code_prefix
+FROM sellers
+GROUP BY 1
+HAVING COUNT(*) > 1) as seller_zip_dupes
+
+SELECT COUNT(*)
+FROM (SELECT seller_city
+FROM sellers
+GROUP BY 1
+HAVING COUNT(*) > 1) as seller_city_dupes
+
+SELECT COUNT(*)
+FROM (SELECT seller_state
+FROM sellers
+GROUP BY 1
+HAVING COUNT(*) > 1) as seller_state_dupes
+
+SELECT COUNT(*)
+FROM (SELECT seller_city_state
+FROM sellers
+GROUP BY 1
+HAVING COUNT(*) > 1) as seller_city_state_dupes
+
+/*
+There are no duplicate rows or seller ids
+There are 537 duplicate seller cities
+There are 18 duplicate seller states
+There are 267 duplicate city/states
+*/
+
 
 --Check for Null values
 SELECT *
@@ -220,7 +250,7 @@ SELECT COUNT(*)
 FROM (SELECT seller_id
 FROM items
 GROUP BY 1
-HAVING COUNT(*) > 1) as COUNT_seller_id
+HAVING COUNT(*) > 1) as item_seller_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT shipping_LIMIT_date
