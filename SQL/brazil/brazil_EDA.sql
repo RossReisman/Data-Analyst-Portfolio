@@ -103,10 +103,10 @@ order by 2 desc
 "delivered"	  96,478
 "shipped"	  1107
 "canceled"	  625
-"unavailable"	609
+"unavailable"	  609
 "invoiced"	  314
-"processing"	301
-"created"	    5
+"processing"	  301
+"created"	  5
 "approved"	  2
 */
 
