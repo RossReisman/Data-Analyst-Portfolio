@@ -1,3 +1,7 @@
+Step 5: EDA
+
+5a: Sellers
+
 --Check unique values
 SELECT COUNT(*)
 FROM (SELECT DISTINCT seller_id
@@ -38,27 +42,42 @@ order by 1
 /*
 One city is a number
 There are many versions of:
-Angra Dos Reis
+Angra Dos Reis Rj
 Auriflama
 Balenario Camboriu
+"Barbacena/ Minas Gerais, MG"
+"Belo Horizont, MG"
 Brasilia
-"Cariacica"
-"Jacarei"
-"Maua"
-"Mogi Das Cruses"
-"Novo Hamburgo"
-"Pinhais"
+"Carapicuiba / Sao Paulo, SP"
+"Cariacica / Es, ES"
+"Cascavael, PR"
+"Ferraz De  Vasconcelos, SP"
+"Jacarei / Sao Paulo, SP"
+"Lages - Sc, SC"
+"Maua/Sao Paulo, SP"
+"Mogi Das Cruzes / Sp, SP"
+"Novo Hamburgo, Rio Grande Do Sul, Brasil, RS"
+"Pinhais/Pr, PR"
 Rio De Janeiro
-Ribeiro Preto
+"Ribeirao Preto / Sao Paulo, SP"
 "Santa Barbara D Oeste"
 "Santo Andre/Sao Paulo"
+"Sao Jose Do Rio Pret, SP"
+"Sao Jose Dos Pinhas, PR"
 "Sao Miguel D'Oeste"
+"SãO Paulo, SP"
 "Sao Paluo"
 "Sbc/Sp"
 "Sp / Sp"
+"Vendas@Creditparts.Com.Br"
 */
 
+SELECT DISTINCT seller_state
+FROM sellers
+Group by 1
+order by 1
 
+--There are 23 unique states
 
 
 
