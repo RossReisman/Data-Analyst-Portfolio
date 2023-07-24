@@ -72,18 +72,24 @@ Rio De Janeiro
 "Vendas@Creditparts.Com.Br"
 */
 
-SELECT DISTINCT seller_state
-FROM sellers
-Group by 1
+5b: Product Categories
+
+select * from categories
+group by 1
 order by 1
 
---There are 23 unique states
+/*
+"costruction_tools_garden"
+"costruction_tools_tools"
+"fashio_female_clothing"
+"home_appliances_2"
+"home_appliances_2"
+"home_confort"
+*/
 
+5c: Orders
 
-
-
-
-
+select * from orders
 
 
 
