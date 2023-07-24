@@ -101,7 +101,7 @@ order by 2 desc
 
 /*
 "delivered"	  96,478
-"shipped"	    1107
+"shipped"	  1107
 "canceled"	  625
 "unavailable"	609
 "invoiced"	  314
