@@ -164,7 +164,13 @@ ADD order_month_year timestamp;
 UPDATE orders
 SET order_month_year = date_trunc('month', order_purchase_timestamp);
 
---Orders table now has 99441 rows and 9 columns
+--Add column to calculate delivery process duration
+ALTER TABLE orders
+ADD delivery_duration interval;
+UPDATE orders
+SET delivery_duration = order_delivered_customer_date - order_delivered_carrier_date
+
+--Orders table now has 99441 rows and 10 columns
 
 --Check for duplicates
 SELECT COUNT(*)
