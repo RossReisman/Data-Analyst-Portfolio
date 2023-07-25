@@ -200,12 +200,8 @@ order by 1
 20	3
 21	1
 
---Most orders hacve fewer than 10 items per order
+--Most orders have fewer than 10 items per order
 
-SELECT 'total',
-	SUM(order_item_id) AS total_items
-FROM items
-UNION
 SELECT 'average',
 	ROUND(AVG(order_item_id),2) AS avg_num_items
 FROM items
@@ -223,7 +219,6 @@ order by 1
 "MAX"	21
 "MIN"	1
 "average"	1.20
-"total"	134,936
 
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY order_item_id) AS item_25
@@ -248,7 +243,9 @@ FROM items
 
 --Most orders have 1 item.
 
-
+select order_id, max(order_item_id), price from items
+group by 1, 3
+order by 1
 
 
 
