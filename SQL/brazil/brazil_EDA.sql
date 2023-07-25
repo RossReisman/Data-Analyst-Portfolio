@@ -202,7 +202,51 @@ order by 1
 
 --Most orders hacve fewer than 10 items per order
 
+SELECT 'total',
+	SUM(order_item_id) AS total_items
+FROM items
+UNION
+SELECT 'average',
+	ROUND(AVG(order_item_id),2) AS avg_num_items
+FROM items
+UNION
+SELECT 'MIN',
+	MIN(order_item_id) AS min_num_items
+FROM items
+UNION
+SELECT 'MAX',
+	MAX(order_item_id) AS max_num_items
+FROM items
+group by 1
+order by 1
 
+"MAX"	21
+"MIN"	1
+"average"	1.20
+"total"	134,936
+
+SELECT '25%',
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY order_item_id) AS item_25
+FROM items
+UNION
+SELECT '50%',
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY order_item_id) AS item_50
+FROM items
+UNION
+SELECT '75%',
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY order_item_id) AS item_75
+FROM items
+UNION
+SELECT '95%',
+PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY order_item_id) AS item_95
+FROM items
+
+"75%"	1
+"25%"	1
+"50%"	1
+"95%"	2
+
+--Most orders have 1 item.
 
 
 
