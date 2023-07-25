@@ -165,13 +165,42 @@ order by 1
 
 5d: Items
 
+select * from items;
 
+select distinct(order_item_id)
+from items
+order by 1
 
+--Orders have as many as 21 items in a single order
 
+select order_item_id, count(order_item_id)
+from items
+group by 1
+order by 1
 
+1	98666
+2	9803
+3	2287
+4	965
+5	460
+6	256
+7	58
+8	36
+9	28
+10	25
+11	17
+12	13
+13	8
+14	7
+15	5
+16	3
+17	3
+18	3
+19	3
+20	3
+21	1
 
-
-
+--Most orders hacve fewer than 10 items per order
 
 
 
