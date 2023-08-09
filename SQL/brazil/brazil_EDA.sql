@@ -258,12 +258,7 @@ group by 1, 3
 
 --The max function ensures only one price is returned per order
 
-select order_id, max(order_item_id), price,
-floor(price/10) * 10 as bucket
-from items
-group by 1, 3, 4
-order by 3 desc, 4
-
+--Bins of prices
 select
 floor(price/100) * 10 as buckets,
 count(*)
@@ -316,8 +311,6 @@ order by 1, 2
 470	1
 640	1
 670	2
-
-
 
 
 
