@@ -243,12 +243,20 @@ FROM items
 
 --Most orders have 1 item.
 
-select order_id, max(order_item_id), price from items
+select order_id, max(order_item_id), price,
+case
+	when max(price) < 100 then '0-100'
+	when max(price) between 101 and 250 then '101-250'
+	when max(price) between 250 and 750 then '250-750'
+	when max(price) between 250 and 750 then '250-750'
+	when max(price) between 750 and 1250 then '750-1250'
+	when max(price) between 1250 and 2000 then '1250-2000'
+else '2000+'
+end as buckets
+from items
 group by 1, 3
-order by 1
 
-
-
+--The max function ensures only one price is returned per order
 
 
 
