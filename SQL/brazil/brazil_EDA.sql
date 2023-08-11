@@ -367,17 +367,42 @@ order by 1
 "95%"	45.12
 "Max"	409.68
 
+5e: Customers
+
+select * from customers;
 
 
+--Check unique values
+SELECT COUNT(*)
+FROM (SELECT DISTINCT customer_unique_id
+FROM customers) as distinct_id;
 
+SELECT COUNT(*)
+FROM (SELECT DISTINCT customer_zip_code_prefix
+FROM customers) as distinct_zip;
 
+SELECT COUNT(*)
+FROM (SELECT DISTINCT customer_city
+FROM customers) as distinct_city;
 
+SELECT COUNT(*)
+FROM (SELECT DISTINCT customer_state
+FROM customers) as distinct_state;
 
+SELECT COUNT(*)
+FROM (SELECT DISTINCT customer_city_state
+FROM customers) as distinct_city_state;
 
+/*
+There are 96,096 unique customers
+There are 14,994 unique zip code prefixes
+There are 4,119 unique customer cities
+There are 27 unique customer states
+There are 4,310 unique customer city/states
 
-
-
-
+Discrepancy between unique cities and city/states
+is confirmed due to multiple cities sharing a name
+*/
 
 
 
