@@ -312,8 +312,33 @@ order by 1, 2
 640	1
 670	2
 
+--Summary statistics for price
+SELECT '25%',
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY price) AS price_25
+FROM items
+UNION
+SELECT '50%',
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY price) AS price_50
+FROM items
+UNION
+SELECT '75%',
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY price) AS price_75
+FROM items
+UNION
+SELECT '95%',
+PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY price) AS price_95
+FROM items
+UNION
+SELECT 'Max',
+MAX(price) AS price_max
+FROM items
+order by 1
 
-
+"25%"	39.9
+"50%"	74.99
+"75%"	134.9
+"95%"	349.9
+"Max"	6735
 
 
 
