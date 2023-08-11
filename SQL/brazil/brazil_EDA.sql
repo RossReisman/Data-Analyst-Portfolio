@@ -340,7 +340,32 @@ order by 1
 "95%"	349.9
 "Max"	6735
 
+SELECT '25%',
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY freight_value)
+FROM items
+UNION
+SELECT '50%',
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY freight_value)
+FROM items
+UNION
+SELECT '75%',
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY freight_value)
+FROM items
+UNION
+SELECT '95%',
+PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY freight_value)
+FROM items
+UNION
+SELECT 'Max',
+MAX(freight_value)
+FROM items
+order by 1
 
+"25%"	13.08
+"50%"	16.26
+"75%"	21.15
+"95%"	45.12
+"Max"	409.68
 
 
 
