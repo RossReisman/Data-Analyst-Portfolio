@@ -380,6 +380,10 @@ ALTER COLUMN customer_zip_code_prefix TYPE text;
 UPDATE customers
 SET customer_zip_code_prefix = LPAD(customer_zip_code_prefix, 5, '0');
 
+--Capitalize customer city
+UPDATE customers
+SET customer_city = INITCAP(customer_city);
+
 --Add a column combining city and state
 ALTER TABLE customers
 ADD customer_city_state text;
