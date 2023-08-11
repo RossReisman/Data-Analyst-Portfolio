@@ -40,8 +40,7 @@ Group by 1
 order by 1
 
 /*
-One city is a number
-There are many versions of:
+Cities to be cleaned:
 Angra Dos Reis Rj
 Auriflama
 Balenario Camboriu
@@ -404,21 +403,75 @@ Discrepancy between unique cities and city/states
 is confirmed due to multiple cities sharing a name
 */
 
+SELECT DISTINCT customer_city
+FROM customers
+Group by 1
+order by 1
 
+/*
+Cities to be cleaned:
+"Arraial D'Ajuda"
+"Dias D'Avila"
 
+Looks like cities with "D'" appear both as "D' and D "
+*/
 
+SELECT DISTINCT customer_city
+FROM customers
+WHERE customer_city LIKE 'D%'
 
+--Just those two examples exist
 
+5f: Geolocation
 
+select * from geolocation;
 
+--Check unique values
+SELECT COUNT(*)
+FROM (SELECT DISTINCT geolocation_city
+FROM geolocation) as distinct_city;
 
+SELECT COUNT(*)
+FROM (SELECT DISTINCT geolocation_state
+FROM geolocation) as distinct_state;
 
+SELECT COUNT(*)
+FROM (SELECT DISTINCT geolocation_city_state
+FROM geolocation) as distinct_city_state;
 
+/*
+There are 8,011 unique geolocation cities
+There are 27 unique geolocation states
+There are 8,463 unique geolocation city/states
 
+Discrepancy between unique cities and city/states
+is confirmed due to multiple cities sharing a name
+*/
 
+5g: Payments
 
+select * from payments;
 
-
+SELECT '25%',
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY payment_sequential)
+FROM payments
+UNION
+SELECT '50%',
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY payment_sequential)
+FROM payments
+UNION
+SELECT '75%',
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY payment_sequential)
+FROM payments
+UNION
+SELECT '95%',
+PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY payment_sequential)
+FROM payments
+UNION
+SELECT 'Max',
+MAX(payment_sequential)
+FROM payments
+order by 1
 
 
 
