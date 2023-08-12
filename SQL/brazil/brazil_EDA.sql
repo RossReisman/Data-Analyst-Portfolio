@@ -623,6 +623,36 @@ order by 1
 
 select * from reviews
 
+--Examine review scores
+SELECT '25%',
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY review_score)
+FROM reviews
+UNION
+SELECT '50%',
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY review_score)
+FROM reviews
+UNION
+SELECT '75%',
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY review_score)
+FROM reviews
+UNION
+SELECT '95%',
+PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY review_score)
+FROM reviews
+UNION
+SELECT 'Max',
+MAX(review_score)
+FROM reviews
+order by 1
+
+"25%"	4
+"50%"	5
+"75%"	5
+"95%"	5
+"Max"	5
+
+--Most customers give a 4 or 5 on their satisfaction survey
+
 
 
 
