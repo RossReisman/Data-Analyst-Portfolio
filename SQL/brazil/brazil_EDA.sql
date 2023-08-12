@@ -540,13 +540,88 @@ order by 2 desc
 "debit_card"	1529
 "not_defined"	3
 
+ADD PERCENTAGES??
 
+SELECT distinct payment_type
+from payments
+order by 1
 
+"boleto"
+"credit_card"
+"debit_card"
+"not_defined"
+"voucher"
 
+--Customers pay with the above FOPs
 
+SELECT payment_installments, count(payment_installments)
+from payments
+group by 1
+order by 2 desc
 
+1	52546
+2	12413
+3	10461
+4	7098
+10	5328
+5	5239
+8	4268
+6	3920
+7	1626
+9	644
+12	133
+15	74
+18	27
+11	23
+24	18
+20	17
+13	16
+14	15
+17	8
+16	5
+21	3
+0	2
+22	1
+23	1
 
+/*
+Most customers pay in 4 or fewer installments
+but some in as many as 10 and a few in as many as 24
+*/
 
+--Examine payment value
+SELECT '25%',
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY payment_value)
+FROM payments
+UNION
+SELECT '50%',
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY payment_value)
+FROM payments
+UNION
+SELECT '75%',
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY payment_value)
+FROM payments
+UNION
+SELECT '95%',
+PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY payment_value)
+FROM payments
+UNION
+SELECT 'Max',
+MAX(payment_value)
+FROM payments
+order by 1
+
+"25%"	56.79
+"50%"	100
+"75%"	171.8375
+"95%"	437.635
+"Max"	13664.08
+
+--Most payment values are under $500 with a few extreme outliers
+
+5h: Reviews
+
+select * from reviews
 
 
 
