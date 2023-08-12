@@ -473,7 +473,51 @@ MAX(payment_sequential)
 FROM payments
 order by 1
 
+"25%"	1
+"50%"	1
+"75%"	1
+"95%"	1
+"Max"	29
 
+--Over 95% of customers pay with one FOP, some pay with as many as 29
+
+SELECT distinct payment_sequential
+from payments
+order by 1
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+
+--Customers pay with as many as 29 FOPs
+
+ 
 
 
 
