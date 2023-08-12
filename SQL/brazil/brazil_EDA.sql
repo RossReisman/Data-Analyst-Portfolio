@@ -517,7 +517,28 @@ order by 1
 
 --Customers pay with as many as 29 FOPs
 
- 
+SELECT distinct payment_type
+from payments
+order by 1
+
+"boleto"
+"credit_card"
+"debit_card"
+"not_defined"
+"voucher"
+
+--Customers pay with the above FOPs
+
+SELECT payment_type, count(payment_type)
+from payments
+group by 1
+order by 2 desc
+
+"credit_card"	76795
+"boleto"	19784
+"voucher"	5775
+"debit_card"	1529
+"not_defined"	3
 
 
 
