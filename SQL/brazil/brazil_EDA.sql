@@ -619,6 +619,7 @@ order by 1
 
 --Most payment values are under $500 with a few extreme outliers
 
+
 5h: Reviews
 
 select * from reviews
@@ -653,12 +654,63 @@ order by 1
 
 --Most customers give a 4 or 5 on their satisfaction survey
 
+--Summary statistics for review response time
+SELECT '25%',
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY review_response_time)
+FROM reviews
+UNION
+SELECT '50%',
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY review_response_time)
+FROM reviews
+UNION
+SELECT '75%',
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY review_response_time)
+FROM reviews
+UNION
+SELECT '95%',
+PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY review_response_time)
+FROM reviews
+UNION
+SELECT 'Max',
+MAX(review_response_time)
+FROM reviews
+order by 1
 
+"25%"	"1 day 00:07:00.75"
+"50%"	"1 day 16:11:55.5"
+"75%"	"3 days 02:29:08"
+"95%"	"6 days 23:19:57.2"
+"Max"	"1 year 5 mons 16:46:52"
 
+--Most reviews are responded to in less than a week
 
+--Top 20 review titles
+SELECT review_comment_title, count(review_comment_title)
+from reviews
+group by 1
+order by 2 desc
+limit 20
 
-
-
+"Recomendo"	423
+"recomendo"	345
+"Bom"	293
+"super recomendo"	270
+"Excelente"	248
+"Muito bom"	247
+"Ótimo"	240
+"Super recomendo"	217
+"Ótimo "	207
+"Otimo"	174
+"10"	158
+"Excelente "	119
+"otimo"	105
+"bom"	97
+"Muito bom "	87
+"Boa"	86
+"Recomendo "	62
+"Perfeito"	57
+"RECOMENDO"	55
+"Ótima"	55
 
 
 
