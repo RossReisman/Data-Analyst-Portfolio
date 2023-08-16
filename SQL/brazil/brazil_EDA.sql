@@ -728,11 +728,93 @@ limit 20
 --Top 20 review titles comprising about 30% of reviews
 
 
+5i: Products
 
+SELECT * from products
 
+SELECT count(distinct  product_category_name)
+from products
+order by 1
 
+73
 
+SELECT distinct(product_category_name)
+from products
+order by 1
 
+"Agro_Industria_E_Comercio"
+"Alimentos"
+"Alimentos_Bebidas"
+"Artes"
+"Artes_E_Artesanato"
+"Artigos_De_Festas"
+"Artigos_De_Natal"
+"Audio"
+"Automotivo"
+"Bebes"
+"Bebidas"
+"Beleza_Saude"
+"Brinquedos"
+"Cama_Mesa_Banho"
+"Casa_Conforto"
+"Casa_Conforto_2"
+"Casa_Construcao"
+"Cds_Dvds_Musicais"
+"Cine_Foto"
+"Climatizacao"
+"Consoles_Games"
+"Construcao_Ferramentas_Construcao"
+"Construcao_Ferramentas_Ferramentas"
+"Construcao_Ferramentas_Iluminacao"
+"Construcao_Ferramentas_Jardim"
+"Construcao_Ferramentas_Seguranca"
+"Cool_Stuff"
+"Dvds_Blu_Ray"
+"Eletrodomesticos"
+"Eletrodomesticos_2"
+"Eletronicos"
+"Eletroportateis"
+"Esporte_Lazer"
+"Fashion_Bolsas_E_Acessorios"
+"Fashion_Calcados"
+"Fashion_Esporte"
+"Fashion_Roupa_Feminina"
+"Fashion_Roupa_Infanto_Juvenil"
+"Fashion_Roupa_Masculina"
+"Fashion_Underwear_E_Moda_Praia"
+"Ferramentas_Jardim"
+"Flores"
+"Fraldas_Higiene"
+"Industria_Comercio_E_Negocios"
+"Informatica_Acessorios"
+"Instrumentos_Musicais"
+"La_Cuisine"
+"Livros_Importados"
+"Livros_Interesse_Geral"
+"Livros_Tecnicos"
+"Malas_Acessorios"
+"Market_Place"
+"Moveis_Colchao_E_Estofado"
+"Moveis_Cozinha_Area_De_Servico_Jantar_E_Jardim"
+"Moveis_Decoracao"
+"Moveis_Escritorio"
+"Moveis_Quarto"
+"Moveis_Sala"
+"Musica"
+"Papelaria"
+"Pc_Gamer"
+"Pcs"
+"Perfumaria"
+"Pet_Shop"
+"Portateis_Casa_Forno_E_Cafe"
+"Portateis_Cozinha_E_Preparadores_De_Alimentos"
+"Relogios_Presentes"
+"Seguros_E_Servicos"
+"Sinalizacao_E_Seguranca"
+"Tablets_Impressao_Imagem"
+"Telefonia"
+"Telefonia_Fixa"
+"Utilidades_Domesticas"
 
 
 
