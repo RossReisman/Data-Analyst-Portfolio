@@ -684,6 +684,19 @@ order by 1
 
 --Most reviews are responded to in less than a week
 
+--Check number of rows in reviews table
+SELECT count(*)
+from reviews
+
+99224
+
+--Check number of reviews with a title
+SELECT count(review_comment_title)
+from reviews
+where review_comment_title IS NOT NULL
+
+11568
+
 --Top 20 review titles
 SELECT review_comment_title, count(review_comment_title)
 from reviews
@@ -711,6 +724,31 @@ limit 20
 "Perfeito"	57
 "RECOMENDO"	55
 "Ótima"	55
+
+--Top 20 review titles comprising about 30% of reviews
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
