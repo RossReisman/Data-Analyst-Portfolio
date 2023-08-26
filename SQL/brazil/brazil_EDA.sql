@@ -816,10 +816,61 @@ order by 1
 "Telefonia_Fixa"
 "Utilidades_Domesticas"
 
+--Summary statistics for product description length
+SELECT '25%',
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY product_description_length)
+FROM products
+UNION
+SELECT '50%',
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY product_description_length)
+FROM products
+UNION
+SELECT '75%',
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY product_description_length)
+FROM products
+UNION
+SELECT '95%',
+PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY product_description_length)
+FROM products
+UNION
+SELECT 'Max',
+MAX(product_description_length)
+FROM products
+order by 1
 
+"25%"	339
+"50%"	595
+"75%"	972
+"95%"	2063
+"Max"	3992
 
+--Summary statistics for number of photos
+SELECT '25%',
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY product_photos_qty)
+FROM products
+UNION
+SELECT '50%',
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY product_photos_qty)
+FROM products
+UNION
+SELECT '75%',
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY product_photos_qty)
+FROM products
+UNION
+SELECT '95%',
+PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY product_photos_qty)
+FROM products
+UNION
+SELECT 'Max',
+MAX(product_photos_qty)
+FROM products
+order by 1
 
-
+"25%"	1
+"50%"	1
+"75%"	3
+"95%"	6
+"Max"	20
 
 
 
