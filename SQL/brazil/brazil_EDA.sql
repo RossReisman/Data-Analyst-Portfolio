@@ -1,3 +1,6 @@
+This project is incomplete
+I moved on to video game focused analysis (My desired industry)
+
 Step 5: EDA
 
 5a: Sellers
@@ -470,6 +473,28 @@ WHERE customer_city LIKE 'D%'
 
 select * from geolocation;
 
+SELECT DISTINCT geolocation_city
+FROM geolocation
+ORDER BY 1
+
+/*
+Cities to be cleaned:
+"* Cidade"
+"...Arraial Do Cabo"
+"4o. Centenario"
+"4º Centenario"
+"AbadiâNia"
+"Abaeté" vs. "Abaete"
+"Abare" vs. "Abaré"
+"Abatia" vs. "Abatiá"
+"AbaíRa"
+"AbreulâNdia"
+"Acarau" vs. "Acaraú"
+"Acegua" vs. "Aceguá"
+
+More
+*/
+
 --Check unique values
 SELECT COUNT(*)
 FROM (SELECT DISTINCT geolocation_city
@@ -496,6 +521,7 @@ is confirmed due to multiple cities sharing a name
 
 select * from payments;
 
+--Summary statistics for payment sequential (number of FOPs)
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY payment_sequential)
 FROM payments
@@ -517,92 +543,86 @@ MAX(payment_sequential)
 FROM payments
 order by 1
 
+/*
 "25%"	1
 "50%"	1
 "75%"	1
 "95%"	1
 "Max"	29
+*/
 
 --Over 95% of customers pay with one FOP, some pay with as many as 29
 
-SELECT distinct payment_sequential
+SELECT distinct payment_sequential, count(payment_sequential)
 from payments
-order by 1
+group by 1
+order by 2 desc
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
+/*
+1	99360
+2	3039
+3	581
+4	278
+5	170
+6	118
+7	82
+8	54
+9	43
+10	34
+11	29
+12	21
+13	13
+14	10
+15	8
+16	6
+17	6
+18	6
+19	6
+20	4
+21	4
+22	3
+23	2
+24	2
+25	2
+26	2
+27	1
+28	1
+29	1
+*/
 
---Customers pay with as many as 29 FOPs
-
+--Check unique payment types
 SELECT distinct payment_type
 from payments
 order by 1
 
+/*
 "boleto"
 "credit_card"
 "debit_card"
 "not_defined"
 "voucher"
-
---Customers pay with the above FOPs
+*/
 
 SELECT payment_type, count(payment_type)
 from payments
 group by 1
 order by 2 desc
 
+/*
 "credit_card"	76795
 "boleto"	19784
 "voucher"	5775
 "debit_card"	1529
 "not_defined"	3
+*/
 
-ADD PERCENTAGES??
-
-SELECT distinct payment_type
-from payments
-order by 1
-
-"boleto"
-"credit_card"
-"debit_card"
-"not_defined"
-"voucher"
-
---Customers pay with the above FOPs
-
+--Count of number of payment installments
 SELECT payment_installments, count(payment_installments)
 from payments
 group by 1
 order by 2 desc
 
+/*
 1	52546
 2	12413
 3	10461
@@ -628,12 +648,11 @@ order by 2 desc
 22	1
 23	1
 
-/*
 Most customers pay in 4 or fewer installments
 but some in as many as 10 and a few in as many as 24
 */
 
---Examine payment value
+--Summary statistics for payment values
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY payment_value)
 FROM payments
@@ -655,11 +674,13 @@ MAX(payment_value)
 FROM payments
 order by 1
 
+/*
 "25%"	56.79
 "50%"	100
 "75%"	171.8375
 "95%"	437.635
 "Max"	13664.08
+*/
 
 --Most payment values are under $500 with a few extreme outliers
 
