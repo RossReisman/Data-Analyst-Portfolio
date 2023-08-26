@@ -113,12 +113,18 @@ select min(order_purchase_timestamp),
 max(order_purchase_timestamp)
 from orders
 
-"2016-09-04 21:15:19"	"2018-10-17 17:30:18"
+/*
+Data begins on 2016-09-04 21:15:19
+and ends on 2018-10-17 17:30:18
+*/
 
 select order_month_year, count(order_month_year)
 from orders
 group by 1
 order by 1
+
+/*
+Count of orders by month is as follows:
 
 "2016-09-01 00:00:00"	4
 "2016-10-01 00:00:00"	324
@@ -145,6 +151,7 @@ order by 1
 "2018-08-01 00:00:00"	6512
 "2018-09-01 00:00:00"	16
 "2018-10-01 00:00:00"	4
+*/
 
 select order_month_year,
 avg(order_delivered_customer_date - order_delivered_carrier_date)
@@ -152,6 +159,7 @@ from orders
 group by 1
 order by 1
 
+/*
 "2017-11-01 00:00:00"	"10 days 26:16:21.488063"
 "2017-12-01 00:00:00"	"11 days 16:11:16.060221"
 "2018-01-01 00:00:00"	"9 days 35:35:54.466827"
@@ -161,6 +169,7 @@ order by 1
 "2018-05-01 00:00:00"	"8 days 17:37:50.342125"
 "2018-06-01 00:00:00"	"6 days 16:24:57.628281"
 "2018-07-01 00:00:00"	"5 days 27:17:11.402372"
+*/
 
 5d: Items
 
