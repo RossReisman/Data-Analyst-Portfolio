@@ -124,7 +124,7 @@ group by 1
 order by 1
 
 /*
-Count of orders by month is as follows:
+Count of orders by month:
 
 "2016-09-01 00:00:00"	4
 "2016-10-01 00:00:00"	324
@@ -160,6 +160,21 @@ group by 1
 order by 1
 
 /*
+Average delivery time by month:
+
+"2016-09-01 00:00:00"	"1 day 14:35:45"
+"2016-10-01 00:00:00"	"5 days 19:35:06.925926"
+"2016-12-01 00:00:00"	"1 day 09:40:17"
+"2017-01-01 00:00:00"	"8 days 28:46:25.570667"
+"2017-02-01 00:00:00"	"9 days 12:50:50.061101"
+"2017-03-01 00:00:00"	"9 days 20:00:06.071877"
+"2017-04-01 00:00:00"	"10 days 29:38:34.541033"
+"2017-05-01 00:00:00"	"7 days 32:09:56.871368"
+"2017-06-01 00:00:00"	"8 days 21:06:48.584689"
+"2017-07-01 00:00:00"	"8 days 11:35:14.246643"
+"2017-08-01 00:00:00"	"7 days 25:31:26.513474"
+"2017-09-01 00:00:00"	"8 days 15:31:46.279344"
+"2017-10-01 00:00:00"	"7 days 33:45:59.687361"
 "2017-11-01 00:00:00"	"10 days 26:16:21.488063"
 "2017-12-01 00:00:00"	"11 days 16:11:16.060221"
 "2018-01-01 00:00:00"	"9 days 35:35:54.466827"
@@ -169,6 +184,9 @@ order by 1
 "2018-05-01 00:00:00"	"8 days 17:37:50.342125"
 "2018-06-01 00:00:00"	"6 days 16:24:57.628281"
 "2018-07-01 00:00:00"	"5 days 27:17:11.402372"
+"2018-08-01 00:00:00"	"4 days 29:08:44.995748"
+"2018-09-01 00:00:00"	Null
+"2018-10-01 00:00:00"	Null
 */
 
 5d: Items
@@ -185,6 +203,9 @@ select order_item_id, count(order_item_id)
 from items
 group by 1
 order by 1
+
+/*
+Count of number of items in an order (includes duplicates)
 
 1	98666
 2	9803
@@ -207,8 +228,9 @@ order by 1
 19	3
 20	3
 21	1
+*/
 
---Most orders have fewer than 10 items per order
+--Most orders have fewer than 4 items per order
 
 SELECT 'average',
 	ROUND(AVG(order_item_id),2) AS avg_num_items
@@ -224,9 +246,11 @@ FROM items
 group by 1
 order by 1
 
+/*
 "MAX"	21
 "MIN"	1
 "average"	1.20
+*/
 
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY order_item_id) AS item_25
@@ -244,10 +268,12 @@ SELECT '95%',
 PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY order_item_id) AS item_95
 FROM items
 
+/*
 "75%"	1
 "25%"	1
 "50%"	1
 "95%"	2
+*/
 
 --Most orders have 1 item.
 
@@ -273,6 +299,9 @@ count(*)
 from items
 group by 1
 order by 1, 2
+
+/*
+Count of bin membership:
 
 0	72165
 10	27012
@@ -319,6 +348,7 @@ order by 1, 2
 470	1
 640	1
 670	2
+*/
 
 --Summary statistics for price
 SELECT '25%',
@@ -342,11 +372,14 @@ MAX(price) AS price_max
 FROM items
 order by 1
 
+/*
+
 "25%"	39.9
 "50%"	74.99
 "75%"	134.9
 "95%"	349.9
 "Max"	6735
+*/
 
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY freight_value)
