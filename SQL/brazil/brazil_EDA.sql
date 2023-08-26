@@ -353,7 +353,7 @@ Count of bin membership:
 670	2
 */
 
---Summary statistics for price
+--interquartile range for price
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY price) AS price_25
 FROM items
@@ -383,7 +383,7 @@ order by 1
 "Max"	6735
 */
 
---Summary statistics for freight value
+--interquartile range for freight value
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY freight_value)
 FROM items
@@ -521,7 +521,7 @@ is confirmed due to multiple cities sharing a name
 
 select * from payments;
 
---Summary statistics for payment sequential (number of FOPs)
+--interquartile range for payment sequential (number of FOPs)
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY payment_sequential)
 FROM payments
@@ -652,7 +652,7 @@ Most customers pay in 4 or fewer installments
 but some in as many as 10 and a few in as many as 24
 */
 
---Summary statistics for payment values
+--interquartile range for payment values
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY payment_value)
 FROM payments
@@ -689,7 +689,7 @@ order by 1
 
 select * from reviews
 
---Summary statistics of review scores
+--interquartile range of review scores
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY review_score)
 FROM reviews
@@ -723,7 +723,7 @@ Most customers give a 4 or 5 on their satisfaction survey
 
 
 
---Summary statistics for review response time
+--interquartile range for review response time
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY review_response_time)
 FROM reviews
@@ -891,7 +891,7 @@ order by 1
 "Utilidades_Domesticas"
 */
 
---Summary statistics for product description length
+--interquartile range for product description length
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY product_description_length)
 FROM products
@@ -921,7 +921,7 @@ order by 1
 "Max"	3992
 */
 
---Summary statistics for number of photos
+--interquartile range for number of photos
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY product_photos_qty)
 FROM products
