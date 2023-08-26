@@ -689,7 +689,7 @@ order by 1
 
 select * from reviews
 
---Examine review scores
+--Summary statistics of review scores
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY review_score)
 FROM reviews
@@ -711,13 +711,17 @@ MAX(review_score)
 FROM reviews
 order by 1
 
+/*
 "25%"	4
 "50%"	5
 "75%"	5
 "95%"	5
 "Max"	5
 
---Most customers give a 4 or 5 on their satisfaction survey
+Most customers give a 4 or 5 on their satisfaction survey
+*/
+
+
 
 --Summary statistics for review response time
 SELECT '25%',
@@ -741,26 +745,29 @@ MAX(review_response_time)
 FROM reviews
 order by 1
 
+/*
 "25%"	"1 day 00:07:00.75"
 "50%"	"1 day 16:11:55.5"
 "75%"	"3 days 02:29:08"
 "95%"	"6 days 23:19:57.2"
 "Max"	"1 year 5 mons 16:46:52"
 
---Most reviews are responded to in less than a week
+Most reviews are responded to in less than a week
+*/
+
 
 --Check number of rows in reviews table
 SELECT count(*)
 from reviews
 
-99224
+--99224 reviews
 
 --Check number of reviews with a title
 SELECT count(review_comment_title)
 from reviews
 where review_comment_title IS NOT NULL
 
-11568
+--11568 reviews
 
 --Top 20 review titles
 SELECT review_comment_title, count(review_comment_title)
@@ -769,6 +776,7 @@ group by 1
 order by 2 desc
 limit 20
 
+/*
 "Recomendo"	423
 "recomendo"	345
 "Bom"	293
@@ -790,23 +798,24 @@ limit 20
 "RECOMENDO"	55
 "Ótima"	55
 
---Top 20 review titles comprising about 30% of reviews
-
+--Top 20 review titles comprising about 30% of reviews; seem generally positive
+*/
 
 5i: Products
 
 SELECT * from products
 
-SELECT count(distinct  product_category_name)
+SELECT count(distinct product_category_name)
 from products
 order by 1
 
-73
+--There are 73 unique product categories
 
 SELECT distinct(product_category_name)
 from products
 order by 1
 
+/*
 "Agro_Industria_E_Comercio"
 "Alimentos"
 "Alimentos_Bebidas"
@@ -880,6 +889,7 @@ order by 1
 "Telefonia"
 "Telefonia_Fixa"
 "Utilidades_Domesticas"
+*/
 
 --Summary statistics for product description length
 SELECT '25%',
@@ -903,11 +913,13 @@ MAX(product_description_length)
 FROM products
 order by 1
 
+/*
 "25%"	339
 "50%"	595
 "75%"	972
 "95%"	2063
 "Max"	3992
+*/
 
 --Summary statistics for number of photos
 SELECT '25%',
@@ -931,30 +943,10 @@ MAX(product_photos_qty)
 FROM products
 order by 1
 
+/*
 "25%"	1
 "50%"	1
 "75%"	3
 "95%"	6
 "Max"	20
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-blank space baby
+*/
