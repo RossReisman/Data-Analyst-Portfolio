@@ -484,6 +484,10 @@ Geolocation zip code prefix needs to be filled so all rows have 5 digits
 Geolocation city is lower case
 */
 
+--Capitalize geolocation city
+UPDATE geolocation
+SET geolocation_city = INITCAP(geolocation_city);
+
 --Change zip code data type to add leading zeros
 ALTER TABLE geolocation
 ALTER COLUMN geolocation_zip_code_prefix TYPE text;

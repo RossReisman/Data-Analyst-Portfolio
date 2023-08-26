@@ -373,7 +373,6 @@ FROM items
 order by 1
 
 /*
-
 "25%"	39.9
 "50%"	74.99
 "75%"	134.9
@@ -381,6 +380,7 @@ order by 1
 "Max"	6735
 */
 
+--Summary statistics for freight value
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY freight_value)
 FROM items
@@ -402,11 +402,13 @@ MAX(freight_value)
 FROM items
 order by 1
 
+/*
 "25%"	13.08
 "50%"	16.26
 "75%"	21.15
 "95%"	45.12
 "Max"	409.68
+*/
 
 5e: Customers
 
@@ -462,7 +464,7 @@ SELECT DISTINCT customer_city
 FROM customers
 WHERE customer_city LIKE 'D%'
 
---Just those two examples exist
+--Only those two examples exist
 
 5f: Geolocation
 
