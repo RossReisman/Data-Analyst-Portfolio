@@ -49,37 +49,37 @@ SELECT COUNT(*)
 FROM (SELECT *
 FROM sellers
 GROUP BY 1
-HAVING COUNT(*) > 1) as sellers_dupes
+HAVING COUNT(*) > 1) AS sellers_dupes
 
 SELECT COUNT(*)
 FROM (SELECT seller_id
 FROM sellers
 GROUP BY 1
-HAVING COUNT(*) > 1) as seller_id_dupes
+HAVING COUNT(*) > 1) AS seller_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT seller_zip_code_prefix
 FROM sellers
 GROUP BY 1
-HAVING COUNT(*) > 1) as seller_zip_dupes
+HAVING COUNT(*) > 1) AS seller_zip_dupes
 
 SELECT COUNT(*)
 FROM (SELECT seller_city
 FROM sellers
 GROUP BY 1
-HAVING COUNT(*) > 1) as seller_city_dupes
+HAVING COUNT(*) > 1) AS seller_city_dupes
 
 SELECT COUNT(*)
 FROM (SELECT seller_state
 FROM sellers
 GROUP BY 1
-HAVING COUNT(*) > 1) as seller_state_dupes
+HAVING COUNT(*) > 1) AS seller_state_dupes
 
 SELECT COUNT(*)
 FROM (SELECT seller_city_state
 FROM sellers
 GROUP BY 1
-HAVING COUNT(*) > 1) as seller_city_state_dupes
+HAVING COUNT(*) > 1) AS seller_city_state_dupes
 
 /*
 There are no duplicate rows or seller ids
@@ -133,7 +133,7 @@ SELECT COUNT(*)
 FROM (SELECT product_category_name
 FROM categories
 GROUP BY 1
-HAVING COUNT(*) > 1) as prod_cat_dupes
+HAVING COUNT(*) > 1) AS prod_cat_dupes
 
 --There are no duplicates
 
@@ -177,55 +177,55 @@ SELECT COUNT(*)
 FROM (SELECT *
 FROM orders
 GROUP BY 1
-HAVING COUNT(*) > 1) as orders_dupes
+HAVING COUNT(*) > 1) AS orders_dupes
 
 SELECT COUNT(*)
 FROM (SELECT order_id
 FROM orders
 GROUP BY 1
-HAVING COUNT(*) > 1) as order_id_dupes
+HAVING COUNT(*) > 1) AS order_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT customer_id
 FROM orders
 GROUP BY 1
-HAVING COUNT(*) > 1) as order_cust_id_dupes
+HAVING COUNT(*) > 1) AS order_cust_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT order_purchase_timestamp
 FROM orders
 GROUP BY 1
-HAVING COUNT(*) > 1) as order_timestamp_dupes
+HAVING COUNT(*) > 1) AS order_timestamp_dupes
 
 SELECT COUNT(*)
 FROM (SELECT order_approved_at
 FROM orders
 GROUP BY 1
-HAVING COUNT(*) > 1) as order_approved_dupes
+HAVING COUNT(*) > 1) AS order_approved_dupes
 
 SELECT COUNT(*)
 FROM (SELECT order_delivered_carrier_date
 FROM orders
 GROUP BY 1
-HAVING COUNT(*) > 1) as order_del_carrier_dupes
+HAVING COUNT(*) > 1) AS order_del_carrier_dupes
 
 SELECT COUNT(*)
 FROM (SELECT order_delivered_customer_date
 FROM orders
 GROUP BY 1
-HAVING COUNT(*) > 1) as order_del_customer_dupes
+HAVING COUNT(*) > 1) AS order_del_customer_dupes
 
 SELECT COUNT(*)
 FROM (SELECT order_estimated_delivery_date
 FROM orders
 GROUP BY 1
-HAVING COUNT(*) > 1) as order_estimated_del_dupes
+HAVING COUNT(*) > 1) AS order_estimated_del_dupes
 
 SELECT COUNT(*)
 FROM (SELECT order_month_year
 FROM orders
 GROUP BY 1
-HAVING COUNT(*) > 1) as order_month_year_dupes
+HAVING COUNT(*) > 1) AS order_month_year_dupes
 
 /*
 There are no duplicate rows, order_ids or customer_ids
@@ -253,7 +253,7 @@ OR order_month_year IS NULL;
 
 /*
 There are 2980 rows that contain Null values
-The breakdown of Null values by column is as follows:
+The breakdown of Null values by column is AS follows:
 order_id: 2980
 customer_id: 2980
 order_status: 2980
@@ -289,43 +289,43 @@ SELECT COUNT(*)
 FROM (SELECT order_id
 FROM items
 GROUP BY 1
-HAVING COUNT(*) > 1) as item_order_id_dupes
+HAVING COUNT(*) > 1) AS item_order_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT order_item_id
 FROM items
 GROUP BY 1
-HAVING COUNT(*) > 1) as item_order_item_dupes
+HAVING COUNT(*) > 1) AS item_order_item_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_id
 FROM items
 GROUP BY 1
-HAVING COUNT(*) > 1) as item_product_id_dupes
+HAVING COUNT(*) > 1) AS item_product_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT seller_id
 FROM items
 GROUP BY 1
-HAVING COUNT(*) > 1) as item_seller_id_dupes
+HAVING COUNT(*) > 1) AS item_seller_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT shipping_LIMIT_date
 FROM items
 GROUP BY 1
-HAVING COUNT(*) > 1) as item_ship_limit_dupes
+HAVING COUNT(*) > 1) AS item_ship_limit_dupes
 
 SELECT COUNT(*)
 FROM (SELECT price
 FROM items
 GROUP BY 1
-HAVING COUNT(*) > 1) as item_price_dupes
+HAVING COUNT(*) > 1) AS item_price_dupes
 
 SELECT COUNT(*)
 FROM (SELECT freight_value
 FROM items
 GROUP BY 1
-HAVING COUNT(*) > 1) as item_freight_dupes
+HAVING COUNT(*) > 1) AS item_freight_dupes
 
 /*
 order_id has 9,803 duplicate values
@@ -398,43 +398,43 @@ SELECT COUNT(*)
 FROM (SELECT *
 FROM customers
 GROUP BY 1
-HAVING COUNT(*) > 1) as customer_dupes
+HAVING COUNT(*) > 1) AS customer_dupes
 
 SELECT COUNT(*)
 FROM (SELECT customer_id
 FROM customers
 GROUP BY 1
-HAVING COUNT(*) > 1) as cust_customer_id_dupes
+HAVING COUNT(*) > 1) AS cust_customer_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT customer_unique_id
 FROM customers
 GROUP BY 1
-HAVING COUNT(*) > 1) as cust_customer_unique_dupes
+HAVING COUNT(*) > 1) AS cust_customer_unique_dupes
 
 SELECT COUNT(*)
 FROM (SELECT customer_zip_code_prefix
 FROM customers
 GROUP BY 1
-HAVING COUNT(*) > 1) as cust_customer_zip_dupes
+HAVING COUNT(*) > 1) AS cust_customer_zip_dupes
 
 SELECT COUNT(*)
 FROM (SELECT customer_city
 FROM customers
 GROUP BY 1
-HAVING COUNT(*) > 1) as cust_customer_city_dupes
+HAVING COUNT(*) > 1) AS cust_customer_city_dupes
 
 SELECT COUNT(*)
 FROM (SELECT customer_state
 FROM customers
 GROUP BY 1
-HAVING COUNT(*) > 1) as cust_customer_state_dupes
+HAVING COUNT(*) > 1) AS cust_customer_state_dupes
 
 SELECT COUNT(*)
 FROM (SELECT customer_city_state
 FROM customers
 GROUP BY 1
-HAVING COUNT(*) > 1) as cust_customer_city_state_dupes
+HAVING COUNT(*) > 1) AS cust_customer_city_state_dupes
 
 /*
 There are no duplicate rows
@@ -508,37 +508,37 @@ SELECT COUNT(*)
 FROM (SELECT geolocation_zip_code_prefix
 FROM geolocation
 GROUP BY 1
-HAVING COUNT(*) > 1) as geolocation_zip_dupes
+HAVING COUNT(*) > 1) AS geolocation_zip_dupes
 
 SELECT COUNT(*)
 FROM (SELECT geolocation_lat
 FROM geolocation
 GROUP BY 1
-HAVING COUNT(*) > 1) as geolocation_lat_dupes
+HAVING COUNT(*) > 1) AS geolocation_lat_dupes
 
 SELECT COUNT(*)
 FROM (SELECT geolocation_lng
 FROM geolocation
 GROUP BY 1
-HAVING COUNT(*) > 1) as geolocation_lng_dupes
+HAVING COUNT(*) > 1) AS geolocation_lng_dupes
 
 SELECT COUNT(*)
 FROM (SELECT geolocation_city
 FROM geolocation
 GROUP BY 1
-HAVING COUNT(*) > 1) as geolocation_city_dupes
+HAVING COUNT(*) > 1) AS geolocation_city_dupes
 
 SELECT COUNT(*)
 FROM (SELECT geolocation_state
 FROM geolocation
 GROUP BY 1
-HAVING COUNT(*) > 1) as geolocation_state_dupes
+HAVING COUNT(*) > 1) AS geolocation_state_dupes
 
 SELECT COUNT(*)
 FROM (SELECT geolocation_city_state
 FROM geolocation
 GROUP BY 1
-HAVING COUNT(*) > 1) as geolocation_city_state_dupes
+HAVING COUNT(*) > 1) AS geolocation_city_state_dupes
 
 
 /*
@@ -592,37 +592,37 @@ SELECT COUNT(*)
 FROM (SELECT order_id
 FROM payments
 GROUP BY 1
-HAVING COUNT(*) > 1) as payment_order_id_dupes
+HAVING COUNT(*) > 1) AS payment_order_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT payment_sequential
 FROM payments
 GROUP BY 1
-HAVING COUNT(*) > 1) as payment_sequential_dupes
+HAVING COUNT(*) > 1) AS payment_sequential_dupes
 
 SELECT COUNT(*)
 FROM (SELECT payment_type
 FROM payments
 GROUP BY 1
-HAVING COUNT(*) > 1) as payment_type_dupes
+HAVING COUNT(*) > 1) AS payment_type_dupes
 
 SELECT COUNT(*)
 FROM (SELECT payment_installments
 FROM payments
 GROUP BY 1
-HAVING COUNT(*) > 1) as payment_installments_dupes
+HAVING COUNT(*) > 1) AS payment_installments_dupes
 
 SELECT COUNT(*)
 FROM (SELECT payment_value
 FROM payments
 GROUP BY 1
-HAVING COUNT(*) > 1) as payment_value_dupes
+HAVING COUNT(*) > 1) AS payment_value_dupes
 
 /*
 There are 2961 order_ids with multiple payments associated
 Multiple customers have paid in 26 FOPs
 Multiple customers have paid using all FOPs
-Multiple customers have paid in as many as 22 payment payment installments
+Multiple customers have paid in AS many AS 22 payment payment installments
 15,978 payments have identical values
 */
 
@@ -670,49 +670,49 @@ SELECT COUNT(*)
 FROM (SELECT review_id
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as review_id_dupes
+HAVING COUNT(*) > 1) AS review_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT order_id
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as review_order_id_dupes
+HAVING COUNT(*) > 1) AS review_order_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT review_score
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as review_score_dupes
+HAVING COUNT(*) > 1) AS review_score_dupes
 
 SELECT COUNT(*)
 FROM (SELECT review_comment_title
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as review_title_dupes
+HAVING COUNT(*) > 1) AS review_title_dupes
 
 SELECT COUNT(*)
 FROM (SELECT review_comment_message
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as review_message_dupes
+HAVING COUNT(*) > 1) AS review_message_dupes
 
 SELECT COUNT(*)
 FROM (SELECT review_creation_date
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as review_creation_dupes
+HAVING COUNT(*) > 1) AS review_creation_dupes
 
 SELECT COUNT(*)
 FROM (SELECT review_answer_timestamp
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as review_answer_dupes
+HAVING COUNT(*) > 1) AS review_answer_dupes
 
 SELECT COUNT(*)
 FROM (SELECT review_response_time
 FROM reviews
 GROUP BY 1
-HAVING COUNT(*) > 1) as review_response_dupes
+HAVING COUNT(*) > 1) AS review_response_dupes
 
 /*
 There are 789 duplicate review_ids
@@ -765,61 +765,61 @@ SELECT COUNT(*)
 FROM (SELECT *
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as products_dupes
+HAVING COUNT(*) > 1) AS products_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_id
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as product_id_dupes
+HAVING COUNT(*) > 1) AS product_id_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_category_name
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as product_cat_name_dupes
+HAVING COUNT(*) > 1) AS product_cat_name_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_name_length
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as product_name_length_dupes
+HAVING COUNT(*) > 1) AS product_name_length_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_description_length
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as product_desc_length_dupes
+HAVING COUNT(*) > 1) AS product_desc_length_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_photos_qty
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as product_photos_qty_dupes
+HAVING COUNT(*) > 1) AS product_photos_qty_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_weight_g
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as product_weight_g_dupes
+HAVING COUNT(*) > 1) AS product_weight_g_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_length_cm
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as product_length_cm_dupes
+HAVING COUNT(*) > 1) AS product_length_cm_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_height_cm
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as product_height_cm_dupes
+HAVING COUNT(*) > 1) AS product_height_cm_dupes
 
 SELECT COUNT(*)
 FROM (SELECT product_width_cm
 FROM products
 GROUP BY 1
-HAVING COUNT(*) > 1) as product_width_cm_dupes
+HAVING COUNT(*) > 1) AS product_width_cm_dupes
 
 /*
 There are no duplicate rows or product_ids

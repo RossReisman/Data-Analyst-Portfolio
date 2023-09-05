@@ -8,19 +8,19 @@ Step 5: EDA
 --Check unique values
 SELECT COUNT(*)
 FROM (SELECT DISTINCT seller_id
-FROM sellers) as distinct_id;
+FROM sellers) AS distinct_id;
 
 SELECT COUNT(*)
 FROM (SELECT DISTINCT seller_zip_code_prefix
-FROM sellers) as distinct_zip;
+FROM sellers) AS distinct_zip;
 
 SELECT COUNT(*)
 FROM (SELECT DISTINCT seller_city
-FROM sellers) as distinct_city;
+FROM sellers) AS distinct_city;
 
 SELECT COUNT(*)
 FROM (SELECT DISTINCT seller_state
-FROM sellers) as distinct_state;
+FROM sellers) AS distinct_state;
 
 SELECT COUNT(*)
 FROM (SELECT DISTINCT seller_city_state
@@ -33,14 +33,14 @@ There are 611 unique seller cities
 There are 23 unique seller states
 There are 636 unique city states
 
-Discrepancy between unique cities and city/states
+Discrepancy BETWEEN unique cities and city/states
 may be due to multiple cities sharing a name
 */
 
 SELECT DISTINCT seller_city
 FROM sellers
-Group by 1
-order by 1
+GROUP BY 1
+ORDER BY 1
 
 /*
 Cities to be cleaned:
@@ -76,9 +76,9 @@ Rio De Janeiro
 
 5b: Product Categories
 
-select * from categories
-group by 1
-order by 1
+SELECT * FROM categories
+GROUP BY 1
+ORDER BY 1
 
 /*
 "costruction_tools_garden"
@@ -91,15 +91,15 @@ order by 1
 
 5c: Orders
 
-select * from orders
+SELECT * FROM orders
 
-select distinct(order_status)
-from orders
+SELECT DISTINCT(order_status)
+FROM orders
 
-select order_status, count(order_status) as count
-from orders
-group by 1
-order by 2 desc
+SELECT order_status, COUNT(order_status) AS count
+FROM orders
+GROUP BY 1
+ORDER BY 2 desc
 
 /*
 "delivered"	  96,478
@@ -112,19 +112,19 @@ order by 2 desc
 "approved"	  2
 */
 
-select min(order_purchase_timestamp),
-max(order_purchase_timestamp)
-from orders
+SELECT MIN(order_purchase_timestamp),
+MAX(order_purchase_timestamp)
+FROM orders
 
 /*
 Data begins on 2016-09-04 21:15:19
 and ends on 2018-10-17 17:30:18
 */
 
-select order_month_year, count(order_month_year)
-from orders
-group by 1
-order by 1
+SELECT order_month_year, COUNT(order_month_year)
+FROM orders
+GROUP BY 1
+ORDER BY 1
 
 /*
 Count of orders by month:
@@ -156,11 +156,11 @@ Count of orders by month:
 "2018-10-01 00:00:00"	4
 */
 
-select order_month_year,
-avg(order_delivered_customer_date - order_delivered_carrier_date)
-from orders
-group by 1
-order by 1
+SELECT order_month_year,
+AVG(order_delivered_customer_date - order_delivered_carrier_date)
+FROM orders
+GROUP BY 1
+ORDER BY 1
 
 /*
 Average delivery time by month:
@@ -194,18 +194,18 @@ Average delivery time by month:
 
 5d: Items
 
-select * from items;
+SELECT * FROM items;
 
-select distinct(order_item_id)
-from items
-order by 1
+SELECT DISTINCT(order_item_id)
+FROM items
+ORDER BY 1
 
---Orders have as many as 21 items in a single order
+--Orders have AS many AS 21 items in a single order
 
-select order_item_id, count(order_item_id)
-from items
-group by 1
-order by 1
+SELECT order_item_id, COUNT(order_item_id)
+FROM items
+GROUP BY 1
+ORDER BY 1
 
 /*
 Count of number of items in an order (includes duplicates)
@@ -236,7 +236,7 @@ Count of number of items in an order (includes duplicates)
 --Most orders have fewer than 4 items per order
 
 SELECT 'average',
-	ROUND(AVG(order_item_id),2) AS avg_num_items
+	ROUND(AVG(order_item_id),2) AS AVG_num_items
 FROM items
 UNION
 SELECT 'MIN',
@@ -246,8 +246,8 @@ UNION
 SELECT 'MAX',
 	MAX(order_item_id) AS max_num_items
 FROM items
-group by 1
-order by 1
+GROUP BY 1
+ORDER BY 1
 
 /*
 "MAX"	21
@@ -280,28 +280,28 @@ FROM items
 
 --Most orders have 1 item.
 
-select order_id, max(order_item_id), price,
-case
-	when max(price) < 100 then '0-100'
-	when max(price) between 101 and 250 then '101-250'
-	when max(price) between 250 and 750 then '250-750'
-	when max(price) between 250 and 750 then '250-750'
-	when max(price) between 750 and 1250 then '750-1250'
-	when max(price) between 1250 and 2000 then '1250-2000'
+SELECT order_id, MAX(order_item_id), price,
+CASE
+	WHEN MAX(price) < 100 THEN '0-100'
+	WHEN MAX(price) BETWEEN 101 AND 250 THEN '101-250'
+	WHEN MAX(price) BETWEEN 250 AND 750 THEN '250-750'
+	WHEN MAX(price) BETWEEN 250 AND 750 THEN '250-750'
+	WHEN MAX(price) BETWEEN 750 AND 1250 THEN '750-1250'
+	WHEN MAX(price) BETWEEN 1250 AND 2000 THEN '1250-2000'
 else '2000+'
-end as buckets
-from items
-group by 1, 3
+end AS buckets
+FROM items
+GROUP BY 1, 3
 
 --The max function ensures only one price is returned per order
 
 --Bins of prices
-select
-floor(price/100) * 10 as buckets,
-count(*)
-from items
-group by 1
-order by 1, 2
+SELECT
+FLOOR(price/100) * 10 AS buckets,
+COUNT(*)
+FROM items
+GROUP BY 1
+ORDER BY 1, 2
 
 /*
 Count of bin membership:
@@ -373,7 +373,7 @@ UNION
 SELECT 'Max',
 MAX(price) AS price_max
 FROM items
-order by 1
+ORDER BY 1
 
 /*
 "25%"	39.9
@@ -403,7 +403,7 @@ UNION
 SELECT 'Max',
 MAX(freight_value)
 FROM items
-order by 1
+ORDER BY 1
 
 /*
 "25%"	13.08
@@ -415,29 +415,29 @@ order by 1
 
 5e: Customers
 
-select * from customers;
+SELECT * FROM customers;
 
 
 --Check unique values
 SELECT COUNT(*)
 FROM (SELECT DISTINCT customer_unique_id
-FROM customers) as distinct_id;
+FROM customers) AS distinct_id;
 
 SELECT COUNT(*)
 FROM (SELECT DISTINCT customer_zip_code_prefix
-FROM customers) as distinct_zip;
+FROM customers) AS distinct_zip;
 
 SELECT COUNT(*)
 FROM (SELECT DISTINCT customer_city
-FROM customers) as distinct_city;
+FROM customers) AS distinct_city;
 
 SELECT COUNT(*)
 FROM (SELECT DISTINCT customer_state
-FROM customers) as distinct_state;
+FROM customers) AS distinct_state;
 
 SELECT COUNT(*)
 FROM (SELECT DISTINCT customer_city_state
-FROM customers) as distinct_city_state;
+FROM customers) AS distinct_city_state;
 
 /*
 There are 96,096 unique customers
@@ -446,21 +446,21 @@ There are 4,119 unique customer cities
 There are 27 unique customer states
 There are 4,310 unique customer city/states
 
-Discrepancy between unique cities and city/states
+Discrepancy BETWEEN unique cities and city/states
 is confirmed due to multiple cities sharing a name
 */
 
 SELECT DISTINCT customer_city
 FROM customers
-Group by 1
-order by 1
+GROUP BY 1
+ORDER BY 1
 
 /*
 Cities to be cleaned:
 "Arraial D'Ajuda"
 "Dias D'Avila"
 
-Looks like cities with "D'" appear both as "D' and D "
+Looks like cities with "D'" appear both AS "D' and D "
 */
 
 SELECT DISTINCT customer_city
@@ -471,7 +471,7 @@ WHERE customer_city LIKE 'D%'
 
 5f: Geolocation
 
-select * from geolocation;
+SELECT * FROM geolocation;
 
 SELECT DISTINCT geolocation_city
 FROM geolocation
@@ -498,28 +498,28 @@ More
 --Check unique values
 SELECT COUNT(*)
 FROM (SELECT DISTINCT geolocation_city
-FROM geolocation) as distinct_city;
+FROM geolocation) AS distinct_city;
 
 SELECT COUNT(*)
 FROM (SELECT DISTINCT geolocation_state
-FROM geolocation) as distinct_state;
+FROM geolocation) AS distinct_state;
 
 SELECT COUNT(*)
 FROM (SELECT DISTINCT geolocation_city_state
-FROM geolocation) as distinct_city_state;
+FROM geolocation) AS distinct_city_state;
 
 /*
 There are 8,011 unique geolocation cities
 There are 27 unique geolocation states
 There are 8,463 unique geolocation city/states
 
-Discrepancy between unique cities and city/states
+Discrepancy BETWEEN unique cities and city/states
 is confirmed due to multiple cities sharing a name
 */
 
 5g: Payments
 
-select * from payments;
+SELECT * FROM payments;
 
 --interquartile range for payment sequential (number of FOPs)
 SELECT '25%',
@@ -541,7 +541,7 @@ UNION
 SELECT 'Max',
 MAX(payment_sequential)
 FROM payments
-order by 1
+ORDER BY 1
 
 /*
 "25%"	1
@@ -551,12 +551,12 @@ order by 1
 "Max"	29
 */
 
---Over 95% of customers pay with one FOP, some pay with as many as 29
+--Over 95% of customers pay with one FOP, some pay with AS many AS 29
 
-SELECT distinct payment_sequential, count(payment_sequential)
-from payments
-group by 1
-order by 2 desc
+SELECT distinct payment_sequential, COUNT(payment_sequential)
+FROM payments
+GROUP BY 1
+ORDER BY 2 desc
 
 /*
 1	99360
@@ -591,9 +591,9 @@ order by 2 desc
 */
 
 --Check unique payment types
-SELECT distinct payment_type
-from payments
-order by 1
+SELECT DISTINCT payment_type
+FROM payments
+ORDER BY 1
 
 /*
 "boleto"
@@ -603,10 +603,10 @@ order by 1
 "voucher"
 */
 
-SELECT payment_type, count(payment_type)
-from payments
-group by 1
-order by 2 desc
+SELECT payment_type, COUNT(payment_type)
+FROM payments
+GROUP BY 1
+ORDER BY 2 desc
 
 /*
 "credit_card"	76795
@@ -617,10 +617,10 @@ order by 2 desc
 */
 
 --Count of number of payment installments
-SELECT payment_installments, count(payment_installments)
-from payments
-group by 1
-order by 2 desc
+SELECT payment_installments, COUNT(payment_installments)
+FROM payments
+GROUP BY 1
+ORDER BY 2 desc
 
 /*
 1	52546
@@ -649,7 +649,7 @@ order by 2 desc
 23	1
 
 Most customers pay in 4 or fewer installments
-but some in as many as 10 and a few in as many as 24
+but some in AS many AS 10 and a few in AS many AS 24
 */
 
 --interquartile range for payment values
@@ -672,7 +672,7 @@ UNION
 SELECT 'Max',
 MAX(payment_value)
 FROM payments
-order by 1
+ORDER BY 1
 
 /*
 "25%"	56.79
@@ -687,7 +687,7 @@ order by 1
 
 5h: Reviews
 
-select * from reviews
+SELECT * FROM reviews
 
 --interquartile range of review scores
 SELECT '25%',
@@ -709,7 +709,7 @@ UNION
 SELECT 'Max',
 MAX(review_score)
 FROM reviews
-order by 1
+ORDER BY 1
 
 /*
 "25%"	4
@@ -743,7 +743,7 @@ UNION
 SELECT 'Max',
 MAX(review_response_time)
 FROM reviews
-order by 1
+ORDER BY 1
 
 /*
 "25%"	"1 day 00:07:00.75"
@@ -757,24 +757,24 @@ Most reviews are responded to in less than a week
 
 
 --Check number of rows in reviews table
-SELECT count(*)
-from reviews
+SELECT COUNT(*)
+FROM reviews
 
 --99224 reviews
 
 --Check number of reviews with a title
-SELECT count(review_comment_title)
-from reviews
-where review_comment_title IS NOT NULL
+SELECT COUNT(review_comment_title)
+FROM reviews
+WHERE review_comment_title IS NOT NULL
 
 --11568 reviews
 
 --Top 20 review titles
-SELECT review_comment_title, count(review_comment_title)
-from reviews
-group by 1
-order by 2 desc
-limit 20
+SELECT review_comment_title, COUNT(review_comment_title)
+FROM reviews
+GROUP BY 1
+ORDER BY 2 desc
+LIMIT 20
 
 /*
 "Recomendo"	423
@@ -803,17 +803,17 @@ limit 20
 
 5i: Products
 
-SELECT * from products
+SELECT * FROM products
 
-SELECT count(distinct product_category_name)
-from products
-order by 1
+SELECT COUNT(DISTINCT product_category_name)
+FROM products
+ORDER BY 1
 
 --There are 73 unique product categories
 
-SELECT distinct(product_category_name)
-from products
-order by 1
+SELECT DISTINCT(product_category_name)
+FROM products
+ORDER BY 1
 
 /*
 "Agro_Industria_E_Comercio"
@@ -911,7 +911,7 @@ UNION
 SELECT 'Max',
 MAX(product_description_length)
 FROM products
-order by 1
+ORDER BY 1
 
 /*
 "25%"	339
@@ -941,7 +941,7 @@ UNION
 SELECT 'Max',
 MAX(product_photos_qty)
 FROM products
-order by 1
+ORDER BY 1
 
 /*
 "25%"	1
