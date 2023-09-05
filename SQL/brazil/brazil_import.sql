@@ -1,6 +1,8 @@
 Brazil E-Commerce Data Cleaning and Analysis
 Data from https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
-Skills Used:
+Skills Used: CREATE, COPY, ALTER, UPDATE, SET, SELECT, WHERE, AND, OR, IS, NULL,
+INTERVAL, LIKE/NOT LIKE, MIN/MAX, DISTINCT, BETWEEN,
+GROUP BY, HAVING, ORDER BY, COUNT, AVG, ALIAS, LIMIT, UNION.
 
 Step 1: Create Tables
 
