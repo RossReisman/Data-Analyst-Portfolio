@@ -22,3 +22,22 @@ CREATE TABLE damage (
 	event_timestamp TIMESTAMP,
 	damage_taken INT
 )
+
+/*
+Remember that PSQL commands are written on one line
+Written on multiple lines here for ease of reading
+*/
+\COPY public.login(user_id, event_timestamp)
+FROM '/Users/raws/Documents/GitHub/portfolio/SQL/player_data/login_df.csv'
+DELIMITER ','
+CSV HEADER;
+
+\COPY public.logout(user_id, event_timestamp)
+FROM '/Users/raws/Documents/GitHub/portfolio/SQL/player_data/logout_df.csv'
+DELIMITER ','
+CSV HEADER;
+
+\COPY public.damage(user_id, event_timestamp, damage_taken)
+FROM '/Users/raws/Documents/GitHub/portfolio/SQL/player_data/damage_df.csv'
+DELIMITER ','
+CSV HEADER;
