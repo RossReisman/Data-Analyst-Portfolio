@@ -27,6 +27,7 @@ CREATE TABLE damage (
 Remember that PSQL commands are written on one line
 Written on multiple lines here for ease of reading
 */
+
 \COPY public.login(user_id, event_timestamp)
 FROM '/Users/raws/Documents/GitHub/portfolio/SQL/player_data/login_df.csv'
 DELIMITER ','
@@ -41,3 +42,24 @@ CSV HEADER;
 FROM '/Users/raws/Documents/GitHub/portfolio/SQL/player_data/damage_df.csv'
 DELIMITER ','
 CSV HEADER;
+
+ALTER TABLE login
+ADD PRIMARY KEY (user_id)
+
+ALTER TABLE logout
+ADD PRIMARY KEY (user_id)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+blank space baby
