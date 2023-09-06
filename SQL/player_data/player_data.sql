@@ -7,28 +7,18 @@ ORDER BY, COUNT, AVG, ALIAS, LIMIT, UNION, FLOOR.
 
 Step 1: Create Tables
 
-CREATE TABLE customers (
-	customer_id TEXT,
-	customer_unique_id TEXT,
-	customer_zip_code_prefix INT,
-	customer_city TEXT,
-	customer_state TEXT
+CREATE TABLE login (
+	user_id TEXT,
+	event_timestamp TIMESTAMP
 )
 
-CREATE TABLE orders (
-	order_id TEXT,
-	customer_id TEXT,
-	order_status TEXT,
-	order_purchase_timestamp TIMESTAMP,
-	order_approved_at TIMESTAMP,
-	order_delivered_carrier_date TIMESTAMP,
-	order_delivered_customer_date TIMESTAMP,
-	order_estimated_delivery_date TIMESTAMP
+CREATE TABLE logout (
+	user_id TEXT,
+	event_timestamp TIMESTAMP
 )
 
-CREATE TABLE sellers (
-	seller_id TEXT,
-	seller_zip_code_prefix INT,
-	seller_city TEXT,
-	seller_state TEXT
+CREATE TABLE damage (
+	user_id TEXT,
+	event_timestamp TIMESTAMP,
+	damage_taken INT
 )
