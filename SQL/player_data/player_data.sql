@@ -97,6 +97,10 @@ WHERE table_name='logout';
 "Number of columns"	2
 "Number of rows"	10
 
+select * from logout;
+
+--There are 10 user_ids and 10 event_timestamps
+
 --Check for duplicates
 select count(*)
 from (select *
@@ -120,6 +124,39 @@ SELECT 'Number of columns',
 COUNT(column_name)
 FROM information_schema.columns
 WHERE table_name='damage';
+
+"Number of columns"	3
+"Number of rows"	40
+
+select * from damage;
+
+--There are 40 rows of user_id, event_timestamp, and damage_taken
+
+alter table logout
+add total_time_played interval;
+update logout
+set total_time_played = logout.event_timestamp - login.event_timestamp from login
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
