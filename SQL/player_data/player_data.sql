@@ -137,6 +137,7 @@ add total_time_played NOT interval;
 update logout
 set total_time_played = logout.event_timestamp - login.event_timestamp from login
 
+USE CTE??
 
 
 
