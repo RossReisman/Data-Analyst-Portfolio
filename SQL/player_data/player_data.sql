@@ -49,7 +49,38 @@ ADD PRIMARY KEY (user_id)
 ALTER TABLE logout
 ADD PRIMARY KEY (user_id)
 
+Step 2: EDA
 
+--Get rows and columns
+SELECT 'Number of rows',
+COUNT(*)
+FROM sellers
+UNION
+SELECT 'Number of columns',
+COUNT(column_name)
+FROM information_schema.columns
+WHERE table_name='sellers';
+
+"Number of columns"	2
+"Number of rows"	10
+
+
+select * from login;
+
+--There are 10 user_ids and 10 event_timestamps
+
+--Check for duplicates
+select count(*)
+from (select *
+from login
+group by 1
+having count(*) > 1) as login_dupes
+
+select count(*)
+from (select user_id
+from login
+group by 1
+having count(*) > 1) as user_dupes
 
 
 
