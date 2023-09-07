@@ -133,7 +133,7 @@ select * from damage;
 --There are 40 rows of user_id, event_timestamp, and damage_taken
 
 alter table logout
-add total_time_played interval;
+add total_time_played NOT interval;
 update logout
 set total_time_played = logout.event_timestamp - login.event_timestamp from login
 
