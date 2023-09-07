@@ -51,7 +51,7 @@ ADD PRIMARY KEY (user_id)
 
 Step 2: EDA
 
---Get rows and columns
+--Get rows and columns for login
 SELECT 'Number of rows',
 COUNT(*)
 FROM sellers
@@ -82,14 +82,44 @@ from login
 group by 1
 having count(*) > 1) as user_dupes
 
+--There are no duplicate values
 
+--Get rows and columns for logout
+SELECT 'Number of rows',
+COUNT(*)
+FROM logout
+UNION
+SELECT 'Number of columns',
+COUNT(column_name)
+FROM information_schema.columns
+WHERE table_name='logout';
 
+"Number of columns"	2
+"Number of rows"	10
 
+--Check for duplicates
+select count(*)
+from (select *
+from logout
+group by 1
+having count(*) > 1) as logout_dupes
 
+select count(*)
+from (select user_id
+from logout
+group by 1
+having count(*) > 1) as user_dupes
 
+--There are no duplicate values
 
-
-
+SELECT 'Number of rows',
+COUNT(*)
+FROM damage
+UNION
+SELECT 'Number of columns',
+COUNT(column_name)
+FROM information_schema.columns
+WHERE table_name='damage';
 
 
 
