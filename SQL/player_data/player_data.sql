@@ -192,7 +192,7 @@ ORDER BY 2 DESC
 
 --what was the average damage taken per player
 
-SELECT user_id AS player, ROUND(avg(damage_taken),2) AS average_damage
+SELECT user_id AS player, ROUND(AVG(damage_taken),2) AS average_damage
 FROM damage
 GROUP BY 1
 ORDER BY 2 DESC
@@ -209,12 +209,14 @@ ORDER BY 2 DESC
 
 --what player died the most/least? (3 damage = 1 death)
 
-alter table damage
-add num_deaths int;
-update damage
-set num_deaths = floor(damage_taken/3)
+ALTER TABLE damage
+ADD num_deaths INT;
+UPDATE damage
+SET num_deaths = floor(damage_taken/3)
 
-SELECT user_id AS player, SUM(num_deaths)
+SELECT
+	user_id AS player,
+	SUM(num_deaths) AS num_deaths
 FROM damage
 GROUP BY 1
 ORDER BY 2 DESC
@@ -232,8 +234,8 @@ ORDER BY 2 DESC
 
 SELECT
 	user_id,
-	SUM(num_deaths),
-	COUNT(user_id),
+	SUM(num_deaths) AS num_deaths,
+	COUNT(user_id) AS num_games,
 	ROUND(cast(SUM(num_deaths) AS decimal) / COUNT(user_id),2) AS avg_deaths
 FROM damage
 GROUP BY 1
