@@ -49,6 +49,12 @@ ADD PRIMARY KEY (user_id)
 ALTER TABLE logout
 ADD PRIMARY KEY (user_id)
 
+alter table login
+rename column event_timestamp to login
+
+alter table logout
+rename column event_timestamp to logout
+
 Step 2: EDA
 
 --Get rows and columns for login
@@ -132,12 +138,30 @@ select * from damage;
 
 --There are 40 rows of user_id, event_timestamp, and damage_taken
 
-alter table logout
-add total_time_played NOT interval;
-update logout
-set total_time_played = logout.event_timestamp - login.event_timestamp from login
+Step 3: Data Questions
 
-USE CTE??
+--Which player played the longest?
+
+SELECT
+	f.user_id,
+	f.login,
+	l.logout,
+EXTRACT(epoch FROM (logout - login)) AS player_lifetime
+FROM login f
+JOIN logout l
+ON f.user_id = l.user_id
+ORDER BY player_lifetime DESC
+
+"d5a0c8e2f"	"2023-08-13 14:29:05"	"2023-08-26 10:49:03"	1109998
+"a3e7b4c0d9"	"2023-08-16 11:10:55"	"2023-08-26 07:59:06"	852491
+"7d1b0e6f4a"	"2023-08-18 16:55:10"	"2023-08-26 09:15:37"	663627
+"1b6f3e9d7c"	"2023-08-20 22:18:47"	"2023-08-26 02:14:28"	446141
+"c4d9a2b8e"	"2023-08-22 05:37:15"	"2023-08-26 08:37:50"	356435
+"f6b2d8a5c"	"2023-08-22 18:09:50"	"2023-08-26 11:33:22"	321812
+"8e0c7b5f1d"	"2023-08-22 18:09:50"	"2023-08-26 04:56:12"	297982
+"9e4c1f7b3a"	"2023-08-23 07:02:33"	"2023-08-26 06:10:45"	256092
+"2f9c6e8d1b"	"2023-08-24 03:37:28"	"2023-08-26 01:28:54"	165086
+"b5a8c3f9e2"	"2023-08-25 09:23:42"	"2023-08-26 03:42:18"	65916
 
 
 
