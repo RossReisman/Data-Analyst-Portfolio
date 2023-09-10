@@ -65,12 +65,14 @@ rename column event_timestamp to logout
 Step 2: EDA
 
 --Get rows and columns for login
-SELECT 'Number of rows',
-COUNT(*)
+SELECT
+	'Number of rows',
+	COUNT(*)
 FROM sellers
 UNION
-SELECT 'Number of columns',
-COUNT(column_name)
+SELECT
+	'Number of columns',
+	COUNT(column_name)
 FROM information_schema.columns
 WHERE table_name='sellers';
 
@@ -78,22 +80,22 @@ WHERE table_name='sellers';
 "Number of rows"	10
 
 
-select * from login;
+SELECT * FROM login;
 
 --There are 10 user_ids and 10 event_timestamps
 
 --Check for duplicates
-select count(*)
-from (select *
-from login
-group by 1
-having count(*) > 1) as login_dupes
+SELECT COUNT(*)
+FROM (SELECT *
+FROM login
+GROUP BY 1
+HAVING COUNT(*) > 1) AS login_dupes
 
-select count(*)
-from (select user_id
-from login
-group by 1
-having count(*) > 1) as user_dupes
+SELECT COUNT(*)
+FROM (SELECT user_id
+FROM login
+GROUP BY 1
+HAVING COUNT(*) > 1) AS user_dupes
 
 --There are no duplicate values
 
@@ -110,22 +112,22 @@ WHERE table_name='logout';
 "Number of columns"	2
 "Number of rows"	10
 
-select * from logout;
+SELECT * FROM logout;
 
 --There are 10 user_ids and 10 event_timestamps
 
 --Check for duplicates
-select count(*)
-from (select *
-from logout
-group by 1
-having count(*) > 1) as logout_dupes
+SELECT COUNT(*)
+FROM (SELECT *
+FROM logout
+GROUP BY 1
+HAVING COUNT(*) > 1) AS logout_dupes
 
-select count(*)
-from (select user_id
-from logout
-group by 1
-having count(*) > 1) as user_dupes
+SELECT COUNT(*)
+FROM (SELECT user_id
+FROM logout
+GROUP BY 1
+HAVING COUNT(*) > 1) AS user_dupes
 
 --There are no duplicate values
 
@@ -141,7 +143,7 @@ WHERE table_name='damage';
 "Number of columns"	3
 "Number of rows"	40
 
-select * from damage;
+SELECT * FROM damage;
 
 --There are 40 rows of user_id, event_timestamp, and damage_taken
 
@@ -172,10 +174,10 @@ ORDER BY player_lifetime DESC
 
 -- How much damage did each player take in total?
 
-SELECT user_id as player, sum(damage_taken) as total_damage
+SELECT user_id AS player, SUM(damage_taken) AS total_damage
 FROM damage
-group by 1
-order by 2 desc
+GROUP BY 1
+ORDER BY 2 DESC
 
 "9e1a3c7f5b"	68
 "8b0e7f3c9a"	64
@@ -190,10 +192,10 @@ order by 2 desc
 
 --what was the average damage taken per player
 
-SELECT user_id as player, round(avg(damage_taken),2) as average_damage
+SELECT user_id AS player, ROUND(avg(damage_taken),2) AS average_damage
 FROM damage
-group by 1
-order by 2 desc
+GROUP BY 1
+ORDER BY 2 DESC
 
 "b6f2d5a8c0"	12.00
 "9e1a3c7f5b"	9.71
@@ -212,10 +214,10 @@ add num_deaths int;
 update damage
 set num_deaths = floor(damage_taken/3)
 
-select user_id as player, sum(num_deaths)
-from damage
-group by 1
-order by 2 desc
+SELECT user_id AS player, SUM(num_deaths)
+FROM damage
+GROUP BY 1
+ORDER BY 2 DESC
 
 "9e1a3c7f5b"	21
 "d7f1e9b2a4"	19
@@ -228,15 +230,11 @@ order by 2 desc
 "a2e4f8c6b0"	2
 "3a5c7e9b1d"	1
 
-
-
-
-
-
-
-
-
-
-
-
-blank space baby
+SELECT
+	user_id,
+	SUM(num_deaths),
+	COUNT(user_id),
+	ROUND(cast(SUM(num_deaths) AS decimal) / COUNT(user_id),2) AS avg_deaths
+FROM damage
+GROUP BY 1
+ORDER BY 2 DESC
