@@ -1,8 +1,7 @@
 Player Data Cleaning and Analysis
 Data randomly generated
-Skills Used: CREATE, COPY, ALTER, UPDATE, SET, SELECT, WHERE, AND, OR, NOT, IS,
-NULL, EPOCH, LIKE/NOT LIKE, MIN/MAX, DISTINCT, BETWEEN, GROUP BY, HAVING,
-ORDER BY, COUNT, AVG, ALIAS, LIMIT, UNION, FLOOR.
+Skills Used: CREATE, COPY, ALTER, UPDATE, SET, SELECT, WHERE, EPOCH, MIN/MAX,
+DISTINCT, GROUP BY, HAVING, ORDER BY, COUNT, AVG, ALIAS, UNION, FLOOR.
 
 /*
 - join the TABLEs to find the total seconds between logins and logouts
