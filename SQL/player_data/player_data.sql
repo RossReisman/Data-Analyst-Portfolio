@@ -1,14 +1,16 @@
 Player Data Cleaning and Analysis
 Data randomly generated
-Skills Used: CREATE, COPY, ALTER, UPDATE, SET, SELECT, WHERE, EPOCH, MIN/MAX,
-DISTINCT, GROUP BY, HAVING, ORDER BY, COUNT, AVG, ALIAS, UNION, FLOOR, CAST AS.
+Skills Used: CREATE, COPY, ALTER, UPDATE, SET, SELECT, WHERE, EXTRACT, CTE,
+GROUP BY, HAVING, ORDER BY, COUNT, AVG, ALIAS, UNION, FLOOR, CAST, CASE.
 
 /*
-- join the tables to find the total seconds between logins and logouts
-- answer "how much damage did each player take in total"
-- what was the average damage taken per player
-- what player died the most/least
-- what time of day do players die the most (lol not really something anyone would ask)
+Data Questions:
+- Join the tables to find the total seconds between logins and logouts
+- Answer "how much damage did each player take in total"
+- What was the average damage taken per player
+- What player died the most/least
+- Which player had the highest average deaths
+- What time of day do players die the most
 */
 
 Step 1: Create Tables
@@ -157,7 +159,7 @@ SELECT * FROM damage;
 
 Step 3: Data Questions
 
---Which player played the longest?
+---- Which player played the longest?
 
 WITH player_time AS (
 	SELECT
@@ -180,19 +182,19 @@ WHERE play_duration >= 0
 ORDER BY 2 DESC;
 
 /*
-"d5a0c8e2f"...12.85...308.33...18499.97...1109998.00
-"a3e7b4c0d9"...9.87...236.80...14208.18...852491.00
-"7d1b0e6f4a"...7.68...184.34...11060.45...663627.00
-"1b6f3e9d7c"...5.16...123.93...7435.68...446141.00
-"c4d9a2b8e"...4.13...99.01...5940.58...356435.00
-"f6b2d8a5c"	...3.72...89.39...5363.53...321812.00
-"8e0c7b5f1d"...3.45...82.77...4966.37...297982.00
-"9e4c1f7b3a"...2.96...71.14...4268.20...256092.00
-"2f9c6e8d1b"...1.91...45.86...2751.43...165086.00
-"b5a8c3f9e2"...0.76...18.31...1098.60...65916.00
+"d5a0c8e2f"	12.85	308.33	18499.97	1109998.00
+"a3e7b4c0d9"	9.87	236.80	14208.18	852491.00
+"7d1b0e6f4a"	7.68	184.34	11060.45	663627.00
+"1b6f3e9d7c"	5.16	123.93	7435.68	446141.00
+"c4d9a2b8e"	4.13	99.01	5940.58	356435.00
+"f6b2d8a5c"	3.72	89.39	5363.53	321812.00
+"8e0c7b5f1d"	3.45	82.77	4966.37	297982.00
+"9e4c1f7b3a"	2.96	71.14	4268.20	256092.00
+"2f9c6e8d1b"	1.91	45.86	2751.43	165086.00
+"b5a8c3f9e2"	0.76	18.31	1098.60	65916.00
 */
 
--- How much damage did each player take in total?
+---- How much damage did each player take in total?
 
 SELECT
 	user_id AS player,
@@ -214,7 +216,7 @@ ORDER BY 2 DESC
 "3a5c7e9b1d"	3
 */
 
---what was the average damage taken per player
+---- what was the average damage taken per player
 
 SELECT
 	user_id AS player,
@@ -235,7 +237,7 @@ ORDER BY 2 DESC
 "3a5c7e9b1d"	3.00
 */
 
---what player died the most/least? (3 damage = 1 death)
+---- what player died the most/least? (3 damage = 1 death)
 
 ALTER TABLE damage
 ADD num_deaths INT;
@@ -262,11 +264,41 @@ ORDER BY 2 DESC
 "3a5c7e9b1d"	1
 */
 
+---- which player had the highest average deaths
+
 SELECT
 	user_id AS player,
-	SUM(num_deaths) AS num_deaths,
-	COUNT(user_id) AS num_games,
 	ROUND(CAST(SUM(num_deaths) AS DECIMAL) / COUNT(user_id),2) AS avg_deaths
 FROM damage
 GROUP BY 1
 ORDER BY 2 DESC
+
+/*
+"b6f2d5a8c0"	4.00
+"9e1a3c7f5b"	3.00
+"8b0e7f3c9a"	2.71
+"d7f1e9b2a4"	2.71
+"4d6a2f8c1e"	2.57
+"c5d8a9f1e2"	2.43
+"a2e4f8c6b0"	2.00
+"e2b9d4a6f8"	2.00
+"3a5c7e9b1d"	1.00
+*/
+
+---- what time of day do players die the most
+
+SELECT
+	CASE
+		WHEN EXTRACT(HOUR FROM event_timestamp) BETWEEN '0' AND '12' THEN 'morning'
+		WHEN EXTRACT(HOUR FROM event_timestamp) BETWEEN '12' AND '18' THEN 'afternoon'
+		ELSE 'evening' END AS time_of_day,
+		COUNT(1) AS count
+FROM damage
+GROUP BY 1
+ORDER BY 1 DESC
+
+/*
+"morning"	23
+"evening"	8
+"afternoon"	9
+*/
