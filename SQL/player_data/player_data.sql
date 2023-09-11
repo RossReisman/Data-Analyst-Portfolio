@@ -1,10 +1,10 @@
 Player Data Cleaning and Analysis
 Data randomly generated
 Skills Used: CREATE, COPY, ALTER, UPDATE, SET, SELECT, WHERE, EPOCH, MIN/MAX,
-DISTINCT, GROUP BY, HAVING, ORDER BY, COUNT, AVG, ALIAS, UNION, FLOOR.
+DISTINCT, GROUP BY, HAVING, ORDER BY, COUNT, AVG, ALIAS, UNION, FLOOR, CAST AS.
 
 /*
-- join the TABLEs to find the total seconds between logins and logouts
+- join the tables to find the total seconds between logins and logouts
 - answer "how much damage did each player take in total"
 - what was the average damage taken per player
 - what player died the most/least
@@ -75,9 +75,10 @@ SELECT
 FROM information_schema.columns
 WHERE table_name='sellers';
 
+/*
 "Number of columns"	2
 "Number of rows"	10
-
+*/
 
 SELECT * FROM login;
 
@@ -110,8 +111,10 @@ SELECT
 FROM information_schema.columns
 WHERE table_name='logout';
 
+/*
 "Number of columns"	2
 "Number of rows"	10
+*/
 
 SELECT * FROM logout;
 
@@ -143,8 +146,10 @@ SELECT
 FROM information_schema.columns
 WHERE table_name='damage';
 
+/*
 "Number of columns"	3
 "Number of rows"	40
+*/
 
 SELECT * FROM damage;
 
@@ -154,27 +159,38 @@ Step 3: Data Questions
 
 --Which player played the longest?
 
+WITH player_time AS (
+	SELECT
+		l1.user_id,
+		l1.login,
+		l2.logout,
+		CAST(EXTRACT(EPOCH FROM (logout - login)) AS DECIMAL) AS play_duration
+	FROM login l1
+	JOIN logout l2
+	ON l1.user_id = l2.user_id
+)
 SELECT
-	f.user_id,
-	f.login,
-	l.logout,
-	EXTRACT(epoch FROM (logout - login)) AS player_lifetime
-FROM login f
-JOIN logout l
-ON f.user_id = l.user_id
-ORDER BY player_lifetime DESC
+	user_id,
+	ROUND((play_duration) / 86400, 2) AS days,
+	ROUND((play_duration) / 3600, 2) AS hours,
+	ROUND((play_duration) / 60, 2) AS minutes,
+	ROUND((play_duration), 2) AS seconds
+FROM player_time
+WHERE play_duration >= 0
+ORDER BY 2 DESC;
 
 /*
-"d5a0c8e2f"	1109998
-"a3e7b4c0d9"	852491
-"7d1b0e6f4a"	663627
-"1b6f3e9d7c"	446141
-"c4d9a2b8e"	356435
-"f6b2d8a5c"	321812
-"8e0c7b5f1d"	297982
-"9e4c1f7b3a"	256092
-"2f9c6e8d1b"	165086
-"b5a8c3f9e2"	65916
+Player			days	hours		minutes		Seconds
+"d5a0c8e2f"	12.85	308.33	18499.97	1109998.00
+"a3e7b4c0d9"	9.87	236.80	14208.18	852491.00
+"7d1b0e6f4a"	7.68	184.34	11060.45	663627.00
+"1b6f3e9d7c"	5.16	123.93	7435.68	446141.00
+"c4d9a2b8e"	4.13	99.01	5940.58	356435.00
+"f6b2d8a5c"	3.72	89.39	5363.53	321812.00
+"8e0c7b5f1d"	3.45	82.77	4966.37	297982.00
+"9e4c1f7b3a"	2.96	71.14	4268.20	256092.00
+"2f9c6e8d1b"	1.91	45.86	2751.43	165086.00
+"b5a8c3f9e2"	0.76	18.31	1098.60	65916.00
 */
 
 -- How much damage did each player take in total?
@@ -251,7 +267,7 @@ SELECT
 	user_id AS player,
 	SUM(num_deaths) AS num_deaths,
 	COUNT(user_id) AS num_games,
-	ROUND(cast(SUM(num_deaths) AS decimal) / COUNT(user_id),2) AS avg_deaths
+	ROUND(CAST(SUM(num_deaths) AS DECIMAL) / COUNT(user_id),2) AS avg_deaths
 FROM damage
 GROUP BY 1
 ORDER BY 2 DESC
