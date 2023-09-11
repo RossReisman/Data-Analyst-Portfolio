@@ -180,7 +180,7 @@ WHERE play_duration >= 0
 ORDER BY 2 DESC;
 
 /*
-Player		Days	Hours		Minutes		Seconds
+Player		Days	Hours	Minutes	Seconds
 "d5a0c8e2f"	12.85	308.33	18499.97	1109998.00
 "a3e7b4c0d9"	9.87	236.80	14208.18	852491.00
 "7d1b0e6f4a"	7.68	184.34	11060.45	663627.00
