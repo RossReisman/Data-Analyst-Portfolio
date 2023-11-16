@@ -22,3 +22,13 @@ CREATE TABLE levels (
   , avg_win_duration DECIMAL
   , avg_retrytimes DECIMAL
 )
+
+\COPY public.login(user_id, event_timestamp)
+FROM '/Users/raws/Documents/GitHub/portfolio/SQL/player_data/login_df.csv'
+DELIMITER ','
+CSV HEADER;
+
+\COPY public.logout(user_id, event_timestamp)
+FROM '/Users/raws/Documents/GitHub/portfolio/SQL/player_data/logout_df.csv'
+DELIMITER ','
+CSV HEADER;
