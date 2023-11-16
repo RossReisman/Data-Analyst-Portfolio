@@ -23,12 +23,17 @@ CREATE TABLE levels (
   , avg_retrytimes DECIMAL
 )
 
-\COPY public.login(user_id, event_timestamp)
-FROM '/Users/raws/Documents/GitHub/portfolio/SQL/player_data/login_df.csv'
-DELIMITER ','
+/*
+Remember that PSQL commands are written on one line
+Written on multiple lines here for ease of reading
+*/
+
+\COPY public.users(user_id, level_id, success, duration, reststep, help, time)
+FROM '/Users/raws/Downloads/mobile_game_data/level_seq.csv'
+DELIMITER E'\t'
 CSV HEADER;
 
-\COPY public.logout(user_id, event_timestamp)
-FROM '/Users/raws/Documents/GitHub/portfolio/SQL/player_data/logout_df.csv'
-DELIMITER ','
+\COPY public.levels(level_id, avg_duration, avg_passrate, avg_win_duration, avg_retrytimes)
+FROM '/Users/raws/Downloads/mobile_game_data/level_meta.csv'
+DELIMITER E'\t'
 CSV HEADER;
