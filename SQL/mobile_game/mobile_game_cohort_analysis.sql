@@ -16,11 +16,11 @@ CREATE TABLE users (
 )
 
 CREATE TABLE levels (
-  level_id TEXT
-  , avg_duration DECIMAL
+  avg_duration DECIMAL
   , avg_passrate DECIMAL
   , avg_win_duration DECIMAL
   , avg_retrytimes DECIMAL
+  , level_id TEXT
 )
 
 /*
@@ -33,7 +33,7 @@ FROM '/Users/raws/Downloads/mobile_game_data/level_seq.csv'
 DELIMITER E'\t'
 CSV HEADER;
 
-\COPY public.levels(level_id, avg_duration, avg_passrate, avg_win_duration, avg_retrytimes)
+\COPY public.levels(avg_duration, avg_passrate, avg_win_duration, avg_retrytimes, level_id)
 FROM '/Users/raws/Downloads/mobile_game_data/level_meta.csv'
 DELIMITER E'\t'
 CSV HEADER;
