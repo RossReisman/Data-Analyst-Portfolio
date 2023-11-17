@@ -84,3 +84,12 @@ GROUP BY 1, 2, 3, 4, 5, 6, 7
 HAVING COUNT(*) > 1) AS users_dupes
 
 --There are 16,150 duplicate rows
+
+--Check for duplicates
+SELECT COUNT(*)
+FROM (SELECT *
+FROM levels
+GROUP BY 1, 2, 3, 4, 5
+HAVING COUNT(*) > 1) AS levels_dupes
+
+--There are no duplicate rows
