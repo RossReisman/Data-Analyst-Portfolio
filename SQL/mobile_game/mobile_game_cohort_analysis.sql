@@ -41,3 +41,46 @@ DELIMITER E'\t'
 CSV HEADER;
 
 Step 2: Cleaning
+
+--Get rows and columns for users
+SELECT
+	'Number of rows'
+	, COUNT(*)
+FROM users
+UNION
+SELECT
+	'Number of columns'
+	, COUNT(column_name)
+FROM information_schema.columns
+WHERE table_name='users';
+
+/*
+"Number of columns"	7
+"Number of rows"	2194351
+*/
+
+--Get rows and columns for levels
+SELECT
+	'Number of rows'
+	, COUNT(*)
+FROM levels
+UNION
+SELECT
+	'Number of columns'
+	, COUNT(column_name)
+FROM information_schema.columns
+WHERE table_name='levels';
+
+/*
+"Number of columns"	5
+"Number of rows"	1509
+*/
+
+--Check for duplicates
+SELECT COUNT(*)
+FROM (SELECT *
+FROM users
+GROUP BY 1, 2, 3, 4, 5, 6, 7
+HAVING COUNT(*) > 1) AS users_dupes
+
+--There are 16,150 duplicate rows
