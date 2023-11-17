@@ -5,6 +5,8 @@ Skills Used: CREATE, COPY, ALTER, UPDATE, SET, SELECT, WHERE, EXTRACT, CTE,
 GROUP BY, HAVING, ORDER BY, COUNT, AVG, ALIAS, UNION, FLOOR, CAST, CASE.
 */
 
+Step 1: Import
+
 CREATE TABLE users (
   user_id TEXT
   , level_id TEXT
@@ -37,3 +39,5 @@ CSV HEADER;
 FROM '/Users/raws/Downloads/mobile_game_data/level_meta.csv'
 DELIMITER E'\t'
 CSV HEADER;
+
+Step 2: Cleaning
