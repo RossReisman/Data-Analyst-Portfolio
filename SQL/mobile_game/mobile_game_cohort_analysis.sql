@@ -96,3 +96,9 @@ DELETE FROM users a
 USING users b
 WHERE a=b
 AND a.ctid < b.ctid;
+
+--Check for Null values
+FROM users
+WHERE NOT (users IS NOT NULL)
+
+--There are no Null values
