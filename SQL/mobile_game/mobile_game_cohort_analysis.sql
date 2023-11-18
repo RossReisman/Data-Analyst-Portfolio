@@ -93,3 +93,11 @@ GROUP BY 1, 2, 3, 4, 5
 HAVING COUNT(*) > 1) AS levels_dupes
 
 --There are no duplicate rows
+
+--Drop duplicate rows in users
+DELETE FROM users
+WHERE user_id in (
+				select max(user_id)
+				FROM users
+				GROUP BY level_id
+				HAVING COUNT(*)>1)
