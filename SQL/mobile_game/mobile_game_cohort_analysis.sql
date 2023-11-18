@@ -91,10 +91,5 @@ HAVING COUNT(*) > 1) AS levels_dupes
 
 --There are no duplicate rows
 
---Drop duplicate rows in users
-DELETE FROM users
-WHERE user_id in (
-				select max(user_id)
-				FROM users
-				GROUP BY level_id
-				HAVING COUNT(*)>1)
+--Drop duplicate rows in users (without unique identifier)
+delete from users a using users b where a=b and a.ctid < b.ctid;
