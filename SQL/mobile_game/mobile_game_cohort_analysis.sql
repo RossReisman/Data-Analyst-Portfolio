@@ -74,13 +74,13 @@ WHERE table_name='levels';
 */
 
 --Check for duplicates
-SELECT COUNT(*)
-FROM (SELECT *
+SELECT (users.*)::text, count(*)
 FROM users
-GROUP BY 1, 2, 3, 4, 5, 6, 7
-HAVING COUNT(*) > 1) AS users_dupes
+GROUP BY users.*
+HAVING COUNT(*) > 1
+ORDER BY 2 DESC
 
---There are 16,150 duplicate rows
+--There are 16,150 duplicate rows, some with as many as 100+ duplicates
 
 --Check for duplicates
 SELECT COUNT(*)
@@ -92,4 +92,7 @@ HAVING COUNT(*) > 1) AS levels_dupes
 --There are no duplicate rows
 
 --Drop duplicate rows in users (without unique identifier)
-delete from users a using users b where a=b and a.ctid < b.ctid;
+DELETE FROM users a
+USING users b
+WHERE a=b
+AND a.ctid < b.ctid;
