@@ -102,3 +102,12 @@ FROM users
 WHERE NOT (users IS NOT NULL)
 
 --There are no Null values
+
+Step 3 (For Now): Retention Analysis
+
+select *
+from users
+left join users as future_users
+on users.user_id = future_users.user_id
+and users.time = future_users.time - interval
+'1 day'
