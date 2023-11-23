@@ -112,6 +112,9 @@ on users.user_id = future_users.user_id
 and users.time = future_users.time - interval
 '1 day'
 
-select user_id, min(extract(day from time))
-from users
-group by 1
+SELECT *
+FROM (select
+	  	user_id
+		, min(extract(day from time)) as first_day
+	  from users
+	  group by 1) AS min_date
