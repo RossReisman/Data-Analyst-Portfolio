@@ -111,3 +111,7 @@ left join users as future_users
 on users.user_id = future_users.user_id
 and users.time = future_users.time - interval
 '1 day'
+
+select user_id, min(extract(day from time))
+from users
+group by 1
