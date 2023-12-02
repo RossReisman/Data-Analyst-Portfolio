@@ -103,7 +103,7 @@ WHERE NOT (users IS NOT NULL)
 
 --There are no Null values
 
-Step 3 (For Now): Retention Analysis
+Step 3 (For Now): Retention Analysis WIP
 
 select *
 from users
@@ -114,7 +114,8 @@ and users.time = future_users.time - interval
 
 SELECT *
 FROM (select
-	  	user_id
-		, min(extract(day from time)) as first_day
-	  from users
-	  group by 1) AS min_date
+user_id
+, min(extract(day from time)) as first_day
+from users
+group by 1
+order by 1) AS min_date
