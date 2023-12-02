@@ -105,7 +105,7 @@ WHERE NOT (users IS NOT NULL)
 
 Step 3 (For Now): Retention Analysis WIP
 
-select *
+/*select *
 from users
 left join users as future_users
 on users.user_id = future_users.user_id
@@ -118,14 +118,19 @@ user_id
 , min(extract(day from time)) as first_day
 from users
 group by 1
-order by 1) AS min_date
+order by 1) AS min_date*/
 
 with master as(select
 user_id
 , time
 , extract(day from	time) as day
-from users)
-select * from master this_month
-left join master last_month
-on this_month.user_id=last_month.user_id
-and this_month.day-last_month.day = 1
+from users),
+consolidated as (select this_month.day
+				 , this_month.user_id as current_month_cust
+				 , last_month.user_id as last_month_cust
+				 from master this_month
+				 left join master last_month
+				 on this_month.user_id=last_month.user_id
+				 and this_month.day-last_month.day = 1)
+
+select * from consolidated
