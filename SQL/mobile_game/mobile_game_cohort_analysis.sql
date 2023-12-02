@@ -119,3 +119,13 @@ user_id
 from users
 group by 1
 order by 1) AS min_date
+
+with master as(select
+user_id
+, time
+, extract(day from	time) as day
+from users)
+select * from master this_month
+left join master last_month
+on this_month.user_id=last_month.user_id
+and this_month.day-last_month.day = 1
