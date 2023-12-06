@@ -105,21 +105,6 @@ WHERE NOT (users IS NOT NULL)
 
 Step 3 (For Now): Retention Analysis WIP
 
-/*select *
-from users
-left join users as future_users
-on users.user_id = future_users.user_id
-and users.time = future_users.time - interval
-'1 day'
-
-SELECT *
-FROM (select
-user_id
-, min(extract(day from time)) as first_day
-from users
-group by 1
-order by 1) AS min_date*/
-
 with master as(select
 user_id
 , time
