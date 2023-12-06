@@ -119,7 +119,6 @@ consolidated as (select this_month.day
 				 and this_month.day-last_month.day = 1)
 
 select day
-	   , count(distinct current_month_cust) as current_month
-	   , count (distinct last_month_cust) as previous_month
+	   , (count(distinct last_month_cust)/count(distinct current_month_cust))*100/count(distinct last_month_cust) retention
 from consolidated
 group by 1
