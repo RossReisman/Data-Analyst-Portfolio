@@ -131,6 +131,6 @@ consolidated as (select this_month.day
 				 from master this_month
 				 left join master last_month
 				 on this_month.user_id=last_month.user_id
-				 and this_month.day-last_month.day = 1)
+				 and this_month.day-last_month.day = 1) --Difference in day - 1 day
 
 select * from consolidated
