@@ -106,17 +106,18 @@ WHERE NOT (users IS NOT NULL)
 Step 3 (For Now): Retention Analysis WIP
 
 with master as(select
-user_id
-, time
-, extract(day from	time) as day
-from users),
-consolidated as (select this_month.day
-				 , this_month.user_id as current_month_cust
-				 , last_month.user_id as last_month_cust
-				 from master this_month
-				 left join master last_month
-				 on this_month.user_id=last_month.user_id
-				 and this_month.day-last_month.day = 1)
+                  user_id
+                  , time
+                  , extract(day from	time) as day
+               from users),
+consolidated as (select
+                  this_month.day
+				          , this_month.user_id as current_month_cust
+				          , last_month.user_id as last_month_cust
+				         from master this_month
+				         left join master last_month
+				         on this_month.user_id=last_month.user_id
+				         and this_month.day-last_month.day = 1)
 
 select day
 	   , (count(distinct last_month_cust)/count(distinct current_month_cust))*100/count(distinct last_month_cust) retention
