@@ -109,8 +109,8 @@ Step 3 (For Now): Retention Analysis WIP
 with play_start as(select
                   user_id
                   , time
-                  , extract(day from	time) as day
-               from users),
+                  , extract(day from time) as cohort_day
+                from users),
 consolidated as (select
                   current_day.day
 				          , current_day.user_id as current_day_user
@@ -121,6 +121,8 @@ consolidated as (select
 				         and current_day.day-prev_day.day = 1)
 
 select day
-	   , (count(distinct prev_day_c)/count(distinct current_day_cust))*100/count(distinct prev_day_cust) retention
+	   , (count(distinct prev_day_user)
+		  /count(distinct current_day_user))*100
+		  /count(distinct prev_day_user) retention
 from consolidated
 group by 1
