@@ -98,6 +98,7 @@ WHERE a=b
 AND a.ctid < b.ctid;
 
 --Check for Null values
+SELECT *
 FROM users
 WHERE NOT (users IS NOT NULL)
 
