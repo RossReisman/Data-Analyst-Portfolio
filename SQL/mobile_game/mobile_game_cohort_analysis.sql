@@ -115,12 +115,12 @@ consolidated as (select
                   current_day.day
 				          , current_day.user_id as current_day_user
 				          , prev_day.user_id as prev_day_user
-				         from play_start this_month
-				         left join play_start last_month
+				         from play_start current_day
+				         left join play_start prev_day
 				         on current_day.user_id=prev_day.user_id
 				         and current_day.day-prev_day.day = 1)
 
 select day
-	   , (count(distinct prev_day_user)/count(distinct current_day_user))*100/count(distinct prev_day_user) retention
+	   , (count(distinct prev_day_c)/count(distinct current_day_cust))*100/count(distinct prev_day_cust) retention
 from consolidated
 group by 1
