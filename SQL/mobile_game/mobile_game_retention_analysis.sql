@@ -132,10 +132,13 @@ from
 group by days
 order by 1
 
-2	11804	86.86
-3	8408	61.87
-4	6969	51.28
-
+/*
+Day   Users  Retention
++-------+------------+
+ 2	  11804	    86.86
+ 3	  8408	    61.87
+ 4	  6969	    51.28
+*/
 
 
 with play_start as(select
