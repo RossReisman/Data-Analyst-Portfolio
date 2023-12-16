@@ -143,3 +143,9 @@ select
 				         on current_day.user_id=prev_day.user_id
 				         and current_day.day-prev_day.day = 1
 						 group by 1
+
+/*
+Begin Cohort Analysis
+
+
+*/
