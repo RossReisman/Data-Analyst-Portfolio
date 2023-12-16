@@ -113,7 +113,7 @@ select
 from
 	users
 group by 1,2),
-CTE_Activer_Users AS(
+CTE_Active_Users AS(
 select
 	a.user_id
 	, b.days
@@ -126,10 +126,17 @@ on a.user_id = b.user_id and a.days = b.days - 1)
 Select
 	days
 	, count(user_id) as daily_active_users
+  , round((count(user_id)/13589.0)*100,2) as retention_pct
 from
-	CTE_Activer_Users
+	CTE_Active_Users
 group by days
 order by 1
+
+2	11804	86.86
+3	8408	61.87
+4	6969	51.28
+
+
 
 with play_start as(select
                   user_id
