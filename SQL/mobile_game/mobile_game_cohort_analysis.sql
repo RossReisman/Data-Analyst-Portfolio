@@ -106,6 +106,31 @@ WHERE NOT (users IS NOT NULL)
 
 Step 3 (For Now): Retention Analysis WIP
 
+with CTE_users as(
+select
+	user_id
+	, extract(day from time) as days
+from
+	users
+group by 1,2),
+CTE_Activer_Users AS(
+select
+	a.user_id
+	, b.days
+	, a.days as days_1
+from
+	CTE_users as a
+inner join
+	CTE_users as b
+on a.user_id = b.user_id and a.days = b.days - 1)
+Select
+	days
+	, count(user_id) as daily_active_users
+from
+	CTE_Activer_Users
+group by days
+order by 1
+
 with play_start as(select
                   user_id
                   , time
