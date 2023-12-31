@@ -186,13 +186,21 @@ with start_day as (select
 	distinct user_id
 	, min(extract(day from time)) as cohort_day
 	, count(distinct extract(day from time))
+	, max(extract(day from time)) as last_day
 from
 	users
-group by 1)
-select
+group by 1),
+day_calc as (select
 	start_day.*
-	, cohort_day + 1
+	, cohort_day + 1 as second_day
+	, last_day - 1 as penult_day
+	, last_day - 2 as antepen_day
+	, last_day - 3 as preantepen
+	, last_day - 4 as propreante
 from start_day
-order by 1
+order by 1)
+select
+	count(day_calc.last_day) / count(day_calc.user_id)
+from day_calc
 
 */
