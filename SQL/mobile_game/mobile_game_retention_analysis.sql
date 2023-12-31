@@ -190,7 +190,8 @@ from
 	users
 group by 1)
 select
-	*
+	start_day.*
+	, cohort_day + 1
 from start_day
 order by 1
 
