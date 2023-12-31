@@ -182,5 +182,16 @@ select
 /*
 Begin Cohort Analysis
 
+with start_day as (select
+	distinct user_id
+	, min(extract(day from time)) as cohort_day
+	, count(distinct extract(day from time))
+from
+	users
+group by 1)
+select
+	*
+from start_day
+order by 1
 
 */
