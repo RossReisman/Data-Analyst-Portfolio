@@ -185,7 +185,7 @@ Begin Cohort Analysis
 with start_day as (select
 	distinct user_id
 	, min(extract(day from time)) as cohort_day
-	, count(distinct extract(day from time))
+	, count(distinct extract(day from time)) as unique_days
 	, max(extract(day from time)) as last_day
 from
 	users
