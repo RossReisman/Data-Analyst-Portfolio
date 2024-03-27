@@ -4,7 +4,8 @@ https://www.kaggle.com/datasets/rishikumarrajvansh/marketing-insights-for-e-comm
 */
 
 CREATE TABLE customers (
-  customer_id INT
+  index INT
+  , customer_id INT
   , gender TEXT
   , location TEXT
   , tenure INT
@@ -37,6 +38,41 @@ CREATE TABLE sales (
 )
 
 CREATE TABLE tax (
-  product_cat TEXT
+  index INT
+  , product_cat TEXT
   , GST DECIMAL
 )
+
+\COPY public.customers(index, customer_id, gender, location, tenure)
+FROM '/Users/raws/Documents/GitHub/portfolio/SQL/marketing/customers_data.csv'
+DELIMITER ','
+CSV HEADER;
+
+\COPY public.coupon(month, category, coupon_code, discount_pct)
+FROM '/Users/raws/Documents/GitHub/portfolio/SQL/marketing/discount_coupon.csv'
+DELIMITER ','
+CSV HEADER;
+
+\COPY public.spend(date, offline_spend, online_spend)
+FROM '/Users/raws/Documents/GitHub/portfolio/SQL/marketing/marketing_spend.csv'
+DELIMITER ','
+CSV HEADER;
+
+\COPY public.sales(customer_id, transaction_id, transaction_date, product_sku, product_desc, product_cat, quantity, avg_price, delivery_charge, coupon_status)
+FROM '/Users/raws/Documents/GitHub/portfolio/SQL/marketing/online_sales.csv'
+DELIMITER ','
+CSV HEADER;
+
+\COPY public.tax(index, product_cat, GST)
+FROM '/Users/raws/Documents/GitHub/portfolio/SQL/marketing/tax_data.csv'
+DELIMITER ','
+CSV HEADER;
+
+ALTER TABLE customers
+DROP COLUMN index;
+
+ALTER TABLE tax
+DROP COLUMN index;
+
+ALTER TABLE customers
+ADD PRIMARY KEY (customer_id)
