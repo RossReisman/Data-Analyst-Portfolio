@@ -81,6 +81,8 @@ ADD PRIMARY KEY (customer_id)
 
 Step 2: EDA and Feature Engineering
 
+2a: Customers Table
+
 select count(distinct customer_id)
 from customers
 
@@ -111,3 +113,5 @@ group by 1
 order by 1
 
 -- Customer tenure ranges from 2 to 50 months
+
+2b: Coupon Table
