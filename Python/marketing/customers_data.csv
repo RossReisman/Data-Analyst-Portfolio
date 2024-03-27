@@ -1,0 +1,1469 @@
+,CustomerID,Gender,Location,Tenure_Months
+0,17850,M,Chicago,12
+1,13047,M,California,43
+2,12583,M,Chicago,33
+3,13748,F,California,30
+4,15100,M,California,49
+5,15291,M,California,32
+6,14688,F,New York,46
+7,17809,F,New Jersey,24
+8,15311,F,Chicago,40
+9,14527,M,California,43
+10,16098,M,Chicago,49
+11,18074,F,California,10
+12,17420,F,New York,19
+13,16029,F,Washington DC,40
+14,16250,F,California,30
+15,12431,F,New Jersey,14
+16,17511,F,Chicago,25
+17,17548,M,Chicago,50
+18,13705,F,Chicago,39
+19,13747,F,Chicago,21
+20,13408,M,Chicago,30
+21,13767,F,Chicago,29
+22,17924,M,New Jersey,26
+23,13448,F,California,41
+24,15862,F,California,24
+25,15513,F,Chicago,21
+26,12791,F,Washington DC,26
+27,16218,M,Chicago,40
+28,14045,F,California,14
+29,14307,F,California,28
+30,17908,F,California,15
+31,17920,F,California,18
+32,12838,F,California,31
+33,13255,M,California,15
+34,16583,F,California,27
+35,18085,M,Chicago,34
+36,13758,M,Washington DC,46
+37,13694,F,California,44
+38,15983,M,New York,25
+39,14849,F,New Jersey,45
+40,17968,M,New York,33
+41,16210,M,New York,49
+42,17897,M,Washington DC,19
+43,17377,M,Chicago,34
+44,16552,F,California,27
+45,17181,F,New York,49
+46,17951,F,Chicago,36
+47,14729,M,Washington DC,43
+48,12748,F,Chicago,28
+49,15012,F,California,42
+50,12868,F,California,8
+51,17572,F,Chicago,49
+52,14078,F,New York,7
+53,14001,F,New York,10
+54,12662,M,Chicago,21
+55,15525,M,New York,48
+56,14237,F,Chicago,39
+57,17905,M,New York,42
+58,15485,M,New York,25
+59,12433,M,California,32
+60,16955,F,New York,15
+61,15350,M,California,48
+62,15605,F,California,21
+63,18144,F,California,26
+64,15922,M,Chicago,29
+65,14594,M,California,5
+66,15165,F,New Jersey,36
+67,14911,F,California,34
+68,16456,M,California,47
+69,17841,M,California,21
+70,12472,F,New Jersey,2
+71,17346,F,New Jersey,12
+72,17643,F,California,33
+73,17873,M,California,26
+74,13093,M,California,35
+75,12921,M,New York,49
+76,13468,M,New York,33
+77,17760,F,New Jersey,45
+78,16928,F,California,19
+79,16048,M,New Jersey,12
+80,16274,F,California,43
+81,14496,F,California,47
+82,14696,M,New York,48
+83,16539,M,California,2
+84,17025,F,Chicago,45
+85,13777,F,California,7
+86,17690,F,Chicago,6
+87,12947,M,California,48
+88,17460,F,California,35
+89,18229,M,New York,16
+90,14142,F,Chicago,21
+91,17069,F,California,10
+92,13065,F,Chicago,32
+93,14606,F,Chicago,33
+94,16835,M,Chicago,11
+95,15235,F,New Jersey,23
+96,13576,M,New York,23
+97,18011,M,California,7
+98,13090,M,New Jersey,4
+99,15694,F,New York,41
+100,14741,M,California,32
+101,13715,M,California,23
+102,14092,F,Chicago,41
+103,17732,F,Chicago,8
+104,12855,F,New York,33
+105,15752,F,New York,27
+106,17855,F,New York,13
+107,14047,F,California,10
+108,17925,M,New York,12
+109,13941,F,New York,38
+110,17017,M,California,40
+111,14135,F,Chicago,21
+112,13108,F,Chicago,45
+113,12471,F,California,11
+114,15601,F,Chicago,46
+115,13418,F,New York,22
+116,14766,M,New York,24
+117,15658,M,Chicago,24
+118,14388,F,California,6
+119,14901,F,Chicago,4
+120,18041,M,Washington DC,30
+121,15955,F,California,49
+122,15070,F,Washington DC,39
+123,16244,F,New York,36
+124,15111,M,New Jersey,9
+125,14390,M,Chicago,37
+126,16546,F,California,42
+127,15260,F,Chicago,45
+128,13305,F,Chicago,38
+129,14491,F,California,6
+130,14060,F,Chicago,22
+131,15923,F,Chicago,34
+132,16752,M,New York,42
+133,17287,F,Washington DC,45
+134,15363,M,New York,32
+135,12915,F,Washington DC,3
+136,15544,M,Chicago,22
+137,15738,M,New Jersey,16
+138,16042,F,Chicago,16
+139,17381,M,New Jersey,17
+140,15827,F,Chicago,3
+141,14180,F,California,11
+142,13117,M,New Jersey,30
+143,16916,F,New York,7
+144,17964,M,New Jersey,5
+145,14466,F,Chicago,18
+146,17235,M,California,12
+147,16510,F,California,39
+148,17802,F,California,13
+149,15107,F,New York,20
+150,17976,M,Washington DC,12
+151,14449,M,New Jersey,39
+152,15838,F,Chicago,9
+153,16781,F,New York,38
+154,17547,M,Chicago,41
+155,13491,F,Chicago,16
+156,16186,F,New York,18
+157,17685,M,Washington DC,37
+158,17581,M,California,25
+159,15732,F,Chicago,21
+160,13138,F,California,21
+161,15823,M,New York,27
+162,17567,F,California,9
+163,15061,M,California,7
+164,16203,M,California,9
+165,15640,F,California,30
+166,15574,F,New York,5
+167,16770,F,Chicago,26
+168,17838,F,California,14
+169,17228,M,Chicago,42
+170,14829,M,California,15
+171,17412,F,California,19
+172,14031,F,Chicago,17
+173,14775,F,Chicago,25
+174,12971,F,Washington DC,43
+175,15834,M,Chicago,12
+176,17659,F,California,33
+177,15299,M,Chicago,25
+178,15646,M,California,10
+179,13958,F,New Jersey,22
+180,14443,F,New Jersey,41
+181,14156,F,California,5
+182,16995,F,California,50
+183,13402,M,Chicago,42
+184,18168,F,Chicago,5
+185,17757,F,New York,45
+186,14625,F,Chicago,14
+187,13011,F,New York,18
+188,13798,M,California,37
+189,15384,M,California,30
+190,14264,M,Chicago,16
+191,13295,F,New York,33
+192,16754,F,New Jersey,5
+193,16634,F,New York,33
+194,18239,M,New York,20
+195,14576,F,Chicago,26
+196,13145,F,California,4
+197,14395,M,New Jersey,4
+198,14865,F,New Jersey,8
+199,15093,M,California,46
+200,12738,M,New York,42
+201,16150,F,Washington DC,34
+202,17552,F,New York,44
+203,14236,F,Chicago,18
+204,17961,F,California,10
+205,14573,M,California,40
+206,17135,F,California,45
+207,17396,F,California,13
+208,14213,F,California,25
+209,12967,F,New York,34
+210,12686,M,Chicago,30
+211,14679,M,California,26
+212,15240,M,New York,40
+213,18225,F,New Jersey,28
+214,13370,M,Washington DC,41
+215,16883,F,Washington DC,37
+216,13520,F,Chicago,19
+217,12841,F,California,19
+218,16905,F,New York,33
+219,12427,F,New York,37
+220,17967,F,Chicago,6
+221,16891,M,Chicago,12
+222,14589,F,New York,48
+223,14680,F,California,37
+224,17884,F,Chicago,37
+225,12557,M,New York,50
+226,14083,M,Chicago,41
+227,13013,M,Chicago,13
+228,14210,F,New York,18
+229,16477,F,Washington DC,50
+230,12600,M,New York,39
+231,16013,M,New York,31
+232,17949,F,New Jersey,15
+233,12779,F,California,28
+234,16926,M,California,48
+235,17787,M,California,8
+236,12682,F,Chicago,33
+237,14723,M,Chicago,4
+238,17954,F,New York,22
+239,17819,M,Chicago,13
+240,12712,M,Chicago,37
+241,15373,M,Washington DC,24
+242,16140,F,California,34
+243,17198,F,New York,18
+244,17238,F,Chicago,20
+245,12793,F,Chicago,39
+246,15769,F,Chicago,25
+247,14396,M,New Jersey,9
+248,14898,F,California,25
+249,12725,F,New Jersey,48
+250,16725,F,Chicago,48
+251,12395,F,New Jersey,10
+252,16455,F,Chicago,23
+253,13081,F,New York,5
+254,15545,F,California,39
+255,17243,M,Chicago,9
+256,15465,F,Chicago,14
+257,15708,F,Chicago,49
+258,13089,F,New Jersey,25
+259,16033,F,Chicago,48
+260,13838,F,California,5
+261,15351,F,Washington DC,29
+262,18055,F,Washington DC,18
+263,15038,F,California,37
+264,18109,F,New York,9
+265,13069,F,New York,38
+266,16241,M,New York,34
+267,14800,M,Chicago,21
+268,16839,F,New York,10
+269,16168,M,Washington DC,24
+270,16931,F,New Jersey,37
+271,16814,M,California,22
+272,13269,F,California,41
+273,14813,F,New York,32
+274,12567,F,Washington DC,23
+275,17062,M,Chicago,44
+276,15332,F,California,30
+277,14810,M,California,21
+278,16353,M,Washington DC,6
+279,18118,M,Chicago,24
+280,13831,F,California,35
+281,13506,M,New Jersey,30
+282,17796,F,Washington DC,5
+283,15716,F,Chicago,2
+284,18156,F,California,26
+285,15221,F,California,7
+286,16983,F,New York,21
+287,17059,M,California,24
+288,16327,M,California,44
+289,17211,F,Chicago,29
+290,17026,M,California,23
+291,15570,F,New Jersey,34
+292,15880,F,New York,33
+293,16718,F,California,39
+294,15808,F,California,6
+295,17858,M,Chicago,34
+296,16393,F,Chicago,20
+297,14161,F,Chicago,41
+298,17863,F,Chicago,50
+299,16411,F,Chicago,40
+300,16402,M,Chicago,31
+301,15023,F,Chicago,40
+302,17402,F,California,37
+303,15426,F,Chicago,17
+304,12647,M,New York,28
+305,15894,M,Chicago,44
+306,15867,M,New York,11
+307,14506,F,California,34
+308,15555,F,Chicago,34
+309,13034,F,Chicago,40
+310,15889,F,California,21
+311,15953,M,New Jersey,23
+312,16143,F,California,9
+313,12720,F,Chicago,20
+314,16422,F,California,35
+315,12747,F,Chicago,9
+316,15502,F,New York,27
+317,12763,F,California,48
+318,14081,F,California,49
+319,17965,F,Chicago,7
+320,14404,M,Chicago,32
+321,13579,F,New York,49
+322,13174,M,Chicago,25
+323,15987,F,California,32
+324,17677,M,New York,3
+325,13652,F,Washington DC,35
+326,12586,M,California,3
+327,17428,F,California,14
+328,16161,M,New York,10
+329,16858,F,Chicago,47
+330,18219,F,New York,32
+331,14293,F,California,18
+332,14748,F,Chicago,31
+333,16638,F,New York,34
+334,17674,M,Chicago,2
+335,12808,M,California,32
+336,13094,M,Washington DC,10
+337,15899,F,Washington DC,24
+338,12708,F,California,25
+339,15898,M,Chicago,27
+340,17691,F,Chicago,48
+341,17227,F,New Jersey,19
+342,15039,F,Chicago,19
+343,15919,F,Washington DC,24
+344,13497,F,New York,22
+345,15860,F,New York,46
+346,14189,F,New York,7
+347,15304,M,California,12
+348,14867,F,Chicago,50
+349,14344,F,New York,15
+350,12474,F,New York,17
+351,16719,F,New York,40
+352,15048,M,California,17
+353,15301,F,New Jersey,19
+354,14708,F,Chicago,16
+355,16898,M,Chicago,40
+356,14825,F,California,34
+357,18113,M,New York,3
+358,17596,F,California,38
+359,15078,F,New York,6
+360,14085,F,New York,5
+361,17860,F,New Jersey,49
+362,13155,F,California,8
+363,15028,F,California,8
+364,16919,F,New York,10
+365,17259,M,Chicago,8
+366,17019,M,New York,25
+367,14487,F,Chicago,41
+368,16722,F,New Jersey,45
+369,15882,F,New York,45
+370,14667,F,California,30
+371,16710,F,New York,30
+372,16550,F,New York,34
+373,15984,F,California,25
+374,17682,M,Chicago,39
+375,16658,F,Chicago,40
+376,17068,F,Washington DC,31
+377,15356,F,California,32
+378,17223,F,California,10
+379,16817,M,California,20
+380,13030,M,California,39
+381,17191,M,Chicago,13
+382,15194,M,Chicago,33
+383,14409,M,New York,15
+384,16654,F,California,15
+385,16861,F,New York,41
+386,16138,F,California,20
+387,13481,M,Chicago,6
+388,13495,M,New York,25
+389,17519,F,New Jersey,46
+390,17218,F,Chicago,31
+391,17812,M,Chicago,20
+392,14215,F,New York,29
+393,15602,F,New Jersey,10
+394,17320,F,California,40
+395,16782,F,New York,45
+396,12913,F,New York,21
+397,17869,M,California,50
+398,13564,M,California,26
+399,14850,F,California,21
+400,15021,F,Chicago,35
+401,13963,F,Chicago,40
+402,17450,F,California,17
+403,17091,F,California,37
+404,17470,F,California,48
+405,17616,F,New York,6
+406,15649,M,California,22
+407,12681,M,Chicago,27
+408,14907,M,Chicago,46
+409,17735,M,New Jersey,49
+410,16059,M,Chicago,44
+411,17720,F,Chicago,28
+412,15018,F,California,22
+413,14733,M,New York,30
+414,13756,F,California,6
+415,14176,F,New York,13
+416,13319,F,Chicago,27
+417,15353,F,California,46
+418,18119,F,California,20
+419,17491,F,New Jersey,31
+420,14282,F,New Jersey,37
+421,13569,M,Chicago,14
+422,15498,F,New York,14
+423,14673,M,New York,9
+424,13488,F,California,22
+425,16221,F,California,9
+426,15002,M,Chicago,41
+427,15965,F,Chicago,26
+428,15024,F,New York,9
+429,17675,F,New York,17
+430,13769,F,New York,20
+431,16904,F,California,17
+432,16086,F,New York,47
+433,13786,M,Chicago,21
+434,13880,F,New York,40
+435,13173,F,California,8
+436,15858,F,California,18
+437,15180,F,California,41
+438,12347,M,New York,20
+439,14739,F,New York,27
+440,16293,M,Chicago,13
+441,17419,F,New York,48
+442,16775,F,Chicago,19
+443,16306,M,New York,13
+444,16950,F,Chicago,26
+445,17591,F,New York,25
+446,12839,F,California,45
+447,13807,F,Chicago,33
+448,16125,M,California,22
+449,15081,M,Chicago,24
+450,18102,F,Chicago,48
+451,16365,F,California,49
+452,17870,M,New Jersey,40
+453,14821,M,Chicago,41
+454,16863,F,Chicago,22
+455,13078,F,California,28
+456,13267,M,California,46
+457,13050,F,Chicago,10
+458,12709,M,Washington DC,36
+459,15628,F,California,4
+460,12386,M,California,38
+461,14796,F,Chicago,3
+462,16779,M,Washington DC,11
+463,13599,F,California,46
+464,13329,M,Chicago,2
+465,18077,M,Chicago,34
+466,14744,F,California,31
+467,17406,F,Chicago,3
+468,15750,F,California,7
+469,13983,M,California,30
+470,13842,F,New York,5
+471,12441,F,Chicago,39
+472,13199,M,California,47
+473,14032,M,New York,50
+474,17706,M,New Jersey,29
+475,16081,M,New York,14
+476,16525,F,California,47
+477,14952,F,New York,28
+478,17975,M,Chicago,6
+479,16122,M,California,43
+480,13126,F,Washington DC,37
+481,15973,M,Chicago,9
+482,16558,M,California,35
+483,16713,M,Chicago,5
+484,16893,F,New York,50
+485,15529,M,California,16
+486,18043,F,New York,18
+487,16016,M,California,19
+488,17722,F,Chicago,12
+489,17324,M,New Jersey,49
+490,17341,F,New York,13
+491,14051,M,Chicago,6
+492,15916,F,Chicago,37
+493,16233,F,New York,23
+494,16385,M,California,19
+495,15032,F,California,4
+496,17213,M,Chicago,25
+497,18061,M,Washington DC,4
+498,13113,M,New Jersey,44
+499,16553,M,Chicago,39
+500,13455,F,New York,38
+501,14217,F,New York,10
+502,17262,F,California,22
+503,14299,F,Washington DC,18
+504,18259,F,California,5
+505,17676,M,New York,15
+506,16679,M,New York,28
+507,18269,M,Chicago,25
+508,12766,F,Chicago,22
+509,15298,F,Chicago,2
+510,18193,F,California,31
+511,13523,F,Chicago,13
+512,12870,F,California,28
+513,15005,F,New York,30
+514,15581,F,California,18
+515,15680,M,California,32
+516,13649,F,California,34
+517,17894,F,California,37
+518,13270,M,Chicago,7
+519,14618,M,Chicago,13
+520,14866,F,Chicago,43
+521,13077,F,New York,45
+522,13115,F,Chicago,26
+523,13531,F,New Jersey,48
+524,13848,M,New York,35
+525,13140,M,New York,34
+526,15713,M,California,3
+527,17999,F,New Jersey,30
+528,15347,M,California,48
+529,17340,F,California,36
+530,13984,F,New York,34
+531,15996,F,Chicago,26
+532,14030,F,California,5
+533,16252,F,Chicago,37
+534,16596,F,New York,18
+535,16700,M,New York,7
+536,16011,M,New Jersey,10
+537,17655,F,New York,2
+538,16717,F,New York,42
+539,14243,M,New York,46
+540,12963,M,New York,9
+541,15079,F,California,45
+542,14437,F,New York,3
+543,12942,F,New Jersey,4
+544,15660,M,New Jersey,13
+545,18092,M,California,34
+546,15358,F,New Jersey,35
+547,12481,F,California,49
+548,12721,F,California,5
+549,12621,M,California,44
+550,18071,M,Chicago,24
+551,12683,M,Chicago,15
+552,12755,F,Chicago,37
+553,13854,F,Chicago,44
+554,12797,M,California,34
+555,13369,F,New York,24
+556,12494,F,California,28
+557,17857,M,Chicago,47
+558,17411,F,Chicago,16
+559,14932,M,New Jersey,35
+560,12429,F,New Jersey,43
+561,14987,F,California,3
+562,14355,F,New York,7
+563,17526,M,California,22
+564,14896,F,Washington DC,40
+565,14440,F,New Jersey,10
+566,13240,F,California,24
+567,14479,F,California,17
+568,16065,F,New York,41
+569,17430,F,Chicago,36
+570,16520,F,Washington DC,37
+571,15945,F,New York,13
+572,15181,F,New Jersey,20
+573,15856,M,Chicago,4
+574,13102,F,New York,10
+575,14205,M,Chicago,26
+576,17702,F,Chicago,28
+577,15271,F,Chicago,37
+578,13982,F,Chicago,13
+579,15288,M,California,50
+580,17978,F,Chicago,15
+581,16795,F,California,20
+582,16519,F,Chicago,45
+583,17816,F,Chicago,29
+584,13021,M,Chicago,29
+585,16255,M,Chicago,7
+586,17671,F,New York,34
+587,17646,M,New Jersey,13
+588,12649,M,Chicago,33
+589,16350,F,Chicago,31
+590,12872,M,New Jersey,20
+591,17339,F,California,21
+592,18230,F,California,36
+593,16499,F,Chicago,31
+594,17097,M,California,33
+595,15192,F,Chicago,37
+596,14441,M,New Jersey,19
+597,15279,M,California,10
+598,16579,M,California,50
+599,15380,M,California,9
+600,17442,M,California,34
+601,17950,F,New York,39
+602,12826,M,California,33
+603,17456,F,New Jersey,34
+604,17307,F,New York,17
+605,15811,F,Chicago,27
+606,13327,F,Chicago,14
+607,17700,F,New York,21
+608,13136,F,California,48
+609,15535,F,Chicago,24
+610,12605,F,New York,37
+611,15329,F,California,48
+612,15211,M,California,40
+613,15596,F,California,39
+614,16163,F,Chicago,22
+615,16907,F,California,16
+616,17576,F,California,23
+617,14713,F,Chicago,42
+618,14702,F,New York,50
+619,13230,M,California,30
+620,13969,F,New York,15
+621,17530,F,Chicago,28
+622,15805,M,Chicago,33
+623,17696,F,California,2
+624,17076,M,New York,46
+625,17827,M,California,32
+626,16265,M,California,38
+627,17880,M,California,12
+628,13000,M,New Jersey,32
+629,17790,F,Washington DC,34
+630,12731,F,California,28
+631,14419,M,New York,20
+632,14082,F,New York,31
+633,17912,M,New Jersey,7
+634,15723,F,Washington DC,4
+635,16656,F,Chicago,46
+636,14037,M,California,24
+637,14256,F,Chicago,7
+638,14543,M,Chicago,11
+639,16062,F,New York,20
+640,18116,F,Chicago,38
+641,16019,F,California,34
+642,18178,F,New York,33
+643,18065,F,Chicago,47
+644,13148,M,New York,16
+645,12989,F,California,5
+646,14107,M,Chicago,11
+647,15881,M,New York,34
+648,12785,F,New Jersey,36
+649,16727,F,California,11
+650,15514,M,Chicago,22
+651,13787,F,New Jersey,35
+652,17865,M,Chicago,12
+653,17220,F,New York,19
+654,16565,F,Chicago,2
+655,16873,M,California,6
+656,14062,F,California,18
+657,15179,F,Chicago,19
+658,18016,F,Chicago,16
+659,14448,F,California,42
+660,15503,F,New York,45
+661,17251,M,California,46
+662,16923,F,New York,23
+663,14159,F,California,13
+664,17126,F,Chicago,32
+665,15224,F,Chicago,28
+666,14577,M,California,36
+667,12753,F,New York,13
+668,17236,F,California,28
+669,17372,F,New York,4
+670,16367,M,California,20
+671,12875,F,New Jersey,24
+672,17917,F,California,40
+673,16010,M,California,5
+674,17085,F,California,19
+675,13668,F,Chicago,15
+676,14684,F,Chicago,4
+677,17188,M,Chicago,8
+678,15547,M,New York,40
+679,15998,F,New York,16
+680,14413,F,Chicago,34
+681,18004,F,Chicago,30
+682,13959,M,California,38
+683,16665,F,Chicago,31
+684,15454,M,Chicago,39
+685,15044,F,California,31
+686,17937,M,New York,38
+687,14608,F,California,48
+688,17618,F,Chicago,17
+689,14505,F,California,8
+690,18037,M,New Jersey,46
+691,13198,M,California,50
+692,12540,F,Chicago,25
+693,13225,F,New York,50
+694,15361,M,New York,2
+695,15689,M,California,16
+696,14290,F,New York,17
+697,13209,F,California,18
+698,13999,F,Chicago,48
+699,14498,F,Chicago,25
+700,15854,M,New York,44
+701,16701,F,Washington DC,14
+702,16927,F,Chicago,45
+703,17990,F,New York,20
+704,14544,M,California,6
+705,17338,F,New Jersey,40
+706,17231,F,California,5
+707,17799,F,Chicago,14
+708,14565,F,California,39
+709,16726,F,California,19
+710,17303,F,Chicago,39
+711,14639,M,Chicago,46
+712,17611,M,New York,26
+713,17179,F,New Jersey,31
+714,17524,F,California,4
+715,12476,M,Chicago,14
+716,17293,M,Chicago,16
+717,17890,F,Chicago,27
+718,17375,M,New Jersey,21
+719,17371,M,New Jersey,24
+720,17969,F,California,11
+721,15159,F,Chicago,29
+722,13211,F,Chicago,33
+723,15777,F,Chicago,24
+724,14525,F,New Jersey,48
+725,13324,F,Chicago,24
+726,13802,F,New Jersey,40
+727,13948,F,Chicago,9
+728,13008,F,Chicago,48
+729,14206,F,Chicago,24
+730,16202,F,New York,44
+731,16442,F,New York,46
+732,18075,F,New York,12
+733,15468,F,Chicago,23
+734,16570,M,New York,15
+735,14524,F,New York,15
+736,18141,M,California,28
+737,12434,F,Chicago,32
+738,16810,F,New York,12
+739,14961,M,Washington DC,34
+740,17041,F,New York,15
+741,16458,M,Chicago,12
+742,16083,M,California,21
+743,16262,M,California,11
+744,17194,F,New Jersey,19
+745,14057,M,New York,39
+746,14871,M,California,27
+747,13178,F,California,9
+748,18044,F,California,9
+749,16812,F,New York,40
+750,16191,M,Chicago,19
+751,12370,F,New York,21
+752,14298,M,Chicago,41
+753,17158,M,California,17
+754,14415,M,New Jersey,47
+755,16899,F,Chicago,36
+756,16531,M,New Jersey,28
+757,17404,F,New Jersey,11
+758,16556,F,New York,19
+759,16805,F,Chicago,15
+760,16503,F,Chicago,29
+761,17739,F,California,7
+762,13238,M,California,19
+763,12829,M,New Jersey,15
+764,13097,M,California,33
+765,12867,M,Chicago,32
+766,15392,M,California,50
+767,13846,F,New Jersey,4
+768,14401,F,California,20
+769,16145,F,California,9
+770,17629,F,New York,11
+771,14150,M,Chicago,48
+772,13496,F,New York,21
+773,13611,F,New York,5
+774,16954,F,California,6
+775,17454,M,New Jersey,15
+776,17449,F,Chicago,24
+777,17230,M,California,29
+778,12865,M,New Jersey,34
+779,15950,M,Chicago,44
+780,15512,F,California,42
+781,17525,M,New York,11
+782,13458,F,California,33
+783,14426,F,California,13
+784,16003,F,California,10
+785,13092,F,Washington DC,2
+786,13426,M,Chicago,38
+787,15101,F,New York,40
+788,17033,M,California,47
+789,13221,F,New York,35
+790,14201,F,California,12
+791,17692,F,New Jersey,11
+792,15822,F,Chicago,4
+793,16134,F,New York,5
+794,17551,M,Chicago,32
+795,18050,F,California,48
+796,14913,M,Washington DC,4
+797,12666,M,California,13
+798,15641,F,Chicago,6
+799,13124,M,New York,4
+800,17214,F,California,28
+801,15456,M,California,28
+802,15062,F,California,22
+803,12928,F,Chicago,21
+804,15727,F,Chicago,40
+805,17980,M,New York,47
+806,15290,F,New York,3
+807,17752,F,California,38
+808,15615,M,Washington DC,19
+809,12577,F,New Jersey,10
+810,17044,F,Washington DC,29
+811,13829,F,New York,38
+812,17633,F,Chicago,17
+813,13266,F,Washington DC,12
+814,17820,F,Chicago,35
+815,15664,M,New York,10
+816,17189,F,New York,42
+817,17496,F,Chicago,7
+818,16607,F,California,31
+819,13317,F,Chicago,17
+820,13890,F,New York,31
+821,17001,F,California,18
+822,15246,F,California,2
+823,16996,F,New York,13
+824,15482,F,New York,18
+825,16037,F,California,15
+826,14841,F,California,50
+827,16670,F,Chicago,48
+828,16985,F,Chicago,5
+829,16705,F,California,18
+830,16470,F,New York,13
+831,14414,F,New Jersey,7
+832,15563,F,Chicago,41
+833,12980,M,California,23
+834,16746,M,New York,16
+835,14878,M,New York,12
+836,16743,F,California,9
+837,17146,M,California,5
+838,12877,F,New Jersey,23
+839,15394,F,New Jersey,38
+840,14621,F,New Jersey,41
+841,15379,F,California,10
+842,14309,F,New Jersey,49
+843,17288,M,California,3
+844,14709,M,New York,45
+845,15157,F,New Jersey,43
+846,17744,F,New York,42
+847,16316,F,Chicago,44
+848,15620,M,Chicago,48
+849,15789,F,Chicago,28
+850,16560,M,California,49
+851,13534,F,California,20
+852,17580,M,Chicago,30
+853,14777,M,Chicago,40
+854,15759,M,Washington DC,26
+855,14373,F,Chicago,40
+856,18176,M,New York,19
+857,15366,M,California,37
+858,14735,M,Chicago,46
+859,16271,M,New York,24
+860,18223,M,Washington DC,44
+861,15532,F,California,23
+862,16816,F,Chicago,31
+863,16684,M,California,43
+864,14334,M,California,41
+865,16945,F,Chicago,9
+866,14643,F,Washington DC,4
+867,15197,F,Chicago,45
+868,14220,F,California,19
+869,13874,F,California,39
+870,18260,M,New York,43
+871,17848,M,Chicago,25
+872,17392,M,Chicago,6
+873,12348,M,California,39
+874,14985,F,New York,4
+875,13004,F,California,37
+876,14560,M,Chicago,40
+877,12931,F,New York,44
+878,13627,F,Chicago,49
+879,12551,M,Chicago,41
+880,12782,F,Chicago,19
+881,14769,F,Chicago,26
+882,15780,M,California,19
+883,12417,F,California,37
+884,17315,F,New York,10
+885,16711,F,Chicago,34
+886,12726,M,Chicago,25
+887,15204,M,New Jersey,29
+888,17888,M,New York,37
+889,17007,F,Chicago,3
+890,15160,F,Chicago,30
+891,14016,M,California,41
+892,13033,M,California,50
+893,12691,F,California,7
+894,13869,F,New Jersey,6
+895,14146,M,California,29
+896,12705,F,New Jersey,45
+897,16885,M,New York,27
+898,17913,F,New York,29
+899,12668,F,California,32
+900,14472,F,Washington DC,10
+901,17358,F,Chicago,6
+902,16686,M,New York,31
+903,18245,F,Washington DC,5
+904,17343,M,New York,32
+905,18256,M,California,45
+906,16153,M,Chicago,29
+907,12377,F,California,27
+908,14646,M,California,45
+909,12944,F,California,43
+910,15312,F,Chicago,47
+911,14099,M,New York,32
+912,14113,M,Chicago,23
+913,13104,F,New York,20
+914,17204,F,Chicago,29
+915,13027,F,New York,15
+916,17621,M,California,25
+917,17090,F,New Jersey,23
+918,14119,M,California,8
+919,15527,F,New York,21
+920,18097,F,New York,6
+921,15460,F,New York,4
+922,15034,M,New York,2
+923,12423,M,New York,9
+924,12678,M,New York,27
+925,15208,M,Chicago,16
+926,17306,F,California,9
+927,14737,F,New Jersey,21
+928,13029,F,New York,35
+929,16270,F,Chicago,37
+930,13487,M,Washington DC,6
+931,12515,F,New York,28
+932,17400,F,California,45
+933,17593,F,New York,22
+934,13953,F,Chicago,16
+935,14533,F,Chicago,30
+936,12734,F,California,27
+937,14944,F,California,18
+938,17239,F,California,28
+939,14532,F,Chicago,44
+940,12383,M,New York,32
+941,15562,F,New York,26
+942,15587,M,Chicago,6
+943,13922,F,New Jersey,11
+944,13817,M,California,14
+945,12585,F,New Jersey,4
+946,13165,F,Chicago,31
+947,13304,M,California,12
+948,13313,M,California,42
+949,16875,F,California,3
+950,16282,F,California,20
+951,12957,F,Chicago,44
+952,14462,F,Chicago,42
+953,13397,M,California,40
+954,13680,M,Washington DC,34
+955,12483,F,New York,39
+956,15164,M,New York,28
+957,17457,F,Chicago,47
+958,14732,F,New York,33
+959,14221,F,New York,39
+960,14553,F,California,25
+961,13253,M,Chicago,38
+962,17389,F,New York,2
+963,12578,F,Chicago,8
+964,15841,M,New York,6
+965,16112,F,Chicago,16
+966,13629,F,New York,22
+967,16600,M,Chicago,32
+968,15661,F,California,24
+969,16532,F,New York,7
+970,15266,F,Chicago,22
+971,14653,M,California,2
+972,16771,M,Chicago,39
+973,17585,F,California,26
+974,15046,F,New Jersey,4
+975,13082,M,Chicago,45
+976,15464,F,Chicago,40
+977,18226,F,New Jersey,40
+978,18062,F,California,25
+979,12415,M,Chicago,29
+980,12503,F,Chicago,36
+981,17368,M,Chicago,8
+982,14258,F,California,31
+983,15719,F,Chicago,16
+984,13368,M,California,43
+985,17634,F,Chicago,32
+986,16676,F,New York,4
+987,16424,M,New Jersey,29
+988,18283,F,New Jersey,36
+989,12735,M,Washington DC,5
+990,13764,M,New York,14
+991,13656,M,Chicago,44
+992,12413,F,New Jersey,15
+993,14312,M,Chicago,27
+994,13280,F,California,43
+995,15845,M,Chicago,22
+996,16094,F,Chicago,16
+997,13187,F,Chicago,50
+998,16567,F,California,20
+999,14828,F,New York,25
+1000,12530,M,California,29
+1001,16551,F,California,10
+1002,16889,F,Chicago,23
+1003,16473,F,Chicago,36
+1004,13750,M,New York,20
+1005,12501,M,Chicago,8
+1006,15607,F,Chicago,40
+1007,15139,M,New Jersey,16
+1008,12489,M,California,2
+1009,17707,F,Chicago,4
+1010,18198,F,Chicago,29
+1011,12484,M,California,44
+1012,18179,F,New York,6
+1013,17284,F,New York,38
+1014,13233,M,Chicago,30
+1015,14889,M,Chicago,6
+1016,12480,M,California,22
+1017,14672,M,New York,8
+1018,13593,M,California,28
+1019,13162,F,New York,14
+1020,13183,F,New York,42
+1021,17095,M,California,35
+1022,12939,F,Chicago,19
+1023,15611,F,New York,4
+1024,17114,M,California,19
+1025,15059,F,Chicago,20
+1026,16326,M,Washington DC,6
+1027,17128,F,New York,47
+1028,14761,F,California,17
+1029,17555,F,Chicago,27
+1030,12651,M,New York,44
+1031,16735,M,New Jersey,42
+1032,16833,F,California,46
+1033,17800,F,Chicago,12
+1034,16748,M,Chicago,41
+1035,14755,F,New Jersey,50
+1036,16549,F,New Jersey,17
+1037,13565,F,New Jersey,8
+1038,15799,M,New Jersey,31
+1039,18032,F,Chicago,37
+1040,13451,M,California,12
+1041,14794,F,New York,31
+1042,12539,M,Chicago,13
+1043,12500,F,Washington DC,46
+1044,18171,M,New York,21
+1045,16279,F,Chicago,40
+1046,12524,F,Washington DC,20
+1047,17811,M,California,35
+1048,16850,M,California,22
+1049,14321,F,Washington DC,24
+1050,15326,M,Chicago,45
+1051,17849,M,California,8
+1052,13672,F,New Jersey,45
+1053,14229,M,Chicago,29
+1054,13107,F,California,20
+1055,16497,F,California,16
+1056,16303,F,Chicago,12
+1057,15281,F,California,36
+1058,12736,F,New York,3
+1059,13473,F,New York,5
+1060,14320,F,Chicago,29
+1061,12393,F,Chicago,39
+1062,17742,F,Chicago,35
+1063,16351,F,New York,20
+1064,12601,F,California,10
+1065,13144,M,California,38
+1066,15346,F,California,15
+1067,15370,F,New York,38
+1068,12643,M,New York,48
+1069,14295,F,Chicago,7
+1070,16034,F,New York,26
+1071,17365,F,New York,11
+1072,15189,F,Washington DC,11
+1073,14669,F,New York,39
+1074,18095,F,Chicago,14
+1075,15518,F,New Jersey,7
+1076,15749,F,Chicago,44
+1077,14209,F,California,29
+1078,15569,M,California,32
+1079,12728,F,California,5
+1080,17569,F,California,41
+1081,13784,M,New York,30
+1082,12724,M,California,19
+1083,13862,M,California,32
+1084,16791,F,Chicago,7
+1085,16235,M,California,34
+1086,14270,M,New York,6
+1087,12665,F,Chicago,10
+1088,12523,F,Chicago,35
+1089,16655,M,Chicago,40
+1090,16359,F,New York,49
+1091,16554,F,Chicago,4
+1092,12359,M,New York,41
+1093,15939,F,California,11
+1094,14587,F,Chicago,30
+1095,14715,F,New Jersey,2
+1096,14185,F,California,19
+1097,12437,F,New Jersey,50
+1098,14040,F,New York,10
+1099,12652,M,New York,21
+1100,14514,F,Chicago,29
+1101,15171,F,New Jersey,48
+1102,14167,M,California,29
+1103,17048,F,Chicago,39
+1104,17364,M,New York,39
+1105,13284,F,Chicago,14
+1106,16500,M,New Jersey,6
+1107,12951,F,New York,18
+1108,15835,F,New York,46
+1109,18190,M,California,8
+1110,13993,M,Chicago,49
+1111,14114,M,California,18
+1112,15447,F,California,34
+1113,16315,M,California,35
+1114,14978,M,Chicago,36
+1115,16395,M,Washington DC,18
+1116,15510,F,New Jersey,15
+1117,13614,M,Chicago,20
+1118,13246,F,California,25
+1119,15687,M,New York,20
+1120,16493,F,California,37
+1121,12490,F,New York,26
+1122,12672,F,California,43
+1123,13385,F,Chicago,26
+1124,15626,F,New Jersey,8
+1125,12553,F,Chicago,8
+1126,15213,M,Washington DC,41
+1127,14175,M,California,37
+1128,18106,F,California,49
+1129,15033,M,Chicago,10
+1130,14329,F,California,22
+1131,16401,M,Chicago,40
+1132,16206,F,California,28
+1133,13782,M,New Jersey,17
+1134,12924,M,California,45
+1135,16593,F,Chicago,4
+1136,13700,M,Chicago,42
+1137,13064,M,New Jersey,15
+1138,13048,M,Chicago,45
+1139,18069,F,Chicago,10
+1140,13634,M,Chicago,21
+1141,16843,M,New York,31
+1142,17064,M,Chicago,7
+1143,17609,M,New York,21
+1144,15673,M,New York,24
+1145,12626,F,California,30
+1146,14976,M,New Jersey,17
+1147,12388,M,Chicago,31
+1148,13527,F,California,44
+1149,15696,M,Chicago,12
+1150,15316,F,California,28
+1151,12673,M,California,4
+1152,15296,M,California,40
+1153,17988,F,Chicago,45
+1154,12820,M,California,24
+1155,13001,F,Chicago,45
+1156,14101,M,California,25
+1157,14238,M,New York,21
+1158,17730,F,Chicago,30
+1159,13929,F,Washington DC,21
+1160,14657,M,Chicago,2
+1161,13859,M,New York,45
+1162,18212,F,California,37
+1163,14292,M,New Jersey,22
+1164,13883,M,California,36
+1165,18233,F,New Jersey,2
+1166,17018,M,Chicago,26
+1167,14242,F,Chicago,26
+1168,12356,F,Chicago,31
+1169,12346,F,New York,31
+1170,13898,F,New Jersey,23
+1171,16948,F,Chicago,2
+1172,16997,F,New Jersey,35
+1173,12527,F,Chicago,25
+1174,15395,M,Chicago,4
+1175,12510,F,California,25
+1176,13693,M,Chicago,3
+1177,13263,M,New Jersey,16
+1178,14428,F,Chicago,23
+1179,12451,M,Washington DC,49
+1180,12422,M,Chicago,50
+1181,17708,M,New York,44
+1182,14090,F,California,32
+1183,15606,F,Washington DC,15
+1184,15831,F,California,39
+1185,13310,M,New Jersey,15
+1186,14916,F,Chicago,42
+1187,17602,M,Chicago,40
+1188,14572,F,California,43
+1189,13502,F,California,32
+1190,14784,F,New Jersey,25
+1191,15938,F,Chicago,34
+1192,12637,F,California,13
+1193,17418,M,Chicago,26
+1194,14779,M,Chicago,17
+1195,16321,M,New York,18
+1196,15262,F,California,40
+1197,17862,F,Chicago,17
+1198,16892,M,Chicago,16
+1199,12402,F,California,22
+1200,17771,F,New York,33
+1201,15422,M,California,6
+1202,14770,M,New York,39
+1203,16912,F,Washington DC,16
+1204,15174,M,Chicago,34
+1205,14895,M,California,42
+1206,12594,F,California,13
+1207,17504,F,Chicago,9
+1208,16387,F,California,20
+1209,12664,M,Chicago,14
+1210,16618,F,New York,11
+1211,17277,F,California,31
+1212,14088,M,Washington DC,39
+1213,17094,M,Chicago,35
+1214,14692,F,California,16
+1215,12970,F,California,2
+1216,17889,F,New Jersey,40
+1217,17644,F,Chicago,5
+1218,17714,F,New York,6
+1219,12916,F,New York,2
+1220,17769,M,New York,32
+1221,14450,F,New York,29
+1222,16085,M,California,15
+1223,13659,F,Chicago,8
+1224,15167,M,California,2
+1225,15443,M,Chicago,27
+1226,14224,F,Chicago,3
+1227,13742,F,California,6
+1228,17673,F,Chicago,12
+1229,12727,M,Chicago,6
+1230,14068,M,California,32
+1231,13068,F,California,47
+1232,14368,F,New York,4
+1233,15497,F,New Jersey,2
+1234,12559,F,California,25
+1235,13819,F,California,7
+1236,14501,F,Chicago,20
+1237,14782,M,California,12
+1238,17861,F,Chicago,37
+1239,14439,F,New York,48
+1240,18161,F,California,47
+1241,15820,F,New Jersey,8
+1242,18136,M,Chicago,28
+1243,16660,F,New Jersey,3
+1244,12693,F,Chicago,4
+1245,12625,M,New Jersey,26
+1246,13396,M,Chicago,25
+1247,12935,F,New York,23
+1248,16730,F,Washington DC,9
+1249,14541,F,California,24
+1250,13551,F,Chicago,46
+1251,12421,F,California,38
+1252,15797,F,California,27
+1253,15052,F,Chicago,33
+1254,14130,F,New York,50
+1255,15222,F,California,26
+1256,13615,F,California,11
+1257,13901,F,California,10
+1258,13158,F,New York,47
+1259,14257,F,Chicago,38
+1260,15218,M,New York,11
+1261,15110,F,New Jersey,8
+1262,14534,M,California,14
+1263,15967,F,New York,12
+1264,16757,F,Chicago,22
+1265,12854,M,New York,42
+1266,13815,F,California,33
+1267,18008,F,California,25
+1268,18277,F,Chicago,47
+1269,14389,M,Washington DC,38
+1270,13703,F,Chicago,18
+1271,15339,F,Chicago,47
+1272,12744,M,New York,16
+1273,16222,F,New York,45
+1274,14341,F,Chicago,3
+1275,13168,F,Chicago,24
+1276,16943,M,Washington DC,34
+1277,17515,F,California,44
+1278,17082,F,California,30
+1279,14248,M,Chicago,34
+1280,12609,F,Chicago,3
+1281,13002,F,Washington DC,44
+1282,16133,F,New Jersey,22
+1283,13049,M,New York,3
+1284,14548,F,California,48
+1285,13405,F,New York,7
+1286,14049,M,Chicago,45
+1287,16043,F,California,19
+1288,15812,F,Chicago,32
+1289,13837,F,California,5
+1290,17118,F,New Jersey,49
+1291,14616,F,New York,33
+1292,14233,F,New Jersey,2
+1293,17075,F,California,24
+1294,16714,M,New Jersey,38
+1295,13098,F,California,5
+1296,17027,F,California,32
+1297,12591,F,California,25
+1298,17786,F,California,9
+1299,16124,F,New York,34
+1300,16409,F,Chicago,45
+1301,13754,M,New York,7
+1302,15227,M,Washington DC,42
+1303,12997,F,California,45
+1304,15215,F,California,15
+1305,16918,M,Washington DC,47
+1306,16882,M,Chicago,28
+1307,14442,F,California,44
+1308,16496,M,California,16
+1309,12764,F,Chicago,25
+1310,17311,F,California,6
+1311,15910,F,California,8
+1312,16949,M,New York,44
+1313,14970,F,New York,46
+1314,14701,M,Chicago,43
+1315,12645,F,New Jersey,50
+1316,12468,F,California,9
+1317,16767,M,Washington DC,29
+1318,14738,M,Chicago,13
+1319,17540,F,New York,37
+1320,14239,F,California,46
+1321,18125,F,Chicago,3
+1322,13328,M,Chicago,18
+1323,15549,F,Chicago,5
+1324,15864,F,California,17
+1325,14662,M,California,36
+1326,17180,F,Chicago,35
+1327,15057,M,Chicago,12
+1328,12574,F,California,48
+1329,13330,F,New York,47
+1330,13552,F,New York,50
+1331,12853,M,New York,11
+1332,13538,M,New York,32
+1333,16755,F,California,33
+1334,14133,F,Chicago,32
+1335,16523,M,New York,6
+1336,14659,F,New York,42
+1337,13141,F,Chicago,25
+1338,15365,M,Chicago,30
+1339,13707,F,Chicago,28
+1340,13709,F,New York,22
+1341,17329,F,Chicago,9
+1342,14805,M,New York,20
+1343,16897,M,New Jersey,49
+1344,15579,F,California,21
+1345,14595,F,New York,33
+1346,13161,F,Chicago,4
+1347,15415,M,Chicago,27
+1348,17431,M,Chicago,7
+1349,17463,F,New York,27
+1350,14502,M,Chicago,22
+1351,12528,F,New York,43
+1352,15448,M,New York,24
+1353,17314,M,Washington DC,24
+1354,17373,M,New Jersey,11
+1355,18145,F,Chicago,36
+1356,14467,F,Chicago,34
+1357,12908,M,Washington DC,32
+1358,15144,F,Chicago,35
+1359,14776,F,New York,42
+1360,16403,F,California,26
+1361,16407,M,California,48
+1362,17619,F,New York,30
+1363,12778,F,Chicago,42
+1364,17256,F,New York,43
+1365,17604,F,California,28
+1366,14006,F,New Jersey,3
+1367,13600,F,California,13
+1368,15058,M,New Jersey,8
+1369,17147,F,Chicago,24
+1370,13881,F,Chicago,22
+1371,16612,F,California,17
+1372,14627,F,Chicago,46
+1373,17356,F,Chicago,8
+1374,12477,F,California,10
+1375,12836,M,Chicago,6
+1376,13939,M,Chicago,36
+1377,16745,F,New York,29
+1378,13606,F,California,28
+1379,13494,M,California,33
+1380,12929,F,Chicago,26
+1381,16419,F,California,50
+1382,17035,F,New York,10
+1383,15203,M,California,19
+1384,16515,F,New Jersey,19
+1385,12373,F,New York,23
+1386,18202,F,New Jersey,18
+1387,12775,M,California,21
+1388,14549,F,Chicago,22
+1389,15981,F,California,13
+1390,16110,M,Chicago,29
+1391,17376,F,New Jersey,34
+1392,13110,F,New York,36
+1393,16716,F,California,44
+1394,12676,F,California,38
+1395,15940,F,California,32
+1396,15971,F,Chicago,39
+1397,14665,F,Chicago,4
+1398,14457,F,New Jersey,4
+1399,15589,F,California,11
+1400,14411,F,New York,17
+1401,17560,F,California,19
+1402,15226,F,Chicago,37
+1403,14460,F,California,38
+1404,16156,F,New York,24
+1405,13728,F,New York,2
+1406,14127,F,Chicago,17
+1407,16378,F,Chicago,4
+1408,13894,F,New York,16
+1409,13824,M,Chicago,42
+1410,18250,M,Chicago,15
+1411,15270,F,Chicago,36
+1412,14188,F,California,50
+1413,18017,M,Chicago,37
+1414,15421,F,California,49
+1415,17446,F,New York,42
+1416,12414,M,New York,43
+1417,14798,F,California,37
+1418,12990,F,California,47
+1419,12350,M,California,25
+1420,16992,F,California,7
+1421,17337,F,California,44
+1422,16405,F,California,20
+1423,17071,F,Chicago,15
+1424,13873,M,Chicago,24
+1425,17362,F,California,46
+1426,13394,M,Washington DC,6
+1427,12502,F,California,23
+1428,16333,F,New York,41
+1429,16030,F,New York,50
+1430,14044,M,California,49
+1431,13800,F,California,27
+1432,17672,M,California,39
+1433,12464,M,New York,26
+1434,13581,F,California,47
+1435,14540,F,New Jersey,12
+1436,13539,M,New York,24
+1437,15885,F,California,39
+1438,14497,M,California,42
+1439,17507,F,California,25
+1440,13208,F,Chicago,4
+1441,17334,F,Washington DC,8
+1442,13871,F,New York,17
+1443,16938,F,New Jersey,7
+1444,12754,F,California,11
+1445,12410,M,California,8
+1446,17929,M,California,4
+1447,14778,M,Chicago,26
+1448,17517,F,California,20
+1449,17226,F,Chicago,22
+1450,13137,M,California,37
+1451,13725,F,Chicago,48
+1452,13309,M,Chicago,14
+1453,12842,F,New Jersey,27
+1454,16109,F,New York,50
+1455,17291,F,Chicago,14
+1456,15090,F,Chicago,17
+1457,15199,F,New Jersey,41
+1458,13911,M,Chicago,30
+1459,14194,M,Chicago,19
+1460,14842,F,New Jersey,14
+1461,13584,M,Chicago,35
+1462,17105,F,New Jersey,38
+1463,14438,F,New York,41
+1464,12956,F,Chicago,48
+1465,15781,M,New Jersey,19
+1466,14410,F,New York,45
+1467,14600,F,California,7
