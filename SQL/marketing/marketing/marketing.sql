@@ -70,6 +70,8 @@ FROM '/Users/raws/Documents/GitHub/portfolio/SQL/marketing/tax_data.csv'
 DELIMITER ','
 CSV HEADER;
 
+-- Two tables have an index column that is useless. Let's drop those.
+
 ALTER TABLE customers
 DROP COLUMN index;
 
@@ -82,6 +84,14 @@ ADD PRIMARY KEY (customer_id)
 Step 2: EDA and Feature Engineering
 
 2a: Customers Table
+
+/*
+Customers table has 4 columns:
+customer_id: a unique identifier for each customer
+gender: the gender of the customer (M or F)
+location: the location of the customer
+tenure: how long since the customer's first purchase
+*/
 
 select count(distinct customer_id)
 from customers
@@ -115,3 +125,23 @@ order by 1
 -- Customer tenure ranges from 2 to 50 months
 
 2b: Coupon Table
+
+/*
+Customers table has 4 columns:
+customer_id: a unique identifier for each customer
+gender: the gender of the customer (M or F)
+location: the location of the customer
+tenure: how long since the customer's first purchase
+*/
+
+select distinct month
+from coupon
+
+-- All 12 months are represented
+
+select month, count(month)
+from coupon
+group by 1
+order by 1
+
+-- Each month is represented 17 times. There must be 17 categories
