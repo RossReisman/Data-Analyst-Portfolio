@@ -323,3 +323,199 @@ select count(distinct product_sku)
 from sales
 
 --There are 1,145 unique product SKUs
+
+select count(distinct product_cat)
+from sales
+
+--There are 20 unique product categories
+
+select min(quantity), max(quantity)
+from sales
+
+--The quantity of items ordered ranges from 1 to 900 in a single order.
+--Let's look at the interquartile range.
+
+SELECT '25%' as iqt_range,
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY quantity) AS quantity
+FROM sales
+UNION
+SELECT '50%',
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY quantity)
+FROM sales
+UNION
+SELECT '75%',
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY quantity)
+FROM sales
+UNION
+SELECT '95%',
+PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY quantity)
+FROM sales
+UNION
+SELECT 'Max',
+MAX(quantity)
+FROM sales
+ORDER BY 1
+
+"iqt_range"	"quantity"
+  "25%"	        1
+  "50%"	        1
+  "75%"	        2
+  "95%"	        16
+  "Max"	        900
+
+--Most customers only purchase one item.
+--Let's see how many purchase more than 2.
+
+select quantity
+from sales
+where quantity > 2
+
+--There are 10,572 orders where more than 2 of the same item were purchased.
+
+select quantity
+from sales
+where quantity > 5
+
+--There are 5,313 orders where more than 5 of the same item were purchased.
+
+select quantity
+from sales
+where quantity > 10
+
+--There are 3,366 orders where more than 10 of the same item were purchased.
+--Looks like this company does a fair amount of business for large orders.
+
+select min(avg_price), max(avg_price)
+from sales
+
+-- Average price of an order item runs from 39 cents to $355.74
+--Let's look at the interquartile range.
+
+SELECT '25%' as iqt_range,
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY avg_price) AS avg_price
+FROM sales
+UNION
+SELECT '50%',
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY avg_price)
+FROM sales
+UNION
+SELECT '75%',
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY avg_price)
+FROM sales
+UNION
+SELECT '95%',
+PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY avg_price)
+FROM sales
+UNION
+SELECT 'Max',
+MAX(avg_price)
+FROM sales
+ORDER BY 1
+
+"iqt_range"	"avg_price"
+"25%"	5.7
+"50%"	16.99
+"75%"	102.13
+"95%"	151.88
+"Max"	355.74
+
+-- Most items are under $20, but can be as expensive as $355.74
+--Let's see a breakdown of the average price per category
+--(Technically an average of the avg_price)
+
+select distinct product_cat, round(avg(avg_price),2)
+from sales
+group by 1
+
+"product_cat"	        "avg_price"
+++++++++++++++++++++++++++++++++++
+"Accessories"	          8.21
+"Android"	              15.90
+"Apparel"	              19.79
+"Backpacks"	            80.05
+"Bags"	                29.83
+"Bottles"	              3.44
+"Drinkware"	            10.70
+"Fun"	                  6.74
+"Gift Cards"	          111.36
+"Google"	              16.45
+"Headgear"	            15.88
+"Housewares"	          2.06
+"Lifestyle"	            3.86
+"More Bags"	            19.78
+"Nest"	                194.22
+"Nest-Canada"	          157.24
+"Nest-USA"	            124.33
+"Notebooks & Journals"	11.76
+"Office"	              3.77
+"Waze"	                6.61
+
+
+select min(delivery_charge), max(delivery_charge)
+from sales
+
+--Delivery charges range from free to $521.36
+--Let's look at the interquartile range.
+
+SELECT '25%' as iqt_range,
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY delivery_charge) AS delivery_charge
+FROM sales
+UNION
+SELECT '50%',
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY delivery_charge)
+FROM sales
+UNION
+SELECT '75%',
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY delivery_charge)
+FROM sales
+UNION
+SELECT '95%',
+PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY delivery_charge)
+FROM sales
+UNION
+SELECT 'Max',
+MAX(delivery_charge)
+FROM sales
+ORDER BY 1
+
+"iqt_range"	"delivery_charge"
+  "25%"	            6
+  "50%"	            6
+  "75%"	            6.5
+  "95%"	            26.43
+  "Max"	            521.36
+
+
+select coupon_status, count(coupon_status)
+from sales
+group by 1
+
+"coupon_status"	"count"
+    "Used"	     17904
+    "Clicked"	   26926
+    "Not Used"	 8094
+
+--Looks like most coupons are clicked on the cart gets abandoned.
+
+2e: Tax Table
+
+/*
+Sales table holds the category tax data.
+The table has 2 columns and 20 rows:
+product_cat: the product category
+gst: the Goods and Services Tax expressed as a percentage in decimal form
+*/
+
+--We've already seen all 20 product categories in the sales table.
+
+select gst from tax
+order by 1
+
+--GST ranges from 5% to 18%
+
+
+
+
+/*
+Why are some delivery charges so steep?
+*/
