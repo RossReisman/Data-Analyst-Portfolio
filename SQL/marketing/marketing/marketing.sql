@@ -86,7 +86,8 @@ Step 2: EDA and Feature Engineering
 2a: Customers Table
 
 /*
-Customers table has 4 columns:
+Customers table holds customers' personal information.
+The table has 4 columns and 1,468 rows:
 customer_id: a unique identifier for each customer
 gender: the gender of the customer (M or F)
 location: the location of the customer
@@ -127,7 +128,8 @@ order by 1
 2b: Coupon Table
 
 /*
-Coupon table has 4 columns:
+Coupon table holds discount information for product categories.
+The table has 4 columns and 204 rows
 month: the month the coupon code is active
 category: the product category
 coupon_code: the code for the corresponding coupon and category
@@ -196,3 +198,128 @@ from coupon
 order by 1
 
 --The discounts are for 10%, 20%, and 30%
+
+2c: Spend Table
+
+/*
+Spend table holds the daily offline and online marketing spend data.
+The table has 3 columns and 365 rows:
+date: the date of the spend
+offline_spend: the amount in dollars of offline marketing spend for that day
+online_spend: the amount in dollars of online marketing spend for that day
+*/
+
+select min(date), max(date)
+from spend
+
+--Date column begins on January 1, 2019 and ends on December 31, 2019
+
+select min(offline_spend), max(offline_spend)
+from spend
+
+"min"	"max"
+ 500	 5000
+
+--Offline spend ranges from $500 to $5000 per day.
+--Let's look at the interquartile range.
+
+SELECT '25%' as iqt_range,
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY offline_spend) AS spend
+FROM spend
+UNION
+SELECT '50%',
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY offline_spend) AS spend
+FROM spend
+UNION
+SELECT '75%',
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY offline_spend) AS spend
+FROM spend
+UNION
+SELECT '95%',
+PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY offline_spend) AS spend
+FROM spend
+UNION
+SELECT 'Max',
+MAX(offline_spend) AS spend
+FROM spend
+ORDER BY 1
+
+"iqt_range"	"spend"
+  "25%"	      2500
+  "50%"	      3000
+  "75%"	      3500
+  "95%"	      4500
+  "Max"	      5000
+
+--The offline spend is normally distrubted around $3000.
+
+select min(online_spend), max(online_spend)
+from spend
+
+"min"	"max"
+320.25	4556.93
+
+--Online spend ranges from $320.25 to $4556.93 per day.
+--Let's look at the interquartile range.
+
+SELECT '25%' as iqt_range,
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY online_spend) AS spend
+FROM spend
+UNION
+SELECT '50%',
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY online_spend) AS spend
+FROM spend
+UNION
+SELECT '75%',
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY online_spend) AS spend
+FROM spend
+UNION
+SELECT '95%',
+PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY online_spend) AS spend
+FROM spend
+UNION
+SELECT 'Max',
+MAX(online_spend) AS spend
+FROM spend
+ORDER BY 1
+
+"iqt_range"	"spend"
+  "25%"	     1258.6
+  "50%"	     1881.94
+  "75%"	     2435.12
+  "95%"	     3395.076
+  "Max"	     4556.93
+
+--Offline spend is slightly less normally distrubted around $1881.94.
+
+2d: Sales Table
+
+/*
+Sales table holds the point of sales order data.
+The table has 10 columns and 52,924 rows:
+customer_id: a unique identifier for each customer
+transaction_id: a unique identifier for each transaction
+transaction_date: a timestamp of each transaction
+product_sku: a unique identifer for the product
+product_desc: a text description of a product
+product_cat: the product category
+quantity: the number of items ordered
+avg_price: Price per unit
+delivery_charge: the order's delivery charge
+coupon_status: Whether or not a discount was applied
+*/
+
+select count(distinct transaction_id)
+from sales
+
+--There were 25,061 unique transactions
+
+select min(transaction_date), max(transaction_date)
+from sales
+
+--All transactions occured between 1/1/19 and 12/31/19
+
+select count(distinct product_sku)
+from sales
+
+--There are 1,145 unique product SKUs
