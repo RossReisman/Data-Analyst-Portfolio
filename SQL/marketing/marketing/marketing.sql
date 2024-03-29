@@ -127,11 +127,11 @@ order by 1
 2b: Coupon Table
 
 /*
-Customers table has 4 columns:
-customer_id: a unique identifier for each customer
-gender: the gender of the customer (M or F)
-location: the location of the customer
-tenure: how long since the customer's first purchase
+Coupon table has 4 columns:
+month: the month the coupon code is active
+category: the product category
+coupon_code: the code for the corresponding coupon and category
+discount_pct: the percentage discount the coupon awards
 */
 
 select distinct month
@@ -145,3 +145,54 @@ group by 1
 order by 1
 
 -- Each month is represented 17 times. There must be 17 categories
+
+select distinct category
+from coupon
+order by 1
+
+/*
+There are 17 categories:
+"Accessories"
+"Android"
+"Apparel"
+"Bags"
+"Bottles"
+"Drinkware"
+"Gift Cards"
+"Headgear"
+"Housewares"
+"Lifestyle"
+"Nest"
+"Nest-Canada"
+"Nest-USA"
+"Notebooks"
+"Notebooks & Journals"
+"Office"
+"Waze"
+*/
+
+select distinct coupon_code
+from coupon
+order by 1
+
+--There are 48 unique coupon codes.
+--One code must be used for multiple categories.
+
+select coupon_code
+from coupon
+group by 1
+having count(distinct category) > 1
+
+--EXTRA10, EXTRA20, and EXTRA30 are the repeat coupon codes.
+
+select distinct category
+from coupon
+where coupon_code LIKE 'EXTRA%'
+
+--Drinkware and Lifestyle both use those coupon codes.
+
+select distinct discount_pct
+from coupon
+order by 1
+
+--The discounts are for 10%, 20%, and 30%
