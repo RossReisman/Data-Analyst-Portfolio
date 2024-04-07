@@ -11,7 +11,15 @@ Breakdown of products by coupon use
 
 */
 
-1) How much of each product category were coupons used?
+1) What is the coupon use status for each category?
+
+select
+  product_cat
+  , coupon_status
+  , count(coupon_status)
+from sales
+group by 1,2
+order by 1, 2
 
   Category               Coupon Status   Count
   "Accessories"	           "Clicked"	    125
@@ -75,4 +83,14 @@ Breakdown of products by coupon use
   "Waze"	                 "Not Used"	     89
   "Waze"	                 "Used"	         184
 
-  
+
+2) How much of each product category were coupons used?
+
+select
+  product_cat
+  , coupon_status
+  , count(coupon_status)
+from sales
+where coupon_status = 'Used'
+group by 1,2
+order by 1, 2
