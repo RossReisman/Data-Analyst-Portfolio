@@ -5,10 +5,6 @@ Which gender uses coupon codes more?
 Which location spends/coupons the most?
 Which month had the highest ROAS?
 Which customers spends/coupons the most?
-Breakdown of products by coupon use
-
-
-
 */
 
 1) What is the coupon use status for each category?
@@ -83,7 +79,7 @@ order by 1, 2
   "Waze"	                 "Not Used"	     89
   "Waze"	                 "Used"	         184
 
-1.5) Express percentages
+1.5) Express as percentages
 
 with calcs as (select
   product_cat
@@ -155,13 +151,61 @@ from calcs
 "Notebooks & Journals"	"Clicked"	     51.94
 "Notebooks & Journals"	"Not Used"	   13.75
 "Notebooks & Journals"	"Used"	       34.31
-"Office"	           "Clicked"	                   50.59
-"Office"	           "Not Used"	                 14.86
-"Office"	           "Used"	                     34.55
-"Waze"	               "Clicked"	                     50.72
-"Waze"                	"Not Used"	                   16.06
-"Waze"                	"Used"	                       33.21
+"Office"	           "Clicked"	       50.59
+"Office"	           "Not Used"	       14.86
+"Office"	           "Used"	           34.55
+"Waze"	               "Clicked"	     50.72
+"Waze"                	"Not Used"	   16.06
+"Waze"                	"Used"	       33.21
 
+1.5b) Show only percentages for Used coupons
+
+with calcs as (select
+  product_cat
+  , coupon_status
+  , count(coupon_status) as count
+  , sum(count(coupon_status)) OVER(PARTITION BY product_cat) AS total_count
+from sales
+group by 1,2
+order by 1, 2
+),
+pcts as (select
+	product_cat
+	, coupon_status
+	, round(100 * count/total_count, 2) as pct
+from calcs
+)
+select *
+from pcts
+where coupon_status = 'Used'
+
+
+"product_cat"	      "coupon_status"	    "pct"
+"Accessories"	          "Used"	        32.91
+"Android"	              "Used"	        23.26
+"Apparel"	              "Used"	        33.96
+"Backpacks"	            "Used"	        30.34
+"Bags"	                "Used"	        33.21
+"Bottles"	              "Used"	        30.60
+"Drinkware"	            "Used"	        33.33
+"Fun"	                  "Used"	        32.50
+"Gift Cards"	          "Used"	        35.22
+"Google"	              "Used"	        27.62
+"Headgear"	            "Used"	        33.20
+"Housewares"	          "Used"	        29.51
+"Lifestyle"	            "Used"	        35.61
+"More Bags"	            "Used"	        39.13
+"Nest"	                "Used"	        32.76
+"Nest-Canada"	          "Used"	        29.97
+"Nest-USA"	            "Used"	        33.63
+"Notebooks & Journals"	"Used"	        34.31
+"Office"	              "Used"	        34.55
+"Waze"	                "Used"	        33.21
+
+/*
+Coupon use hovers at around a third of all purchases except for Android
+at 23%
+*/
 
 2) Were coupons used more than unused?
 
@@ -195,4 +239,21 @@ order by 1
 "Office"	               -2013
 "Waze"	                 -186
 
---All categories
+--All categories had net negative coupon use.
+
+3) Which gender spends more?
+
+select
+	c.gender
+	, sum(s.avg_price)
+from sales s
+join customers c
+on c.customer_id = s.customer_id
+group by 1
+
+"gender"	"sum"
++++++++++++++++++
+  "M"	  1,061,017.19
+  "F"	  1,703,608.01
+
+  -- Female customers outspent males by almost $700,000
