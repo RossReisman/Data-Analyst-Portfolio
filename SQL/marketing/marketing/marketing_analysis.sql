@@ -1,6 +1,5 @@
 /*
 Why are some delivery charges so steep?
-Which gender spends more?
 Which gender uses coupon codes more?
 Which location spends/coupons the most?
 Which month had the highest ROAS?
@@ -257,3 +256,5 @@ group by 1
   "F"	  1,703,608.01
 
   -- Female customers outspent males by almost $700,000
+
+4) Which gender uses coupons more?
