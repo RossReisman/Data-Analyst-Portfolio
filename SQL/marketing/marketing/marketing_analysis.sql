@@ -1,6 +1,6 @@
 /*
 Why are some delivery charges so steep?
-Which gender uses coupon codes more?
+Which gender saved the most by using coupons?
 Which location spends/coupons the most?
 Which month had the highest ROAS?
 Which customers spends/coupons the most?
@@ -258,3 +258,22 @@ group by 1
   -- Female customers outspent males by almost $700,000
 
 4) Which gender uses coupons more?
+
+select
+	c.gender
+	, s.coupon_status
+	, count(s.coupon_status)
+from customers c
+join sales s
+on c.customer_id = s.customer_id
+where coupon_status = 'Used'
+group by 1, 2
+order by 1 desc
+
+"gender"	"coupon_status"	"count"
+"M"	"Used"	6752
+"F"	"Used"	11152
+
+-- Female customers used nearly coupons on nearly twice as many transactions
+
+5) Which gender saved the most by using coupons?
