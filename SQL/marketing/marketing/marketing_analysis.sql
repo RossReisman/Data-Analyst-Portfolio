@@ -276,4 +276,13 @@ order by 1 desc
 
 -- Female customers used nearly coupons on nearly twice as many transactions
 
-5) Which gender saved the most by using coupons?
+5) Which coupon was used the most?
+
+select
+	extract(month from transaction_date)
+	, product_cat
+	, sum(avg_price)
+from sales
+where coupon_status = 'Used'
+group by 1, 2
+order by 1, 3 desc
