@@ -2,9 +2,10 @@
 Why are some delivery charges so steep?
 Which gender saved the most by using coupons?
 Which location spends/coupons the most?
-Which month had the highest ROAS?
 Which customers spends/coupons the most?
 */
+
+
 
 1) What is the coupon use status for each category?
 
@@ -77,6 +78,8 @@ order by 1, 2
   "Waze"	                 "Clicked"	     281
   "Waze"	                 "Not Used"	     89
   "Waze"	                 "Used"	         184
+
+
 
 1.5) Express as percentages
 
@@ -202,9 +205,10 @@ where coupon_status = 'Used'
 "Waze"	                "Used"	        33.21
 
 /*
-Coupon use hovers at around a third of all purchases except for Android
-at 23%
+Coupon use hovers at around a third of all purchases except for Android at 23%
 */
+
+
 
 2) Were coupons used more than unused?
 
@@ -240,6 +244,8 @@ order by 1
 
 --All categories had net negative coupon use.
 
+
+
 3) Which gender spends more?
 
 select
@@ -256,6 +262,8 @@ group by 1
   "F"	  1,703,608.01
 
   -- Female customers outspent males by almost $700,000
+
+
 
 4) Which gender uses coupons more?
 
@@ -276,12 +284,13 @@ order by 1 desc
 
 -- Female customers used nearly coupons on nearly twice as many transactions
 
+
+
 5) Which coupon was used the most?
 
 /*
 In order to determine which coupon was used the most,
-we first need to look at the coupons that were available
-for certain months.
+we first need to look at the coupons that were available for each month.
 */
 
 select * from coupon
@@ -303,8 +312,9 @@ order by 2, 1
 
 /*
 Here I've isolated one category to demonstrate that each month used
-one unique coupon code per month. So if we can see which categories had the
-highest coupon use by month, we can determine which coupons were used the most.
+one unique coupon code per category per month. So if we can see which
+categories had the highest coupon use by month, we can determine which
+coupons were used the most.
 */
 
 select * from(
@@ -388,3 +398,5 @@ As the coupon table doesn't have a primary key, we can't join the tables
 to display each month's corresponding coupon code, but cross referencing
 this information with monthly coupon code info will reveal the most used code.
 */
+
+6) Which month had the highest ROAS?
