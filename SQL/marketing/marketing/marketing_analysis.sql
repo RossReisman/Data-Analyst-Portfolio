@@ -278,11 +278,42 @@ order by 1 desc
 
 5) Which coupon was used the most?
 
-select
+/*
+In order to determine which coupon was used the most,
+we first need to look at the coupons that were available
+for certain months.
+*/
+
+select * from coupon
+order by 2, 1
+
+"month"	"category"	"coupon_code"
+"Apr"	"Accessories"	"ACC10"
+"Aug"	"Accessories"	"ACC20"
+"Dec"	"Accessories"	"ACC30"
+"Feb"	"Accessories"	"ACC20"
+"Jan"	"Accessories"	"ACC10"
+"Jul"	"Accessories"	"ACC10"
+"Jun"	"Accessories"	"ACC30"
+"Mar"	"Accessories"	"ACC30"
+"May"	"Accessories"	"ACC20"
+"Nov"	"Accessories"	"ACC20"
+"Oct"	"Accessories"	"ACC10"
+"Sep"	"Accessories"	"ACC30"
+
+/*
+Here we can see that each month used a different coupon
+*/
+
+select * from(
+	select
 	extract(month from transaction_date)
 	, product_cat
-	, sum(avg_price)
+	, count(product_cat)
+	, row_number() over(partition by product_cat order by count(product_cat) desc) as product_rank
 from sales
 where coupon_status = 'Used'
-group by 1, 2
-order by 1, 3 desc
+group by 2, 1
+order by 3 desc, 2) calcs
+where product_rank <= 3
+order by 2, 4
