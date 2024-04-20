@@ -252,7 +252,7 @@ order by 1
 
 select
 	c.gender
-	, sum(s.avg_price)
+	, sum(s.final_price)
 from sales s
 join customers c
 on c.customer_id = s.customer_id
@@ -260,10 +260,10 @@ group by 1
 
 "gender"	"sum"
 +++++++++++++++++
-  "M"	  1,061,017.19
-  "F"	  1,703,608.01
+  "M"   1,767,124.39
+  "F"	  2,903,670.23
 
-  -- Female customers outspent males by almost $700,000
+  -- Female customers outspent males by almost $1,200,000
 
 
 
@@ -446,21 +446,21 @@ from calcs
 order by 1
 
 "month"	"total"
-1	214226.88
-2	145448.04
-3	163653.13
-4	151732.78
-5	152965.99
-6	154638.97
-7	169528.67
-8	180731.45
-9	180955.09
-10	228387.32
-11	290247.78
-12	306334.45
+1	343998.17
+2	260742.38
+3	291469.61
+4	341914.33
+5	261020.28
+6	263818.15
+7	311538.26
+8	338620.41
+9	305455.79
+10	348870.68
+11	432405.18
+12	438231.51
 
 /*
 Here I chose to include all transactions where an advertised coupon might be
 the reason a customer made a transaction (i.e. all transactions where
-coupon_status was not 'Not Used') 
+coupon_status was not 'Not Used')
 */
