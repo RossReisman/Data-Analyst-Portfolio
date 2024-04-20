@@ -403,6 +403,8 @@ this information with monthly coupon code info will reveal the most used code.
 
 6) Which month had the highest ROAS?
 
+-- First let's ascertain the total monthly spend on advertising
+
 select
 	extract(month from date) as month
 	, sum(offline_spend) + sum(online_spend) as total_spend
@@ -424,52 +426,41 @@ order by 1
 11	161144.96
 12	198648.75
 
-with calcs as (select
-	extract(month from transaction_date) as month
-	, sum(avg_price) over(partition by extract(month from transaction_date)) as total
-from sales)
-select
-	distinct month
-	, total
-from calcs
-order by 1
-
-"month"	"total"
-1	250914.85
-2	174615.02
-3	195811.38
-4	177040.93
-5	178867.69
-6	185299.95
-7	199949.23
-8	213671.59
-9	214532.47
-10	269652.25
-11	340671.76
-12	363598.08
+/*
+The range of total monthly spend is between ~$118,000 and ~$155,000
+with a holiday seasonal ramp up to ~$200,000
+*/
 
 with calcs as (select
 	extract(month from transaction_date) as month
 	, sum(avg_price) over(partition by extract(month from transaction_date)) as total
 from sales
-where coupon_status = 'Used')
+where
+	coupon_status = 'Used'
+	or
+	coupon_status = 'Clicked')
 select
 	distinct month
 	, total
 from calcs
-
 order by 1
 
 "month"	"total"
-1	83694.42
-2	56299.91
-3	67118.83
-4	60268.44
-5	57943.61
-6	61434.80
-7	68392.78
-8	70020.04
-9	78546.51
-10	89974.67
-11	118504.71
-12	115914.16
+1	214226.88
+2	145448.04
+3	163653.13
+4	151732.78
+5	152965.99
+6	154638.97
+7	169528.67
+8	180731.45
+9	180955.09
+10	228387.32
+11	290247.78
+12	306334.45
+
+/*
+Here I chose to include all transactions where an advertised coupon might be
+the reason a customer made a transaction (i.e. all transactions where
+coupon_status was not 'Not Used') 
+*/

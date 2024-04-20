@@ -81,6 +81,10 @@ DROP COLUMN index;
 ALTER TABLE customers
 ADD PRIMARY KEY (customer_id)
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 Step 2: EDA and Feature Engineering
 
 2a: Customers Table
@@ -496,6 +500,15 @@ group by 1
     "Not Used"	 8094
 
 --Looks like most coupons are clicked on the cart gets abandoned.
+
+/*We should add a column to multiply the quantity of items purchased by
+their average price to get the final price.
+*/
+
+Alter table sales
+add final_price int
+update sales
+set final_price = quantity * avg_price
 
 2e: Tax Table
 
