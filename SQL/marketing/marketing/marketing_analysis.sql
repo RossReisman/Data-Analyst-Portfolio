@@ -302,12 +302,14 @@ order by 2, 1
 "Sep"	"Accessories"	"ACC30"
 
 /*
-Here we can see that each month used a different coupon
+Here I've isolated one category to demonstrate that each month used
+one unique coupon code per month. So if we can see which categories had the
+highest coupon use by month, we can determine which coupons were used the most.
 */
 
 select * from(
 	select
-	extract(month from transaction_date)
+	extract(month from transaction_date) as month
 	, product_cat
 	, count(product_cat)
 	, row_number() over(partition by product_cat order by count(product_cat) desc) as product_rank
@@ -317,3 +319,72 @@ group by 2, 1
 order by 3 desc, 2) calcs
 where product_rank <= 3
 order by 2, 4
+
+"month"	 "product_cat"	"count"	"product_rank"
+11	     "Accessories"	          27	1
+12	     "Accessories"	          18	2
+10	     "Accessories"	          16	3
+8	       "Android"	               3	1
+1	       "Android"	               2	2
+6	       "Android"	               2	3
+8	       "Apparel"	               968	1
+7	       "Apparel"	               720	2
+5	       "Apparel"	               603	3
+5	       "Backpacks"	             6	1
+8	       "Backpacks"	             5	2
+4	       "Backpacks"	             5	3
+7	       "Bags"	                  74	1
+3	       "Bags"	                  73	2
+8	       "Bags"	                  69	3
+7	       "Bottles"	               15	1
+8	       "Bottles"	               13	2
+5	       "Bottles"	               10	3
+8	       "Drinkware"	           146	1
+3	       "Drinkware"	           132	2
+10	     "Drinkware"	            117	3
+7	       "Fun"	                   9	1
+8	       "Fun"	                   9	2
+6	       "Fun"	                   7	3
+10	     "Gift Cards"	             30	1
+5	       "Gift Cards"	              7	2
+6	       "Gift Cards"	              4	3
+1	       "Google"	                  8	1
+2	       "Google"	                  5	2
+3	       "Google"	                  4	3
+7	       "Headgear"	                40	1
+8	       "Headgear"	                34	2
+3	       "Headgear"	                30	3
+8	       "Housewares"	              8	1
+3	       "Housewares"	              6	2
+7	       "Housewares"	              5	3
+8	       "Lifestyle"	             149	1
+7	       "Lifestyle"	             126	2
+9	       "Lifestyle"	             120	3
+3	       "More Bags"	             7	1
+4	       "More Bags"	             6	2
+5	       "More Bags"	             4	3
+11       "Nest"	                  226	1
+12       "Nest"	                  209	2
+10	     "Nest"	                 141	3
+6	       "Nest-Canada"	         14	1
+1	       "Nest-Canada"	         13	2
+4	       "Nest-Canada"	         10	3
+1	       "Nest-USA"	              526	1
+12	     "Nest-USA"	             510	2
+11	     "Nest-USA"	             501	3
+8	       "Notebooks & Journals"	68	1
+7	       "Notebooks & Journals"	48	2
+5	       "Notebooks & Journals"	23	3
+3	       "Office"	              234	1
+5	       "Office"	              222	2
+4	       "Office"	              213	3
+8	       "Waze"	                23	1
+1	       "Waze"	                20	2
+5	       "Waze"	                20	3
+
+/*
+Here we can see the months of highest coupon use in each category.
+As the coupon table doesn't have a primary key, we can't join the tables
+to display each month's corresponding coupon code, but cross referencing
+this information with monthly coupon code info will reveal the most used code.
+*/
