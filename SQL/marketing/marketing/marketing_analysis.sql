@@ -433,7 +433,7 @@ with a holiday seasonal ramp up to ~$200,000
 
 with calcs as (select
 	extract(month from transaction_date) as month
-	, sum(avg_price) over(partition by extract(month from transaction_date)) as total
+	, sum(final_price) over(partition by extract(month from transaction_date)) as total
 from sales
 where
 	coupon_status = 'Used'
