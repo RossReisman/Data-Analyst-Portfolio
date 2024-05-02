@@ -3,6 +3,8 @@ Why are some delivery charges so steep?
 Which gender saved the most by using coupons?
 Which location spends/coupons the most?
 Which customers spends/coupons the most?
+RFM Segmentation and Customer LTV
+Cohort analysis and retention
 */
 
 Coupon Behavior
@@ -509,3 +511,7 @@ Probably comes as no surprise that the holiday season months had the highest
 return on ad spend. Here we can see that November, December, and October had
 the highest ROAS in that order.
 */
+
+RFM analysis
+Assign score of 1-5 using quintiles for customers who have recently purchased,
+purchased a lot, havent recently purchased, might purchase a lot, etc.
