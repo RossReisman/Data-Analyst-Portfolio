@@ -522,10 +522,7 @@ monetary value for our customers and see what the range is before we can add
 labels.
 */
 
-select
-	min(rfm_combined)
-	, max(rfm_combined)
-from(select
+with final_rfm2 as (select
 	customer_id
 	, rfm_recency*100 + rfm_frequency*10 + rfm_monetary as rfm_combined
 from (select
@@ -543,4 +540,36 @@ from sales
 group by 1, 2
 order by 1 desc) as rfm
 	  ) as final_rfm
-	 ) as final_rfm2
+	 )
+SELECT '0%',
+	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY rfm_combined) AS rfm
+FROM final_rfm2
+UNION
+
+SELECT '25%',
+	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY rfm_combined)
+FROM final_rfm2
+UNION
+SELECT '50%',
+	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY rfm_combined)
+FROM final_rfm2
+UNION
+SELECT '75%',
+	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY rfm_combined)
+FROM final_rfm2
+UNION
+SELECT '100%',
+PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY rfm_combined)
+FROM final_rfm2
+order by rfm
+
+"?column?"	"rfm"
+"0%"	       111
+"25%"	       177.5
+"50%"	       244
+"75%"	       344
+"100%"	     444
+
+/*
+
+*/
