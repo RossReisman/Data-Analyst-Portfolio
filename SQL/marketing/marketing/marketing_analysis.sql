@@ -512,6 +512,35 @@ return on ad spend. Here we can see that November, December, and October had
 the highest ROAS in that order.
 */
 
-RFM analysis
-Assign score of 1-5 using quintiles for customers who have recently purchased,
+7) RFM analysis
+Assign score using quartiles for customers who have recently purchased,
 purchased a lot, havent recently purchased, might purchase a lot, etc.
+
+/*
+First we need to develop a scoring system to measure recency, frequency, and
+monetary value for our customers and see what the range is before we can add
+labels.
+*/
+
+select
+	min(rfm_combined)
+	, max(rfm_combined)
+from(select
+	customer_id
+	, rfm_recency*100 + rfm_frequency*10 + rfm_monetary as rfm_combined
+from (select
+	customer_id
+	, NTILE(4) OVER (ORDER BY last_order) as rfm_recency
+	, NTILE(4) OVER (ORDER BY order_count) as rfm_frequency
+	, NTILE(4) OVER (ORDER BY total_price) as rfm_monetary
+from (select
+	customer_id
+	, transaction_id
+	, max(transaction_date) as last_order
+	, count(*) as order_count
+	, sum(final_price) as total_price
+from sales
+group by 1, 2
+order by 1 desc) as rfm
+	  ) as final_rfm
+	 ) as final_rfm2
