@@ -611,3 +611,63 @@ order by 1
 
 "pctile_0"	"pctile_25"	"pctile_50"	"pctile_75"	"pctile_100"
 100	          150	        200	         300	       400
+
+/*
+Now that we know the recency score range we can assign labels to customers:
+
+100 - 150 Lost
+151 - 200 Hibernating
+201 - 300 Needs Attention
+301 - 400 Loyal Customers
+
+Now let's do the same for frequency.
+*/
+
+(Same query as above with the frequency score only)
+select
+	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY frequency) AS pctile_0
+	,PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY frequency) AS pctile_25
+	,PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY frequency) AS pctile_50
+	,PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY frequency) AS pctile_75
+	, PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY frequency) AS pctile_100
+from rec
+order by 1
+
+"pctile_0"	"pctile_25"	"pctile_50"	"pctile_75"	"pctile_100"
+   10	          15	       20	         30	           40
+
+ /*
+ Now that we know the recency score range we can assign labels to customers:
+
+ 10 - 15 Lost
+ 16 - 20 Hibernating
+ 21 - 30 Needs Attention
+ 31 - 40 Loyal Customers
+
+ Finally, let's do the same for monetary.
+ */
+
+(Same query as above with the monetary score only)
+select
+  PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY monetary) AS pctile_0
+  ,PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY monetary) AS pctile_25
+  ,PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY monetary) AS pctile_50
+  ,PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY monetary) AS pctile_75
+  , PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY monetary) AS pctile_100
+from rec
+order by 1
+
+"pctile_0"	"pctile_25"	"pctile_50"	"pctile_75"	"pctile_100"
+    1	          1.5	        2	          3	          4
+
+/*
+Here's the label breakdown for recency score range:
+
+1 - 1.5 Lost
+1.6 - 2 Hibernating
+2.1 - 3 Needs Attention
+3.1 - 4 Loyal Customers
+
+We can also create combinations of these filters for more precision targeting.
+Below is just one example:
+*/
