@@ -578,3 +578,36 @@ in order to take action on them. Below is are the labels based on score range:
 245 - 344 Customers Needing Attention
 345 - 444 Best Customers
 */
+
+-- Next, using the following query we can check the range of recency by itself.
+
+with rec as (select
+	customer_id
+	, rfm_recency*100 as recency
+from (select
+	customer_id
+	, NTILE(4) OVER (ORDER BY last_order) as rfm_recency
+	, NTILE(4) OVER (ORDER BY order_count) as rfm_frequency
+	, NTILE(4) OVER (ORDER BY total_price) as rfm_monetary
+from (select
+	customer_id
+	, transaction_id
+	, max(transaction_date) as last_order
+	, count(*) as order_count
+	, sum(final_price) as total_price
+from sales
+group by 1, 2
+order by 1 desc) as rfm
+	  ) as final_rfm
+		)
+select
+	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY recency) AS pctile_0
+	, PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY recency) AS pctile_25
+	, PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY recency) AS pctile_50
+	, PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY recency) AS pctile_75
+	, PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY recency) AS pctile_100
+from rec
+order by 1
+
+"pctile_0"	"pctile_25"	"pctile_50"	"pctile_75"	"pctile_100"
+100	          150	        200	         300	       400
