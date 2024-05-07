@@ -518,8 +518,8 @@ purchased a lot, havent recently purchased, might purchase a lot, etc.
 
 /*
 First we need to develop a scoring system to measure recency, frequency, and
-monetary value for our customers and see what the range is before we can add
-labels.
+monetary value for our customers and measure the spread of the results before
+we can add labels.
 */
 
 with final_rfm2 as (select
@@ -545,7 +545,6 @@ SELECT '0%',
 	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY rfm_combined) AS rfm
 FROM final_rfm2
 UNION
-
 SELECT '25%',
 	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY rfm_combined)
 FROM final_rfm2
@@ -571,5 +570,11 @@ order by rfm
 "100%"	     444
 
 /*
+Now that we have a basic scoring system we can assign labels to these customers
+in order to take action on them. Below is are the labels based on score range:
 
+111 - 118 Lost
+119 - 244 Hibernating
+245 - 344 Customers Needing Attention
+345 - 444 Best Customers
 */
