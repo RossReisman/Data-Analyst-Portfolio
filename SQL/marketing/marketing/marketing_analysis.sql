@@ -669,5 +669,43 @@ Here's the label breakdown for recency score range:
 3.1 - 4 Loyal Customers
 
 We can also create combinations of these filters for more precision targeting.
-Below is just one example:
+Below is just one example with the first 8 results displayed:
 */
+
+with final_rfm2 as (select
+	customer_id
+	, rfm_recency*100 as recency
+	, rfm_frequency*10 as frequency
+	, rfm_monetary as monetary
+from (select
+	customer_id
+	, NTILE(4) OVER (ORDER BY last_order) as rfm_recency
+	, NTILE(4) OVER (ORDER BY order_count) as rfm_frequency
+	, NTILE(4) OVER (ORDER BY total_price) as rfm_monetary
+from (select
+	customer_id
+	, transaction_id
+	, max(transaction_date) as last_order
+	, count(*) as order_count
+	, sum(final_price) as total_price
+from sales
+group by 1, 2
+order by 1 desc) as rfm
+	  ) as final_rfm
+	 )
+SELECT
+	distinct customer_id as loyal_customers
+from final_rfm2
+where recency between 300 and 400
+and frequency between 30 and 40
+
+
+"loyal_customers"
+      12346
+      12347
+      12348
+      12350
+      12356
+      12359
+      12373
+      12377
