@@ -709,3 +709,19 @@ and frequency between 30 and 40
       12359
       12373
       12377
+
+/*
+We can also filter for customers who tend to only shop when there are
+coupons available. By adding 'where coupon_status = 'Used' to the initial
+calculation query we generate the following first 8 results:
+*/
+
+"loyal_customers"
+      12346
+      12347
+      12348
+      12356
+      12373
+      12377
+      12383
+      12393
