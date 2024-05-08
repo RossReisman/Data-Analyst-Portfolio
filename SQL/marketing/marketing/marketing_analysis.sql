@@ -725,3 +725,30 @@ calculation query we generate the following first 8 results:
       12377
       12383
       12393
+
+
+
+8) CV and CLV Analysis
+
+-- First let's generate a list of customer values over this one year period.
+
+select
+	customer_id
+	, round(avg(final_price),2) as avg_sales
+	, count(*) as order_count
+	, sum(final_price) as total_price
+from sales
+group by 1
+order by 3 desc
+
+-- Here are the top 8 results
+
+"customer_id"	"avg_sales"	"order_count"	"total_price"
+    12748	      107.34      	695        	74601.36
+    15311	      129.37      	587        	75937.55
+    14606	      99.37	        575	        57137.79
+    17841	      80.78	        572	        46205.77
+    14911	      93.65	        523	        48980.38
+    13089	      74.32	        366	        27199.61
+    15039	      84.67	        315	        26671.30
+    17850	      116.33      	297        	34551.40
