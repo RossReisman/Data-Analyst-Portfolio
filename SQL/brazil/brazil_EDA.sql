@@ -1,5 +1,4 @@
 This project is incomplete
-I moved on to video game focused analysis (My desired industry)
 
 Step 5: EDA
 
