@@ -740,6 +740,7 @@ select
 from sales
 group by 1
 order by 3 desc
+limit 8
 
 -- Here are the top 8 results
 
@@ -752,3 +753,39 @@ order by 3 desc
     13089	      74.32	        366	        27199.61
     15039	      84.67	        315	        26671.30
     17850	      116.33      	297        	34551.40
+
+/*
+Our top 8 customers spent between ~$35,000 and ~$75,000 during 2019. As these
+are our most loyal customers, let's see how many purchases they make per month.
+*/
+
+select
+	customer_id
+	, order_count / 12 as monthly_order_frequency
+	from(
+	select customer_id
+	, round(avg(final_price),2) as avg_sales
+	, count(*) as order_count
+	, sum(final_price) as total_price
+from sales
+group by 1
+order by 3 desc) as calcs
+order by 2 desc
+limit 8
+
+"customer_id"	"monthly_order_frequency"
+    12748	              57
+    15311	              48
+    14606	              47
+    17841	              47
+    14911	              43
+    13089	              30
+    15039	              26
+    17850	              24
+
+/*
+Here we can see that our top 8 most frequent customers make anywere from
+24 to 57 purchases per month on average.
+
+Let's see a breakdown of monthly orders for all customers.
+*/
