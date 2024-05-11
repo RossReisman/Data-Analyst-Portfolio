@@ -768,7 +768,7 @@ limit 8
 
 
 /*
-Here we can see that our top 8 most valuable customers make anywere from
+Here we can see that our top 8 most valuable customers make anywhere from
 11 to 27 purchases per month on average.
 
 Let's see a breakdown of the IQT range of monthly orders for all customers.
@@ -865,3 +865,35 @@ from sales
   4670794.62
 
 895962.86  / 4670794.62 = 19.18%
+
+-- Our top 35 customers are responsible for nearly 20% of annual revenue.
+
+/*
+To obtain the value of each customer we multiply their average purchase by
+the number of orders they made in this period.
+*/
+
+select
+	customer_id
+	, order_count
+	, avg_sales
+	, avg_sales * order_count as customer_value
+	from(
+	select customer_id
+	, round(avg(final_price),2) as avg_sales
+	, count(distinct transaction_id) as order_count
+	, sum(final_price) as total_price
+from sales
+group by 1
+order by 4 desc) as calcs
+order by 4 desc
+
+"customer_id"	"order_count"	"avg_sales"	"customer_value"
+    15311	        291	         129.37     	37646.67
+    12748	        328	         107.34     	35207.52
+    14606	        289	         99.37	      28717.93
+    14911	        276	         93.65	      25847.40
+    17841	        263	         80.78	      21245.14
+    17850	        177	         116.33     	20590.41
+    17337	        139	         136.82     	19017.98
+    13089	        176	         74.32	      13080.32
