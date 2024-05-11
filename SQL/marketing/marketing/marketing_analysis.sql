@@ -534,40 +534,23 @@ from (select
 	customer_id
 	, transaction_id
 	, max(transaction_date) as last_order
-	, count(*) as order_count
+	, count(distinct transaction_id) as order_count
 	, sum(final_price) as total_price
 from sales
 group by 1, 2
 order by 1 desc) as rfm
 	  ) as final_rfm
 	 )
-SELECT '0%',
-	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY rfm_combined) AS rfm
+SELECT
+	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY rfm_combined) AS rfm_0
+	, PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY rfm_combined) AS rfm_25
+	, PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY rfm_combined) AS rfm_50
+	, PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY rfm_combined) AS rfm_75
+	, PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY rfm_combined) AS rfm_100
 FROM final_rfm2
-UNION
-SELECT '25%',
-	PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY rfm_combined)
-FROM final_rfm2
-UNION
-SELECT '50%',
-	PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY rfm_combined)
-FROM final_rfm2
-UNION
-SELECT '75%',
-	PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY rfm_combined)
-FROM final_rfm2
-UNION
-SELECT '100%',
-PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY rfm_combined)
-FROM final_rfm2
-order by rfm
 
-"?column?"	"rfm"
-"0%"	       111
-"25%"	       177.5
-"50%"	       244
-"75%"	       344
-"100%"	     444
+"rfm_0"	"rfm_25"	"rfm_50"	"rfm_75"	"rfm_100"
+  111	    177.5	    244	      344	      444
 
 /*
 Now that we have a basic scoring system we can assign labels to these customers
@@ -593,7 +576,7 @@ from (select
 	customer_id
 	, transaction_id
 	, max(transaction_date) as last_order
-	, count(*) as order_count
+	, count(distinct transaction_id) as order_count
 	, sum(final_price) as total_price
 from sales
 group by 1, 2
@@ -720,11 +703,11 @@ calculation query we generate the following first 8 results:
       12346
       12347
       12348
+      12350
       12356
+      12359
       12373
       12377
-      12383
-      12393
 
 
 
@@ -735,28 +718,29 @@ calculation query we generate the following first 8 results:
 select
 	customer_id
 	, round(avg(final_price),2) as avg_sales
-	, count(*) as order_count
+	, count(distinct transaction_id) as order_count
 	, sum(final_price) as total_price
 from sales
 group by 1
-order by 3 desc
+order by 4 desc
 limit 8
 
 -- Here are the top 8 results
 
 "customer_id"	"avg_sales"	"order_count"	"total_price"
-    12748	      107.34      	695        	74601.36
-    15311	      129.37      	587        	75937.55
-    14606	      99.37	        575	        57137.79
-    17841	      80.78	        572	        46205.77
-    14911	      93.65	        523	        48980.38
-    13089	      74.32	        366	        27199.61
-    15039	      84.67	        315	        26671.30
-    17850	      116.33      	297        	34551.40
+    15311	      129.37      	291        	75937.55
+    12748	      107.34      	328        	74601.36
+    14606	      99.37	        289	        57137.79
+    14911	      93.65	        276	        48980.38
+    17841	      80.78	        263	        46205.77
+    17337	      136.82      	139        	35574.46
+    17850	      116.33      	177        	34551.40
+    13089	      74.32	        176	        27199.61
 
 /*
-Our top 8 customers spent between ~$35,000 and ~$75,000 during 2019. As these
-are our most loyal customers, let's see how many purchases they make per month.
+Our top 8 customers spent between ~$28,000 and ~$76,000 during 2019.
+As these are our most valuable customers, let's see how many purchases
+they make per month.
 */
 
 select
@@ -765,27 +749,27 @@ select
 	from(
 	select customer_id
 	, round(avg(final_price),2) as avg_sales
-	, count(*) as order_count
+	, count(distinct transaction_id) as order_count
 	, sum(final_price) as total_price
 from sales
 group by 1
-order by 3 desc) as calcs
-order by 2 desc
+order by 4 desc) as calcs
 limit 8
 
 "customer_id"	"monthly_order_frequency"
-    12748	              57
-    15311	              48
-    14606	              47
-    17841	              47
-    14911	              43
-    13089	              30
-    15039	              26
-    17850	              24
+    15311	              24
+    12748	              27
+    14606	              24
+    14911	              23
+    17841	              21
+    17337	              11
+    17850	              14
+    13089	              14
+
 
 /*
-Here we can see that our top 8 most frequent customers make anywere from
-24 to 57 purchases per month on average.
+Here we can see that our top 8 most valuable customers make anywere from
+11 to 27 purchases per month on average.
 
 Let's see a breakdown of the IQT range of monthly orders for all customers.
 */
