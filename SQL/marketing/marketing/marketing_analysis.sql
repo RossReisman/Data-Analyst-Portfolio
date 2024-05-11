@@ -789,3 +789,34 @@ Here we can see that our top 8 most frequent customers make anywere from
 
 Let's see a breakdown of monthly orders for all customers.
 */
+
+with calcs as (select customer_id
+	, round(avg(final_price),2) as avg_sales
+	, count(*) as order_count
+	, sum(final_price) as total_price
+from sales
+group by 1
+order by 3 desc)
+,
+order_freq as (select
+	customer_id
+	, order_count / 12 as monthly_order_frequency
+	from calcs
+	order by 2 desc)
+select
+	  PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY monthly_order_frequency) AS pctile_0
+  ,PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY monthly_order_frequency) AS pctile_25
+  ,PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY monthly_order_frequency) AS pctile_50
+  ,PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY monthly_order_frequency) AS pctile_75
+  , PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY monthly_order_frequency) AS pctile_100
+from order_freq
+
+"pctile_0"	"pctile_25"	"pctile_50"	"pctile_75"	"pctile_100"
+    0	          0	          1	          3	          57
+
+/*
+Here we can see that 50% of our customers make one or fewer purchases per
+month. Even the top 75% make 3 or fewer purchases per month.
+
+Let's see what those numbers look like.
+*/
