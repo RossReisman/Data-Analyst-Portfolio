@@ -787,7 +787,7 @@ limit 8
 Here we can see that our top 8 most frequent customers make anywere from
 24 to 57 purchases per month on average.
 
-Let's see a breakdown of monthly orders for all customers.
+Let's see a breakdown of the IQT range of monthly orders for all customers.
 */
 
 with calcs as (select customer_id
@@ -815,8 +815,7 @@ from order_freq
     0           0           0           1           27
 
 /*
-Here we can see that 50% of our customers make one or fewer purchases per
-month. Even the top 75% make 3 or fewer purchases per month.
+Here we can see that 75% of customers make 1 or fewer purchases per month.
 
 Let's see what those numbers look like.
 */
@@ -842,7 +841,43 @@ select
 	, count(case when monthly_order_frequency >10 and monthly_order_frequency <= 20 then 1 end) as "<=20"
 	, count(case when monthly_order_frequency >20 then 1 end) as "> 20"
 from order_freq
-from order_freq
 
 "<=1"	"<=3"	"<=5"	"<=10"	"<=20"	"> 20"
 1102	 267	 64	    26	     4	     5
+
+/*
+Here we can see that the top 35 customers are resposible for 10 or more
+purchases per month.
+
+Lets see what percentage of annual revenue this comprises.
+*/
+
+with calcs as (select customer_id
+	, round(avg(final_price),2) as avg_sales
+	, count(distinct transaction_id) as order_count
+	, sum(final_price) as total_price
+from sales
+group by 1
+order by 3 desc)
+,
+top_35 as (select
+	customer_id
+	, total_price
+	from calcs
+	order by 2 desc
+	limit 35)
+select
+	sum(total_price) as top_35_revenue
+from top_35
+
+"top_35_revenue"
+   895962.86
+
+select
+  sum(final_price) as total_revenue
+from sales
+
+"total_revenue"
+  4670794.62
+
+895962.86  / 4670794.62 = 19.18%
