@@ -792,7 +792,7 @@ Let's see a breakdown of monthly orders for all customers.
 
 with calcs as (select customer_id
 	, round(avg(final_price),2) as avg_sales
-	, count(*) as order_count
+	, count(distinct transaction_id) as order_count
 	, sum(final_price) as total_price
 from sales
 group by 1
@@ -812,7 +812,7 @@ select
 from order_freq
 
 "pctile_0"	"pctile_25"	"pctile_50"	"pctile_75"	"pctile_100"
-    0	          0	          1	          3	          57
+    0           0           0           1           27
 
 /*
 Here we can see that 50% of our customers make one or fewer purchases per
@@ -820,3 +820,29 @@ month. Even the top 75% make 3 or fewer purchases per month.
 
 Let's see what those numbers look like.
 */
+
+with calcs as (select customer_id
+	, round(avg(final_price),2) as avg_sales
+	, count(distinct transaction_id) as order_count
+	, sum(final_price) as total_price
+from sales
+group by 1
+order by 3 desc)
+,
+order_freq as (select
+	customer_id
+	, order_count / 12 as monthly_order_frequency
+	from calcs
+	order by 2 desc)
+select
+	count(case when monthly_order_frequency <= 1 then 1 end) as "<=1"
+	, count(case when monthly_order_frequency >1 and monthly_order_frequency <= 3 then 1 end) as "<=3"
+	, count(case when monthly_order_frequency >3 and monthly_order_frequency <= 5 then 1 end) as "<=5"
+	, count(case when monthly_order_frequency >5 and monthly_order_frequency <= 10 then 1 end) as "<=10"
+	, count(case when monthly_order_frequency >10 and monthly_order_frequency <= 20 then 1 end) as "<=20"
+	, count(case when monthly_order_frequency >20 then 1 end) as "> 20"
+from order_freq
+from order_freq
+
+"<=1"	"<=3"	"<=5"	"<=10"	"<=20"	"> 20"
+1102	 267	 64	    26	     4	     5
