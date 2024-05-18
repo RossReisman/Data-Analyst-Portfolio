@@ -902,7 +902,9 @@ limit 8
 
 /*
 Our customer values here roughly match up with what we initially generated
-when we first queried the past year's customer revenue data. 
+when we first queried the past year's customer revenue data.
+
+Now let's look at customer lifespans
 */
 
 select
@@ -923,3 +925,84 @@ group by 1
 order by 4 desc) as calcs
 order by 4 desc
 limit 8
+
+"customer_id"	"order_count"	"avg_sales"	"lifespan"	"customer_value"
+    16029	          52	       98.07	      358	        5099.64
+    15311	          587       129.37	     351	        75940.19
+    13047	          44	       69.29	      351	        3048.76
+    16456	          62	       136.09	     351	        8437.58
+    13694	          104       52.55	        349	        5465.20
+    14606	          575       99.37	        349	        57137.75
+    12662	          34	       87.34	      344	        2969.56
+    14911	          523       	93.65	     344	        48978.95
+
+/*
+Here we can see that our top eight customers have been making purchases for
+almost the entire year we have on record.
+
+Now let's look at the IQR breakdown of customer lifespan
+*/
+
+with calcs2 as (
+	select
+		customer_id
+		, order_count
+		, avg_sales
+		, extract(epoch from (last_purchase - first_purchase)/86400) +1 as lifespan
+		, avg_sales * order_count as customer_value
+	from(
+		select customer_id
+		, round(avg(final_price),2) as avg_sales
+		, count(transaction_id) as order_count
+		, min(distinct transaction_date) as first_purchase
+		, max(distinct transaction_date) as last_purchase
+		, sum(final_price) as total_rev
+	from sales
+	group by 1
+	order by 4 desc) as calcs1
+)
+select
+	PERCENTILE_CONT(0) WITHIN GROUP (ORDER BY lifespan) AS pctile_0
+	, PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY lifespan) AS pctile_25
+	, PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY lifespan) AS pctile_50
+	, PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY lifespan) AS pctile_75
+	, PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY lifespan) AS pctile_100
+from calcs2
+
+"pctile_0"	"pctile_25"	"pctile_50"	"pctile_75"	"pctile_100"
+    1	          1	         1.5	       122	        359
+
+/*
+It looks like a considerable amount of customers made a bunch of purchases on
+one day and then never came back.
+
+Let's see exactly how many
+*/
+
+with calcs2 as (
+	select
+		customer_id
+		, order_count
+		, avg_sales
+		, extract(epoch from (last_purchase - first_purchase)/86400) +1 as lifespan
+		, avg_sales * order_count as customer_value
+	from(
+		select customer_id
+		, round(avg(final_price),2) as avg_sales
+		, count(transaction_id) as order_count
+		, min(distinct transaction_date) as first_purchase
+		, max(distinct transaction_date) as last_purchase
+		, sum(final_price) as total_rev
+	from sales
+	group by 1
+	order by 4 desc) as calcs1
+)
+select
+	count(customer_id) as num_customers
+from calcs2
+where lifespan > 1
+
+"num_customers"
+      734
+
+-- 734 customers out of our 1,468 made purchase(s) on one day and then churned
