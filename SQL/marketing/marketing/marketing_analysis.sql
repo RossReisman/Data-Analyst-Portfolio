@@ -911,7 +911,7 @@ select
 	customer_id
 	, order_count
 	, avg_sales
-	, extract(epoch from (last_purchase - first_purchase)/86400)::decimal as lifespan
+	, extract(epoch from (last_purchase - first_purchase)/86400) + 1 as lifespan
 	, avg_sales * order_count as customer_value
 	from(
 	select customer_id
@@ -927,14 +927,14 @@ order by 4 desc
 limit 8
 
 "customer_id"	"order_count"	"avg_sales"	"lifespan"	"customer_value"
-    16029	          52	       98.07	      358	        5099.64
-    15311	          587       129.37	     351	        75940.19
-    13047	          44	       69.29	      351	        3048.76
-    16456	          62	       136.09	     351	        8437.58
-    13694	          104       52.55	        349	        5465.20
-    14606	          575       99.37	        349	        57137.75
-    12662	          34	       87.34	      344	        2969.56
-    14911	          523       	93.65	     344	        48978.95
+    16029	          31	       98.07	     359	        3040.17
+    15311	          291        129.37	     352	        37646.67
+    13047	          26	       69.29	     352	        1801.54
+    16456	          42	       136.09	     352	        5715.78
+    13694	          37	       52.55	     350	        1944.35
+    14606	          289        99.37	     350	        28717.93
+    12662	          16	       87.34	     345	        1397.44
+    14911	          276        93.65	     345	        25847.40
 
 /*
 Here we can see that our top eight customers have been making purchases for
