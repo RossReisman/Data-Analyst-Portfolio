@@ -897,3 +897,22 @@ order by 4 desc
     17850	        177	         116.33     	20590.41
     17337	        139	         136.82     	19017.98
     13089	        176	         74.32	      13080.32
+
+    select
+    	customer_id
+    	, order_count
+    	, avg_sales
+    	, extract(epoch from (last_purchase - first_purchase)/86400)::decimal as lifespan
+    	, avg_sales * order_count as customer_value
+    	from(
+    	select customer_id
+    	, round(avg(final_price),2) as avg_sales
+    	, count(distinct transaction_id) as order_count
+    	, min(distinct transaction_date) as first_purchase
+    	, max(distinct transaction_date) as last_purchase
+    	, sum(final_price) as total_price
+    from sales
+    group by 1
+    order by 4 desc) as calcs
+    order by 4 desc
+    limit 8
