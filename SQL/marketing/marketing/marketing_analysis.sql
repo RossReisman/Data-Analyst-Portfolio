@@ -840,7 +840,7 @@ with calcs as (
 	select
 		customer_id
 		, round(avg(final_price),2) as avg_sales
-		, count(distinct transaction_id) as order_count
+		, count(transaction_id) as order_count
 		, sum(final_price) as total_rev
 	from sales
 	group by 1
@@ -882,24 +882,28 @@ select
 	from(
 	select customer_id
 	, round(avg(final_price),2) as avg_sales
-	, count(distinct transaction_id) as order_count
+	, count(transaction_id) as order_count
 	, sum(final_price) as total_rev
 from sales
 group by 1
 order by 4 desc) as calcs
 order by 4 desc
+limit 8
 
 "customer_id"	"order_count"	"avg_sales"	"customer_value"
-    15311	        291	         129.37     	37646.67
-    12748	        328	         107.34     	35207.52
-    14606	        289	         99.37	      28717.93
-    14911	        276	         93.65	      25847.40
-    17841	        263	         80.78	      21245.14
-    17850	        177	         116.33     	20590.41
-    17337	        139	         136.82     	19017.98
-    13089	        176	         74.32	      13080.32
+    15311	        587	         129.37     	75940.19
+    12748	        695	         107.34     	74601.30
+    14606	        575	         99.37	      57137.75
+    14911	        523	         93.65	      48978.95
+    17841	        572	         80.78	      46206.16
+    17337	        260	         136.82     	35573.20
+    17850	        297	         116.33     	34550.01
+    13089	        366	         74.32	      27201.12
 
-
+/*
+Our customer values here roughly match up with what we initially generated
+when we first queried the past year's customer revenue data. 
+*/
 
 select
 	customer_id
