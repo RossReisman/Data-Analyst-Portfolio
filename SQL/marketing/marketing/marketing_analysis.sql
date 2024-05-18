@@ -529,13 +529,13 @@ from (select
 	customer_id
 	, NTILE(4) OVER (ORDER BY last_order) as rfm_recency
 	, NTILE(4) OVER (ORDER BY order_count) as rfm_frequency
-	, NTILE(4) OVER (ORDER BY total_price) as rfm_monetary
+	, NTILE(4) OVER (ORDER BY total_rev) as rfm_monetary
 from (select
 	customer_id
 	, transaction_id
 	, max(transaction_date) as last_order
 	, count(distinct transaction_id) as order_count
-	, sum(final_price) as total_price
+	, sum(final_price) as total_rev
 from sales
 group by 1, 2
 order by 1 desc) as rfm
@@ -571,13 +571,13 @@ from (select
 	customer_id
 	, NTILE(4) OVER (ORDER BY last_order) as rfm_recency
 	, NTILE(4) OVER (ORDER BY order_count) as rfm_frequency
-	, NTILE(4) OVER (ORDER BY total_price) as rfm_monetary
+	, NTILE(4) OVER (ORDER BY total_rev) as rfm_monetary
 from (select
 	customer_id
 	, transaction_id
 	, max(transaction_date) as last_order
 	, count(distinct transaction_id) as order_count
-	, sum(final_price) as total_price
+	, sum(final_price) as total_rev
 from sales
 group by 1, 2
 order by 1 desc) as rfm
@@ -664,13 +664,13 @@ from (select
 	customer_id
 	, NTILE(4) OVER (ORDER BY last_order) as rfm_recency
 	, NTILE(4) OVER (ORDER BY order_count) as rfm_frequency
-	, NTILE(4) OVER (ORDER BY total_price) as rfm_monetary
+	, NTILE(4) OVER (ORDER BY total_rev) as rfm_monetary
 from (select
 	customer_id
 	, transaction_id
 	, max(transaction_date) as last_order
 	, count(*) as order_count
-	, sum(final_price) as total_price
+	, sum(final_price) as total_rev
 from sales
 group by 1, 2
 order by 1 desc) as rfm
@@ -719,7 +719,7 @@ select
 	customer_id
 	, round(avg(final_price),2) as avg_sales
 	, count(distinct transaction_id) as order_count
-	, sum(final_price) as total_price
+	, sum(final_price) as total_rev
 from sales
 group by 1
 order by 4 desc
@@ -727,7 +727,7 @@ limit 8
 
 -- Here are the top 8 results
 
-"customer_id"	"avg_sales"	"order_count"	"total_price"
+"customer_id"	"avg_sales"	"order_count"	"total_rev"
     15311	      129.37      	291        	75937.55
     12748	      107.34      	328        	74601.36
     14606	      99.37	        289	        57137.79
@@ -750,7 +750,7 @@ select
 	select customer_id
 	, round(avg(final_price),2) as avg_sales
 	, count(distinct transaction_id) as order_count
-	, sum(final_price) as total_price
+	, sum(final_price) as total_rev
 from sales
 group by 1
 order by 4 desc) as calcs
@@ -777,7 +777,7 @@ Let's see a breakdown of the IQT range of monthly orders for all customers.
 with calcs as (select customer_id
 	, round(avg(final_price),2) as avg_sales
 	, count(distinct transaction_id) as order_count
-	, sum(final_price) as total_price
+	, sum(final_price) as total_rev
 from sales
 group by 1
 order by 3 desc)
@@ -807,7 +807,7 @@ Let's see what those numbers look like.
 with calcs as (select customer_id
 	, round(avg(final_price),2) as avg_sales
 	, count(distinct transaction_id) as order_count
-	, sum(final_price) as total_price
+	, sum(final_price) as total_rev
 from sales
 group by 1
 order by 3 desc)
@@ -836,37 +836,38 @@ purchases per month.
 Lets see what percentage of annual revenue this comprises.
 */
 
-with calcs as (select customer_id
-	, round(avg(final_price),2) as avg_sales
-	, count(distinct transaction_id) as order_count
-	, sum(final_price) as total_price
-from sales
-group by 1
-order by 3 desc)
+with calcs as (
+	select
+		customer_id
+		, round(avg(final_price),2) as avg_sales
+		, count(distinct transaction_id) as order_count
+		, sum(final_price) as total_rev
+	from sales
+	group by 1
+	order by 3 desc)
 ,
-top_35 as (select
-	customer_id
-	, total_price
+ranked_customers as (
+	select
+		customer_id
+		, total_rev
+		, rank() over (order by total_rev desc) as customer_rank
 	from calcs
-	order by 2 desc
-	limit 35)
+)
+,
+rev_calcs as (
+	select
+		sum(case when customer_rank <= 35 then total_rev else 0 end) as top_35
+		, sum(total_rev) as total_revenue
+	from ranked_customers
+)
 select
-	sum(total_price) as top_35_revenue
-from top_35
+	round((top_35 / total_revenue) * 100,2)
+from rev_calcs
 
-"top_35_revenue"
-   895962.86
+"top_35_pct_of_rev"
+      19.18
 
-select
-  sum(final_price) as total_revenue
-from sales
-
-"total_revenue"
-  4670794.62
-
-895962.86  / 4670794.62 = 19.18%
-
--- Our top 35 customers are responsible for nearly 20% of annual revenue.
+-- Our top 35 customers are responsible for 19.18% of annual revenue.
 
 /*
 To obtain the value of each customer we multiply their average purchase by
@@ -882,7 +883,7 @@ select
 	select customer_id
 	, round(avg(final_price),2) as avg_sales
 	, count(distinct transaction_id) as order_count
-	, sum(final_price) as total_price
+	, sum(final_price) as total_rev
 from sales
 group by 1
 order by 4 desc) as calcs
@@ -898,21 +899,23 @@ order by 4 desc
     17337	        139	         136.82     	19017.98
     13089	        176	         74.32	      13080.32
 
-    select
-    	customer_id
-    	, order_count
-    	, avg_sales
-    	, extract(epoch from (last_purchase - first_purchase)/86400)::decimal as lifespan
-    	, avg_sales * order_count as customer_value
-    	from(
-    	select customer_id
-    	, round(avg(final_price),2) as avg_sales
-    	, count(distinct transaction_id) as order_count
-    	, min(distinct transaction_date) as first_purchase
-    	, max(distinct transaction_date) as last_purchase
-    	, sum(final_price) as total_price
-    from sales
-    group by 1
-    order by 4 desc) as calcs
-    order by 4 desc
-    limit 8
+
+
+select
+	customer_id
+	, order_count
+	, avg_sales
+	, extract(epoch from (last_purchase - first_purchase)/86400)::decimal as lifespan
+	, avg_sales * order_count as customer_value
+	from(
+	select customer_id
+	, round(avg(final_price),2) as avg_sales
+	, count(distinct transaction_id) as order_count
+	, min(distinct transaction_date) as first_purchase
+	, max(distinct transaction_date) as last_purchase
+	, sum(final_price) as total_rev
+from sales
+group by 1
+order by 4 desc) as calcs
+order by 4 desc
+limit 8
