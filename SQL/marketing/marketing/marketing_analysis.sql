@@ -1005,4 +1005,8 @@ where lifespan > 1
 "num_customers"
       734
 
--- 734 customers out of our 1,468 made purchase(s) on one day and then churned
+/*
+734 customers out of our 1,468 made purchase(s) on one day and then churned
+
+Let's see how many customers went more than 30 days without a purchase
+*/
