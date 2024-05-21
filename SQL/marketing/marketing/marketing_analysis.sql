@@ -1010,3 +1010,30 @@ where lifespan > 1
 
 Let's see how many customers went more than 30 days without a purchase
 */
+
+Churn
+
+with calcs as (select
+	distinct extract(month from this_month.transaction_date) as months
+	, count(distinct this_month.customer_id) as this_month_cust
+	, count(distinct last_month.customer_id) as last_month_cust
+from sales this_month
+join sales last_month
+on this_month.transaction_date = last_month.transaction_date - interval '1 month'
+group by 1
+order by 1
+)
+,
+diffs_cte as (
+	select
+		months
+		, this_month_cust
+		, last_month_cust
+		, this_month_cust - last_month_cust as diffs
+	from calcs
+)
+select
+	diffs
+	, this_month_cust
+	, (diffs/this_month_cust)
+from diffs_cte
