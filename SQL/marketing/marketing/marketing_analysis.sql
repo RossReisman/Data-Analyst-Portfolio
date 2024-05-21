@@ -1033,7 +1033,7 @@ diffs_cte as (
 	from calcs
 )
 select
-	diffs
+	months + 1 as month_num
+	, diffs
 	, this_month_cust
-	, (diffs/this_month_cust)
 from diffs_cte
