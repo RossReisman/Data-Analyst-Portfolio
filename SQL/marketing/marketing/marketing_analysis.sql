@@ -37,7 +37,15 @@ RFM Segmentation: An acronym for Recency, Frequency, and Monetary based
                   desired, but these four basic labels are a good starting
                   point for determining the state of the current customer base.
 
+LTV Analysis:     An acronym for Lifetime Value, which represents the present
+                  value of future cash flows associated with a specific
+                  customer. Despite the phrasing, the time horizon for these
+                  types of analyses can be either short- or long-term,
+                  depending on the 
 
+                  These types of analyses are used to estimate appropriate
+                  marketing budgets as well as associated metrics such as
+                  Customer Acquisition Cost (CAC)
 
 In order to ascertain marketing efficiency, we first need to understand the
 
