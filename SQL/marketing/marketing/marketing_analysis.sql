@@ -7,10 +7,11 @@ RFM Segmentation and Customer LTV
 Cohort analysis and retention
 */
 
-Coupon Behavior
-Transaction Behavior
-
 /*
+
+Sales and Marketing Analysis of Coupon Use and Past Year Transactions
+
+
 The purpose of this dataset is to understand the dynamics between marketing
 spend, coupon offerings, and customer behaviors in order to uncover trends and
 patterns that businesses can leverage to effect future sales and promote
@@ -41,11 +42,33 @@ LTV Analysis:     An acronym for Lifetime Value, which represents the present
                   value of future cash flows associated with a specific
                   customer. Despite the phrasing, the time horizon for these
                   types of analyses can be either short- or long-term,
-                  depending on the 
+                  depending on the marketing project under consideration.
 
                   These types of analyses are used to estimate appropriate
                   marketing budgets as well as associated metrics such as
-                  Customer Acquisition Cost (CAC)
+                  Customer Acquisition Cost (CAC). They can also be used to
+                  forecast future revenues.
+
+Churn:            Part of determining the lifetime value of a customer includes
+                  estimating the percentage or number of customers who will
+                  cease interaction with the business. This analysis has a
+                  symbiotic relationship with lifetime value, as it allows for
+                  the rough deduction of LTV.
+
+                  Churn can also be used to pinpoint other business issues
+                  involving overall customer experience, making it an important
+                  tool that extends beyond marketing applications.
+
+Cohort Analysis:  Cohort Analysis is a basic term that encompasses all of the
+                  above types of analyses. A cohort is any group of customers
+                  that share a similar characteristic, however the most common
+                  applications include sign-up or first purchase date, similar
+                  demographics such as age, gender, or location, and users who
+                  use a specific feature of a service.
+
+                  The purpose of cohort analysis is to identify a problem or
+                  figure out what areas of a business to improve, and therefore
+                  cohort designs are practically limitless.
 
 In order to ascertain marketing efficiency, we first need to understand the
 
