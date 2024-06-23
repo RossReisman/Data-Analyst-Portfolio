@@ -10,79 +10,86 @@ Cohort analysis and retention
 Coupon Behavior
 Transaction Behavior
 
+/*
+In order to ascertain marketing efficiency. We first need to understand the
+
+
+
+*/
 
 1) What is the coupon use status for each category?
 
 select
   product_cat
   , coupon_status
-  , count(coupon_status)
+  , count(coupon_status) as count
+  , sum(count(coupon_status)) OVER(PARTITION BY product_cat) AS total_count
 from sales
 group by 1,2
 order by 1, 2
 
-  Category               Coupon Status   Count
-  "Accessories"	           "Clicked"	    125
-  "Accessories"	           "Not Used"	     32
-  "Accessories"	           "Used"	         77
-  "Android"	               "Clicked"	     23
-  "Android"	               "Not Used"	     10
-  "Android"	               "Used"	         10
-  "Apparel"	               "Clicked"	    9223
-  "Apparel"	               "Not Used"	    2747
-  "Apparel"	               "Used"	        6156
-  "Backpacks"	             "Clicked"	     47
-  "Backpacks"	             "Not Used"	     15
-  "Backpacks"	             "Used"	         27
-  "Bags"	                 "Clicked"	    972
-  "Bags"	                 "Not Used"	    285
-  "Bags"	                 "Used"	        625
-  "Bottles"	               "Clicked"	    138
-  "Bottles"	               "Not Used"	     48
-  "Bottles"	               "Used"	         82
-  "Drinkware"	             "Clicked"	    1752
-  "Drinkware"	             "Not Used"	     570
-  "Drinkware"	             "Used"	        1161
-  "Fun"	                   "Clicked"	     83
-  "Fun"	                   "Not Used"	     25
-  "Fun"	                   "Used"	         52
-  "Gift Cards"	           "Clicked"	     81
-  "Gift Cards"	           "Not Used"	     22
-  "Gift Cards"	           "Used"	         56
-  "Google"	               "Clicked"	     51
-  "Google"	               "Not Used"	     25
-  "Google"	               "Used"	         29
-  "Headgear"	             "Clicked"	     401
-  "Headgear"	             "Not Used"	     114
-  "Headgear"	             "Used"	         256
-  "Housewares"	           "Clicked"	     68
-  "Housewares"	           "Not Used"	     18
-  "Housewares"	           "Used"	         36
-  "Lifestyle"	             "Clicked"	    1529
-  "Lifestyle"	             "Not Used"	     462
-  "Lifestyle"	             "Used"	        1101
-  "More Bags"	             "Clicked"	     25
-  "More Bags"	             "Not Used"	      3
-  "More Bags"	             "Used"	         18
-  "Nest"	                 "Clicked"	    1127
-  "Nest"	                 "Not Used"	     351
-  "Nest"	                 "Used"	         720
-  "Nest-Canada"	           "Clicked"	     175
-  "Nest-Canada"	           "Not Used"	     47
-  "Nest-Canada"	           "Used"	         95
-  "Nest-USA"	             "Clicked"	    7141
-  "Nest-USA"	             "Not Used"	    2160
-  "Nest-USA"	             "Used"	        4712
-  "Notebooks & Journals"	 "Clicked"	     389
-  "Notebooks & Journals"	 "Not Used"	     103
-  "Notebooks & Journals"	 "Used"	         257
-  "Office"	               "Clicked"	    3295
-  "Office"	               "Not Used"	     968
-  "Office"	               "Used"	        2250
-  "Waze"	                 "Clicked"	     281
-  "Waze"	                 "Not Used"	     89
-  "Waze"	                 "Used"	         184
-
+"product_cat" +	"coupon_status" +	"count" +	"total_count"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"Accessories"	        "Clicked"	    125	234
+"Accessories"	         "Not Used"	  32	234
+"Accessories"	         "Used"	      77	234
+"Android"	             "Clicked"	23	43
+"Android"	                "Not Used"	10	43
+"Android"       	              "Used"	10	43
+"Apparel"       	           "Clicked"	9223	18126
+"Apparel"       	       "Not Used"	2747	18126
+"Apparel"       	 "Used"	6156	18126
+"Backpacks"	           "Clicked"	47	89
+"Backpacks"	            "Not Used"	15	89
+"Backpacks"	          "Used"	27	89
+"Bags"	               "Clicked"	972	1882
+"Bags"	               "Not Used"	285	1882
+"Bags"	               "Used"	625	1882
+"Bottles"	              "Clicked"	138	268
+"Bottles"	              "Not Used"	48	268
+"Bottles"	              "Used"	82	268
+"Drinkware"	            "Clicked"	1752	3483
+"Drinkware"	            "Not Used"	570	3483
+"Drinkware"	            "Used"	1161	3483
+"Fun"	                  "Clicked"	83	160
+"Fun"	                  "Not Used"	25	160
+"Fun"	                  "Used"	52	160
+"Gift Cards"	           "Clicked"	81	159
+"Gift Cards"	           "Not Used"	22	159
+"Gift Cards"	           "Used"	56	159
+"Google"	               "Clicked"	51	105
+"Google"	               "Not Used"	25	105
+"Google"	               "Used"	29	105
+"Headgear"	             "Clicked"	401	771
+"Headgear"	             "Not Used"	114	771
+"Headgear"	             "Used"	256	771
+"Housewares"	           "Clicked"	68	122
+"Housewares"	           "Not Used"	18	122
+"Housewares"	           "Used"	36	122
+"Lifestyle"	              "Clicked"	1529	3092
+"Lifestyle"	              "Not Used"	462	3092
+"Lifestyle"	              "Used"	1101	3092
+"More Bags"	              "Clicked"	25	46
+"More Bags"	              "Not Used"	3	46
+"More Bags"	              "Used"	18	46
+"Nest"	                   "Clicked"	1127	2198
+"Nest"	                   "Not Used"	351	2198
+"Nest"	                   "Used"	720	2198
+"Nest-Canada"	            "Clicked"	175	317
+"Nest-Canada"	            "Not Used"	47	317
+"Nest-Canada"	            "Used"	95	317
+"Nest-USA"	             "Clicked"	7141	14013
+"Nest-USA"	             "Not Used"	2160	14013
+"Nest-USA"	             "Used"	4712	14013
+"Notebooks & Journals"	 "Clicked"	389	749
+"Notebooks & Journals"	 "Not Used"	103	749
+"Notebooks & Journals"	 "Used"	257	749
+"Office"	               "Clicked"	3295	6513
+"Office"	               "Not Used"	968	6513
+"Office"              	 "Used"	2250	6513
+"Waze"	                 "Clicked"	281	554
+"Waze"	                 "Not Used"	89	554
+"Waze"	                 "Used"	184	554
 
 
 1.5) Express as percentages
