@@ -11,7 +11,35 @@ Coupon Behavior
 Transaction Behavior
 
 /*
-In order to ascertain marketing efficiency. We first need to understand the
+The purpose of this dataset is to understand the dynamics between marketing
+spend, coupon offerings, and customer behaviors in order to uncover trends and
+patterns that businesses can leverage to effect future sales and promote
+customer loyalty.
+
+By discovering trends and patterns, businesses can efficiently categorize
+large groups of customers into a single "persona" which drastically reduces
+the effort required to tailor marketing messages and offerings and can
+significantly increase the efficacy of the message or offering.
+
+Some of the methods that we can use include:
+
+RFM Segmentation: An acronym for Recency, Frequency, and Monetary based
+                  segmentation that assigns a score-based value to customers
+                  (usually expressed in quartiles) based on how recently they've
+                  interacted with the business, the frequency with which they
+                  interact, and their monetary value.
+
+                  Using this system, customers can be easily grouped into the
+                  following categories: Lost, Hibernating, Needs Attention, and
+                  Best Customers.
+
+                  Customers can be further segmented for more granularity if
+                  desired, but these four basic labels are a good starting
+                  point for determining the state of the current customer base.
+
+
+
+In order to ascertain marketing efficiency, we first need to understand the
 
 
 
