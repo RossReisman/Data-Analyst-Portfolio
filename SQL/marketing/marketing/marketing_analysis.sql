@@ -73,7 +73,14 @@ Cohort Analysis:  Cohort Analysis is a basic term that encompasses all of the
 */
 
 
--- First let's explore overall coupon use.
+/*
+Step 1: Basic Dataset Analysis:
+
+In this first step, let's explore some of the characteristics of the past year's
+coupon and sales data, before proceeding to more advanced analyses.
+
+First let's explore overall coupon use.
+*/
 
 1) What is the coupon use status for each category?
 
@@ -150,17 +157,20 @@ order by 1, 2
   "Waze"	                 "Used"	             184       	  554
 
 /*
-Our results include:
+Our results here include:
 
-The product category
+The product category name
 The nominal category of coupon statuses
-The count of each category of coupon statuses
-A running total of each category per category
+The count of each category of coupon status
+A running total of each category
 
+Coupon status falls into three categories: Not Used, Clicked, and Used. The
+data dictionary states that "Clicked" means the customer clicked on a coupon,
+but it wasn't applicable to the final purchase they made.
 
-For better comprehension, let's express these results in percentage form.
+This gives us a raw data overview of coupon use status, but for better
+comprehension, let's express these results in percentage form.
 */
-
 
 with calcs as (select
   product_cat
@@ -242,6 +252,14 @@ from calcs
 
 
 /*
+Our results here include:
+
+The product category name
+The nominal category of coupon statuses
+The percentage of each category of coupon status
+
+Expressing these counts as percentages is more easily comprehensible, but since
+we're only interested in
 Finally, let's only display the percentage of transactions where
 coupons were used.
 */
