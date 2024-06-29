@@ -258,12 +258,11 @@ The product category name
 The nominal category of coupon statuses
 The percentage of each category of coupon status
 
-Expressing these counts as percentages is more easily comprehensible, but since
-we're only interested in
-Finally, let's only display the percentage of transactions where
-coupons were used.
-*/
+Expressing these counts as percentages is more easily comprehensible, and gives
+us a better idea of the breakdown of use across categories.
 
+Finally, let's only display the percentage of transactions where coupons were used.
+*/
 
 with calcs as (select
   product_cat
@@ -282,7 +281,6 @@ from calcs
 select *
 from pcts
 where coupon_status = 'Used'
-
 
 +++++++++++++++++++++++++++++++++++++++++++++++++
 ++"product_cat"++++++"coupon_status"++++++"pct"++
@@ -309,7 +307,22 @@ where coupon_status = 'Used'
   "Waze"	                "Used"	        33.21
 
 
--- Coupon use hovers around a third of all purchases except for Android at 23%
+/*
+Our results here include:
+
+The product category name
+The nominal coupon status category of "Used" only
+The percentage of transactions for each product category where a coupon was used
+
+Here we can see that coupon use hovers at around a third of transactions for
+each category. There are a couple outliers:
+
+Android 23.26%
+Google 27.62%
+More Bags 39.13%
+
+Everything else is comes in around 33% +/- 4%.
+*/
 
 
 2) Were coupons used more than unused?
