@@ -72,6 +72,7 @@ Cohort Analysis:  Cohort Analysis is a basic term that encompasses all of the
                   cohort designs are practically limitless.
 */
 
+
 -- First let's explore overall coupon use.
 
 1) What is the coupon use status for each category?
@@ -85,17 +86,9 @@ from sales
 group by 1,2
 order by 1, 2
 
-/*
-Our results include:
-
-The product category
-The nominal category of coupon statuses
-The count of each category of coupon statuses
-A running total of each category per category
-*/
-
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++"product_cat"++++++++++"coupon_status"+++++"count"+++"total_count"++
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   "Accessories"	           "Clicked"	         125	        234
   "Accessories"	           "Not Used"	          32	        234
   "Accessories"	           "Used"	              77	        234
@@ -156,8 +149,17 @@ A running total of each category per category
   "Waze"	                 "Not Used"	          89	        554
   "Waze"	                 "Used"	             184       	  554
 
+/*
+Our results include:
 
--- For better comprehension, let's express these results in percentage form.
+The product category
+The nominal category of coupon statuses
+The count of each category of coupon statuses
+A running total of each category per category
+
+
+For better comprehension, let's express these results in percentage form.
+*/
 
 
 with calcs as (select
@@ -174,76 +176,81 @@ select
 	, round(100 * count/total_count, 2) as pct
 from calcs
 
-"product_cat"+++++++++"coupon_status"++++++"pct"++
-++++++++++++++++++++++++++++++++++++++++++++++++++
-"Accessories"	           "Clicked"	       53.42
-"Accessories"	           "Not Used"	       13.68
-"Accessories"	           "Used"	           32.91
-"Android"	               "Clicked"	       53.49
-"Android"	               "Not Used"	       23.26
-"Android"	               "Used"	           23.26
-"Apparel"	               "Clicked" 	       50.88
-"Apparel"	               "Not Used"	       15.16
-"Apparel"	               "Used"	           33.96
-"Backpacks"	             "Clicked"	       52.81
-"Backpacks"	             "Not Used"	       16.85
-"Backpacks"	             "Used"	           30.34
-"Bags"	                 "Clicked"	       51.65
-"Bags"	                 "Not Used"	       15.14
-"Bags"	                 "Used"	           33.21
-"Bottles"	               "Clicked"	       51.49
-"Bottles"	               "Not Used"	       17.91
-"Bottles"	               "Used"	           30.60
-"Drinkware"	             "Clicked"	       50.30
-"Drinkware"	             "Not Used"	       16.37
-"Drinkware"	             "Used"	           33.33
-"Fun"	                   "Clicked"	       51.88
-"Fun"	                   "Not Used"	       15.63
-"Fun"	                   "Used"	           32.50
-"Gift Cards"	           "Clicked"	       50.94
-"Gift Cards"	           "Not Used"	       13.84
-"Gift Cards"	           "Used"	           35.22
-"Google"	               "Clicked"	       48.57
-"Google"	               "Not Used"	       23.81
-"Google"	               "Used"	           27.62
-"Headgear"	             "Clicked"	       52.01
-"Headgear"	             "Not Used"	       14.79
-"Headgear"	             "Used"	           33.20
-"Housewares"	           "Clicked"	       55.74
-"Housewares"	           "Not Used"	       14.75
-"Housewares"	           "Used"	           29.51
-"Lifestyle"	             "Clicked"	       49.45
-"Lifestyle"	             "Not Used"	       14.94
-"Lifestyle"	             "Used"	           35.61
-"More Bags"	             "Clicked"	       54.35
-"More Bags"	             "Not Used"	        6.52
-"More Bags"	             "Used"	           39.13
-"Nest"	                 "Clicked"	       51.27
-"Nest"	                 "Not Used"	       15.97
-"Nest"	                 "Used"	           32.76
-"Nest-Canada"	           "Clicked"	       55.21
-"Nest-Canada"	           "Not Used"	       14.83
-"Nest-Canada"	           "Used"	           29.97
-"Nest-USA"	             "Clicked"	       50.96
-"Nest-USA"	             "Not Used"	       15.41
-"Nest-USA"	             "Used"	           33.63
-"Notebooks & Journals"   "Clicked"	       51.94
-"Notebooks & Journals"   "Not Used"	       13.75
-"Notebooks & Journals"   "Used"	           34.31
-"Office"	               "Clicked"	       50.59
-"Office"	               "Not Used"	       14.86
-"Office"	               "Used"	           34.55
-"Waze"	                 "Clicked"	       50.72
-"Waze"                	 "Not Used"	       16.06
-"Waze"                	 "Used"	           33.21
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+++"product_cat"+++++++++"coupon_status"++++++"pct"++
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+  "Accessories"	           "Clicked"	       53.42
+  "Accessories"	           "Not Used"	       13.68
+  "Accessories"	           "Used"	           32.91
+  "Android"	               "Clicked"	       53.49
+  "Android"	               "Not Used"	       23.26
+  "Android"	               "Used"	           23.26
+  "Apparel"	               "Clicked" 	       50.88
+  "Apparel"	               "Not Used"	       15.16
+  "Apparel"	               "Used"	           33.96
+  "Backpacks"	             "Clicked"	       52.81
+  "Backpacks"	             "Not Used"	       16.85
+  "Backpacks"	             "Used"	           30.34
+  "Bags"	                 "Clicked"	       51.65
+  "Bags"	                 "Not Used"	       15.14
+  "Bags"	                 "Used"	           33.21
+  "Bottles"	               "Clicked"	       51.49
+  "Bottles"	               "Not Used"	       17.91
+  "Bottles"	               "Used"	           30.60
+  "Drinkware"	             "Clicked"	       50.30
+  "Drinkware"	             "Not Used"	       16.37
+  "Drinkware"	             "Used"	           33.33
+  "Fun"	                   "Clicked"	       51.88
+  "Fun"	                   "Not Used"	       15.63
+  "Fun"	                   "Used"	           32.50
+  "Gift Cards"	           "Clicked"	       50.94
+  "Gift Cards"	           "Not Used"	       13.84
+  "Gift Cards"	           "Used"	           35.22
+  "Google"	               "Clicked"	       48.57
+  "Google"	               "Not Used"	       23.81
+  "Google"	               "Used"	           27.62
+  "Headgear"	             "Clicked"	       52.01
+  "Headgear"	             "Not Used"	       14.79
+  "Headgear"	             "Used"	           33.20
+  "Housewares"	           "Clicked"	       55.74
+  "Housewares"	           "Not Used"	       14.75
+  "Housewares"	           "Used"	           29.51
+  "Lifestyle"	             "Clicked"	       49.45
+  "Lifestyle"	             "Not Used"	       14.94
+  "Lifestyle"	             "Used"	           35.61
+  "More Bags"	             "Clicked"	       54.35
+  "More Bags"	             "Not Used"	        6.52
+  "More Bags"	             "Used"	           39.13
+  "Nest"	                 "Clicked"	       51.27
+  "Nest"	                 "Not Used"	       15.97
+  "Nest"	                 "Used"	           32.76
+  "Nest-Canada"	           "Clicked"	       55.21
+  "Nest-Canada"	           "Not Used"	       14.83
+  "Nest-Canada"	           "Used"	           29.97
+  "Nest-USA"	             "Clicked"	       50.96
+  "Nest-USA"	             "Not Used"	       15.41
+  "Nest-USA"	             "Used"	           33.63
+  "Notebooks & Journals"   "Clicked"	       51.94
+  "Notebooks & Journals"   "Not Used"	       13.75
+  "Notebooks & Journals"   "Used"	           34.31
+  "Office"	               "Clicked"	       50.59
+  "Office"	               "Not Used"	       14.86
+  "Office"	               "Used"	           34.55
+  "Waze"	                 "Clicked"	       50.72
+  "Waze"                	 "Not Used"	       16.06
+  "Waze"                	 "Used"	           33.21
 
-1.5b) Show only percentages for Used coupons
+
+/*
+Finally, let's only display the percentage of transactions where
+coupons were used.
+*/
+
 
 with calcs as (select
   product_cat
   , coupon_status
   , count(coupon_status) as count
-  , sum(count(coupon_status)) OVER(PARTITION BY product_cat) AS total_count
 from sales
 group by 1,2
 order by 1, 2
@@ -259,32 +266,32 @@ from pcts
 where coupon_status = 'Used'
 
 
-"product_cat"	      "coupon_status"	    "pct"
-"Accessories"	          "Used"	        32.91
-"Android"	              "Used"	        23.26
-"Apparel"	              "Used"	        33.96
-"Backpacks"	            "Used"	        30.34
-"Bags"	                "Used"	        33.21
-"Bottles"	              "Used"	        30.60
-"Drinkware"	            "Used"	        33.33
-"Fun"	                  "Used"	        32.50
-"Gift Cards"	          "Used"	        35.22
-"Google"	              "Used"	        27.62
-"Headgear"	            "Used"	        33.20
-"Housewares"	          "Used"	        29.51
-"Lifestyle"	            "Used"	        35.61
-"More Bags"	            "Used"	        39.13
-"Nest"	                "Used"	        32.76
-"Nest-Canada"	          "Used"	        29.97
-"Nest-USA"	            "Used"	        33.63
-"Notebooks & Journals"	"Used"	        34.31
-"Office"	              "Used"	        34.55
-"Waze"	                "Used"	        33.21
++++++++++++++++++++++++++++++++++++++++++++++++++
+++"product_cat"++++++"coupon_status"++++++"pct"++
++++++++++++++++++++++++++++++++++++++++++++++++++
+  "Accessories"	          "Used"	        32.91
+  "Android"	              "Used"	        23.26
+  "Apparel"	              "Used"	        33.96
+  "Backpacks"	            "Used"	        30.34
+  "Bags"	                "Used"	        33.21
+  "Bottles"	              "Used"	        30.60
+  "Drinkware"	            "Used"	        33.33
+  "Fun"	                  "Used"	        32.50
+  "Gift Cards"	          "Used"	        35.22
+  "Google"	              "Used"	        27.62
+  "Headgear"	            "Used"	        33.20
+  "Housewares"	          "Used"	        29.51
+  "Lifestyle"	            "Used"	        35.61
+  "More Bags"	            "Used"	        39.13
+  "Nest"	                "Used"	        32.76
+  "Nest-Canada"	          "Used"	        29.97
+  "Nest-USA"	            "Used"	        33.63
+  "Notebooks & Journals"	"Used"	        34.31
+  "Office"	              "Used"	        34.55
+  "Waze"	                "Used"	        33.21
 
-/*
-Coupon use hovers at around a third of all purchases except for Android at 23%
-*/
 
+-- Coupon use hovers around a third of all purchases except for Android at 23%
 
 
 2) Were coupons used more than unused?
@@ -296,31 +303,32 @@ from sales
 group by 1
 order by 1
 
-"product_cat"	        "use_count"
-++++++++++++++++++++++++++++++++
-"Accessories"	           -80
-"Android"	               -23
-"Apparel"	              -5814
-"Backpacks"	             -35
-"Bags"	                 -632
-"Bottles"	               -104
-"Drinkware"	             -1161
-"Fun"	                    -56
-"Gift Cards"	            -47
-"Google"	                -47
-"Headgear"	             -259
-"Housewares"	            -50
-"Lifestyle"	             -890
-"More Bags"	              -10
-"Nest"	                 -758
-"Nest-Canada"	           -127
-"Nest-USA"	             -4589
-"Notebooks & Journals"	 -235
-"Office"	               -2013
-"Waze"	                 -186
++++++++++++++++++++++++++++++++++++++
+++"product_cat"+++++++++"use_count"++
++++++++++++++++++++++++++++++++++++++
+  "Accessories"	            -80
+  "Android"	                -23
+  "Apparel"	              -5814
+  "Backpacks"	              -35
+  "Bags"	                 -632
+  "Bottles"	               -104
+  "Drinkware"	            -1161
+  "Fun"	                    -56
+  "Gift Cards"	            -47
+  "Google"	                -47
+  "Headgear"	             -259
+  "Housewares"	            -50
+  "Lifestyle"	             -890
+  "More Bags"	              -10
+  "Nest"	                 -758
+  "Nest-Canada"	           -127
+  "Nest-USA"	            -4589
+  "Notebooks & Journals"	 -235
+  "Office"	              -2013
+  "Waze"	                 -186
+
 
 --All categories had net negative coupon use.
-
 
 
 3) Which gender spends more?
@@ -333,16 +341,16 @@ join customers c
 on c.customer_id = s.customer_id
 group by 1
 
-"gender"	"sum"
-+++++++++++++++++
-  "M"   1,767,124.39
-  "F"	  2,903,670.23
+++++++++++++++++++++++++
+++"gender"+++++++"sum"++
+++++++++++++++++++++++++
+    "M"    1,767,124.39
+    "F"	   2,903,670.23
+
 
   -- Female customers outspent males by almost $1,200,000
 
-
-
-4) Which gender uses coupons more?
+4) Which gender used coupons more?
 
 select
 	c.gender
@@ -355,12 +363,13 @@ where coupon_status = 'Used'
 group by 1, 2
 order by 1 desc
 
-"gender"	"coupon_status"	"count"
-"M"	"Used"	6752
-"F"	"Used"	11152
++++++++++++++++++++++++++++++++++++++++++++
+++"gender"++++++"coupon_status"+++"count"++
++++++++++++++++++++++++++++++++++++++++++++
+    "M"	            "Used"	        6752
+    "F"	            "Used"	       11152
 
--- Female customers used nearly coupons on nearly twice as many transactions
-
+-- Female customers used coupons on nearly twice as many transactions
 
 
 5) Which coupon was used the most?
@@ -373,22 +382,24 @@ we first need to look at the coupons that were available for each month.
 select * from coupon
 order by 2, 1
 
-"month"	"category"	"coupon_code"
-"Apr"	"Accessories"	"ACC10"
-"Aug"	"Accessories"	"ACC20"
-"Dec"	"Accessories"	"ACC30"
-"Feb"	"Accessories"	"ACC20"
-"Jan"	"Accessories"	"ACC10"
-"Jul"	"Accessories"	"ACC10"
-"Jun"	"Accessories"	"ACC30"
-"Mar"	"Accessories"	"ACC30"
-"May"	"Accessories"	"ACC20"
-"Nov"	"Accessories"	"ACC20"
-"Oct"	"Accessories"	"ACC10"
-"Sep"	"Accessories"	"ACC30"
++++++++++++++++++++++++++++++++++++++++
+++"month"+++"category"++"coupon_code"++
++++++++++++++++++++++++++++++++++++++++
+   "Apr"	 "Accessories"	 "ACC10"
+   "Aug"	 "Accessories"	 "ACC20"
+   "Dec"	 "Accessories"	 "ACC30"
+   "Feb"	 "Accessories"	 "ACC20"
+   "Jan"	 "Accessories"	 "ACC10"
+   "Jul"	 "Accessories"	 "ACC10"
+   "Jun"	 "Accessories"	 "ACC30"
+   "Mar"	 "Accessories"	 "ACC30"
+   "May"	 "Accessories"	 "ACC20"
+   "Nov"	 "Accessories"	 "ACC20"
+   "Oct"	 "Accessories"	 "ACC10"
+   "Sep"	 "Accessories"	 "ACC30"
 
 /*
-Here I've isolated one category to demonstrate that each month used
+Here I've isolated the Accessories category to demonstrate that each month used
 one unique coupon code per category per month. So if we can see which
 categories had the highest coupon use by month, we can determine which
 coupons were used the most.
@@ -407,71 +418,73 @@ order by 3 desc, 2) calcs
 where product_rank <= 3
 order by 2, 4
 
-"month"	 "product_cat"	"count"	"product_rank"
-11	     "Accessories"	          27	1
-12	     "Accessories"	          18	2
-10	     "Accessories"	          16	3
-8	       "Android"	               3	1
-1	       "Android"	               2	2
-6	       "Android"	               2	3
-8	       "Apparel"	               968	1
-7	       "Apparel"	               720	2
-5	       "Apparel"	               603	3
-5	       "Backpacks"	             6	1
-8	       "Backpacks"	             5	2
-4	       "Backpacks"	             5	3
-7	       "Bags"	                  74	1
-3	       "Bags"	                  73	2
-8	       "Bags"	                  69	3
-7	       "Bottles"	               15	1
-8	       "Bottles"	               13	2
-5	       "Bottles"	               10	3
-8	       "Drinkware"	           146	1
-3	       "Drinkware"	           132	2
-10	     "Drinkware"	            117	3
-7	       "Fun"	                   9	1
-8	       "Fun"	                   9	2
-6	       "Fun"	                   7	3
-10	     "Gift Cards"	             30	1
-5	       "Gift Cards"	              7	2
-6	       "Gift Cards"	              4	3
-1	       "Google"	                  8	1
-2	       "Google"	                  5	2
-3	       "Google"	                  4	3
-7	       "Headgear"	                40	1
-8	       "Headgear"	                34	2
-3	       "Headgear"	                30	3
-8	       "Housewares"	              8	1
-3	       "Housewares"	              6	2
-7	       "Housewares"	              5	3
-8	       "Lifestyle"	             149	1
-7	       "Lifestyle"	             126	2
-9	       "Lifestyle"	             120	3
-3	       "More Bags"	             7	1
-4	       "More Bags"	             6	2
-5	       "More Bags"	             4	3
-11       "Nest"	                  226	1
-12       "Nest"	                  209	2
-10	     "Nest"	                 141	3
-6	       "Nest-Canada"	         14	1
-1	       "Nest-Canada"	         13	2
-4	       "Nest-Canada"	         10	3
-1	       "Nest-USA"	              526	1
-12	     "Nest-USA"	             510	2
-11	     "Nest-USA"	             501	3
-8	       "Notebooks & Journals"	68	1
-7	       "Notebooks & Journals"	48	2
-5	       "Notebooks & Journals"	23	3
-3	       "Office"	              234	1
-5	       "Office"	              222	2
-4	       "Office"	              213	3
-8	       "Waze"	                23	1
-1	       "Waze"	                20	2
-5	       "Waze"	                20	3
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++"product_cat"++++"product_rank"++++++++"month"++"coupon_count"++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  "Accessories"	          1	               11	          27
+  "Accessories"	          2	               12	          18
+  "Accessories"	          3	               10	          16
+  "Android"	              1	                8	           3
+  "Android"	              2	                1	           2
+  "Android"	              3	                6	           2
+  "Apparel"	              1	                8	         968
+  "Apparel"	              2	                7	         720
+  "Apparel"	              3	                5	         603
+  "Backpacks"	            1	                5	           6
+  "Backpacks"	            2	                8	           5
+  "Backpacks"	            3	                4	           5
+  "Bags"	                1	                7	          74
+  "Bags"	                2	                3	          73
+  "Bags"	                3	                8	          69
+  "Bottles"	              1	                7	          15
+  "Bottles"	              2	                8	          13
+  "Bottles"	              3	                5	          10
+  "Drinkware"	            1	                8	         146
+  "Drinkware"	            2	                3	         132
+  "Drinkware"	            3	               10	         117
+  "Fun"	                  1	                7	           9
+  "Fun"	                  2	                8	           9
+  "Fun"	                  3	                6	           7
+  "Gift Cards"	          1	               10	          30
+  "Gift Cards"	          2	                5	           7
+  "Gift Cards"	          3	                6	           4
+  "Google"	              1	                1	           8
+  "Google"	              2	                2	           5
+  "Google"	              3	                3	           4
+  "Headgear"	            1	                7	          40
+  "Headgear"	            2	                8	          34
+  "Headgear"	            3	                3	          30
+  "Housewares"	          1	                8	           8
+  "Housewares"	          2	                3	           6
+  "Housewares"	          3	                7	           5
+  "Lifestyle"	            1	                8	         149
+  "Lifestyle"	            2	                7	         126
+  "Lifestyle"	            3	                9	         120
+  "More Bags"	            1	                3	           7
+  "More Bags"	            2	                4	           6
+  "More Bags"	            3	                5	           4
+  "Nest"	                1	               11	         226
+  "Nest"	                2	               12	         209
+  "Nest"	                3	               10	         141
+  "Nest-Canada"	          1	                6	          14
+  "Nest-Canada"	          2	                1	          13
+  "Nest-Canada"	          3	                4	          10
+  "Nest-USA"	            1	                1	         526
+  "Nest-USA"	            2	               12	         510
+  "Nest-USA"	            3	               11	         501
+  "Notebooks & Journals"	1	                8	          68
+  "Notebooks & Journals"	2	                7	          48
+  "Notebooks & Journals"	3	                5	          23
+  "Office"	              1	                3	         234
+  "Office"	              2	                5	         222
+  "Office"	              3	                4	         213
+  "Waze"	                1	                8	          23
+  "Waze"	                2	                1	          20
+  "Waze"	                3	                5	          20
 
 /*
 Here we can see the months of highest coupon use in each category.
-As the coupon table doesn't have a primary key, we can't join the tables
+Since the coupon table doesn't have a primary key, we can't join the tables
 to display each month's corresponding coupon code, but cross referencing
 this information with monthly coupon code info will reveal the most used code.
 */
