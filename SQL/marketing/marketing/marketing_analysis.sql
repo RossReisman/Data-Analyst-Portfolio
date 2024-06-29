@@ -324,7 +324,6 @@ More Bags 39.13%
 Everything else is comes in around 33% +/- 4%.
 */
 
-
 2) Were coupons used more than unused?
 
 select
@@ -359,55 +358,25 @@ order by 1
   "Waze"	                 -186
 
 
---All categories had net negative coupon use.
+/*
+Our results here include:
+
+The product category name
+An integer that represents their net use
+
+As we know from the last question, coupons were unused more than they were used
+across categories. Here we can see the number of transactions this represents.
 
 
-3) Which gender spends more?
+Now that we've completed our look at overall coupon use, let's examine which
+ccategories saw the most coupon use over the past year.
+*/
 
-select
-	c.gender
-	, sum(s.final_price)
-from sales s
-join customers c
-on c.customer_id = s.customer_id
-group by 1
-
-++++++++++++++++++++++++
-++"gender"+++++++"sum"++
-++++++++++++++++++++++++
-    "M"    1,767,124.39
-    "F"	   2,903,670.23
-
-
-  -- Female customers outspent males by almost $1,200,000
-
-4) Which gender used coupons more?
-
-select
-	c.gender
-	, s.coupon_status
-	, count(s.coupon_status)
-from customers c
-join sales s
-on c.customer_id = s.customer_id
-where coupon_status = 'Used'
-group by 1, 2
-order by 1 desc
-
-+++++++++++++++++++++++++++++++++++++++++++
-++"gender"++++++"coupon_status"+++"count"++
-+++++++++++++++++++++++++++++++++++++++++++
-    "M"	            "Used"	        6752
-    "F"	            "Used"	       11152
-
--- Female customers used coupons on nearly twice as many transactions
-
-
-5) Which coupon was used the most?
+3) Which coupons were used the most?
 
 /*
 In order to determine which coupon was used the most,
-we first need to look at the coupons that were available for each month.
+first we need to look at the coupons that were available for each month.
 */
 
 select * from coupon
@@ -429,6 +398,7 @@ order by 2, 1
    "Oct"	 "Accessories"	 "ACC10"
    "Sep"	 "Accessories"	 "ACC30"
 
+
 /*
 Here I've isolated the Accessories category to demonstrate that each month used
 one unique coupon code per category per month. So if we can see which
@@ -438,16 +408,16 @@ coupons were used the most.
 
 select * from(
 	select
-	extract(month from transaction_date) as month
-	, product_cat
-	, count(product_cat)
+	product_cat
 	, row_number() over(partition by product_cat order by count(product_cat) desc) as product_rank
+	, extract(month from transaction_date) as month
+	, count(product_cat) as coupon_count
 from sales
 where coupon_status = 'Used'
-group by 2, 1
-order by 3 desc, 2) calcs
+group by 1, 3
+order by 2 desc, 3) calcs
 where product_rank <= 3
-order by 2, 4
+order by 1, 2
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++"product_cat"++++"product_rank"++++++++"month"++"coupon_count"++
@@ -514,11 +484,55 @@ order by 2, 4
   "Waze"	                3	                5	          20
 
 /*
-Here we can see the months of highest coupon use in each category.
+Here we can see the top 3 months of coupon use in each category.
 Since the coupon table doesn't have a primary key, we can't join the tables
 to display each month's corresponding coupon code, but cross referencing
 this information with monthly coupon code info will reveal the most used code.
 */
+
+
+3) Which gender spends more?
+
+select
+	c.gender
+	, sum(s.final_price)
+from sales s
+join customers c
+on c.customer_id = s.customer_id
+group by 1
+
+++++++++++++++++++++++++
+++"gender"+++++++"sum"++
+++++++++++++++++++++++++
+    "M"    1,767,124.39
+    "F"	   2,903,670.23
+
+
+  -- Female customers outspent males by almost $1,200,000
+
+4) Which gender used coupons more?
+
+select
+	c.gender
+	, s.coupon_status
+	, count(s.coupon_status)
+from customers c
+join sales s
+on c.customer_id = s.customer_id
+where coupon_status = 'Used'
+group by 1, 2
+order by 1 desc
+
++++++++++++++++++++++++++++++++++++++++++++
+++"gender"++++++"coupon_status"+++"count"++
++++++++++++++++++++++++++++++++++++++++++++
+    "M"	            "Used"	        6752
+    "F"	            "Used"	       11152
+
+-- Female customers used coupons on nearly twice as many transactions
+
+
+
 
 6) Which month had the highest ROAS?
 
