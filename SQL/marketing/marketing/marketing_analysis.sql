@@ -1,10 +1,7 @@
 /*
 Why are some delivery charges so steep?
-Which gender saved the most by using coupons?
 Which location spends/coupons the most?
 Which customers spends/coupons the most?
-RFM Segmentation and Customer LTV
-Cohort analysis and retention
 */
 
 /*
@@ -400,6 +397,12 @@ order by 2, 1
 
 
 /*
+Our results here include:
+
+The month name
+The product category
+The corresponding coupon code
+
 Here I've isolated the Accessories category to demonstrate that each month used
 one unique coupon code per category per month. So if we can see which
 categories had the highest coupon use by month, we can determine which
@@ -484,10 +487,27 @@ order by 1, 2
   "Waze"	                3	                5	          20
 
 /*
+Our results here include:
+
+The product category name
+The rank of the top three months with the highest coupon use
+An integer that represents the months
+The count of transactions where a coupon was used
+
 Here we can see the top 3 months of coupon use in each category.
 Since the coupon table doesn't have a primary key, we can't join the tables
 to display each month's corresponding coupon code, but cross referencing
 this information with monthly coupon code info will reveal the most used code.
+
+Some takeaways:
+
+1) Accessories, Nest, and Nest-USA categories were most popular during the holiday season.
+2) Apparel, Bottles, Fun, and Lifestyle categories were most popular during the summer months.
+3) Google was most popular at the beginning of the year.
+
+The above takeaways could be useful for future sale and inventory planning.
+
+Now let's look at customer demographics.
 */
 
 
@@ -507,8 +527,17 @@ group by 1
     "M"    1,767,124.39
     "F"	   2,903,670.23
 
+/*
+Our results here include:
 
-  -- Female customers outspent males by almost $1,200,000
+Categorical customer gender data
+An integer that represents the total revenue by gender
+
+Female customers outspent males by almost $1,200,000
+Note that this does not include discounts from coupons
+
+*/
+
 
 4) Which gender used coupons more?
 
