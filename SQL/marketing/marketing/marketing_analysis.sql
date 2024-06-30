@@ -609,7 +609,8 @@ New York, with both Chicago and California spending over $1 million this year.
 Let's take a more granular look through the lens of product categories.
 */
 
-select * from(select
+select * from(
+select
 	c.location
 	, s.product_cat
 	, count(s.product_cat)
@@ -690,15 +691,17 @@ order by 2, 4
 /*
 Our results here include:
 
-Categorical location data
+Categorical location name data
 Categorical product category data
 The count of each product category ordered
 The rank of each location by product category
 
-Here we can see the top three locations for each category by revenue are Chicago, California, and
-New York, with both Chicago and California spending over $1 million this year.
+Here we can see that Chicago, California, and New York were always in the top
+three locations for number of products ordered. This is unsurprising as per our
+last query, these locations outspent New Jersey and Washington DC by a wide
+margin.
 
-Let's take a more granular look through the lens of product categories.
+
 */
 
 
