@@ -1,6 +1,9 @@
 /*
 Data from
 https://www.kaggle.com/datasets/rishikumarrajvansh/marketing-insights-for-e-commerce-company
+
+Pretty sure the data is randomly generated because the coupon statuses don't
+make sense but I did the analyses anyway.
 */
 
 Step 1: Import and Cleaning

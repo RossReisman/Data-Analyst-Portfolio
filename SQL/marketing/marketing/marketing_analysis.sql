@@ -1,4 +1,12 @@
 /*
+Data from
+https://www.kaggle.com/datasets/rishikumarrajvansh/marketing-insights-for-e-commerce-company
+
+Pretty sure the data is randomly generated because the coupon statuses don't
+make sense but I did the analyses anyway.
+*/
+
+/*
 Why are some delivery charges so steep?
 Which location spends/coupons the most?
 Which customers spends/coupons the most?
@@ -511,7 +519,7 @@ Now let's look at customer demographics.
 */
 
 
-3) Which gender spends more?
+4) Which gender spends more?
 
 select
 	c.gender
@@ -531,15 +539,14 @@ group by 1
 Our results here include:
 
 Categorical customer gender data
-An integer that represents the total revenue by gender
+An integer that represents the total revenue
 
 Female customers outspent males by almost $1,200,000
-Note that this does not include discounts from coupons
-
+Note that these figures exclude savings from coupons
 */
 
 
-4) Which gender used coupons more?
+5) Which gender used coupons more?
 
 select
 	c.gender
@@ -558,9 +565,141 @@ order by 1 desc
     "M"	            "Used"	        6752
     "F"	            "Used"	       11152
 
--- Female customers used coupons on nearly twice as many transactions
+/*
+Our results here include:
+
+Categorical customer gender data
+Categorial coupon status data "Used" only
+An integer that represents the total coupon use count
+
+Female customers used coupons twice as many coupons.
+
+Now let's examine location-based demographics.
+*/
+
+6) Which locations spent the most and what did they buy?
+
+select
+	c.location
+	, sum(s.final_price)
+from customers c
+join sales s
+on c.customer_id = s.customer_id
+group by 1
+order by 2 desc
+
++++++++++++++++++++++++++++++++
+++"location"++++++++++++"sum"++
++++++++++++++++++++++++++++++++
+  "Chicago"	       1,625,885.58
+  "California"	   1,442,447.31
+  "New York"	       937,022.63
+  "New Jersey"	     409,666.86
+  "Washington DC"	   255,772.24
+
+/*
+Our results here include:
+
+Categorical location data
+An integer that represents total revenue
+
+Here we can see the top three locations by revenue are Chicago, California, and
+New York, with both Chicago and California spending over $1 million this year.
+
+Let's take a more granular look through the lens of product categories.
+*/
+
+select * from(select
+	c.location
+	, s.product_cat
+	, count(s.product_cat)
+	, row_number() over(partition by product_cat order by count(product_cat) desc) as rank
+from customers c
+join sales s
+on c.customer_id = s.customer_id
+group by 1, 2
+order by 2, 3 desc) calcs
+where rank <= 3
+order by 2, 4
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++"location"++++++++"product_cat"+++++++++++"count"+++"rank"++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  "Chicago"	        "Accessories"	             86	       1
+  "California"	    "Accessories"	             80	       2
+  "New York"	      "Accessories"	             41	       3
+  "Chicago"	        "Android"	                 18	       1
+  "California"	    "Android"	                 13	       2
+  "New York"	      "Android"	                  7	       3
+  "Chicago"	        "Apparel"	               6158	       1
+  "California"	    "Apparel"	               5491	       2
+  "New York"	      "Apparel"	               3902	       3
+  "Chicago"	        "Backpacks"	               34	       1
+  "California"	    "Backpacks"	               29	       2
+  "New York"	      "Backpacks"	               14	       3
+  "Chicago"	        "Bags"	                  731	       1
+  "California"	    "Bags"	                  539	       2
+  "New York"	      "Bags"	                  383	       3
+  "California"	    "Bottles"	                 91	       1
+  "Chicago"	        "Bottles"	                 85	       2
+  "New York"      	"Bottles"	                 54	       3
+  "Chicago"	        "Drinkware"	             1252	       1
+  "California"	    "Drinkware"	             1117	       2
+  "New York"  	    "Drinkware"	              675	       3
+  "Chicago"	        "Fun"	                     56	       1
+  "California"	    "Fun"	                     44	       2
+  "New York"	      "Fun"	                     32	       3
+  "Chicago"	        "Gift Cards"	             89	       1
+  "California"	    "Gift Cards"	             27	       2
+  "New York"   	    "Gift Cards"	             24	       3
+  "California"	    "Google"	                 40	       1
+  "Chicago"	        "Google"	                 33	       2
+  "New York"    	  "Google"	                 22	       3
+  "Chicago"	        "Headgear"	              264	       1
+  "California"	    "Headgear"	              221	       2
+  "New York"   	    "Headgear"	              191	       3
+  "Chicago"	        "Housewares"	             50	       1
+  "California"	    "Housewares"	             38	       2
+  "New York"   	    "Housewares"	             23	       3
+  "Chicago"	        "Lifestyle"	             1086	       1
+  "California"	    "Lifestyle"	              977	       2
+  "New York"	      "Lifestyle"	              624	       3
+  "Chicago"	        "More Bags"	               17	       1
+  "California"	    "More Bags"	               15	       2
+  "New York"	      "More Bags"	                8	       3
+  "California"	    "Nest"	                  762	       1
+  "Chicago"	        "Nest"	                  710	       2
+  "New York"	      "Nest"	                  421	       3
+  "Chicago"	        "Nest-Canada"	            120	       1
+  "California"	    "Nest-Canada"	             91	       2
+  "New York"	      "Nest-Canada"	             63	       3
+  "Chicago"	        "Nest-USA"	             4855	       1
+  "California"	    "Nest-USA"	             4184	       2
+  "New York"	      "Nest-USA"	             2975	       3
+  "Chicago"	        "Notebooks & Journals"	  260	       1
+  "California"	    "Notebooks & Journals"	  238	       2
+  "New York"	      "Notebooks & Journals"	  181	       3
+  "Chicago"	        "Office"	               2273	       1
+  "California"	    "Office"	               1993	       2
+  "New York"	      "Office"	               1409	       3
+  "Chicago"	        "Waze"	                  203	       1
+  "California"	    "Waze"	                  146	       2
+  "New York"	      "Waze"	                  124	       3
 
 
+/*
+Our results here include:
+
+Categorical location data
+Categorical product category data
+The count of each product category ordered
+The rank of each location by product category
+
+Here we can see the top three locations for each category by revenue are Chicago, California, and
+New York, with both Chicago and California spending over $1 million this year.
+
+Let's take a more granular look through the lens of product categories.
+*/
 
 
 6) Which month had the highest ROAS?
