@@ -782,7 +782,7 @@ order by 1
 ),
 sales_data as (select
 	extract(month from transaction_date) as month
-	, sum(final_price) over(partition by extract(month from transaction_date)) as total
+	, sum(final_price) over(partition by extract(month from transaction_date)) as total_rev
 from sales
 where
 	coupon_status = 'Used'
@@ -790,27 +790,29 @@ where
 	coupon_status = 'Clicked')
 select
 	distinct sales_data.month
-	, total
+	, total_rev
 	, spends.total_spend
-	, total - spends.total_spend as sales_minus_spend
+	, total_rev - spends.total_spend as sales_minus_spend
 from sales_data
 join spends
 on sales_data.month = spends.month
 order by 4 desc
 
-"month"	"total"	"total_spend"	"sales_minus_spend"
-11	432405.18	161144.96	271260.22
-12	438231.51	198648.75	239582.76
-10	348870.68	151224.65	197646.03
-8	338620.41	142904.15	195716.26
-7	311538.26	120217.85	191320.41
-1	343998.17	154928.95	189069.22
-4	341914.33	157026.83	184887.50
-9	305455.79	135514.54	169941.25
-3	291469.61	122250.09	169219.52
-5	261020.28	118259.64	142760.64
-6	263818.15	134318.14	129500.01
-2	260742.38	137107.92	123634.46
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++"month"++"total_rev"++"total_spend"+"sales_minus_spend"++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    11  	  432405.18	    161144.96	       271260.22
+    12  	  438231.51	    198648.75	       239582.76
+    10  	  348870.68	    151224.65	       197646.03
+    8	      338620.41	    142904.15	       195716.26
+    7	      311538.26	    120217.85	       191320.41
+    1	      343998.17	    154928.95	       189069.22
+    4	      341914.33	    157026.83	       184887.50
+    9	      305455.79	    135514.54	       169941.25
+    3	      291469.61	    122250.09	       169219.52
+    5	      261020.28	    118259.64	       142760.64
+    6	      263818.15	    134318.14	       129500.01
+    2	      260742.38	    137107.92	       123634.46
 
 /*
 Probably comes as no surprise that the holiday season months had the highest
