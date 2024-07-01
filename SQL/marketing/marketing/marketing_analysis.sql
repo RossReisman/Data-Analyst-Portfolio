@@ -716,19 +716,21 @@ from spend
 group by 1
 order by 1
 
-"month"	"total_spend"
-1	154928.95
-2	137107.92
-3	122250.09
-4	157026.83
-5	118259.64
-6	134318.14
-7	120217.85
-8	142904.15
-9	135514.54
-10	151224.65
-11	161144.96
-12	198648.75
+++++++++++++++++++++++++++
+++"month"+"+total_spend"++
+++++++++++++++++++++++++++
+     1	    154,928.95
+     2	    137,107.92
+     3	    122,250.09
+     4	    157,026.83
+     5	    118,259.64
+     6	    134,318.14
+     7	    120,217.85
+     8	    142,904.15
+     9	    135,514.54
+     10    	151,224.65
+     11    	161,144.96
+     12    	198,648.75
 
 /*
 The range of total monthly spend is between ~$118,000 and ~$155,000
@@ -737,7 +739,7 @@ with a holiday seasonal ramp up to ~$200,000
 
 with calcs as (select
 	extract(month from transaction_date) as month
-	, sum(final_price) over(partition by extract(month from transaction_date)) as total
+	, sum(final_price) over(partition by extract(month from transaction_date)) as total_rev
 from sales
 where
 	coupon_status = 'Used'
@@ -745,23 +747,25 @@ where
 	coupon_status = 'Clicked')
 select
 	distinct month
-	, total
+	, total_rev
 from calcs
 order by 1
 
-"month"	"total"
-1	343998.17
-2	260742.38
-3	291469.61
-4	341914.33
-5	261020.28
-6	263818.15
-7	311538.26
-8	338620.41
-9	305455.79
-10	348870.68
-11	432405.18
-12	438231.51
++++++++++++++++++++++++++
+++"month"+++"total_rev"++
++++++++++++++++++++++++++
+     1	    343,998.17
+     2	    260,742.38
+     3	    291,469.61
+     4	    341,914.33
+     5	    261,020.28
+     6	    263,818.15
+     7	    311,538.26
+     8	    338,620.41
+     9	    305,455.79
+     10	    348,870.68
+     11	    432,405.18
+     12	    438,231.51
 
 /*
 Here I chose to include all transactions where an advertised coupon might be
