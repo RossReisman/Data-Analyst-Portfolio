@@ -7,13 +7,6 @@ make sense but I did the analyses anyway.
 */
 
 /*
-Why are some delivery charges so steep?
-Which location spends/coupons the most?
-Which customers spends/coupons the most?
-*/
-
-/*
-
 Sales and Marketing Analysis of Coupon Use and Past Year Transactions
 
 Intro:
@@ -1028,10 +1021,11 @@ Next, let's quantify customer value through Customer Value and Customer Lifetime
 */
 
 
-8) CLV Analysis
+8) LTV Analysis
 /*
-Customer Value and Customer Lifetime Value are types of analyses that measure,
-in monetary terms, how much each customer is worth
+Lifetime Value analysis is the estimate of the financial value of each customer.
+It is generally defined as the average customer lifespan multipled by the value
+of the individual customer. In our case, only one year of data is provided, so
 */
 -- First let's generate a list of customer values over this one year period.
 
@@ -1091,7 +1085,7 @@ limit 8
 Here we can see that our top 8 most valuable customers make anywhere from
 11 to 27 purchases per month on average.
 
-Let's see a breakdown of the IQT range of monthly orders for all customers.
+Let's see a breakdown of the IQR range of monthly orders for all customers.
 */
 
 with calcs as (select customer_id
@@ -1331,7 +1325,8 @@ where lifespan > 1
 Let's see how many customers went more than 30 days without a purchase
 */
 
-Churn
+
+9) Churn
 
 with calcs as (select
 	distinct extract(month from this_month.transaction_date) as months
