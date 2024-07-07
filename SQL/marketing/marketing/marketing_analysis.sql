@@ -701,85 +701,20 @@ three locations for number of products ordered. This is unsurprising as per our
 last query, these locations outspent New Jersey and Washington DC by a wide
 margin.
 
-
+Next I will delve into return on ad spend (ROAS)
 */
 
 
 6) Which month had the highest ROAS?
 
--- First let's ascertain the total monthly spend on advertising
-
-select
+with ad_spend as (select
 	extract(month from date) as month
 	, sum(offline_spend) + sum(online_spend) as total_spend
 from spend
 group by 1
 order by 1
-
-++++++++++++++++++++++++++
-++"month"+"+total_spend"++
-++++++++++++++++++++++++++
-     1	    154,928.95
-     2	    137,107.92
-     3	    122,250.09
-     4	    157,026.83
-     5	    118,259.64
-     6	    134,318.14
-     7	    120,217.85
-     8	    142,904.15
-     9	    135,514.54
-     10    	151,224.65
-     11    	161,144.96
-     12    	198,648.75
-
-/*
-The range of total monthly spend is between ~$118,000 and ~$155,000
-with a holiday seasonal ramp up to ~$200,000
-*/
-
-with calcs as (select
-	extract(month from transaction_date) as month
-	, sum(final_price) over(partition by extract(month from transaction_date)) as total_rev
-from sales
-where
-	coupon_status = 'Used'
-	or
-	coupon_status = 'Clicked')
-select
-	distinct month
-	, total_rev
-from calcs
-order by 1
-
-+++++++++++++++++++++++++
-++"month"+++"total_rev"++
-+++++++++++++++++++++++++
-     1	    343,998.17
-     2	    260,742.38
-     3	    291,469.61
-     4	    341,914.33
-     5	    261,020.28
-     6	    263,818.15
-     7	    311,538.26
-     8	    338,620.41
-     9	    305,455.79
-     10	    348,870.68
-     11	    432,405.18
-     12	    438,231.51
-
-/*
-Here I chose to include all transactions where an advertised coupon might be
-the reason a customer made a transaction (i.e. all transactions where
-coupon_status was not 'Not Used')
-*/
-
-with spends as (select
-	extract(month from date) as month
-	, sum(offline_spend) + sum(online_spend) as total_spend
-from spend
-group by 1
-order by 1
-),
+)
+,
 sales_data as (select
 	extract(month from transaction_date) as month
 	, sum(final_price) over(partition by extract(month from transaction_date)) as total_rev
@@ -791,40 +726,54 @@ where
 select
 	distinct sales_data.month
 	, total_rev
-	, spends.total_spend
-	, total_rev - spends.total_spend as sales_minus_spend
+	, ad_spend.total_spend
+	, total_rev - ad_spend.total_spend as sales_minus_spend
 from sales_data
-join spends
-on sales_data.month = spends.month
+join ad_spend
+on sales_data.month = ad_spend.month
 order by 4 desc
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++"month"++"total_rev"++"total_spend"+"sales_minus_spend"++
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    11  	  432405.18	    161144.96	       271260.22
-    12  	  438231.51	    198648.75	       239582.76
-    10  	  348870.68	    151224.65	       197646.03
-    8	      338620.41	    142904.15	       195716.26
-    7	      311538.26	    120217.85	       191320.41
-    1	      343998.17	    154928.95	       189069.22
-    4	      341914.33	    157026.83	       184887.50
-    9	      305455.79	    135514.54	       169941.25
-    3	      291469.61	    122250.09	       169219.52
-    5	      261020.28	    118259.64	       142760.64
-    6	      263818.15	    134318.14	       129500.01
-    2	      260742.38	    137107.92	       123634.46
+    11  	  432,405.18	    161,144.96	       271,260.22
+    12  	  438,231.51	    198,648.75	       239,582.76
+    10  	  348,870.68	    151,224.65	       197,646.03
+    8	      338,620.41	    142,904.15	       195,716.26
+    7	      311,538.26	    120,217.85	       191,320.41
+    1	      343,998.17	    154,928.95	       189,069.22
+    4	      341,914.33	    157,026.83	       184,887.50
+    9	      305,455.79	    135,514.54	       169,941.25
+    3	      291,469.61	    122,250.09	       169,219.52
+    5	      261,020.28	    118,259.64	       142,760.64
+    6	      263,818.15	    134,318.14	       129,500.01
+    2	      260,742.38	    137,107.92	       123,634.46
 
 /*
-Probably comes as no surprise that the holiday season months had the highest
-return on ad spend. Here we can see that November, December, and October had
-the highest ROAS in that order.
+Our results here include:
+
+Categorical month number data
+The sum of daily revenue for each month
+The sum of daily ad spend for each month
+The difference of revenue and ad spend in descending monthly order
+
+For the purpose of measuring ad efficacy, I chose to include all transactions
+where an advertised coupon might be the reason a customer made a transaction
+(i.e. all transactions where coupon_status was not 'Not Used')
+
+Here we can see that the holiday season months had the highest return on ad
+spend. November, December, and October had the highest ROAS in that order.
+
+Next let's perform some more advanced analyses for measuring customer retention.
 */
 
 7) RFM analysis
-Assign score using quartiles for customers who have recently purchased,
-purchased a lot, havent recently purchased, might purchase a lot, etc.
 
 /*
+As mentioned above, RFM Analysis uses assigned scores based on quartiles to grade
+customers who have recently made a purchase, customers who make purchases frequently,
+and the monetary value of the purchases they make.
+
 First we need to develop a scoring system to measure recency, frequency, and
 monetary value for our customers and measure the spread of the results before
 we can add labels.
@@ -857,20 +806,42 @@ SELECT
 	, PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY rfm_combined) AS rfm_100
 FROM final_rfm2
 
-"rfm_0"	"rfm_25"	"rfm_50"	"rfm_75"	"rfm_100"
-  111	    177.5	    244	      344	      444
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+++"rfm_0"++"rfm_25"++"rfm_50"++"rfm_75"++"rfm_100"++
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+    111	    177.5	     244	     344	      444
 
 /*
-Now that we have a basic scoring system we can assign labels to these customers
-in order to take action on them. Below is are the labels based on score range:
+Our results here include:
 
-111 - 118 Lost
-119 - 244 Hibernating
+The 0th, 25th, 50th, 75th, and 100th percentile RFM score boundaries
+
+In order to get a more easily delineated spread, I used multipliers for
+recency and frequency. I multipled recency by 100, frequency by 10, and relied
+on the quartile number for monetary value. However, one can use any multiplier
+to generate a larger spread, which might be useful based on how granular a
+marketing team wishes to get with their customer division.
+
+For our purposes, This strategy generates a score with sufficient magnitude to
+label customers as well as to separate out their relevant attributes - recency and frequency.
+
+Now that we have a basic scoring system we can assign labels to these customers
+in order to take action on them. Below are some examples of labels we can use
+based on score range:
+
+111 - 177.5 Lost
+178 - 244 Hibernating
 245 - 344 Customers Needing Attention
 345 - 444 Best Customers
+
+For marketing purposes, a company can use these scores to tailor email marketing
+messages, offer deals to at-risk customers or rewards for good customers, and
+predict and reduce churn.
+
+To elucidate how the model spreads customers out, I will display each score for
+recency, frequency, and monetary.
 */
 
--- Next, using the following query we can check the range of recency by itself.
 
 with rec as (select
 	customer_id
@@ -900,11 +871,18 @@ select
 from rec
 order by 1
 
-"pctile_0"	"pctile_25"	"pctile_50"	"pctile_75"	"pctile_100"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++"pctile_0"++"pctile_25"++"pctile_50"++"pctile_75"++"pctile_100"++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 100	          150	        200	         300	       400
 
 /*
-Now that we know the recency score range we can assign labels to customers:
+Our results here include:
+
+The 0th, 25th, 50th, 75th, and 100th percentile recency score boundaries
+
+If our primary directive is to measure purchase recency, we can use the above
+recency scores to assign our labels to customers:
 
 100 - 150 Lost
 151 - 200 Hibernating
@@ -924,11 +902,18 @@ select
 from rec
 order by 1
 
-"pctile_0"	"pctile_25"	"pctile_50"	"pctile_75"	"pctile_100"
-   10	          15	       20	         30	           40
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++"pctile_0"++"pctile_25"++"pctile_50"++"pctile_75"++"pctile_100"++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+     10	          15	         20	          30	          40
 
  /*
- Now that we know the recency score range we can assign labels to customers:
+ Our results here include:
+
+ The 0th, 25th, 50th, 75th, and 100th percentile frequency score boundaries
+
+ If our primary directive is to measure purchase frequency, we can use the above
+ recency scores to assign our labels to customers:
 
  10 - 15 Lost
  16 - 20 Hibernating
@@ -947,12 +932,18 @@ select
   , PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY monetary) AS pctile_100
 from rec
 order by 1
-
-"pctile_0"	"pctile_25"	"pctile_50"	"pctile_75"	"pctile_100"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++"pctile_0"++"pctile_25"++"pctile_50"++"pctile_75"++"pctile_100"++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     1	          1.5	        2	          3	          4
 
 /*
-Here's the label breakdown for recency score range:
+Our results here include:
+
+The 0th, 25th, 50th, 75th, and 100th percentile monetary score boundaries
+
+If our primary directive is to measure customer monetary value, we can use the
+above score range to assign our labels to customers:
 
 1 - 1.5 Lost
 1.6 - 2 Hibernating
@@ -960,7 +951,8 @@ Here's the label breakdown for recency score range:
 3.1 - 4 Loyal Customers
 
 We can also create combinations of these filters for more precision targeting.
-Below is just one example with the first 8 results displayed:
+Below is just one example of customers with high recency and frequency scores
+with the first 8 results displayed:
 */
 
 with final_rfm2 as (select
@@ -990,8 +982,9 @@ from final_rfm2
 where recency between 300 and 400
 and frequency between 30 and 40
 
-
-"loyal_customers"
++++++++++++++++++++++
+++"loyal_customers"++
++++++++++++++++++++++
       12346
       12347
       12348
@@ -1002,12 +995,18 @@ and frequency between 30 and 40
       12377
 
 /*
+Our results here include:
+
+Categorical data that represents the customer's unique id
+
 We can also filter for customers who tend to only shop when there are
 coupons available. By adding 'where coupon_status = 'Used' to the initial
 calculation query we generate the following first 8 results:
 */
 
-"loyal_customers"
++++++++++++++++++++++
+++"loyal_customers"++
++++++++++++++++++++++
       12346
       12347
       12348
@@ -1017,7 +1016,14 @@ calculation query we generate the following first 8 results:
       12373
       12377
 
+/*
+Our results here include:
 
+Categorical data that represents the customer's unique id
+
+Using the above analysis, we can segment our customers into basic cohorts, which
+can be used to take basic actions through email marketing campaigns
+*/
 
 8) CV and CLV Analysis
 
