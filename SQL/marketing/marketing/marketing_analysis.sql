@@ -1021,12 +1021,18 @@ Our results here include:
 
 Categorical data that represents the customer's unique id
 
-Using the above analysis, we can segment our customers into basic cohorts, which
-can be used to take basic actions through email marketing campaigns
+Using the above analysis, we can segment our customers into basic cohorts which
+can be used to take actions toward customer retention such as  email marketing campaigns.
+
+Next, let's quantify customer value through Customer Value and Customer Lifetime Value analysis.
 */
 
-8) CV and CLV Analysis
 
+8) CLV Analysis
+/*
+Customer Value and Customer Lifetime Value are types of analyses that measure,
+in monetary terms, how much each customer is worth
+*/
 -- First let's generate a list of customer values over this one year period.
 
 select
