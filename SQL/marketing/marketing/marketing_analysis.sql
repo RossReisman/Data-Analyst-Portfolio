@@ -189,21 +189,21 @@ from calcs
   "Accessories"	           "Clicked"	       53.42
   "Accessories"	           "Not Used"	       13.68
   "Accessories"	           "Used"	           32.91
-  "Android"	            "Clicked"	       53.49
-  "Android"	            "Not Used"	       23.26
-  "Android"	            "Used"	           23.26
-  "Apparel"	            "Clicked" 	       50.88
-  "Apparel"	            "Not Used"	       15.16
-  "Apparel"	            "Used"	           33.96
-  "Backpacks"	            "Clicked"	       52.81
-  "Backpacks"	            "Not Used"	       16.85
-  "Backpacks"	            "Used"	           30.34
-  "Bags"	               "Clicked"	       51.65
-  "Bags"	               "Not Used"	       15.14
-  "Bags"	               "Used"	           33.21
-  "Bottles"	              "Clicked"	       51.49
-  "Bottles"	              "Not Used"	       17.91
-  "Bottles"	              "Used"	           30.60
+  "Android"	           "Clicked"	       53.49
+  "Android"	           "Not Used"	       23.26
+  "Android"	           "Used"	           23.26
+  "Apparel"	           "Clicked" 	       50.88
+  "Apparel"	           "Not Used"	       15.16
+  "Apparel"	           "Used"	           33.96
+  "Backpacks"	           "Clicked"	       52.81
+  "Backpacks"	           "Not Used"	       16.85
+  "Backpacks"	           "Used"	           30.34
+  "Bags"	             "Clicked"	       51.65
+  "Bags"	             "Not Used"	       15.14
+  "Bags"	             "Used"	           33.21
+  "Bottles"	             "Clicked"	       51.49
+  "Bottles"	             "Not Used"	       17.91
+  "Bottles"	             "Used"	           30.60
   "Drinkware"	             "Clicked"	       50.30
   "Drinkware"	             "Not Used"	       16.37
   "Drinkware"	             "Used"	           33.33
