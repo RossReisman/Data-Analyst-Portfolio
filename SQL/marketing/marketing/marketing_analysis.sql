@@ -102,17 +102,17 @@ order by 1, 2
   "Apparel"       	   "Clicked"	      9223	      18126
   "Apparel"       	   "Not Used"	      2747	      18126
   "Apparel"       	   "Used"	        6156	      18126
-  "Backpacks"	           "Clicked"	          47	         89
-  "Backpacks"	           "Not Used"	          15	         89
-  "Backpacks"	           "Used"	              27	         89
-  "Bags"	           "Clicked"	         972	       1882
-  "Bags"	           "Not Used"	         285	       1882
-  "Bags"	           "Used"	             625	       1882
-  "Bottles"	           "Clicked"	         138	        268
-  "Bottles"	           "Not Used"	          48	        268
-  "Bottles"	           "Used"	              82	        268
-  "Drinkware"	           "Clicked"	        1752	       3483
-  "Drinkware"	           "Not Used"	         570	       3483
+  "Backpacks"	           "Clicked"	       47	         89
+  "Backpacks"	           "Not Used"	       15	         89
+  "Backpacks"	           "Used"	         27	         89
+  "Bags"	           "Clicked"	        972	       1882
+  "Bags"	           "Not Used"	        285	       1882
+  "Bags"	           "Used"	         625	       1882
+  "Bottles"	           "Clicked"	      138	        268
+  "Bottles"	           "Not Used"	       48	        268
+  "Bottles"	           "Used"	         82	        268
+  "Drinkware"	           "Clicked"	   1752	       3483
+  "Drinkware"	           "Not Used"	    570	       3483
   "Drinkware"	           "Used"	            1161	       3483
   "Fun"	                   "Clicked"	          25	        160
   "Fun"	                   "Used"	              52	        160
