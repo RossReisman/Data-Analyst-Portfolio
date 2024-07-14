@@ -118,10 +118,10 @@ order by 1, 2
   "Fun"	                   "Used"	        52	        160
   "Gift Cards"	           "Clicked"	        81	        159
   "Gift Cards"	           "Not Used"	        22	        159
-  "Gift Cards"	           "Used"	         56	        159
+  "Gift Cards"	           "Used"	        56	        159
   "Google"	           "Clicked"	        51	        105
   "Google"	           "Not Used"	        25	        105
-  "Google"	           "Used"	         29	        105
+  "Google"	           "Used"	        29	        105
   "Headgear"	           "Clicked"	       401	        771
   "Headgear"	           "Not Used"	       114	        771
   "Headgear"	           "Used"	       256	        771
@@ -129,14 +129,14 @@ order by 1, 2
   "Housewares"	           "Not Used"	        18	        122
   "Housewares"	           "Used"	        36	        122
   "Lifestyle"	           "Clicked"	      1529	       3092
-  "Lifestyle"	           "Not Used"	        462	         3092
-  "Lifestyle"	           "Used"	       1101	       3092
-  "More Bags"	           "Clicked"	          25	         46
-  "More Bags"	           "Not Used"	           3	         46
+  "Lifestyle"	           "Not Used"	       462	         3092
+  "Lifestyle"	           "Used"	      1101	       3092
+  "More Bags"	           "Clicked"	        25	         46
+  "More Bags"	           "Not Used"	         3	         46
   "More Bags"	           "Used"	         18	         46
-  "Nest"	           "Clicked"	        1127	       2198
-  "Nest"	           "Not Used"	         351	       2198
-  "Nest"	           "Used"	         720	       2198
+  "Nest"	           "Clicked"	       1127	       2198
+  "Nest"	           "Not Used"	        351	       2198
+  "Nest"	           "Used"	        720	       2198
   "Nest-Canada"	           "Clicked"	         175	        317
   "Nest-Canada"	           "Not Used"	          47	        317
   "Nest-Canada"	           "Used"	         95	        317
