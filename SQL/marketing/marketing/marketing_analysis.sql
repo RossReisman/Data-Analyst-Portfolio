@@ -95,13 +95,13 @@ order by 1, 2
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   "Accessories"	           "Clicked"	       125	        234
   "Accessories"	           "Not Used"	        32	        234
-  "Accessories"	           "Used"	          77	        234
+  "Accessories"	           "Used"	        77	        234
   "Android"	           "Clicked"	        23	         43
   "Android"	           "Not Used"	        10	         43
-  "Android"       	   "Used"	              10	         43
-  "Apparel"       	   "Clicked"	        9223	      18126
-  "Apparel"       	   "Not Used"	        2747	      18126
-  "Apparel"       	   "Used"	            6156	      18126
+  "Android"       	   "Used"	         10	         43
+  "Apparel"       	   "Clicked"	      9223	      18126
+  "Apparel"       	   "Not Used"	      2747	      18126
+  "Apparel"       	   "Used"	        6156	      18126
   "Backpacks"	           "Clicked"	          47	         89
   "Backpacks"	           "Not Used"	          15	         89
   "Backpacks"	           "Used"	              27	         89
