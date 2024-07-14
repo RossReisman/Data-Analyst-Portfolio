@@ -6,10 +6,7 @@ https://www.kaggle.com/datasets/rishikumarrajvansh/marketing-insights-for-e-comm
 
 Pretty sure the data is randomly generated because the coupon statuses don't
 make sense but I did the analyses anyway.
-*/
 
-/*
-Sales and Marketing Analysis of Coupon Use and Past Year Transactions
 
 Intro:
 
@@ -99,18 +96,18 @@ order by 1, 2
   "Accessories"	           "Clicked"	         125	        234
   "Accessories"	           "Not Used"	          32	        234
   "Accessories"	           "Used"	              77	        234
-  "Android"	               "Clicked"	          23	         43
-  "Android"	               "Not Used"	          10	         43
-  "Android"       	       "Used"	              10	         43
-  "Apparel"       	       "Clicked"	        9223	      18126
-  "Apparel"       	       "Not Used"	        2747	      18126
-  "Apparel"       	       "Used"	            6156	      18126
-  "Backpacks"	             "Clicked"	          47	         89
-  "Backpacks"	             "Not Used"	          15	         89
-  "Backpacks"	             "Used"	              27	         89
-  "Bags"	                 "Clicked"	         972	       1882
-  "Bags"	                 "Not Used"	         285	       1882
-  "Bags"	                 "Used"	             625	       1882
+  "Android"	           "Clicked"	          23	         43
+  "Android"	           "Not Used"	          10	         43
+  "Android"       	   "Used"	              10	         43
+  "Apparel"       	   "Clicked"	        9223	      18126
+  "Apparel"       	   "Not Used"	        2747	      18126
+  "Apparel"       	   "Used"	            6156	      18126
+  "Backpacks"	            "Clicked"	          47	         89
+  "Backpacks"	            "Not Used"	          15	         89
+  "Backpacks"	            "Used"	              27	         89
+  "Bags"	             "Clicked"	         972	       1882
+  "Bags"	             "Not Used"	         285	       1882
+  "Bags"	             "Used"	             625	       1882
   "Bottles"	               "Clicked"	         138	        268
   "Bottles"	               "Not Used"	          48	        268
   "Bottles"	               "Used"	              82	        268
