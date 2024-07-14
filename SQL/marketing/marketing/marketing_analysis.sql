@@ -1,3 +1,5 @@
+Sales and Marketing Analysis with Customer Segmentation
+
 /*
 Data from
 https://www.kaggle.com/datasets/rishikumarrajvansh/marketing-insights-for-e-commerce-company
@@ -1041,7 +1043,9 @@ limit 8
 
 -- Here are the top 8 results
 
-"customer_id"	"avg_sales"	"order_count"	"total_rev"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++"customer_id"	"avg_sales"	"order_count"	"total_rev"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     15311	      129.37      	291        	75937.55
     12748	      107.34      	328        	74601.36
     14606	      99.37	        289	        57137.79
@@ -1070,7 +1074,9 @@ group by 1
 order by 4 desc) as calcs
 limit 8
 
-"customer_id"	"monthly_order_frequency"
+++++++++++++++++++++++++++++++++++++++++++++
+++"customer_id"++"monthly_order_frequency"++
+++++++++++++++++++++++++++++++++++++++++++++
     15311	              24
     12748	              27
     14606	              24
@@ -1109,7 +1115,9 @@ select
   , PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY monthly_order_frequency) AS pctile_100
 from order_freq
 
-"pctile_0"	"pctile_25"	"pctile_50"	"pctile_75"	"pctile_100"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++"pctile_0"++"pctile_25"++"pctile_50"++"pctile_75"++"pctile_100"++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     0           0           0           1           27
 
 /*
@@ -1140,7 +1148,9 @@ select
 	, count(case when monthly_order_frequency >20 then 1 end) as "> 20"
 from order_freq
 
-"<=1"	"<=3"	"<=5"	"<=10"	"<=20"	"> 20"
++++++++++++++++++++++++++++++++++++++++++++++++
+++"<=1"++"<=3"++"<=5"++"<=10"++"<=20"++"> 20"++
++++++++++++++++++++++++++++++++++++++++++++++++
 1102	 267	 64	    26	     4	     5
 
 /*
@@ -1178,7 +1188,9 @@ select
 	round((top_35 / total_revenue) * 100,2)
 from rev_calcs
 
-"top_35_pct_of_rev"
++++++++++++++++++++++++
+++"top_35_pct_of_rev"++
++++++++++++++++++++++++
       19.18
 
 -- Our top 35 customers are responsible for 19.18% of annual revenue.
@@ -1204,7 +1216,9 @@ order by 4 desc) as calcs
 order by 4 desc
 limit 8
 
-"customer_id"	"order_count"	"avg_sales"	"customer_value"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++"customer_id"++"order_count"++"avg_sales"++"customer_value"++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     15311	        587	         129.37     	75940.19
     12748	        695	         107.34     	74601.30
     14606	        575	         99.37	      57137.75
@@ -1240,7 +1254,9 @@ order by 4 desc) as calcs
 order by 4 desc
 limit 8
 
-"customer_id"	"order_count"	"avg_sales"	"lifespan"	"customer_value"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++"customer_id"++"order_count"++"avg_sales"++"lifespan"++"customer_value"++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     16029	          31	       98.07	     359	        3040.17
     15311	          291        129.37	     352	        37646.67
     13047	          26	       69.29	     352	        1801.54
@@ -1283,7 +1299,9 @@ select
 	, PERCENTILE_CONT(1) WITHIN GROUP (ORDER BY lifespan) AS pctile_100
 from calcs2
 
-"pctile_0"	"pctile_25"	"pctile_50"	"pctile_75"	"pctile_100"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++"pctile_0"++"pctile_25"++"pctile_50"++"pctile_75"++"pctile_100"++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     1	          1	         1.5	       122	        359
 
 /*
@@ -1354,7 +1372,9 @@ select
 	, cast(diffs as float)/cast(this_month_cust as float)
 from diffs_cte
 
-"month_num"	"diffs"	"this_month_cust"	"?column?"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++"month_num"++"diffs"++"this_month_cust"++"?column?"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 2	63	172	0.36627906976744184
 3	-99	109	-0.908256880733945
 4	-18	206	-0.08737864077669903
