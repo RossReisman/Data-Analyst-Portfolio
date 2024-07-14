@@ -143,8 +143,8 @@ order by 1, 2
   "Nest-USA"	           "Clicked"	      7141	      14013
   "Nest-USA"	           "Not Used"	      2160	      14013
   "Nest-USA"	           "Used"	      4712	      14013
-  "Notebooks & Journals"   "Clicked"        389	        749
-  "Notebooks & Journals"   "Not Used"        103	        749
+  "Notebooks & Journals"   "Clicked"           389	        749
+  "Notebooks & Journals"   "Not Used"          103	        749
   "Notebooks & Journals"   "Used"	       257	        749
   "Office"	           "Clicked"	      3295	       6513
   "Office"	           "Not Used"	       968	       6513
