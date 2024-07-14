@@ -129,7 +129,7 @@ order by 1, 2
   "Housewares"	           "Not Used"	        18	        122
   "Housewares"	           "Used"	        36	        122
   "Lifestyle"	           "Clicked"	      1529	       3092
-  "Lifestyle"	           "Not Used"	       462	         3092
+  "Lifestyle"	           "Not Used"	       462	       3092
   "Lifestyle"	           "Used"	      1101	       3092
   "More Bags"	           "Clicked"	        25	         46
   "More Bags"	           "Not Used"	         3	         46
@@ -137,9 +137,9 @@ order by 1, 2
   "Nest"	           "Clicked"	      1127	       2198
   "Nest"	           "Not Used"	       351	       2198
   "Nest"	           "Used"	       720	       2198
-  "Nest-Canada"	           "Clicked"	        175	        317
-  "Nest-Canada"	           "Not Used"	         47	        317
-  "Nest-Canada"	           "Used"	        95	        317
+  "Nest-Canada"	           "Clicked"	       175	        317
+  "Nest-Canada"	           "Not Used"	        47	        317
+  "Nest-Canada"	           "Used"	         95	        317
   "Nest-USA"	           "Clicked"	       7141	      14013
   "Nest-USA"	           "Not Used"	       2160	      14013
   "Nest-USA"	           "Used"	       4712	      14013
@@ -148,10 +148,10 @@ order by 1, 2
   "Notebooks & Journals"   "Used"	        257	        749
   "Office"	           "Clicked"	       3295	       6513
   "Office"	           "Not Used"	        968	       6513
-  "Office"                 "Used"	      2250	       6513
+  "Office"                 "Used"	       2250	       6513
   "Waze"	           "Clicked"	        281	        554
   "Waze"	           "Not Used"	         89	        554
-  "Waze"	           "Used"	        184       	  554
+  "Waze"	           "Used"	        184       	554
 
 /*
 Our results here include:
