@@ -98,33 +98,33 @@ order by 1, 2
   "Accessories"	           "Used"	        77	        234
   "Android"	           "Clicked"	        23	         43
   "Android"	           "Not Used"	        10	         43
-  "Android"       	   "Used"	         10	         43
+  "Android"       	   "Used"	        10	         43
   "Apparel"       	   "Clicked"	      9223	      18126
   "Apparel"       	   "Not Used"	      2747	      18126
-  "Apparel"       	   "Used"	        6156	      18126
-  "Backpacks"	           "Clicked"	       47	         89
-  "Backpacks"	           "Not Used"	       15	         89
-  "Backpacks"	           "Used"	         27	         89
-  "Bags"	           "Clicked"	        972	       1882
-  "Bags"	           "Not Used"	        285	       1882
-  "Bags"	           "Used"	         625	       1882
-  "Bottles"	           "Clicked"	      138	        268
-  "Bottles"	           "Not Used"	       48	        268
+  "Apparel"       	   "Used"	      6156	      18126
+  "Backpacks"	           "Clicked"	        47	         89
+  "Backpacks"	           "Not Used"	        15	         89
+  "Backpacks"	           "Used"	        27	         89
+  "Bags"	           "Clicked"	       972	       1882
+  "Bags"	           "Not Used"	       285	       1882
+  "Bags"	           "Used"	        625	       1882
+  "Bottles"	           "Clicked"	       138	        268
+  "Bottles"	           "Not Used"	        48	        268
   "Bottles"	           "Used"	         82	        268
-  "Drinkware"	           "Clicked"	   1752	       3483
-  "Drinkware"	           "Not Used"	    570	       3483
-  "Drinkware"	           "Used"	            1161	       3483
-  "Fun"	                   "Clicked"	          25	        160
-  "Fun"	                   "Used"	              52	        160
-  "Gift Cards"	           "Clicked"	          81	        159
-  "Gift Cards"	           "Not Used"	          22	        159
-  "Gift Cards"	           "Used"	              56	        159
-  "Google"	           "Clicked"	          51	        105
-  "Google"	           "Not Used"	          25	        105
-  "Google"	           "Used"	              29	        105
-  "Headgear"	           "Clicked"	         401	        771
-  "Headgear"	           "Not Used"	         114	        771
-  "Headgear"	           "Used"	             256	        771
+  "Drinkware"	           "Clicked"	          1752	       3483
+  "Drinkware"	           "Not Used"	           570	       3483
+  "Drinkware"	           "Used"	        1161	       3483
+  "Fun"	                   "Clicked"	        25	        160
+  "Fun"	                   "Used"	            52	        160
+  "Gift Cards"	           "Clicked"	        81	        159
+  "Gift Cards"	           "Not Used"	        22	        159
+  "Gift Cards"	           "Used"	            56	        159
+  "Google"	           "Clicked"	        51	        105
+  "Google"	           "Not Used"	        25	        105
+  "Google"	           "Used"	            29	        105
+  "Headgear"	           "Clicked"	       401	        771
+  "Headgear"	           "Not Used"	       114	        771
+  "Headgear"	           "Used"	           256	        771
   "Housewares"	           "Clicked"	          68	        122
   "Housewares"	           "Not Used"	          18	        122
   "Housewares"	           "Used"	              36	        122
