@@ -204,9 +204,9 @@ from calcs
   "Bottles"	             "Clicked"	       51.49
   "Bottles"	             "Not Used"	       17.91
   "Bottles"	             "Used"	           30.60
-  "Drinkware"	             "Clicked"	       50.30
-  "Drinkware"	             "Not Used"	       16.37
-  "Drinkware"	             "Used"	           33.33
+  "Drinkware"	           "Clicked"	       50.30
+  "Drinkware"	           "Not Used"	       16.37
+  "Drinkware"	           "Used"	           33.33
   "Fun"	                   "Clicked"	       51.88
   "Fun"	                   "Not Used"	       15.63
   "Fun"	                   "Used"	           32.50
@@ -228,9 +228,9 @@ from calcs
   "More Bags"	             "Clicked"	       54.35
   "More Bags"	             "Not Used"	        6.52
   "More Bags"	             "Used"	           39.13
-  "Nest"	                 "Clicked"	       51.27
-  "Nest"	                 "Not Used"	       15.97
-  "Nest"	                 "Used"	           32.76
+  "Nest"	             "Clicked"	       51.27
+  "Nest"	             "Not Used"	       15.97
+  "Nest"	             "Used"	           32.76
   "Nest-Canada"	           "Clicked"	       55.21
   "Nest-Canada"	           "Not Used"	       14.83
   "Nest-Canada"	           "Used"	           29.97
@@ -283,25 +283,25 @@ where coupon_status = 'Used'
 ++"product_cat"++++++"coupon_status"++++++"pct"++
 +++++++++++++++++++++++++++++++++++++++++++++++++
   "Accessories"	          "Used"	        32.91
-  "Android"	              "Used"	        23.26
-  "Apparel"	              "Used"	        33.96
-  "Backpacks"	            "Used"	        30.34
-  "Bags"	                "Used"	        33.21
-  "Bottles"	              "Used"	        30.60
-  "Drinkware"	            "Used"	        33.33
-  "Fun"	                  "Used"	        32.50
+  "Android"	           "Used"	        23.26
+  "Apparel"	           "Used"	        33.96
+  "Backpacks"	          "Used"	        30.34
+  "Bags"	           "Used"	        33.21
+  "Bottles"	          "Used"	        30.60
+  "Drinkware"          "Used"	        33.33
+  "Fun"	              "Used"	        32.50
   "Gift Cards"	          "Used"	        35.22
-  "Google"	              "Used"	        27.62
-  "Headgear"	            "Used"	        33.20
-  "Housewares"	          "Used"	        29.51
-  "Lifestyle"	            "Used"	        35.61
-  "More Bags"	            "Used"	        39.13
+  "Google"	            "Used"	        27.62
+  "Headgear"	        "Used"	        33.20
+  "Housewares"        "Used"	        29.51
+  "Lifestyle"	         "Used"	        35.61
+  "More Bags"	         "Used"	        39.13
   "Nest"	                "Used"	        32.76
   "Nest-Canada"	          "Used"	        29.97
-  "Nest-USA"	            "Used"	        33.63
-  "Notebooks & Journals"	"Used"	        34.31
+  "Nest-USA"	          "Used"	        33.63
+  "Notebooks & Journals" "Used"	        34.31
   "Office"	              "Used"	        34.55
-  "Waze"	                "Used"	        33.21
+  "Waze"	             "Used"	        33.21
 
 
 /*
@@ -334,20 +334,20 @@ order by 1
 ++"product_cat"+++++++++"use_count"++
 +++++++++++++++++++++++++++++++++++++
   "Accessories"	            -80
-  "Android"	                -23
-  "Apparel"	              -5814
-  "Backpacks"	              -35
-  "Bags"	                 -632
-  "Bottles"	               -104
-  "Drinkware"	            -1161
-  "Fun"	                    -56
-  "Gift Cards"	            -47
-  "Google"	                -47
-  "Headgear"	             -259
-  "Housewares"	            -50
-  "Lifestyle"	             -890
-  "More Bags"	              -10
-  "Nest"	                 -758
+  "Android"	             -23
+  "Apparel"	           -5814
+  "Backpacks"	           -35
+  "Bags"	           -632
+  "Bottles"	           -104
+  "Drinkware"	          -1161
+  "Fun"	                  -56
+  "Gift Cards"	          -47
+  "Google"	          -47
+  "Headgear"	          -259
+  "Housewares"	         -50
+  "Lifestyle"	          -890
+  "More Bags"	           -10
+  "Nest"	           -758
   "Nest-Canada"	           -127
   "Nest-USA"	            -4589
   "Notebooks & Journals"	 -235
@@ -379,9 +379,9 @@ first we need to look at the coupons that were available for each month.
 select * from coupon
 order by 2, 1
 
-+++++++++++++++++++++++++++++++++++++++
-++"month"+++"category"++"coupon_code"++
-+++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++
+++"month"++++++++"category"++"coupon_code"++
+++++++++++++++++++++++++++++++++++++++++++++
    "Apr"	 "Accessories"	 "ACC10"
    "Aug"	 "Accessories"	 "ACC20"
    "Dec"	 "Accessories"	 "ACC30"
@@ -428,18 +428,18 @@ order by 1, 2
   "Accessories"	          1	               11	          27
   "Accessories"	          2	               12	          18
   "Accessories"	          3	               10	          16
-  "Android"	              1	                8	           3
-  "Android"	              2	                1	           2
-  "Android"	              3	                6	           2
-  "Apparel"	              1	                8	         968
-  "Apparel"	              2	                7	         720
-  "Apparel"	              3	                5	         603
+  "Android"	           1	                8	           3
+  "Android"	           2	                1	           2
+  "Android"	           3	                6	           2
+  "Apparel"	           1	                8	         968
+  "Apparel"	           2	                7	         720
+  "Apparel"	           3	                5	         603
   "Backpacks"	            1	                5	           6
   "Backpacks"	            2	                8	           5
   "Backpacks"	            3	                4	           5
-  "Bags"	                1	                7	          74
-  "Bags"	                2	                3	          73
-  "Bags"	                3	                8	          69
+  "Bags"	             1	                7	          74
+  "Bags"	             2	                3	          73
+  "Bags"	             3	                8	          69
   "Bottles"	              1	                7	          15
   "Bottles"	              2	                8	          13
   "Bottles"	              3	                5	          10
@@ -452,12 +452,12 @@ order by 1, 2
   "Gift Cards"	          1	               10	          30
   "Gift Cards"	          2	                5	           7
   "Gift Cards"	          3	                6	           4
-  "Google"	              1	                1	           8
-  "Google"	              2	                2	           5
-  "Google"	              3	                3	           4
-  "Headgear"	            1	                7	          40
-  "Headgear"	            2	                8	          34
-  "Headgear"	            3	                3	          30
+  "Google"	           1	                1	           8
+  "Google"	           2	                2	           5
+  "Google"	           3	                3	           4
+  "Headgear"	          1	                7	          40
+  "Headgear"	          2	                8	          34
+  "Headgear"	          3	                3	          30
   "Housewares"	          1	                8	           8
   "Housewares"	          2	                3	           6
   "Housewares"	          3	                7	           5
@@ -467,9 +467,9 @@ order by 1, 2
   "More Bags"	            1	                3	           7
   "More Bags"	            2	                4	           6
   "More Bags"	            3	                5	           4
-  "Nest"	                1	               11	         226
-  "Nest"	                2	               12	         209
-  "Nest"	                3	               10	         141
+  "Nest"	            1	               11	         226
+  "Nest"	            2	               12	         209
+  "Nest"	            3	               10	         141
   "Nest-Canada"	          1	                6	          14
   "Nest-Canada"	          2	                1	          13
   "Nest-Canada"	          3	                4	          10
@@ -482,9 +482,9 @@ order by 1, 2
   "Office"	              1	                3	         234
   "Office"	              2	                5	         222
   "Office"	              3	                4	         213
-  "Waze"	                1	                8	          23
-  "Waze"	                2	                1	          20
-  "Waze"	                3	                5	          20
+  "Waze"	             1	                8	          23
+  "Waze"	             2	                1	          20
+  "Waze"	             3	                5	          20
 
 /*
 Our results here include:
