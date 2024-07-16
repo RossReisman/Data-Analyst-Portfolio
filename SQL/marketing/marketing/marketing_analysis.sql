@@ -282,15 +282,15 @@ where coupon_status = 'Used'
 +++++++++++++++++++++++++++++++++++++++++++++++++
 ++"product_cat"++++++"coupon_status"+++++++"pct"++
 +++++++++++++++++++++++++++++++++++++++++++++++++
-  "Accessories"	          "Used"	           32.91
-  "Android"	          "Used"	           23.26
-  "Apparel"	          "Used"	           33.96
-  "Backpacks"	          "Used"	           30.34
-  "Bags"	          "Used"	           33.21
-  "Bottles"	          "Used"	           30.60
-  "Drinkware"             "Used"	           33.33
-  "Fun"	                  "Used"	           32.50
-  "Gift Cards"	          "Used"	           35.22
+  "Accessories"	          "Used"         32.91
+  "Android"	          "Used"	        23.26
+  "Apparel"	          "Used"	        33.96
+  "Backpacks"	          "Used"	        30.34
+  "Bags"	          "Used"	        33.21
+  "Bottles"	          "Used"	        30.60
+  "Drinkware"             "Used"         33.33
+  "Fun"	                  "Used"         32.50
+  "Gift Cards"	          "Used"         35.22
   "Google"	          "Used"	        27.62
   "Headgear"	          "Used"	          33.20
   "Housewares"            "Used"	          29.51
