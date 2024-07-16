@@ -282,26 +282,26 @@ where coupon_status = 'Used'
 +++++++++++++++++++++++++++++++++++++++++++++++++
 ++"product_cat"++++++"coupon_status"++++++"pct"++
 +++++++++++++++++++++++++++++++++++++++++++++++++
-  "Accessories"	          "Used"	        32.91
-  "Android"	          "Used"	        23.26
-  "Apparel"	          "Used"	        33.96
-  "Backpacks"	          "Used"	        30.34
-  "Bags"	          "Used"	        33.21
-  "Bottles"	          "Used"	        30.60
+  "Accessories"	         "Used"	        32.91
+  "Android"	         "Used"	        23.26
+  "Apparel"	         "Used"	        33.96
+  "Backpacks"	         "Used"	        30.34
+  "Bags"	         "Used"	        33.21
+  "Bottles"	         "Used"	        30.60
   "Drinkware"            "Used"	        33.33
   "Fun"	                 "Used"	        32.50
-  "Gift Cards"	          "Used"	        35.22
-  "Google"	           "Used"	        27.62
-  "Headgear"	        "Used"	        33.20
-  "Housewares"          "Used"	        29.51
-  "Lifestyle"	         "Used"	        35.61
+  "Gift Cards"	         "Used"	        35.22
+  "Google"	          "Used"	        27.62
+  "Headgear"	         "Used"	        33.20
+  "Housewares"           "Used"	        29.51
+  "Lifestyle"	          "Used"	        35.61
   "More Bags"	         "Used"	        39.13
   "Nest"	           "Used"	        32.76
   "Nest-Canada"	          "Used"	        29.97
   "Nest-USA"	          "Used"	        33.63
   "Notebooks & Journals"  "Used"	        34.31
-  "Office"	           "Used"	        34.55
-  "Waze"	             "Used"	        33.21
+  "Office"	          "Used"	        34.55
+  "Waze"	            "Used"	        33.21
 
 
 /*
