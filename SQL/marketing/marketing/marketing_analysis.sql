@@ -204,30 +204,30 @@ from calcs
   "Bottles"	           "Clicked"	       51.49
   "Bottles"	           "Not Used"	       17.91
   "Bottles"	           "Used"	           30.60
-  "Drinkware"	         "Clicked"	       50.30
-  "Drinkware"	         "Not Used"	       16.37
-  "Drinkware"	         "Used"	           33.33
+  "Drinkware"	           "Clicked"	       50.30
+  "Drinkware"	           "Not Used"	       16.37
+  "Drinkware"	           "Used"	           33.33
   "Fun"	                   "Clicked"	       51.88
   "Fun"	                   "Not Used"	       15.63
   "Fun"	                   "Used"	           32.50
   "Gift Cards"	           "Clicked"	       50.94
   "Gift Cards"	           "Not Used"	       13.84
   "Gift Cards"	           "Used"	           35.22
-  "Google"	               "Clicked"	       48.57
-  "Google"	               "Not Used"	       23.81
-  "Google"	               "Used"	           27.62
-  "Headgear"	             "Clicked"	       52.01
-  "Headgear"	             "Not Used"	       14.79
-  "Headgear"	             "Used"	           33.20
+  "Google"	            "Clicked"	       48.57
+  "Google"	            "Not Used"	       23.81
+  "Google"	            "Used"	           27.62
+  "Headgear"	           "Clicked"	       52.01
+  "Headgear"	           "Not Used"	       14.79
+  "Headgear"	           "Used"	           33.20
   "Housewares"	           "Clicked"	       55.74
   "Housewares"	           "Not Used"	       14.75
   "Housewares"	           "Used"	           29.51
-  "Lifestyle"	             "Clicked"	       49.45
-  "Lifestyle"	             "Not Used"	       14.94
-  "Lifestyle"	             "Used"	           35.61
-  "More Bags"	             "Clicked"	       54.35
-  "More Bags"	             "Not Used"	        6.52
-  "More Bags"	             "Used"	           39.13
+  "Lifestyle"	           "Clicked"	       49.45
+  "Lifestyle"	           "Not Used"	       14.94
+  "Lifestyle"	           "Used"	           35.61
+  "More Bags"	           "Clicked"	       54.35
+  "More Bags"	           "Not Used"	        6.52
+  "More Bags"	           "Used"	           39.13
   "Nest"	             "Clicked"	       51.27
   "Nest"	             "Not Used"	       15.97
   "Nest"	             "Used"	           32.76
