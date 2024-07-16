@@ -213,15 +213,15 @@ from calcs
   "Gift Cards"	           "Clicked"	       50.94
   "Gift Cards"	           "Not Used"	       13.84
   "Gift Cards"	           "Used"	           35.22
-  "Google"	        "Clicked"	       48.57
-  "Google"	        "Not Used"	       23.81
-  "Google"	        "Used"	           27.62
-  "Headgear"	         "Clicked"	       52.01
-  "Headgear"	         "Not Used"	       14.79
-  "Headgear"	         "Used"	           33.20
-  "Housewares"	           "Clicked"	       55.74
-  "Housewares"	           "Not Used"	       14.75
-  "Housewares"	           "Used"	           29.51
+  "Google"	           "Clicked"	       48.57
+  "Google"	           "Not Used"	       23.81
+  "Google"	           "Used"	           27.62
+  "Headgear"	           "Clicked"	       52.01
+  "Headgear"	           "Not Used"	       14.79
+  "Headgear"	           "Used"	           33.20
+  "Housewares"	          "Clicked"	       55.74
+  "Housewares"	          "Not Used"	       14.75
+  "Housewares"	          "Used"	           29.51
   "Lifestyle"	          "Clicked"	       49.45
   "Lifestyle"	          "Not Used"	       14.94
   "Lifestyle"	          "Used"	           35.61
@@ -244,8 +244,8 @@ from calcs
   "Office"	           "Not Used"	       14.86
   "Office"	           "Used"	           34.55
   "Waze"	           "Clicked"	       50.72
-  "Waze"          	 "Not Used"	       16.06
-  "Waze"          	 "Used"	           33.21
+  "Waze"          	   "Not Used"	       16.06
+  "Waze"          	   "Used"	           33.21
 
 
 /*
