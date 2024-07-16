@@ -198,15 +198,15 @@ from calcs
   "Backpacks"	           "Clicked"	       52.81
   "Backpacks"	           "Not Used"	       16.85
   "Backpacks"	           "Used"	           30.34
-  "Bags"	             "Clicked"	       51.65
-  "Bags"	             "Not Used"	       15.14
-  "Bags"	             "Used"	           33.21
-  "Bottles"	             "Clicked"	       51.49
-  "Bottles"	             "Not Used"	       17.91
-  "Bottles"	             "Used"	           30.60
-  "Drinkware"	           "Clicked"	       50.30
-  "Drinkware"	           "Not Used"	       16.37
-  "Drinkware"	           "Used"	           33.33
+  "Bags"	           "Clicked"	       51.65
+  "Bags"	           "Not Used"	       15.14
+  "Bags"	           "Used"	           33.21
+  "Bottles"	           "Clicked"	       51.49
+  "Bottles"	           "Not Used"	       17.91
+  "Bottles"	           "Used"	           30.60
+  "Drinkware"	         "Clicked"	       50.30
+  "Drinkware"	         "Not Used"	       16.37
+  "Drinkware"	         "Used"	           33.33
   "Fun"	                   "Clicked"	       51.88
   "Fun"	                   "Not Used"	       15.63
   "Fun"	                   "Used"	           32.50
