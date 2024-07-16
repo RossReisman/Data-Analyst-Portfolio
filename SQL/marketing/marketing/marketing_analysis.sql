@@ -213,39 +213,39 @@ from calcs
   "Gift Cards"	           "Clicked"	       50.94
   "Gift Cards"	           "Not Used"	       13.84
   "Gift Cards"	           "Used"	           35.22
-  "Google"	            "Clicked"	       48.57
-  "Google"	            "Not Used"	       23.81
-  "Google"	            "Used"	           27.62
-  "Headgear"	           "Clicked"	       52.01
-  "Headgear"	           "Not Used"	       14.79
-  "Headgear"	           "Used"	           33.20
+  "Google"	        "Clicked"	       48.57
+  "Google"	        "Not Used"	       23.81
+  "Google"	        "Used"	           27.62
+  "Headgear"	         "Clicked"	       52.01
+  "Headgear"	         "Not Used"	       14.79
+  "Headgear"	         "Used"	           33.20
   "Housewares"	           "Clicked"	       55.74
   "Housewares"	           "Not Used"	       14.75
   "Housewares"	           "Used"	           29.51
-  "Lifestyle"	           "Clicked"	       49.45
-  "Lifestyle"	           "Not Used"	       14.94
-  "Lifestyle"	           "Used"	           35.61
-  "More Bags"	           "Clicked"	       54.35
-  "More Bags"	           "Not Used"	        6.52
-  "More Bags"	           "Used"	           39.13
-  "Nest"	             "Clicked"	       51.27
-  "Nest"	             "Not Used"	       15.97
-  "Nest"	             "Used"	           32.76
+  "Lifestyle"	          "Clicked"	       49.45
+  "Lifestyle"	          "Not Used"	       14.94
+  "Lifestyle"	          "Used"	           35.61
+  "More Bags"	          "Clicked"	       54.35
+  "More Bags"	          "Not Used"	        6.52
+  "More Bags"	          "Used"	           39.13
+  "Nest"	           "Clicked"	       51.27
+  "Nest"	           "Not Used"	       15.97
+  "Nest"	           "Used"	           32.76
   "Nest-Canada"	           "Clicked"	       55.21
   "Nest-Canada"	           "Not Used"	       14.83
   "Nest-Canada"	           "Used"	           29.97
-  "Nest-USA"	             "Clicked"	       50.96
-  "Nest-USA"	             "Not Used"	       15.41
-  "Nest-USA"	             "Used"	           33.63
+  "Nest-USA"	           "Clicked"	       50.96
+  "Nest-USA"	           "Not Used"	       15.41
+  "Nest-USA"	           "Used"	           33.63
   "Notebooks & Journals"   "Clicked"	       51.94
   "Notebooks & Journals"   "Not Used"	       13.75
   "Notebooks & Journals"   "Used"	           34.31
-  "Office"	               "Clicked"	       50.59
-  "Office"	               "Not Used"	       14.86
-  "Office"	               "Used"	           34.55
-  "Waze"	                 "Clicked"	       50.72
-  "Waze"                	 "Not Used"	       16.06
-  "Waze"                	 "Used"	           33.21
+  "Office"	           "Clicked"	       50.59
+  "Office"	           "Not Used"	       14.86
+  "Office"	           "Used"	           34.55
+  "Waze"	           "Clicked"	       50.72
+  "Waze"          	 "Not Used"	       16.06
+  "Waze"          	 "Used"	           33.21
 
 
 /*
