@@ -299,9 +299,9 @@ where coupon_status = 'Used'
   "Nest"	          "Used"	   32.76
   "Nest-Canada"	          "Used"           29.97
   "Nest-USA"	          "Used"	   33.63
-  "Notebooks & Journals"  "Used"            34.31
-  "Office"	          "Used"	    34.55
-  "Waze"	          "Used"	    33.21
+  "Notebooks & Journals"  "Used"           34.31
+  "Office"	          "Used"	   34.55
+  "Waze"	          "Used"	   33.21
 
 
 /*
@@ -333,18 +333,18 @@ order by 1
 +++++++++++++++++++++++++++++++++++++
 ++"product_cat"+++++++++"use_count"++
 +++++++++++++++++++++++++++++++++++++
-  "Accessories"	            -80
-  "Android"	             -23
-  "Apparel"	           -5814
-  "Backpacks"	           -35
+  "Accessories"	           -80
+  "Android"	            -23
+  "Apparel"	          -5814
+  "Backpacks"	            -35
   "Bags"	           -632
   "Bottles"	           -104
   "Drinkware"	          -1161
-  "Fun"	                  -56
-  "Gift Cards"	          -47
-  "Google"	          -47
-  "Headgear"	          -259
-  "Housewares"	         -50
+  "Fun"	                    -56
+  "Gift Cards"	            -47
+  "Google"	            -47
+  "Headgear"	           -259
+  "Housewares"	          -50
   "Lifestyle"	          -890
   "More Bags"	           -10
   "Nest"	           -758
