@@ -333,7 +333,7 @@ order by 1
 +++++++++++++++++++++++++++++++++++++
 ++"product_cat"+++++++++"use_count"++
 +++++++++++++++++++++++++++++++++++++
-  "Accessories"	           -80
+  "Accessories"	            -80
   "Android"	            -23
   "Apparel"	          -5814
   "Backpacks"	            -35
@@ -344,15 +344,15 @@ order by 1
   "Gift Cards"	            -47
   "Google"	            -47
   "Headgear"	           -259
-  "Housewares"	          -50
-  "Lifestyle"	          -890
-  "More Bags"	           -10
+  "Housewares"	            -50
+  "Lifestyle"	           -890
+  "More Bags"	             -10
   "Nest"	           -758
   "Nest-Canada"	           -127
-  "Nest-USA"	            -4589
-  "Notebooks & Journals"	 -235
-  "Office"	              -2013
-  "Waze"	                 -186
+  "Nest-USA"	           -4589
+  "Notebooks & Journals" -235
+  "Office"	            -2013
+  "Waze"	              -186
 
 
 /*
