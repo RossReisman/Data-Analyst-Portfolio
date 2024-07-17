@@ -346,13 +346,13 @@ order by 1
   "Headgear"	           -259
   "Housewares"	            -50
   "Lifestyle"	           -890
-  "More Bags"	             -10
+  "More Bags"	            -10
   "Nest"	           -758
   "Nest-Canada"	           -127
-  "Nest-USA"	           -4589
-  "Notebooks & Journals" -235
-  "Office"	            -2013
-  "Waze"	              -186
+  "Nest-USA"	          -4589
+  "Notebooks & Journals"  -235
+  "Office"	           -2013
+  "Waze"	            -186
 
 
 /*
@@ -428,48 +428,48 @@ order by 1, 2
   "Accessories"	          1	               11	          27
   "Accessories"	          2	               12	          18
   "Accessories"	          3	               10	          16
-  "Android"	           1	                8	           3
-  "Android"	           2	                1	           2
-  "Android"	           3	                6	           2
-  "Apparel"	           1	                8	         968
-  "Apparel"	           2	                7	         720
-  "Apparel"	           3	                5	         603
-  "Backpacks"	            1	                5	           6
-  "Backpacks"	            2	                8	           5
-  "Backpacks"	            3	                4	           5
-  "Bags"	             1	                7	          74
-  "Bags"	             2	                3	          73
-  "Bags"	             3	                8	          69
-  "Bottles"	              1	                7	          15
-  "Bottles"	              2	                8	          13
-  "Bottles"	              3	                5	          10
-  "Drinkware"	            1	                8	         146
-  "Drinkware"	            2	                3	         132
-  "Drinkware"	            3	               10	         117
+  "Android"	          1	                8	           3
+  "Android"	          2	                1	           2
+  "Android"	          3	                6	           2
+  "Apparel"	          1	                8	         968
+  "Apparel"	          2	                7	         720
+  "Apparel"	          3	                5	         603
+  "Backpacks"	          1	                5	           6
+  "Backpacks"	          2	                8	           5
+  "Backpacks"	          3	                4	           5
+  "Bags"	          1	                7	          74
+  "Bags"	          2	                3	          73
+  "Bags"	          3	                8	          69
+  "Bottles"	             1	                7	          15
+  "Bottles"	             2	                8	          13
+  "Bottles"	             3	                5	          10
+  "Drinkware"	          1	                8	         146
+  "Drinkware"	          2	                3	         132
+  "Drinkware"	          3	               10	         117
   "Fun"	                  1	                7	           9
   "Fun"	                  2	                8	           9
   "Fun"	                  3	                6	           7
   "Gift Cards"	          1	               10	          30
   "Gift Cards"	          2	                5	           7
   "Gift Cards"	          3	                6	           4
-  "Google"	           1	                1	           8
-  "Google"	           2	                2	           5
-  "Google"	           3	                3	           4
+  "Google"	          1	                1	           8
+  "Google"	          2	                2	           5
+  "Google"	          3	                3	           4
   "Headgear"	          1	                7	          40
   "Headgear"	          2	                8	          34
   "Headgear"	          3	                3	          30
   "Housewares"	          1	                8	           8
   "Housewares"	          2	                3	           6
   "Housewares"	          3	                7	           5
-  "Lifestyle"	            1	                8	         149
-  "Lifestyle"	            2	                7	         126
-  "Lifestyle"	            3	                9	         120
-  "More Bags"	            1	                3	           7
-  "More Bags"	            2	                4	           6
-  "More Bags"	            3	                5	           4
-  "Nest"	            1	               11	         226
-  "Nest"	            2	               12	         209
-  "Nest"	            3	               10	         141
+  "Lifestyle"	         1	                8	         149
+  "Lifestyle"	         2	                7	         126
+  "Lifestyle"	         3	                9	         120
+  "More Bags"	         1	                3	           7
+  "More Bags"	         2	                4	           6
+  "More Bags"	         3	                5	           4
+  "Nest"	         1	               11	         226
+  "Nest"	         2	               12	         209
+  "Nest"	         3	               10	         141
   "Nest-Canada"	          1	                6	          14
   "Nest-Canada"	          2	                1	          13
   "Nest-Canada"	          3	                4	          10
