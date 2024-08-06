@@ -634,36 +634,36 @@ order by 2, 4
   "California"	      "Bags"	                  539	       2
   "New York"	      "Bags"	                  383	       3
   "California"	      "Bottles"	                 91	       1
-  "Chicago"	       "Bottles"	                 85	       2
-  "New York"         "Bottles"	                 54	       3
-  "Chicago"	     "Drinkware"	             1252	       1
-  "California"	     "Drinkware"	             1117	       2
-  "New York"  	    "Drinkware"	              675	       3
-  "Chicago"	       "Fun"	                     56	       1
+  "Chicago"	      "Bottles"	                 85	       2
+  "New York"          "Bottles"	                 54	       3
+  "Chicago"	      "Drinkware"	             1252	       1
+  "California"	      "Drinkware"	             1117	       2
+  "New York"  	      "Drinkware"	              675	       3
+  "Chicago"	      "Fun"	                     56	       1
   "California"	     "Fun"	                     44	       2
-  "New York"	      "Fun"	                     32	       3
-  "Chicago"	        "Gift Cards"	             89	       1
-  "California"	      "Gift Cards"	             27	       2
+  "New York"	     "Fun"	                     32	       3
+  "Chicago"	      "Gift Cards"	             89	       1
+  "California"	     "Gift Cards"	             27	       2
   "New York"   	    "Gift Cards"	             24	       3
   "California"	      "Google"	                 40	       1
-  "Chicago"	       "Google"	                 33	       2
-  "New York"    	"Google"	                 22	       3
-  "Chicago"	        "Headgear"	              264	       1
-  "California"	       "Headgear"	              221	       2
+  "Chicago"	      "Google"	                 33	       2
+  "New York"    "Google"	                 22	       3
+  "Chicago"	      "Headgear"	              264	       1
+  "California"	      "Headgear"	              221	       2
   "New York"   	    "Headgear"	              191	       3
   "Chicago"	     "Housewares"	             50	       1
-  "California"	       "Housewares"	             38	       2
-  "New York"   	    "Housewares"	             23	       3
+  "California"	     "Housewares"	             38	       2
+  "New York"   	   "Housewares"	             23	       3
   "Chicago"	     "Lifestyle"	             1086	       1
-  "California"	      "Lifestyle"	              977	       2
-  "New York"	      "Lifestyle"	              624	       3
+  "California"	     "Lifestyle"	              977	       2
+  "New York"	     "Lifestyle"	              624	       3
   "Chicago"	     "More Bags"	               17	       1
-  "California"	      "More Bags"	               15	       2
-  "New York"	      "More Bags"	                8	       3
+  "California"	     "More Bags"	               15	       2
+  "New York"	     "More Bags"	                8	       3
   "California"	      "Nest"	                  762	       1
-  "Chicago"	        "Nest"	                  710	       2
+  "Chicago"	       "Nest"	                  710	       2
   "New York"	      "Nest"	                  421	       3
-  "Chicago"	        "Nest-Canada"	            120	       1
+  "Chicago"	      "Nest-Canada"	            120	       1
   "California"	      "Nest-Canada"	             91	       2
   "New York"	      "Nest-Canada"	             63	       3
   "Chicago"	        "Nest-USA"	             4855	       1
