@@ -583,11 +583,11 @@ order by 2 desc
 +++++++++++++++++++++++++++++++++++
 ++"location"++++++++++"total_rev"++
 +++++++++++++++++++++++++++++++++++
-  "Chicago"	       1,625,885.58
-  "California"	      1,442,447.31
-  "New York"	        937,022.63
-  "New Jersey"	        409,666.86
-  "Washington DC"  	 255,772.24
+  "Chicago"	     1,625,885.58
+  "California"	     1,442,447.31
+  "New York"	       937,022.63
+  "New Jersey"	       409,666.86
+  "Washington DC"  255,772.24
 
 /*
 Our results here include:
