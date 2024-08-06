@@ -440,9 +440,9 @@ order by 1, 2
   "Bags"	              1	                7	          74
   "Bags"	              2	                3	          73
   "Bags"	              3	                8	          69
-  "Bottles"	               1	                7	          15
-  "Bottles"	               2	                8	          13
-  "Bottles"	               3	                5	          10
+  "Bottles"	              1	                7	          15
+  "Bottles"	              2	                8	          13
+  "Bottles"	              3	                5	          10
   "Drinkware"	              1	                8	         146
   "Drinkware"	              2	                3	         132
   "Drinkware"	              3	               10	         117
@@ -461,30 +461,30 @@ order by 1, 2
   "Housewares"	              1	                8	           8
   "Housewares"	              2	                3	           6
   "Housewares"	              3	                7	           5
-  "Lifestyle"	             1	                8	         149
-  "Lifestyle"	             2	                7	         126
-  "Lifestyle"	             3	                9	         120
-  "More Bags"	             1	                3	           7
-  "More Bags"	             2	                4	           6
-  "More Bags"	             3	                5	           4
-  "Nest"	             1	               11	         226
-  "Nest"	             2	               12	         209
-  "Nest"	             3	               10	         141
-  "Nest-Canada"	             1	                6	          14
-  "Nest-Canada"	             2	                1	          13
-  "Nest-Canada"	             3	                4	          10
+  "Lifestyle"	              1	                8	         149
+  "Lifestyle"	              2	                7	         126
+  "Lifestyle"	              3	                9	         120
+  "More Bags"	              1	                3	           7
+  "More Bags"	              2	                4	           6
+  "More Bags"	              3	                5	           4
+  "Nest"	              1	               11	         226
+  "Nest"	              2	               12	         209
+  "Nest"	              3	               10	         141
+  "Nest-Canada"	              1	                6	          14
+  "Nest-Canada"	              2	                1	          13
+  "Nest-Canada"	              3	                4	          10
   "Nest-USA"	              1	                1	         526
   "Nest-USA"	              2	               12	         510
   "Nest-USA"	              3	               11	         501
-  "Notebooks & Journals"  1	                8	          68
-  "Notebooks & Journals"  2	                7	          48
-  "Notebooks & Journals"  3	                5	          23
+  "Notebooks & Journals"     1	                8	          68
+  "Notebooks & Journals"     2	                7	          48
+  "Notebooks & Journals"     3	                5	          23
   "Office"	              1	                3	         234
   "Office"	              2	                5	         222
   "Office"	              3	                4	         213
-  "Waze"	             1	                8	          23
-  "Waze"	             2	                1	          20
-  "Waze"	             3	                5	          20
+  "Waze"	              1	                8	          23
+  "Waze"	              2	                1	          20
+  "Waze"	              3	                5	          20
 
 /*
 Our results here include:
