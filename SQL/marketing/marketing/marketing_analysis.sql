@@ -616,21 +616,21 @@ where rank <= 3
 order by 2, 4
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-++"location"++++++++"product_cat"+++++++++++"count"+++"rank"++
+++"location"++++++++++"product_cat"+++++++++++"count"+++"rank"++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  "Chicago"	        "Accessories"	             86	       1
-  "California"	    "Accessories"	             80	       2
-  "New York"	      "Accessories"	             41	       3
-  "Chicago"	        "Android"	                 18	       1
+  "Chicago"	       "Accessories"	             86	       1
+  "California"	     "Accessories"	             80	       2
+  "New York"	     "Accessories"	             41	       3
+  "Chicago"	      "Android"	                 18	       1
   "California"	    "Android"	                 13	       2
-  "New York"	      "Android"	                  7	       3
-  "Chicago"	        "Apparel"	               6158	       1
+  "New York"	     "Android"	                  7	       3
+  "Chicago"	      "Apparel"	               6158	       1
   "California"	    "Apparel"	               5491	       2
-  "New York"	      "Apparel"	               3902	       3
-  "Chicago"	        "Backpacks"	               34	       1
+  "New York"	     "Apparel"	               3902	       3
+  "Chicago"	      "Backpacks"	               34	       1
   "California"	    "Backpacks"	               29	       2
   "New York"	      "Backpacks"	               14	       3
-  "Chicago"	        "Bags"	                  731	       1
+  "Chicago"	      "Bags"	                  731	       1
   "California"	    "Bags"	                  539	       2
   "New York"	      "Bags"	                  383	       3
   "California"	    "Bottles"	                 91	       1
