@@ -476,9 +476,9 @@ order by 1, 2
   "Nest-USA"	              1	                1	         526
   "Nest-USA"	              2	               12	         510
   "Nest-USA"	              3	               11	         501
-  "Notebooks & Journals"     1	                8	          68
-  "Notebooks & Journals"     2	                7	          48
-  "Notebooks & Journals"     3	                5	          23
+  "Notebooks & Journals"      1	                8	          68
+  "Notebooks & Journals"      2	                7	          48
+  "Notebooks & Journals"      3	                5	          23
   "Office"	              1	                3	         234
   "Office"	              2	                5	         222
   "Office"	              3	                4	         213
@@ -554,8 +554,8 @@ order by 1 desc
 +++++++++++++++++++++++++++++++++++++++++++
 ++"gender"++++++"coupon_status"+++"count"++
 +++++++++++++++++++++++++++++++++++++++++++
-    "M"	            "Used"	        6752
-    "F"	            "Used"	       11152
+    "M"	            "Used"	     6752
+    "F"	            "Used"	    11152
 
 /*
 Our results here include:
