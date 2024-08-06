@@ -350,9 +350,9 @@ order by 1
   "Nest"	           -758
   "Nest-Canada"	           -127
   "Nest-USA"	          -4589
-  "Notebooks & Journals"  -235
-  "Office"	           -2013
-  "Waze"	            -186
+  "Notebooks & Journals"   -235
+  "Office"	          -2013
+  "Waze"	           -186
 
 
 /*
@@ -440,9 +440,9 @@ order by 1, 2
   "Bags"	          1	                7	          74
   "Bags"	          2	                3	          73
   "Bags"	          3	                8	          69
-  "Bottles"	             1	                7	          15
-  "Bottles"	             2	                8	          13
-  "Bottles"	             3	                5	          10
+  "Bottles"	           1	                7	          15
+  "Bottles"	           2	                8	          13
+  "Bottles"	           3	                5	          10
   "Drinkware"	          1	                8	         146
   "Drinkware"	          2	                3	         132
   "Drinkware"	          3	               10	         117
@@ -470,15 +470,15 @@ order by 1, 2
   "Nest"	         1	               11	         226
   "Nest"	         2	               12	         209
   "Nest"	         3	               10	         141
-  "Nest-Canada"	          1	                6	          14
-  "Nest-Canada"	          2	                1	          13
-  "Nest-Canada"	          3	                4	          10
-  "Nest-USA"	            1	                1	         526
-  "Nest-USA"	            2	               12	         510
-  "Nest-USA"	            3	               11	         501
-  "Notebooks & Journals"	1	                8	          68
-  "Notebooks & Journals"	2	                7	          48
-  "Notebooks & Journals"	3	                5	          23
+  "Nest-Canada"	         1	                6	          14
+  "Nest-Canada"	         2	                1	          13
+  "Nest-Canada"	         3	                4	          10
+  "Nest-USA"	          1	                1	         526
+  "Nest-USA"	          2	               12	         510
+  "Nest-USA"	          3	               11	         501
+  "Notebooks & Journals"1	                8	          68
+  "Notebooks & Journals"2	                7	          48
+  "Notebooks & Journals"3	                5	          23
   "Office"	              1	                3	         234
   "Office"	              2	                5	         222
   "Office"	              3	                4	         213
