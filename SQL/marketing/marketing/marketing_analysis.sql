@@ -587,7 +587,7 @@ order by 2 desc
   "California"	     1,442,447.31
   "New York"	       937,022.63
   "New Jersey"	       409,666.86
-  "Washington DC"    255,772.24
+  "Washington DC"      255,772.24
 
 /*
 Our results here include:
@@ -622,18 +622,18 @@ order by 2, 4
   "California"	      "Accessories"	             80	       2
   "New York"	      "Accessories"	             41	       3
   "Chicago"	      "Android"	                 18	       1
-  "California"	     "Android"	                 13	       2
+  "California"	      "Android"	                 13	       2
   "New York"	      "Android"	                  7	       3
-  "Chicago"	       "Apparel"	               6158	       1
-  "California"	     "Apparel"	               5491	       2
+  "Chicago"	      "Apparel"	               6158	       1
+  "California"	      "Apparel"	               5491	       2
   "New York"	      "Apparel"	               3902	       3
   "Chicago"	      "Backpacks"	               34	       1
-  "California"	    "Backpacks"	               29	       2
+  "California"	      "Backpacks"	               29	       2
   "New York"	      "Backpacks"	               14	       3
   "Chicago"	      "Bags"	                  731	       1
-  "California"	    "Bags"	                  539	       2
+  "California"	      "Bags"	                  539	       2
   "New York"	      "Bags"	                  383	       3
-  "California"	   "Bottles"	                 91	       1
+  "California"	     "Bottles"	                 91	       1
   "Chicago"	       "Bottles"	                 85	       2
   "New York"      "Bottles"	                 54	       3
   "Chicago"	     "Drinkware"	             1252	       1
@@ -643,40 +643,40 @@ order by 2, 4
   "California"	   "Fun"	                     44	       2
   "New York"	      "Fun"	                     32	       3
   "Chicago"	        "Gift Cards"	             89	       1
-  "California"	    "Gift Cards"	             27	       2
+  "California"	      "Gift Cards"	             27	       2
   "New York"   	    "Gift Cards"	             24	       3
-  "California"	   "Google"	                 40	       1
+  "California"	     "Google"	                 40	       1
   "Chicago"	       "Google"	                 33	       2
   "New York"    	"Google"	                 22	       3
   "Chicago"	        "Headgear"	              264	       1
-  "California"	    "Headgear"	              221	       2
+  "California"	      "Headgear"	              221	       2
   "New York"   	    "Headgear"	              191	       3
   "Chicago"	     "Housewares"	             50	       1
-  "California"	    "Housewares"	             38	       2
+  "California"	      "Housewares"	             38	       2
   "New York"   	    "Housewares"	             23	       3
   "Chicago"	     "Lifestyle"	             1086	       1
-  "California"	    "Lifestyle"	              977	       2
+  "California"	      "Lifestyle"	              977	       2
   "New York"	      "Lifestyle"	              624	       3
   "Chicago"	     "More Bags"	               17	       1
-  "California"	    "More Bags"	               15	       2
+  "California"	      "More Bags"	               15	       2
   "New York"	      "More Bags"	                8	       3
-  "California"	    "Nest"	                  762	       1
+  "California"	      "Nest"	                  762	       1
   "Chicago"	        "Nest"	                  710	       2
   "New York"	      "Nest"	                  421	       3
   "Chicago"	        "Nest-Canada"	            120	       1
-  "California"	    "Nest-Canada"	             91	       2
+  "California"	      "Nest-Canada"	             91	       2
   "New York"	      "Nest-Canada"	             63	       3
   "Chicago"	        "Nest-USA"	             4855	       1
-  "California"	    "Nest-USA"	             4184	       2
+  "California"	      "Nest-USA"	             4184	       2
   "New York"	      "Nest-USA"	             2975	       3
   "Chicago"	        "Notebooks & Journals"	  260	       1
-  "California"	    "Notebooks & Journals"	  238	       2
+  "California"	      "Notebooks & Journals"	  238	       2
   "New York"	      "Notebooks & Journals"	  181	       3
   "Chicago"	        "Office"	               2273	       1
-  "California"	    "Office"	               1993	       2
+  "California"	      "Office"	               1993	       2
   "New York"	      "Office"	               1409	       3
   "Chicago"	        "Waze"	                  203	       1
-  "California"	    "Waze"	                  146	       2
+  "California"	      "Waze"	                  146	       2
   "New York"	      "Waze"	                  124	       3
 
 
