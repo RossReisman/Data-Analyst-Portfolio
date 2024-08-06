@@ -422,9 +422,9 @@ order by 2 desc, 3) calcs
 where product_rank <= 3
 order by 1, 2
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-++"product_cat"++++++++"product_rank"++++++++"month"++"coupon_count"++
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++"product_cat"++++++++"product_rank"++++++++"month"++++++"coupon_count"++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   "Accessories"	              1	               11	          27
   "Accessories"	              2	               12	          18
   "Accessories"	              3	               10	          16
@@ -554,8 +554,8 @@ order by 1 desc
 +++++++++++++++++++++++++++++++++++++++++++
 ++"gender"++++++"coupon_status"+++"count"++
 +++++++++++++++++++++++++++++++++++++++++++
-    "M"	            "Used"	     6752
-    "F"	            "Used"	    11152
+    "M"	            "Used"	   6752
+    "F"	            "Used"	  11152
 
 /*
 Our results here include:
@@ -583,11 +583,11 @@ order by 2 desc
 +++++++++++++++++++++++++++++++
 ++"location"++++++++++++"sum"++
 +++++++++++++++++++++++++++++++
-  "Chicago"	       1,625,885.58
+  "Chicago"	    1,625,885.58
   "California"	   1,442,447.31
-  "New York"	       937,022.63
+  "New York"	     937,022.63
   "New Jersey"	     409,666.86
-  "Washington DC"	   255,772.24
+  "Washington DC"	 255,772.24
 
 /*
 Our results here include:
